@@ -26,14 +26,17 @@ public class PrototypePlayer : MonoBehaviour
     void Update()
     {
         Vector3 moveDir = new Vector3(movementInput.x, 0, movementInput.y);
+        Vector3 movePos = new Vector3(movementInput.x, Physics.gravity.y, movementInput.y);
         moveDir.Normalize();
 
-        characterController.Move(moveDir * Time.deltaTime * speed);
+        characterController.Move(movePos * Time.deltaTime * speed);
 
         //Rotation
         if(moveDir != Vector3.zero){
             Quaternion toRotation = Quaternion.LookRotation(moveDir);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, Time.deltaTime * rotationSpeed);
         }
+
+        
     }
 }
