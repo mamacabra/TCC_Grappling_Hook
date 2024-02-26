@@ -9,6 +9,7 @@ public class GrapplingHookShoot : MonoBehaviour
     public Transform grapShotPosition;
    
     Rigidbody rb;
+    [SerializeField] private TrailRenderer trailRenderer;
     
     public float grapplingMaximumDistance;
     public float grapplingSpeed ;
@@ -38,10 +39,7 @@ public class GrapplingHookShoot : MonoBehaviour
         {
             PutHookInInitialPosition();
         }
-
-
-
-
+        
     }
 
     public void ShotGrappling()
@@ -73,10 +71,7 @@ public class GrapplingHookShoot : MonoBehaviour
             isShooting = false;
             Debug.Log("Returned");
         }
-       
+      
     }
-
-
-
 
 }

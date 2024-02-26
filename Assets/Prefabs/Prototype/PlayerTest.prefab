@@ -581,7 +581,7 @@ PrefabInstance:
     - target: {fileID: 381568151284319859, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.872
       objectReference: {fileID: 0}
     - target: {fileID: 381568151284319859, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}
@@ -591,7 +591,7 @@ PrefabInstance:
     - target: {fileID: 381568151284319859, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.0209999
+      value: 0.757
       objectReference: {fileID: 0}
     - target: {fileID: 381568151284319859, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}
@@ -633,10 +633,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grappling
       objectReference: {fileID: 0}
+    - target: {fileID: 7374584148605496927, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8668690697250068315, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}
       propertyPath: grapplingSpeed
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8668690697250068315, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}
