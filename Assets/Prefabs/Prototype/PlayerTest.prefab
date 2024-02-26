@@ -88,12 +88,12 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7351249547353358988}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+        m_TargetAssemblyTypeName: PrototypePlayer, Assembly-CSharp
+        m_MethodName: OnShoot
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -160,6 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grapplingHookShoot: {fileID: 8546290629968510603}
   shooting: 0
+  shooting_value: 0
   speed: 10
   rotationSpeed: 500
 --- !u!143 &3592508040131765666

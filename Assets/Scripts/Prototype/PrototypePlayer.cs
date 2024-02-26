@@ -11,6 +11,7 @@ public class PrototypePlayer : MonoBehaviour
     private CharacterController characterController;
     Vector2 movementInput = Vector2.zero;
     public bool shooting; 
+    public float shooting_value; 
     
 
     [SerializeField]private float speed = 10;
@@ -48,7 +49,6 @@ public class PrototypePlayer : MonoBehaviour
     }
     public void OnShoot(InputAction.CallbackContext context)
     {
-         shooting = context.ReadValue<bool>();
-         
+        shooting = context.ReadValueAsButton();
     }
 }
