@@ -10,9 +10,11 @@ public class GrapplingHookShoot : MonoBehaviour
    
     Rigidbody rb;
     
-    public float grapplingMaximumDistance=5;
-    public float grapplingSpeed = 10f;
-    private float shotActualdistance;
+    public float grapplingMaximumDistance;
+    public float grapplingSpeed ;
+    public float shotActualdistance;
+
+    public bool isShooting = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,32 +25,58 @@ public class GrapplingHookShoot : MonoBehaviour
     private void Update()
     {
         shotActualdistance = Vector3.Distance(grapShotPosition.position, grapStartPosition.transform.position);
+        if (shotActualdistance > 1) 
+        {
+            isShooting = true;
+        }
+        if (shotActualdistance > grapplingMaximumDistance ) 
+        {
+           ReturnHook();
+        }
+
+        if (shotActualdistance <= 1f && isShooting)
+        {
+            PutHookInInitialPosition();
+        }
+
+
+
+
     }
 
     public void ShotGrappling()
     {
         Vector3 direction = transform.forward;
-        
-        if (rb != null ) 
+
+        if (rb != null)
         {
             rb.velocity = direction * grapplingSpeed;
-        }else if(shotActualdistance >= grapplingMaximumDistance) 
-        {
-            rb.velocity = -direction * grapplingSpeed;
+            
+               
+            Debug.Log("Shot");
         }
-        if(shotActualdistance <= 0) 
-        {
-            rb.velocity = direction * 0;
-        }
-        
-        
-        
-
-        Debug.Log("Shot");
-
 
     }
-        
 
-    
+    public void ReturnHook()
+    {
+        Vector3 directionR = transform.forward;
+        rb.velocity = directionR * (grapplingSpeed * -1);
+    }
+
+    public void PutHookInInitialPosition() 
+    {
+        if (isShooting) 
+        {
+            grapShotPosition.position = grapStartPosition.position;
+            rb.velocity = Vector3.zero;
+            isShooting = false;
+            Debug.Log("Returned");
+        }
+       
+    }
+
+
+
+
 }

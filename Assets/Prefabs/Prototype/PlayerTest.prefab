@@ -37,6 +37,7 @@ Transform:
   - {fileID: 9001539423549752180}
   - {fileID: 8624333971713862004}
   - {fileID: 6322562453041192564}
+  - {fileID: 836680489198743459}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6543034054755298363
@@ -211,10 +212,10 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1 &4839688409964055624
 GameObject:
@@ -351,8 +352,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.204, z: 1.021}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 836680489198743459}
+  m_Children: []
   m_Father: {fileID: 3445691786533649410}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6454848808052417335
@@ -571,27 +571,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6322562453041192564}
+    m_TransformParent: {fileID: 3445691786533649410}
     m_Modifications:
-    - target: {fileID: -3069367820480946444, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
-        type: 3}
-      propertyPath: m_Mass
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: -3069367820480946444, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: -3069367820480946444, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}
       propertyPath: m_Constraints
       value: 116
-      objectReference: {fileID: 0}
-    - target: {fileID: -3069367820480946444, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
-        type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 381568151284319859, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}
@@ -601,12 +586,12 @@ PrefabInstance:
     - target: {fileID: 381568151284319859, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.204
       objectReference: {fileID: 0}
     - target: {fileID: 381568151284319859, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.0209999
       objectReference: {fileID: 0}
     - target: {fileID: 381568151284319859, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}
@@ -616,17 +601,17 @@ PrefabInstance:
     - target: {fileID: 381568151284319859, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 381568151284319859, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 381568151284319859, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 381568151284319859, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}
@@ -651,18 +636,18 @@ PrefabInstance:
     - target: {fileID: 8668690697250068315, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}
       propertyPath: grapplingSpeed
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 8668690697250068315, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
-        type: 3}
-      propertyPath: grapShotPosition
-      value: 
-      objectReference: {fileID: 836680489198743459}
     - target: {fileID: 8668690697250068315, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}
       propertyPath: grapStartPosition
       value: 
       objectReference: {fileID: 6322562453041192564}
+    - target: {fileID: 8668690697250068315, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
+        type: 3}
+      propertyPath: grapplingMaximumDistance
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
