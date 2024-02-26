@@ -37,6 +37,6 @@ public class PrototypePlayer : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, Time.deltaTime * rotationSpeed);
         }
 
-        
+        //
     }
 }
