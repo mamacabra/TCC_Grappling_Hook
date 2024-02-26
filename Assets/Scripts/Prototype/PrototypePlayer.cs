@@ -6,9 +6,12 @@ using UnityEngine.InputSystem;
 
 public class PrototypePlayer : MonoBehaviour
 {
+    public GrapplingHookShoot grapplingHookShoot;
     private Rigidbody rigidbody;
     private CharacterController characterController;
     Vector2 movementInput = Vector2.zero;
+    public bool shooting; 
+    
 
     [SerializeField]private float speed = 10;
     [SerializeField]private float rotationSpeed = 500;
@@ -37,6 +40,15 @@ public class PrototypePlayer : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, Time.deltaTime * rotationSpeed);
         }
 
-        //
+        //Shoot
+        if (shooting) 
+        {
+            grapplingHookShoot.ShotGrappling();
+        }
+    }
+    public void OnShoot(InputAction.CallbackContext context)
+    {
+         shooting = context.ReadValue<bool>();
+         
     }
 }
