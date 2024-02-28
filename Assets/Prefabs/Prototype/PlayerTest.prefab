@@ -282,7 +282,12 @@ PrefabInstance:
     - target: {fileID: -3069367820480946444, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}
       propertyPath: m_UseGravity
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3069367820480946444, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -3069367820480946444, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}
@@ -343,6 +348,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Grappling
+      objectReference: {fileID: 0}
+    - target: {fileID: 2632560466111120896, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4356083364313403219, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7374584148605496927, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}

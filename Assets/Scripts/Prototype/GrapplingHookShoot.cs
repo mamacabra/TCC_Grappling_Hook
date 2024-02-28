@@ -39,6 +39,7 @@ public class GrapplingHookShoot : MonoBehaviour
         if (shotActualdistance <= 1f && isShooting)
         {
             PutHookInInitialPosition();
+            rb.velocity = Vector3.zero;
         }
         
     }
@@ -59,8 +60,9 @@ public class GrapplingHookShoot : MonoBehaviour
 
     public void ReturnHook()
     {
-        Vector3 directionR = transform.forward;
-        rb.velocity = directionR * (grapplingSpeed * -1);
+        Vector3 directionR = (grapStartPosition.position - grapShotPosition.position).normalized;
+        rb.velocity = directionR * grapplingSpeed;
+
     }
 
     public void PutHookInInitialPosition() 
@@ -80,10 +82,20 @@ public class GrapplingHookShoot : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             prototypePlayer.ReceiveDamage();
-            grapShotPosition.position = grapStartPosition.position;
+            //grapShotPosition.position = grapStartPosition.position;
             
             GameObject otherPlayer = collision.gameObject;
-            //otherPlayer.transform.SetParent(transform, false);
+            
+            Rigidbody otherPlayerRigidbody = otherPlayer.GetComponent<Rigidbody>();
+
+            if (otherPlayerRigidbody != null)
+            {
+                Vector3 pullDirection=(grapShotPosition.position-otherPlayer.transform.position).normalized;
+
+                otherPlayerRigidbody.AddForce(pullDirection * grapplingSpeed, ForceMode.VelocityChange);
+                
+
+            }
         }
 
     }
