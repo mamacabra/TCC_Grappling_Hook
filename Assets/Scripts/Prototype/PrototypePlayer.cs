@@ -11,7 +11,8 @@ public class PrototypePlayer : MonoBehaviour
     private CharacterController characterController;
     Vector2 movementInput = Vector2.zero;
     public bool shooting; 
-    public float shooting_value; 
+    public float shooting_value;
+    public int life = 5;
     
 
     [SerializeField]private float speed = 10;
@@ -24,31 +25,46 @@ public class PrototypePlayer : MonoBehaviour
     }
 
     public void OnMove(InputAction.CallbackContext context)
-    {
-        movementInput = context.ReadValue<Vector2>();
+    { 
+        movementInput = context.ReadValue<Vector2>();   
     }
     void Update()
     {
         Vector3 moveDir = new Vector3(movementInput.x, 0, movementInput.y);
         Vector3 movePos = new Vector3(movementInput.x, Physics.gravity.y, movementInput.y);
         moveDir.Normalize();
+        if (!grapplingHookShoot.isShooting)
+        {
+            characterController.Move(movePos * Time.deltaTime * speed);
 
-        characterController.Move(movePos * Time.deltaTime * speed);
+            //Rotation
+            if (moveDir != Vector3.zero)
+            {
+                Quaternion toRotation = Quaternion.LookRotation(moveDir);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, Time.deltaTime * rotationSpeed);
+            }
 
-        //Rotation
-        if(moveDir != Vector3.zero){
-            Quaternion toRotation = Quaternion.LookRotation(moveDir);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, Time.deltaTime * rotationSpeed);
+            //Shoot
+            if (shooting)
+            {
+                grapplingHookShoot.ShotGrappling();
+            }
         }
 
-        //Shoot
-        if (shooting) 
+        if(life<=0)
         {
-            grapplingHookShoot.ShotGrappling();
+           
         }
     }
     public void OnShoot(InputAction.CallbackContext context)
     {
         shooting = context.ReadValueAsButton();
     }
+
+    public void ReceiveDamage() 
+    {
+        life--;
+    }
+
+    
 }

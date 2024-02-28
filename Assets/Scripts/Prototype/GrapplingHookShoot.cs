@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GrapplingHookShoot : MonoBehaviour
 {
+    public PrototypePlayer prototypePlayer;
     
     public Transform grapStartPosition;
     public Transform grapShotPosition;
@@ -72,6 +73,19 @@ public class GrapplingHookShoot : MonoBehaviour
             Debug.Log("Returned");
         }
       
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            prototypePlayer.ReceiveDamage();
+            grapShotPosition.position = grapStartPosition.position;
+            
+            GameObject otherPlayer = collision.gameObject;
+            //otherPlayer.transform.SetParent(transform, false);
+        }
+
     }
 
 }

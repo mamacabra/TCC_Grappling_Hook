@@ -120,8 +120,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3875f6a79d8f0e4bb8ab7e654a660d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prototypePlayer: {fileID: 0}
   grapStartPosition: {fileID: 0}
   grapShotPosition: {fileID: 381568151284319859}
+  trailRenderer: {fileID: 0}
   grapplingMaximumDistance: 5
   grapplingSpeed: 50
   shotActualdistance: 0
@@ -134,7 +136,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2632560466111120896}
   serializedVersion: 4
-  m_Mass: 20
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}

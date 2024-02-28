@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7351249547353358988}
   - component: {fileID: 3592508040131765666}
   - component: {fileID: 3293369599735587538}
+  - component: {fileID: 6741661566927283341}
   m_Layer: 0
   m_Name: PlayerTest
   m_TagString: Player
@@ -160,6 +161,7 @@ MonoBehaviour:
   grapplingHookShoot: {fileID: 8546290629968510603}
   shooting: 0
   shooting_value: 0
+  life: 5
   speed: 10
   rotationSpeed: 500
 --- !u!143 &3592508040131765666
@@ -215,6 +217,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!136 &6741661566927283341
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102690380306755515}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.0590843
+  m_Height: 2.3442152
+  m_Direction: 1
+  m_Center: {x: 0.02845645, y: 0.19460571, z: -0.055771947}
 --- !u!1 &5363427074109781595
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,7 +265,7 @@ Transform:
   m_GameObject: {fileID: 5363427074109781595}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.204, z: 1.021}
+  m_LocalPosition: {x: 0, y: -0.158, z: 1.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -256,23 +281,28 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -3069367820480946444, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3069367820480946444, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
+        type: 3}
       propertyPath: m_Constraints
       value: 116
       objectReference: {fileID: 0}
     - target: {fileID: 381568151284319859, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.872
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 381568151284319859, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.204
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 381568151284319859, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.757
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 381568151284319859, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}
@@ -324,6 +354,11 @@ PrefabInstance:
       propertyPath: grapplingSpeed
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 8668690697250068315, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
+        type: 3}
+      propertyPath: prototypePlayer
+      value: 
+      objectReference: {fileID: 7351249547353358988}
     - target: {fileID: 8668690697250068315, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}
       propertyPath: grapStartPosition
