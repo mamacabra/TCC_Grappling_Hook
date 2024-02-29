@@ -86,9 +86,8 @@ public class GrapplingHookShoot : MonoBehaviour
             
             GameObject otherPlayer = collision.gameObject;
             
-            Rigidbody otherPlayerRigidbody = otherPlayer.GetComponent<Rigidbody>();
-
-            if (otherPlayerRigidbody != null)
+            
+            if (otherPlayer.TryGetComponent<Rigidbody>(out var otherPlayerRigidbody))
             {
                 Vector3 pullDirection=(grapShotPosition.position-otherPlayer.transform.position).normalized;
 

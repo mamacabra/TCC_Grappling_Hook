@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class PrototypePlayer : MonoBehaviour
 {
     public GrapplingHookShoot grapplingHookShoot;
-    private Rigidbody rigidbody;
+    private Rigidbody myRigidbody;
     private CharacterController characterController;
     Vector2 movementInput = Vector2.zero;
     public bool shooting; 
@@ -20,7 +20,7 @@ public class PrototypePlayer : MonoBehaviour
 
     private void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        myRigidbody = GetComponent<Rigidbody>();
         characterController = GetComponent<CharacterController>();
     }
 
