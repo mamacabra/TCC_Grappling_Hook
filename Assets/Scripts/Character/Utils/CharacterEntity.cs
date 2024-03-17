@@ -4,8 +4,8 @@ namespace Character.Utils
 {
     public struct CharacterEntity
     {
-        public Character character;
-        public GrapplingHookWeapon grapplingHookWeapon;
-        public GrapplingHookUI grapplingHookUI;
+        public Character Character;
+        public GrapplingHookWeapon GrapplingHookWeapon;
+        public CharacterUI CharacterUI;
     }
 }
