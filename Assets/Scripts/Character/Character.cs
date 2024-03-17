@@ -11,7 +11,7 @@ namespace Character
 
         private void Update()
         {
-            _state.Update();
+            _state?.Update();
 
             if (Input.GetKeyDown(KeyCode.Space))
                 SetPrepareHookState();
@@ -21,7 +21,7 @@ namespace Character
 
         private void FixedUpdate()
         {
-            _state.FixedUpdate();
+            _state?.FixedUpdate();
         }
 
         public void Setup(CharacterEntity entity)
@@ -39,25 +39,25 @@ namespace Character
 
         private void SetDispatchHookState()
         {
-            var state = new DispatchHookState(this);
+            var state = new DispatchHookState(CharacterEntity);
             SetState(state);
         }
 
         private void SetPrepareHookState()
         {
-            var state = new PrepareHookState(this);
+            var state = new PrepareHookState(CharacterEntity);
             SetState(state);
         }
 
         public void SetRollbackHookState()
         {
-            var state = new RollbackHookState(this);
+            var state = new RollbackHookState(CharacterEntity);
             SetState(state);
         }
 
         public void SetWalkState()
         {
-            var state = new WalkState(this);
+            var state = new WalkState(CharacterEntity);
             SetState(state);
         }
     }

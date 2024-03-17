@@ -4,16 +4,16 @@ namespace Character.States
 {
     public class DispatchHookState : CharacterState
     {
-        private readonly Character _character;
+        private readonly CharacterEntity _characterEntity;
 
-        public DispatchHookState(Character character)
+        public DispatchHookState(CharacterEntity characterEntity)
         {
-            _character = character;
+            _characterEntity = characterEntity;
         }
 
         public override void Enter()
         {
-            _character.CharacterEntity.GrapplingHookWeapon.DispatchHook(_character.transform.forward);
+            _characterEntity.GrapplingHookWeapon.DispatchHook(_characterEntity.Character.transform.forward);
         }
     }
 }

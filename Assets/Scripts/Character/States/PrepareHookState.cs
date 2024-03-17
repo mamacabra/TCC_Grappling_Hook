@@ -8,20 +8,20 @@ namespace Character.States
     {
         private float _countDown;
         private const float CountDownStep = 0.4f;
-        private readonly Character _character;
+        private readonly CharacterEntity _characterEntity;
 
-        public PrepareHookState(Character character)
+        public PrepareHookState(CharacterEntity characterEntity)
         {
-            _character = character;
+            _characterEntity = characterEntity;
         }
 
         public override void FixedUpdate() {
             _countDown += Time.fixedDeltaTime;
 
-            if (_countDown > CountDownStep && _character.CharacterEntity.GrapplingHookWeapon.Force < GrapplingHookWeapon.MaxGrapplingHookForce)
+            if (_countDown > CountDownStep && _characterEntity.GrapplingHookWeapon.Force < GrapplingHookWeapon.MaxGrapplingHookForce)
             {
                 _countDown = 0f;
-                _character.CharacterEntity.GrapplingHookWeapon.IncreaseHookForce();
+                _characterEntity.GrapplingHookWeapon.IncreaseHookForce();
             }
         }
     }

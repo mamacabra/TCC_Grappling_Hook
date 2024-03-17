@@ -1,17 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GrapplingHookShoot : MonoBehaviour
 {
-    public PlayerMovement playerMovement;
-    
+    // [FormerlySerializedAs("playerMovement")] public CharacterMovement characterMovement;
+
     public Transform grapStartPosition;
     public Transform grapShotPosition;
-   
+
     Rigidbody rb;
     [SerializeField] private TrailRenderer trailRenderer;
-    
+
     public float grapplingMaximumDistance;
     public float grapplingSpeed ;
     public float shotActualdistance;
@@ -22,16 +20,16 @@ public class GrapplingHookShoot : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        
+
     }
     private void Update()
     {
         shotActualdistance = Vector3.Distance(grapShotPosition.position, grapStartPosition.transform.position);
-        if (shotActualdistance > 1) 
+        if (shotActualdistance > 1)
         {
             isShooting = true;
         }
-        if (shotActualdistance > grapplingMaximumDistance ) 
+        if (shotActualdistance > grapplingMaximumDistance )
         {
            ReturnHook();
         }
@@ -41,7 +39,7 @@ public class GrapplingHookShoot : MonoBehaviour
             PutHookInInitialPosition();
             rb.velocity = Vector3.zero;
         }
-        
+
     }
 
     public void ShotGrappling()
@@ -51,8 +49,8 @@ public class GrapplingHookShoot : MonoBehaviour
         if (rb != null)
         {
             rb.velocity = direction * grapplingSpeed;
-            
-               
+
+
             Debug.Log("Shot");
         }
 
@@ -65,16 +63,16 @@ public class GrapplingHookShoot : MonoBehaviour
 
     }
 
-    public void PutHookInInitialPosition() 
+    public void PutHookInInitialPosition()
     {
-        if (isShooting) 
+        if (isShooting)
         {
             grapShotPosition.position = grapStartPosition.position;
             rb.velocity = Vector3.zero;
             isShooting = false;
             Debug.Log("Returned");
         }
-      
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -83,16 +81,16 @@ public class GrapplingHookShoot : MonoBehaviour
         {
             //prototypePlayer.ReceiveDamage();
             //grapShotPosition.position = grapStartPosition.position;
-            
+
             GameObject otherPlayer = collision.gameObject;
-            
-            
+
+
             if (otherPlayer.TryGetComponent<Rigidbody>(out var otherPlayerRigidbody))
             {
                 Vector3 pullDirection=(grapShotPosition.position-otherPlayer.transform.position).normalized;
 
                 otherPlayerRigidbody.AddForce(pullDirection * grapplingSpeed, ForceMode.VelocityChange);
-                
+
 
             }
         }

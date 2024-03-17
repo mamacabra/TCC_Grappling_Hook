@@ -6,35 +6,33 @@ namespace Character.States
     public class WalkState : CharacterState
     {
         private const float Speed = 5.0f;
-        private readonly Character _character;
+        private readonly CharacterEntity _characterEntity;
 
-        public WalkState(Character character)
+        public WalkState(CharacterEntity characterEntity)
         {
-            _character = character;
+            _characterEntity = characterEntity;
         }
 
         public override void Enter()
         {
-            _character.CharacterEntity.GrapplingHookWeapon.ResetHook();
+            _characterEntity.GrapplingHookWeapon.ResetHook();
         }
 
         public override void Update()
         {
-            if (Input.GetKey(KeyCode.W))
+            Vector2 movementInput = _characterEntity.CharacterMovement.movementInput;
+            Vector3 moveDir = new Vector3(movementInput.x, 0, movementInput.y);
+            Vector3 movePos = new Vector3(movementInput.x, Physics.gravity.y, movementInput.y);
+            moveDir.Normalize();
+
+            _characterEntity.CharacterController.Move(movePos * (Time.deltaTime * _characterEntity.CharacterMovement.speed));
+
+            if (moveDir != Vector3.zero)
             {
-                _character.transform.position += _character.transform.forward * Speed * Time.deltaTime;
-            }
-            else if (Input.GetKey(KeyCode.S))
-            {
-                _character.transform.position -= _character.transform.forward * Speed * Time.deltaTime;
-            }
-            if (Input.GetKey(KeyCode.A))
-            {
-                _character.transform.position -= _character.transform.right * Speed * Time.deltaTime;
-            }
-            else if (Input.GetKey(KeyCode.D))
-            {
-                _character.transform.position += _character.transform.right * Speed * Time.deltaTime;
+                var transform = _characterEntity.CharacterMovement.transform;
+                Quaternion toRotation = Quaternion.LookRotation(moveDir);
+                transform.rotation =
+                    Quaternion.RotateTowards(transform.rotation, toRotation, Time.deltaTime * _characterEntity.CharacterMovement.rotationSpeed);
             }
         }
     }
