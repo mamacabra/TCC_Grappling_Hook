@@ -21,7 +21,7 @@ namespace Character.States
             if (_countDown > CountDownStep && _character.CharacterEntity.GrapplingHookWeapon.Force < GrapplingHookWeapon.MaxGrapplingHookForce)
             {
                 _countDown = 0f;
-                _character.CharacterEntity.GrapplingHookWeapon.IncreaseForce();
+                _character.CharacterEntity.GrapplingHookWeapon.IncreaseHookForce();
             }
         }
     }

@@ -14,18 +14,9 @@ namespace Character
             _state.Update();
 
             if (Input.GetKeyDown(KeyCode.Space))
-            {
                 SetPrepareHookState();
-            }
-
-            if (Input.GetKeyUp(KeyCode.Space) && _state is PrepareHookState)
-            {
+            else if (Input.GetKeyUp(KeyCode.Space) && _state is PrepareHookState)
                 SetDispatchHookState();
-
-                // TODO: Remover quando todo ciclo de estados estiver finalizado
-                CharacterEntity.GrapplingHookWeapon.ResetForce();
-                SetWalkState();
-            }
         }
 
         private void FixedUpdate()
@@ -58,7 +49,13 @@ namespace Character
             SetState(state);
         }
 
-        private void SetWalkState()
+        public void SetRollbackHookState()
+        {
+            var state = new RollbackHookState(this);
+            SetState(state);
+        }
+
+        public void SetWalkState()
         {
             var state = new WalkState(this);
             SetState(state);

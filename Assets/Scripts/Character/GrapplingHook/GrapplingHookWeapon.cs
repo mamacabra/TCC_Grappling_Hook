@@ -7,9 +7,18 @@ namespace Character.GrapplingHook
     {
         private CharacterEntity _characterEntity;
 
-        public int Force { get; private set; } = 1;
+        private int _force = 1;
         public const int MaxGrapplingHookForce = 4;
         public const int DefaultGrapplingHookForce = 1;
+        public int Force
+        {
+            get => _force;
+            private set
+            {
+                _force = value;
+                _characterEntity.CharacterUI.UpdateForceUI(value);
+            }
+        }
 
         private bool _isHookDispatch;
         private bool _isHookRollback;
@@ -19,66 +28,67 @@ namespace Character.GrapplingHook
 
         private Vector3 _hookDirection;
         private Vector3 _hookOriginPosition;
-        private Rigidbody _hookRigidbody;
+        [SerializeField] private Rigidbody hookRigidbody;
 
         public void FixedUpdate()
         {
             if (_isHookDispatch is false && _isHookRollback is false) return;
 
             if (_isHookDispatch || _isHookRollback)
-                _hookRigidbody.MovePosition(_hookRigidbody.transform.position + _hookDirection * (Time.fixedDeltaTime * _hookSpeed));
+                hookRigidbody.MovePosition(hookRigidbody.transform.position + _hookDirection * (Time.fixedDeltaTime * _hookSpeed));
 
-            var hookDistance = Vector3.Distance(_hookOriginPosition, _hookRigidbody.transform.position);
+            var hookDistance = Vector3.Distance(_hookOriginPosition, hookRigidbody.transform.position);
             if (_isHookDispatch && hookDistance >= _hookMaxDistance)
-                RollbackHook();
+                _characterEntity.Character.SetRollbackHookState();
             else if (_isHookRollback && hookDistance <= 0.1f)
+            {
                 ResetHook();
+                _characterEntity.Character.SetWalkState();
+            }
         }
 
         public void Setup(CharacterEntity entity)
         {
             _characterEntity = entity;
+            hookRigidbody = transform.Find("GrapplingHook").GetComponent<Rigidbody>();
         }
 
         public void DispatchHook(Vector3 direction)
         {
-            if (_hookRigidbody is null) return;
+            if (hookRigidbody is null) return;
 
-            SetStats();
+            SetHookStats();
             _isHookDispatch = true;
+            _isHookRollback = false;
             _hookDirection = direction;
-            _hookOriginPosition = _hookRigidbody.transform.position;
+            _hookOriginPosition = hookRigidbody.transform.position;
         }
 
-        private void RollbackHook()
+        public void RollbackHook()
         {
-            if (_hookRigidbody is null) return;
+            if (hookRigidbody is null) return;
 
             _isHookDispatch = false;
             _isHookRollback = true;
             _hookDirection *= -1;
         }
 
-        private void ResetHook()
+        public void ResetHook()
         {
+            if (hookRigidbody is null) return;
+
             _isHookDispatch = false;
             _isHookRollback = false;
-            _hookRigidbody.transform.position = _hookOriginPosition;
+            hookRigidbody.transform.position = _hookOriginPosition;
+            Force = DefaultGrapplingHookForce;
         }
 
-        public void IncreaseForce()
+        public void IncreaseHookForce()
         {
             Force++;
-            _characterEntity.CharacterUI.UpdateForceUI(Force);
         }
 
-        public void ResetForce()
-        {
-            Force = DefaultGrapplingHookForce;
-            _characterEntity.CharacterUI.UpdateForceUI(Force);
-        }
-
-        private void SetStats()
+        private void SetHookStats()
         {
             switch (Force)
             {
