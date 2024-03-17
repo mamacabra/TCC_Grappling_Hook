@@ -120,7 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3875f6a79d8f0e4bb8ab7e654a660d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prototypePlayer: {fileID: 0}
+  prototypePlayer: {fileID: 7351249547353358988, guid: daa1f20f5bd0ef143b0af00d7ac0ccb0,
+    type: 3}
   grapStartPosition: {fileID: 0}
   grapShotPosition: {fileID: 381568151284319859}
   trailRenderer: {fileID: 0}

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3592508040131765666}
   - component: {fileID: 3293369599735587538}
   - component: {fileID: 6741661566927283341}
+  - component: {fileID: -7565826078070915367}
   m_Layer: 0
   m_Name: PlayerTest
   m_TagString: Player
@@ -67,8 +68,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7351249547353358988}
-        m_TargetAssemblyTypeName: PrototypePlayer, Assembly-CSharp
+      - m_Target: {fileID: -7565826078070915367}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
         m_Arguments:
@@ -141,6 +142,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9e1b953c-bd2b-411b-a2e5-09d556e7274f
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -7565826078070915367}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnDash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e3762939-08b2-4f74-8926-14af5e374fed
+    m_ActionName: Player/Dash[/Keyboard/leftAlt,/Keyboard/rightAlt]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -153,7 +170,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102690380306755515}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0283fa744a436c849837e21770771160, type: 3}
   m_Name: 
@@ -240,6 +257,26 @@ CapsuleCollider:
   m_Height: 2.3442152
   m_Direction: 1
   m_Center: {x: 0.02845645, y: 0.19460571, z: -0.055771947}
+--- !u!114 &-7565826078070915367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102690380306755515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63435266756e8184c9b7361895c98bc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grapplingHookShoot: {fileID: 8546290629968510603}
+  shooting: 0
+  shooting_value: 0
+  life: 5
+  speed: 18
+  rotationSpeed: 500
+  dashDistance: 9
+  dashDuration: 0.1
 --- !u!1 &5363427074109781595
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,14 +403,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8668690697250068315, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}
+      propertyPath: trailRenderer
+      value: 
+      objectReference: {fileID: 7530070784036571023}
+    - target: {fileID: 8668690697250068315, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
+        type: 3}
       propertyPath: grapplingSpeed
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8668690697250068315, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}
+      propertyPath: playerMovement
+      value: 
+      objectReference: {fileID: -7565826078070915367}
+    - target: {fileID: 8668690697250068315, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
+        type: 3}
       propertyPath: prototypePlayer
       value: 
       objectReference: {fileID: 7351249547353358988}
+    - target: {fileID: 8668690697250068315, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
+        type: 3}
+      propertyPath: grapShotPosition
+      value: 
+      objectReference: {fileID: 836680489198743459}
     - target: {fileID: 8668690697250068315, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
         type: 3}
       propertyPath: grapStartPosition
@@ -392,6 +444,12 @@ PrefabInstance:
 --- !u!4 &836680489198743459 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 381568151284319859, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1069576661753096656}
+  m_PrefabAsset: {fileID: 0}
+--- !u!96 &7530070784036571023 stripped
+TrailRenderer:
+  m_CorrespondingSourceObject: {fileID: 7374584148605496927, guid: 8d152898e9eaeb84ba02dfc8f48131a8,
     type: 3}
   m_PrefabInstance: {fileID: 1069576661753096656}
   m_PrefabAsset: {fileID: 0}
