@@ -515,6 +515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac00493928d7ff94cb834b909a327c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forceText: {fileID: 751794799}
 --- !u!114 &704472701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -527,7 +528,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cee17264136394a02a0f5917d398ec1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointer: {fileID: 1085200044}
+  grapplingHookUI: {fileID: 0}
+  hookSpeed: 0
+  hookMaxDistance: 0
+  hookRigidbody: {fileID: 752997163}
 --- !u!114 &704472703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -540,8 +544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd795428ee957f48aa2c2bec71d2e0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grapplingHook: {fileID: 0}
-  grapplingHookUI: {fileID: 0}
+  grapplingHookWeapon: {fileID: 0}
 --- !u!1 &751794797
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,7 +557,7 @@ GameObject:
   - component: {fileID: 751794800}
   - component: {fileID: 751794799}
   m_Layer: 0
-  m_Name: Text (Legacy)
+  m_Name: ForceText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -630,8 +633,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 752997162}
+  - component: {fileID: 752997163}
   m_Layer: 0
-  m_Name: Hook
+  m_Name: GrapplingHook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -653,6 +657,33 @@ Transform:
   - {fileID: 1085200045}
   m_Father: {fileID: 704472698}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &752997163
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752997161}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
 --- !u!1 &981190361
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,13 +770,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 981190361}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22860567, y: 0, z: 0, w: 0.9735191}
-  m_LocalPosition: {x: 0, y: 7.05, z: -10}
+  m_LocalRotation: {x: 0.21481907, y: -0.33296308, z: 0.078187734, w: 0.91480875}
+  m_LocalPosition: {x: 11.64, y: 8.43, z: -3.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 26.43, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 26.43, y: -40, z: 0}
 --- !u!114 &981190365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -937,7 +968,7 @@ GameObject:
   - component: {fileID: 1085200047}
   - component: {fileID: 1085200046}
   m_Layer: 0
-  m_Name: HookPointer
+  m_Name: ModelPointer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

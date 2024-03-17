@@ -13,7 +13,7 @@ namespace Character.States
 
         public override void Enter()
         {
-            _character.grapplingHookWeapon.Dispatch();
+            _character.grapplingHookWeapon.DispatchHook();
         }
     }
 }
