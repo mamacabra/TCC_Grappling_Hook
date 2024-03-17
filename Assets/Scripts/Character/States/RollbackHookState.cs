@@ -2,18 +2,18 @@ using Character.Utils;
 
 namespace Character.States
 {
-    public class DispatchHookState : CharacterState
+    public class RollbackHookState : CharacterState
     {
         private readonly Character _character;
 
-        public DispatchHookState(Character character)
+        public RollbackHookState(Character character)
         {
             _character = character;
         }
 
         public override void Enter()
         {
-            _character.CharacterEntity.GrapplingHookWeapon.DispatchHook(_character.transform.forward);
+            _character.CharacterEntity.GrapplingHookWeapon.RollbackHook();
         }
     }
 }

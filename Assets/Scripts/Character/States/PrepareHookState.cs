@@ -18,10 +18,10 @@ namespace Character.States
         public override void FixedUpdate() {
             _countDown += Time.fixedDeltaTime;
 
-            if (_countDown > CountDownStep && _character.grapplingHookWeapon.Force < GrapplingHookWeapon.MaxGrapplingHookForce)
+            if (_countDown > CountDownStep && _character.CharacterEntity.GrapplingHookWeapon.Force < GrapplingHookWeapon.MaxGrapplingHookForce)
             {
                 _countDown = 0f;
-                _character.grapplingHookWeapon.IncreaseForce();
+                _character.CharacterEntity.GrapplingHookWeapon.IncreaseHookForce();
             }
         }
     }

@@ -5,21 +5,21 @@ using Character.Utils;
 namespace Character
 {
     [RequireComponent(typeof(Character))]
-    [RequireComponent(typeof(GrapplingHookUI))]
+    [RequireComponent(typeof(CharacterUI))]
     [RequireComponent(typeof(GrapplingHookWeapon))]
     public class CharacterSetup : MonoBehaviour
     {
         private void Awake()
         {
             var character = gameObject.GetComponent<Character>();
-            var grapplingHookUI = gameObject.GetComponent<GrapplingHookUI>();
+            var grapplingHookUI = gameObject.GetComponent<CharacterUI>();
             var grapplingHookWeapon = gameObject.GetComponent<GrapplingHookWeapon>();
 
             var entity = new CharacterEntity
             {
-                character = character,
-                grapplingHookUI = grapplingHookUI,
-                grapplingHookWeapon = grapplingHookWeapon,
+                Character = character,
+                CharacterUI = grapplingHookUI,
+                GrapplingHookWeapon = grapplingHookWeapon,
             };
 
             grapplingHookWeapon.Setup(entity);

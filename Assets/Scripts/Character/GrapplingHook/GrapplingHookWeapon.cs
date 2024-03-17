@@ -5,103 +5,104 @@ namespace Character.GrapplingHook
 {
     public class GrapplingHookWeapon : MonoBehaviour
     {
-        public int Force { get; private set; } = 1;
+        private CharacterEntity _characterEntity;
+
+        private int _force = 1;
         public const int MaxGrapplingHookForce = 4;
         public const int DefaultGrapplingHookForce = 1;
-
-        [Header("Character Entity")]
-        [SerializeField] private GrapplingHookUI grapplingHookUI;
-
-        [Header("Grappling Hook")]
-        [SerializeField] private bool isHookDispatch;
-        [SerializeField] private bool isHookRollback;
-        [SerializeField] private float hookSpeed;
-        [SerializeField] private float hookMaxDistance;
-        [SerializeField] private Rigidbody hookRigidbody;
-        private Vector3 _hookOriginPosition;
-        private Vector3 _hookDirection;
-        private float _hookDistance;
-
-        public void Start()
+        public int Force
         {
-            _hookOriginPosition = hookRigidbody.transform.position;
+            get => _force;
+            private set
+            {
+                _force = value;
+                _characterEntity.CharacterUI.UpdateForceUI(value);
+            }
         }
+
+        private bool _isHookDispatch;
+        private bool _isHookRollback;
+
+        private float _hookSpeed;
+        private float _hookMaxDistance;
+
+        private Vector3 _hookDirection;
+        private readonly Vector3 _hookOriginLocalPosition = new Vector3(0.4f, 1, 0.7f);
+        [SerializeField] private Rigidbody hookRigidbody;
 
         public void FixedUpdate()
         {
-            if (isHookDispatch is false && isHookRollback is false) return;
+            if (_isHookDispatch is false && _isHookRollback is false) return;
 
-            if (isHookDispatch || isHookRollback)
-                hookRigidbody.MovePosition(hookRigidbody.transform.position + _hookDirection * (Time.deltaTime * hookSpeed));
+            if (_isHookDispatch || _isHookRollback)
+                hookRigidbody.MovePosition(hookRigidbody.transform.position + _hookDirection * (Time.fixedDeltaTime * _hookSpeed));
 
-            _hookDistance = Vector3.Distance(_hookOriginPosition, hookRigidbody.transform.position);
-            if (isHookDispatch && _hookDistance >= hookMaxDistance)
-                RollbackHook();
-            else if (isHookRollback && _hookDistance <= 0.1f)
-                ResetHook();
+            var hookDistance = Vector3.Distance(_hookOriginLocalPosition, hookRigidbody.transform.localPosition);
+            if (_isHookDispatch && hookDistance >= _hookMaxDistance)
+                _characterEntity.Character.SetRollbackHookState();
+            else if (_isHookRollback && hookDistance <= 0.1f)
+                _characterEntity.Character.SetWalkState();
         }
 
         public void Setup(CharacterEntity entity)
         {
-            grapplingHookUI = entity.grapplingHookUI;
+            _characterEntity = entity;
+            hookRigidbody = transform.Find("GrapplingHook").GetComponent<Rigidbody>();
         }
 
-        public void DispatchHook()
+        public void DispatchHook(Vector3 direction)
         {
             if (hookRigidbody is null) return;
 
-            SetStats();
-            isHookDispatch = true;
-            _hookDirection = transform.forward;
+            SetHookStats();
+            _isHookDispatch = true;
+            _isHookRollback = false;
+            _hookDirection = direction;
         }
 
-        private void RollbackHook()
+        public void RollbackHook()
         {
             if (hookRigidbody is null) return;
 
-            isHookDispatch = false;
-            isHookRollback = true;
-            _hookDirection = transform.forward * -1;
+            _isHookDispatch = false;
+            _isHookRollback = true;
+            _hookDirection *= -1;
         }
 
-        private void ResetHook()
+        public void ResetHook()
         {
-            isHookDispatch = false;
-            isHookRollback = false;
-            hookRigidbody.transform.position = _hookOriginPosition;
+            if (hookRigidbody is null) return;
+
+            _isHookDispatch = false;
+            _isHookRollback = false;
+            Force = DefaultGrapplingHookForce;
+            hookRigidbody.transform.localPosition = _hookOriginLocalPosition;
         }
 
-        public void IncreaseForce()
+        public void IncreaseHookForce()
         {
             Force++;
-            grapplingHookUI.UpdateForceUI(Force);
         }
 
-        public void ResetForce()
-        {
-            Force = DefaultGrapplingHookForce;
-            grapplingHookUI.UpdateForceUI(Force);
-        }
-
-        private void SetStats()
+        private void SetHookStats()
         {
             switch (Force)
             {
                 case 1:
-                    hookSpeed = GrapplingStats.SpeedDefault;
-                    hookMaxDistance = GrapplingStats.DistanceDefault;
+                    _hookSpeed = GrapplingStats.SpeedDefault;
+                    _hookMaxDistance = GrapplingStats.DistanceDefault;
                     break;
                 case 2:
-                    hookSpeed = GrapplingStats.SpeedMedium;
-                    hookMaxDistance = GrapplingStats.DistanceDefault;
+                    _hookSpeed = GrapplingStats.SpeedMedium;
+                    _hookMaxDistance = GrapplingStats.DistanceDefault;
                     break;
                 case 3:
-                    hookSpeed = GrapplingStats.SpeedMedium;
-                    hookMaxDistance = GrapplingStats.DistanceFar;
+                    _hookSpeed = GrapplingStats.SpeedMedium;
+                    _hookMaxDistance = GrapplingStats.DistanceFar;
                     break;
                 default:
-                    hookSpeed = GrapplingStats.SpeedFast;
-                    hookMaxDistance = GrapplingStats.DistanceFar;
+                    _hookSpeed = GrapplingStats.SpeedFast;
+                    _hookMaxDistance = GrapplingStats.DistanceFar;
                     break;
             }
         }

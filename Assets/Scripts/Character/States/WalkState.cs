@@ -13,6 +13,11 @@ namespace Character.States
             _character = character;
         }
 
+        public override void Enter()
+        {
+            _character.CharacterEntity.GrapplingHookWeapon.ResetHook();
+        }
+
         public override void Update()
         {
             if (Input.GetKey(KeyCode.W))

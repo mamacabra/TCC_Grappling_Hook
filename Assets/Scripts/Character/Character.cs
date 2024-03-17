@@ -1,6 +1,5 @@
 using UnityEngine;
 using Character.States;
-using Character.GrapplingHook;
 using Character.Utils;
 
 namespace Character
@@ -8,25 +7,16 @@ namespace Character
     public class Character : MonoBehaviour
     {
         private CharacterState _state;
-        public GrapplingHookWeapon grapplingHookWeapon;
+        public CharacterEntity CharacterEntity;
 
         private void Update()
         {
             _state.Update();
 
             if (Input.GetKeyDown(KeyCode.Space))
-            {
                 SetPrepareHookState();
-            }
-
-            if (Input.GetKeyUp(KeyCode.Space) && _state is PrepareHookState)
-            {
+            else if (Input.GetKeyUp(KeyCode.Space) && _state is PrepareHookState)
                 SetDispatchHookState();
-
-                // TODO: Remover quando todo ciclo de estados estiver finalizado
-                grapplingHookWeapon.ResetForce();
-                SetWalkState();
-            }
         }
 
         private void FixedUpdate()
@@ -36,7 +26,7 @@ namespace Character
 
         public void Setup(CharacterEntity entity)
         {
-            grapplingHookWeapon = entity.grapplingHookWeapon;
+            CharacterEntity = entity;
             SetWalkState();
         }
 
@@ -44,6 +34,7 @@ namespace Character
         {
             _state = state;
             _state.Enter();
+            CharacterEntity.CharacterUI.UpdateStatusUI(_state.ToString());
         }
 
         private void SetDispatchHookState()
@@ -58,7 +49,13 @@ namespace Character
             SetState(state);
         }
 
-        private void SetWalkState()
+        public void SetRollbackHookState()
+        {
+            var state = new RollbackHookState(this);
+            SetState(state);
+        }
+
+        public void SetWalkState()
         {
             var state = new WalkState(this);
             SetState(state);
