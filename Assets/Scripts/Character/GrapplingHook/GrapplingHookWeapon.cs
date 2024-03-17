@@ -1,5 +1,6 @@
 using Character.Utils;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Character.GrapplingHook
 {
@@ -9,8 +10,9 @@ namespace Character.GrapplingHook
         public const int MaxGrapplingHookForce = 4;
         public const int DefaultGrapplingHookForce = 1;
 
+        [FormerlySerializedAs("grapplingHookUI")]
         [Header("Character Entity")]
-        [SerializeField] private GrapplingHookUI grapplingHookUI;
+        [SerializeField] private CharacterUI characterUI;
 
         [Header("Grappling Hook")]
         [SerializeField] private bool isHookDispatch;
@@ -22,17 +24,12 @@ namespace Character.GrapplingHook
         private Vector3 _hookDirection;
         private float _hookDistance;
 
-        public void Start()
-        {
-            _hookOriginPosition = hookRigidbody.transform.position;
-        }
-
         public void FixedUpdate()
         {
             if (isHookDispatch is false && isHookRollback is false) return;
 
             if (isHookDispatch || isHookRollback)
-                hookRigidbody.MovePosition(hookRigidbody.transform.position + _hookDirection * (Time.deltaTime * hookSpeed));
+                hookRigidbody.MovePosition(hookRigidbody.transform.position + _hookDirection * (Time.fixedDeltaTime * hookSpeed));
 
             _hookDistance = Vector3.Distance(_hookOriginPosition, hookRigidbody.transform.position);
             if (isHookDispatch && _hookDistance >= hookMaxDistance)
@@ -43,16 +40,17 @@ namespace Character.GrapplingHook
 
         public void Setup(CharacterEntity entity)
         {
-            grapplingHookUI = entity.grapplingHookUI;
+            characterUI = entity.CharacterUI;
         }
 
-        public void DispatchHook()
+        public void DispatchHook(Vector3 direction)
         {
             if (hookRigidbody is null) return;
 
             SetStats();
             isHookDispatch = true;
-            _hookDirection = transform.forward;
+            _hookDirection = direction;
+            _hookOriginPosition = hookRigidbody.transform.position;
         }
 
         private void RollbackHook()
@@ -61,7 +59,7 @@ namespace Character.GrapplingHook
 
             isHookDispatch = false;
             isHookRollback = true;
-            _hookDirection = transform.forward * -1;
+            _hookDirection *= -1;
         }
 
         private void ResetHook()
@@ -74,13 +72,13 @@ namespace Character.GrapplingHook
         public void IncreaseForce()
         {
             Force++;
-            grapplingHookUI.UpdateForceUI(Force);
+            characterUI.UpdateForceUI(Force);
         }
 
         public void ResetForce()
         {
             Force = DefaultGrapplingHookForce;
-            grapplingHookUI.UpdateForceUI(Force);
+            characterUI.UpdateForceUI(Force);
         }
 
         private void SetStats()
