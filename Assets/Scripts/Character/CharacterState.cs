@@ -5,23 +5,23 @@ namespace Character
 {
     public class CharacterState : ACharacterMonoBehaviour
     {
-        private ACharacterState _state;
+        private ACharacterState State { get; set; }
 
         private void Update()
         {
-            _state.Update();
+            State.Update();
         }
 
         private void FixedUpdate()
         {
-            _state.FixedUpdate();
+            State.FixedUpdate();
         }
 
         private void SetState(ACharacterState state)
         {
-            _state = state;
-            _state.Enter();
-            CharacterEntity.CharacterUI.UpdateStatusUI(_state.GetType().Name);
+            State = state;
+            State.Enter();
+            CharacterEntity.CharacterUI.UpdateStatusUI(State.GetType().Name);
         }
 
         public void SetDashHookState()
