@@ -4,16 +4,11 @@ namespace Character.States
 {
     public class RollbackHookState : ACharacterState
     {
-        private readonly CharacterEntity _characterEntity;
-
-        public RollbackHookState(CharacterEntity characterEntity)
-        {
-            _characterEntity = characterEntity;
-        }
+        public RollbackHookState(CharacterEntity characterEntity) : base(characterEntity) {}
 
         public override void Enter()
         {
-            _characterEntity.GrapplingHookWeapon.RollbackHook();
+            CharacterEntity.GrapplingHookWeapon.RollbackHook();
         }
     }
 }

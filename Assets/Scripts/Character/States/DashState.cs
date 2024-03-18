@@ -5,21 +5,16 @@ namespace Character.States
 {
     public class DashState : ACharacterState
     {
-        private readonly CharacterEntity _characterEntity;
-
         private float _countDown;
         private const float DashDistance = 9f;
         private const float DashDuration = 0.1f;
 
-        public DashState(CharacterEntity characterEntity)
-        {
-            _characterEntity = characterEntity;
-        }
+        public DashState(CharacterEntity characterEntity) : base(characterEntity) {}
 
         public override void Update()
         {
-            var direction = _characterEntity.CharacterInput.transform.forward;
-            _characterEntity.CharacterController.Move(direction * DashDistance / DashDuration * Time.deltaTime);
+            var direction = CharacterEntity.CharacterInput.transform.forward;
+            CharacterEntity.CharacterController.Move(direction * DashDistance / DashDuration * Time.deltaTime);
 
             if (_countDown > DashDuration)
             {
@@ -34,7 +29,7 @@ namespace Character.States
 
         public override void Exit()
         {
-            _characterEntity.Character.SetWalkState();
+            CharacterEntity.Character.SetWalkState();
         }
     }
 }
