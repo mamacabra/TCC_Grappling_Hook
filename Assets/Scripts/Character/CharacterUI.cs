@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Character
 {
-    public class CharacterUI : MonoBehaviour
+    public class CharacterUI : CharacterMonoBehaviour
     {
         [Header("Character UI")]
         public Text statusText;

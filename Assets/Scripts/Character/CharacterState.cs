@@ -1,12 +1,10 @@
-using UnityEngine;
 using Character.States;
 
 namespace Character
 {
-    public class CharacterState : MonoBehaviour
+    public class CharacterState : CharacterMonoBehaviour
     {
         private ACharacterState _state;
-        private CharacterEntity _characterEntity;
 
         private void Update()
         {
@@ -18,45 +16,40 @@ namespace Character
             _state?.FixedUpdate();
         }
 
-        public void Setup(CharacterEntity entity)
-        {
-            _characterEntity = entity;
-        }
-
         private void SetState(ACharacterState state)
         {
             _state = state;
             _state.Enter();
-            _characterEntity.CharacterUI.UpdateStatusUI(_state.GetType().Name);
+            CharacterEntity.CharacterUI.UpdateStatusUI(_state.GetType().Name);
         }
 
         public void SetDashHookState()
         {
-            var state = new DashState(_characterEntity);
+            var state = new DashState(CharacterEntity);
             SetState(state);
         }
 
         public void SetDispatchHookState()
         {
-            var state = new DispatchHookState(_characterEntity);
+            var state = new DispatchHookState(CharacterEntity);
             SetState(state);
         }
 
         public void SetPrepareHookState()
         {
-            var state = new PrepareHookState(_characterEntity);
+            var state = new PrepareHookState(CharacterEntity);
             SetState(state);
         }
 
         public void SetRollbackHookState()
         {
-            var state = new RollbackHookState(_characterEntity);
+            var state = new RollbackHookState(CharacterEntity);
             SetState(state);
         }
 
         public void SetWalkState()
         {
-            var state = new WalkState(_characterEntity);
+            var state = new WalkState(CharacterEntity);
             SetState(state);
         }
     }

@@ -32,6 +32,7 @@ namespace Character
 
             characterInput.Setup(entity);
             characterState.Setup(entity);
+            characterUI.Setup(entity);
             grapplingHookWeapon.Setup(entity);
 
             characterState.SetWalkState();

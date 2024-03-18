@@ -2,10 +2,8 @@ using UnityEngine;
 
 namespace Character.GrapplingHook
 {
-    public class GrapplingHookWeapon : MonoBehaviour
+    public class GrapplingHookWeapon : CharacterMonoBehaviour
     {
-        private CharacterEntity _characterEntity;
-
         private int _force = 1;
         public const int MaxGrapplingHookForce = 4;
         public const int DefaultGrapplingHookForce = 1;
@@ -15,7 +13,7 @@ namespace Character.GrapplingHook
             private set
             {
                 _force = value;
-                _characterEntity.CharacterUI.UpdateForceUI(value);
+                CharacterEntity.CharacterUI.UpdateForceUI(value);
             }
         }
 
@@ -38,14 +36,14 @@ namespace Character.GrapplingHook
 
             var hookDistance = Vector3.Distance(_hookOriginLocalPosition, hookRigidbody.transform.localPosition);
             if (_isHookDispatch && hookDistance >= _hookMaxDistance)
-                _characterEntity.CharacterState.SetRollbackHookState();
+                CharacterEntity.CharacterState.SetRollbackHookState();
             else if (_isHookRollback && hookDistance <= 0.1f)
-                _characterEntity.CharacterState.SetWalkState();
+                CharacterEntity.CharacterState.SetWalkState();
         }
 
-        public void Setup(CharacterEntity entity)
+        public new void Setup(CharacterEntity entity)
         {
-            _characterEntity = entity;
+            CharacterEntity = entity;
             hookRigidbody = transform.Find("GrapplingHook").GetComponent<Rigidbody>();
         }
 
