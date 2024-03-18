@@ -1,6 +1,6 @@
 using UnityEngine;
-using Character.GrapplingHook;
 using UnityEngine.InputSystem;
+using Character.GrapplingHook;
 
 namespace Character
 {

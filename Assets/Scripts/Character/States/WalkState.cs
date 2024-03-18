@@ -1,12 +1,14 @@
-using Character.Utils;
 using UnityEngine;
+using Character.Utils;
 
 namespace Character.States
 {
     public class WalkState : CharacterState
     {
-        private const float Speed = 5.0f;
         private readonly CharacterEntity _characterEntity;
+
+        private const float MovementSpeed = 18.0f;
+        private const float RotationSpeed = 500;
 
         public WalkState(CharacterEntity characterEntity)
         {
@@ -20,20 +22,14 @@ namespace Character.States
 
         public override void Update()
         {
-            Vector2 movementInput = _characterEntity.CharacterMovement.movementInput;
-            Vector3 moveDir = new Vector3(movementInput.x, 0, movementInput.y);
-            Vector3 movePos = new Vector3(movementInput.x, Physics.gravity.y, movementInput.y);
-            moveDir.Normalize();
+            var movementInput = _characterEntity.CharacterMovement.movementInput;
+            var direction = new Vector3(movementInput.x, 0, movementInput.y).normalized;
 
-            _characterEntity.CharacterController.Move(movePos * (Time.deltaTime * _characterEntity.CharacterMovement.speed));
+            _characterEntity.CharacterController.Move(direction * (Time.deltaTime * MovementSpeed));
 
-            if (moveDir != Vector3.zero)
-            {
-                var transform = _characterEntity.CharacterMovement.transform;
-                Quaternion toRotation = Quaternion.LookRotation(moveDir);
-                transform.rotation =
-                    Quaternion.RotateTowards(transform.rotation, toRotation, Time.deltaTime * _characterEntity.CharacterMovement.rotationSpeed);
-            }
+            var transform = _characterEntity.CharacterMovement.transform;
+            var toRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, Time.deltaTime * RotationSpeed);
         }
     }
 }
