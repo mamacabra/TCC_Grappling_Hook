@@ -23,17 +23,6 @@ namespace Character
         private Vector3 forwardDirection;
         private Vector3 dashDirection;
 
-        public void OnMove(InputAction.CallbackContext context)
-        {
-            movementInput = context.ReadValue<Vector2>();
-        }
-
-        public void OnDash(InputAction.CallbackContext context)
-        {
-            // Dash(forwardDirection);
-            // isDashing = context.action.triggered;
-        }
-
         private void Update()
         {
             forwardDirection = transform.forward;
@@ -51,9 +40,20 @@ namespace Character
             // }
         }
 
+        public void OnMove(InputAction.CallbackContext context)
+        {
+            movementInput = context.ReadValue<Vector2>();
+        }
+
+        public void OnDash(InputAction.CallbackContext context)
+        {
+            // Dash(forwardDirection);
+            // isDashing = context.action.triggered;
+        }
+
         public void OnShoot(InputAction.CallbackContext context)
         {
-            // shooting = context.ReadValueAsButton();
+            _characterEntity.Character.SetDispatchHookState();
         }
 
         public void Dash(Vector3 direction)

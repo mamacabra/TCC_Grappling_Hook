@@ -12,11 +12,6 @@ namespace Character
         private void Update()
         {
             _state?.Update();
-
-            if (Input.GetKeyDown(KeyCode.Space))
-                SetPrepareHookState();
-            else if (Input.GetKeyUp(KeyCode.Space) && _state is PrepareHookState)
-                SetDispatchHookState();
         }
 
         private void FixedUpdate()
@@ -37,13 +32,13 @@ namespace Character
             CharacterEntity.CharacterUI.UpdateStatusUI(_state.ToString());
         }
 
-        private void SetDispatchHookState()
+        public void SetDispatchHookState()
         {
             var state = new DispatchHookState(CharacterEntity);
             SetState(state);
         }
 
-        private void SetPrepareHookState()
+        public void SetPrepareHookState()
         {
             var state = new PrepareHookState(CharacterEntity);
             SetState(state);
