@@ -1190,8 +1190,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5871677969771744498, guid: 641da49de6b72a92fa0efc96d9704e70,
         type: 3}
+      propertyPath: m_Text
+      value: WalkState
+      objectReference: {fileID: 0}
+    - target: {fileID: 5871677969771744498, guid: 641da49de6b72a92fa0efc96d9704e70,
+        type: 3}
       propertyPath: m_FontData.m_FontSize
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305327517487173830, guid: 641da49de6b72a92fa0efc96d9704e70,
+        type: 3}
+      propertyPath: m_Text
+      value: 'GH: 1'
       objectReference: {fileID: 0}
     - target: {fileID: 6305327517487173830, guid: 641da49de6b72a92fa0efc96d9704e70,
         type: 3}
@@ -1206,22 +1216,22 @@ PrefabInstance:
     - target: {fileID: 8729906752129017995, guid: 641da49de6b72a92fa0efc96d9704e70,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.75047857
+      value: 0.57780206
       objectReference: {fileID: 0}
     - target: {fileID: 8729906752129017995, guid: 641da49de6b72a92fa0efc96d9704e70,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.2964399
+      value: -0.12267865
       objectReference: {fileID: 0}
     - target: {fileID: 8729906752129017995, guid: 641da49de6b72a92fa0efc96d9704e70,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.5493764
+      value: 0.7893097
       objectReference: {fileID: 0}
     - target: {fileID: 8729906752129017995, guid: 641da49de6b72a92fa0efc96d9704e70,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.2170043
+      value: 0.16758583
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
