@@ -22,12 +22,12 @@ namespace Character.States
 
         public override void Update()
         {
-            var movementInput = _characterEntity.CharacterMovement.movementInput;
+            var movementInput = _characterEntity.CharacterInput.movementInput;
             var direction = new Vector3(movementInput.x, 0, movementInput.y).normalized;
 
             _characterEntity.CharacterController.Move(direction * (Time.deltaTime * MovementSpeed));
 
-            var transform = _characterEntity.CharacterMovement.transform;
+            var transform = _characterEntity.CharacterInput.transform;
             var toRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, Time.deltaTime * RotationSpeed);
         }

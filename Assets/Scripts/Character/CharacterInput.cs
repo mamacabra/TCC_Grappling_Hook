@@ -3,13 +3,15 @@ using UnityEngine.InputSystem;
 
 namespace Character
 {
-    public class CharacterMovement : MonoBehaviour
+    public class CharacterInput : MonoBehaviour
     {
         private CharacterEntity _characterEntity;
         public Vector2 movementInput = Vector2.zero;
 
-        public float speed = 18;
-        public float rotationSpeed = 500;
+        public void Setup(CharacterEntity entity)
+        {
+            _characterEntity = entity;
+        }
 
         public void OnMove(InputAction.CallbackContext context)
         {
@@ -24,11 +26,6 @@ namespace Character
         public void OnShoot(InputAction.CallbackContext context)
         {
             _characterEntity.Character.SetDispatchHookState();
-        }
-
-        public void Setup(CharacterEntity entity)
-        {
-            _characterEntity = entity;
         }
     }
 }

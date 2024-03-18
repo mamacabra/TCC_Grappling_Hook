@@ -7,7 +7,7 @@ namespace Character
     public class Character : MonoBehaviour
     {
         private CharacterState _state;
-        public CharacterEntity CharacterEntity;
+        private CharacterEntity _characterEntity;
 
         private void Update()
         {
@@ -21,7 +21,7 @@ namespace Character
 
         public void Setup(CharacterEntity entity)
         {
-            CharacterEntity = entity;
+            _characterEntity = entity;
             SetWalkState();
         }
 
@@ -29,36 +29,36 @@ namespace Character
         {
             _state = state;
             _state.Enter();
-            CharacterEntity.CharacterUI.UpdateStatusUI(_state.ToString());
+            _characterEntity.CharacterUI.UpdateStatusUI(_state.ToString());
         }
 
         public void SetDashHookState()
         {
-            var state = new DashState(CharacterEntity);
+            var state = new DashState(_characterEntity);
             SetState(state);
         }
 
         public void SetDispatchHookState()
         {
-            var state = new DispatchHookState(CharacterEntity);
+            var state = new DispatchHookState(_characterEntity);
             SetState(state);
         }
 
         public void SetPrepareHookState()
         {
-            var state = new PrepareHookState(CharacterEntity);
+            var state = new PrepareHookState(_characterEntity);
             SetState(state);
         }
 
         public void SetRollbackHookState()
         {
-            var state = new RollbackHookState(CharacterEntity);
+            var state = new RollbackHookState(_characterEntity);
             SetState(state);
         }
 
         public void SetWalkState()
         {
-            var state = new WalkState(CharacterEntity);
+            var state = new WalkState(_characterEntity);
             SetState(state);
         }
     }

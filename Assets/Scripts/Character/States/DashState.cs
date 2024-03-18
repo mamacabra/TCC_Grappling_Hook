@@ -18,7 +18,7 @@ namespace Character.States
 
         public override void Update()
         {
-            var direction = _characterEntity.CharacterMovement.transform.forward;
+            var direction = _characterEntity.CharacterInput.transform.forward;
             _characterEntity.CharacterController.Move(direction * DashDistance / DashDuration * Time.deltaTime);
 
             if (_countDown > DashDuration)

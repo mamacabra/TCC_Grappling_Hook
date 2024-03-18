@@ -7,7 +7,7 @@ namespace Character
     {
         public Character Character;
         public CharacterController CharacterController;
-        public CharacterMovement CharacterMovement;
+        public CharacterInput CharacterInput;
         public Rigidbody CharacterRigidbody;
         public CharacterUI CharacterUI;
         public GrapplingHookWeapon GrapplingHookWeapon;
