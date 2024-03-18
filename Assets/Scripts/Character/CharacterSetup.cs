@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Character.GrapplingHook;
+using Const;
 
 namespace Character
 {
@@ -36,6 +37,7 @@ namespace Character
             grapplingHookWeapon.Setup(entity);
 
             characterState.SetWalkState();
+            gameObject.tag = Tags.Character;
         }
     }
 }
