@@ -5,10 +5,9 @@ namespace Character
 {
     public struct CharacterEntity
     {
-        public Character Character;
         public CharacterController CharacterController;
         public CharacterInput CharacterInput;
-        public Rigidbody CharacterRigidbody;
+        public CharacterState CharacterState;
         public CharacterUI CharacterUI;
         public GrapplingHookWeapon GrapplingHookWeapon;
     }

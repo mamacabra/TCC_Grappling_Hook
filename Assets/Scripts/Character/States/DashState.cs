@@ -28,7 +28,7 @@ namespace Character.States
 
         public override void Exit()
         {
-            CharacterEntity.Character.SetWalkState();
+            CharacterEntity.CharacterState.SetWalkState();
         }
     }
 }

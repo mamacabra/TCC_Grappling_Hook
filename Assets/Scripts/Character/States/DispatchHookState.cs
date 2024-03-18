@@ -6,7 +6,7 @@ namespace Character.States
 
         public override void Enter()
         {
-            CharacterEntity.GrapplingHookWeapon.DispatchHook(CharacterEntity.Character.transform.forward);
+            CharacterEntity.GrapplingHookWeapon.DispatchHook(CharacterEntity.CharacterState.transform.forward);
         }
     }
 }

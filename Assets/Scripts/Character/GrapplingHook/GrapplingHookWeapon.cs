@@ -38,9 +38,9 @@ namespace Character.GrapplingHook
 
             var hookDistance = Vector3.Distance(_hookOriginLocalPosition, hookRigidbody.transform.localPosition);
             if (_isHookDispatch && hookDistance >= _hookMaxDistance)
-                _characterEntity.Character.SetRollbackHookState();
+                _characterEntity.CharacterState.SetRollbackHookState();
             else if (_isHookRollback && hookDistance <= 0.1f)
-                _characterEntity.Character.SetWalkState();
+                _characterEntity.CharacterState.SetWalkState();
         }
 
         public void Setup(CharacterEntity entity)

@@ -20,12 +20,12 @@ namespace Character
 
         public void OnDash(InputAction.CallbackContext context)
         {
-            _characterEntity.Character.SetDashHookState();
+            _characterEntity.CharacterState.SetDashHookState();
         }
 
         public void OnShoot(InputAction.CallbackContext context)
         {
-            _characterEntity.Character.SetDispatchHookState();
+            _characterEntity.CharacterState.SetDispatchHookState();
         }
     }
 }
