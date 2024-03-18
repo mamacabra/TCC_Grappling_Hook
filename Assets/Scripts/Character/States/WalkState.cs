@@ -21,9 +21,12 @@ namespace Character.States
 
             CharacterEntity.CharacterController.Move(direction * (Time.deltaTime * MovementSpeed));
 
-            var transform = CharacterEntity.CharacterInput.transform;
-            var toRotation = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, Time.deltaTime * RotationSpeed);
+            if (direction != Vector3.zero)
+            {
+                var transform = CharacterEntity.CharacterInput.transform;
+                var toRotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, Time.deltaTime * RotationSpeed);
+            }
         }
     }
 }
