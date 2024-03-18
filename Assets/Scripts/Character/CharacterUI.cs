@@ -20,7 +20,7 @@ namespace Character
 
         public void UpdateStatusUI(string status)
         {
-            if (statusText) statusText.text = "Sts: " + status;
+            if (statusText) statusText.text = status;
         }
 
         public void UpdateForceUI(int force)

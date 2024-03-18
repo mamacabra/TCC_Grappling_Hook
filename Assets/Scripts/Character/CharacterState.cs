@@ -27,7 +27,7 @@ namespace Character
         {
             _state = state;
             _state.Enter();
-            _characterEntity.CharacterUI.UpdateStatusUI(_state.ToString());
+            _characterEntity.CharacterUI.UpdateStatusUI(_state.GetType().Name);
         }
 
         public void SetDashHookState()
