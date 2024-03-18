@@ -1,10 +1,10 @@
-using System;
+using Character.Utils;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Character
 {
-    public class CharacterUI : CharacterMonoBehaviour
+    public class CharacterUI : ACharacterMonoBehaviour
     {
         [Header("Character UI")]
         public Text statusText;

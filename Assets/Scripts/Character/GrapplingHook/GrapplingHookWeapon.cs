@@ -1,8 +1,9 @@
+using Character.Utils;
 using UnityEngine;
 
 namespace Character.GrapplingHook
 {
-    public class GrapplingHookWeapon : CharacterMonoBehaviour
+    public class GrapplingHookWeapon : ACharacterMonoBehaviour
     {
         private int _force = 1;
         public const int MaxGrapplingHookForce = 4;

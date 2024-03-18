@@ -1,5 +1,6 @@
 using UnityEngine;
 using Character.GrapplingHook;
+using Character.Utils;
 
 namespace Character.States
 {

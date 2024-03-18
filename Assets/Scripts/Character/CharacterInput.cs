@@ -1,9 +1,10 @@
+using Character.Utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Character
 {
-    public class CharacterInput : CharacterMonoBehaviour
+    public class CharacterInput : ACharacterMonoBehaviour
     {
         public Vector2 movementInput = Vector2.zero;
 

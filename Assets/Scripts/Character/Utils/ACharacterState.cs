@@ -1,4 +1,4 @@
-namespace Character
+namespace Character.Utils
 {
     public abstract class ACharacterState
     {

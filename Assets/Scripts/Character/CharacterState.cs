@@ -1,19 +1,20 @@
 using Character.States;
+using Character.Utils;
 
 namespace Character
 {
-    public class CharacterState : CharacterMonoBehaviour
+    public class CharacterState : ACharacterMonoBehaviour
     {
         private ACharacterState _state;
 
         private void Update()
         {
-            _state?.Update();
+            _state.Update();
         }
 
         private void FixedUpdate()
         {
-            _state?.FixedUpdate();
+            _state.FixedUpdate();
         }
 
         private void SetState(ACharacterState state)

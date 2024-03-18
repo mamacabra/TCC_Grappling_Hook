@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Character
+namespace Character.Utils
 {
-    public abstract class CharacterMonoBehaviour : MonoBehaviour
+    public abstract class ACharacterMonoBehaviour : MonoBehaviour
     {
         protected CharacterEntity CharacterEntity;
 
