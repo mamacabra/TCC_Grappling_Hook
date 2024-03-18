@@ -16,7 +16,7 @@ namespace Character
         private void Awake()
         {
             var characterController = gameObject.GetComponent<CharacterController>();
-            var characterMovement = gameObject.GetComponent<CharacterInput>();
+            var characterInput = gameObject.GetComponent<CharacterInput>();
             var characterState = gameObject.GetComponent<CharacterState>();
             var characterUI = gameObject.GetComponent<CharacterUI>();
             var grapplingHookWeapon = gameObject.GetComponent<GrapplingHookWeapon>();
@@ -24,15 +24,17 @@ namespace Character
             var entity = new CharacterEntity
             {
                 CharacterController = characterController,
-                CharacterInput = characterMovement,
+                CharacterInput = characterInput,
                 CharacterState = characterState,
                 CharacterUI = characterUI,
                 GrapplingHookWeapon = grapplingHookWeapon,
             };
 
-            grapplingHookWeapon.Setup(entity);
+            characterInput.Setup(entity);
             characterState.Setup(entity);
-            characterMovement.Setup(entity);
+            grapplingHookWeapon.Setup(entity);
+
+            characterState.SetWalkState();
         }
     }
 }

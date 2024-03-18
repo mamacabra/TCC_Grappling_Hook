@@ -21,7 +21,6 @@ namespace Character
         public void Setup(CharacterEntity entity)
         {
             _characterEntity = entity;
-            SetWalkState();
         }
 
         private void SetState(ACharacterState state)
