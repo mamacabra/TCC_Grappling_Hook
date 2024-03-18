@@ -6,7 +6,7 @@ namespace Character
 {
     public class Character : MonoBehaviour
     {
-        private CharacterState _state;
+        private ACharacterState _state;
         private CharacterEntity _characterEntity;
 
         private void Update()
@@ -25,7 +25,7 @@ namespace Character
             SetWalkState();
         }
 
-        private void SetState(CharacterState state)
+        private void SetState(ACharacterState state)
         {
             _state = state;
             _state.Enter();

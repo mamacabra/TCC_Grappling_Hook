@@ -2,7 +2,7 @@ using Character.Utils;
 
 namespace Character.States
 {
-    public class DispatchHookState : CharacterState
+    public class DispatchHookState : ACharacterState
     {
         private readonly CharacterEntity _characterEntity;
 

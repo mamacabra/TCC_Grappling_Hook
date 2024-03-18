@@ -2,7 +2,7 @@ using Character.Utils;
 
 namespace Character.States
 {
-    public class RollbackHookState : CharacterState
+    public class RollbackHookState : ACharacterState
     {
         private readonly CharacterEntity _characterEntity;
 

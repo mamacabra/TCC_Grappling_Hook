@@ -4,7 +4,7 @@ using Character.Utils;
 
 namespace Character.States
 {
-    public class PrepareHookState : CharacterState
+    public class PrepareHookState : ACharacterState
     {
         private float _countDown;
         private const float CountDownStep = 0.4f;

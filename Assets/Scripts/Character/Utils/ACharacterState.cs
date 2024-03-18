@@ -1,6 +1,6 @@
 namespace Character.Utils
 {
-    public abstract class CharacterState
+    public abstract class ACharacterState
     {
         public virtual void Enter() {}
         public virtual void Update() {}

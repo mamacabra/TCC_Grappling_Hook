@@ -3,7 +3,7 @@ using Character.Utils;
 
 namespace Character.States
 {
-    public class DashState : CharacterState
+    public class DashState : ACharacterState
     {
         private readonly CharacterEntity _characterEntity;
 
