@@ -32,6 +32,12 @@ namespace Character
             CharacterEntity.CharacterUI.UpdateStatusUI(_state.ToString());
         }
 
+        public void SetDashHookState()
+        {
+            var state = new DashState(CharacterEntity);
+            SetState(state);
+        }
+
         public void SetDispatchHookState()
         {
             var state = new DispatchHookState(CharacterEntity);
