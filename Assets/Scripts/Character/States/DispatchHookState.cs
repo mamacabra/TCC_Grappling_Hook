@@ -1,5 +1,3 @@
-using Character.Utils;
-
 namespace Character.States
 {
     public class DispatchHookState : ACharacterState

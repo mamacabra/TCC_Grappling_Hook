@@ -1,5 +1,4 @@
 using UnityEngine;
-using Character.Utils;
 
 namespace Character.States
 {
