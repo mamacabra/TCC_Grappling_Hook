@@ -11,10 +11,18 @@ public class CharacterBoxUI : MonoBehaviour
     [SerializeField] PlayersManager.CharacterColor characterColor;
     public void OnMove(InputAction.CallbackContext context)
     {
-        if(context.performed){
-            int dir = (int)context.ReadValue<Vector2>().x;
-            ChangeColor(dir);
+        int dir = 0;
+        if(context.control.device.name == "Gamepad"){
+            if(context.action.WasPressedThisFrame()){
+                dir = Mathf.RoundToInt(context.ReadValue<Vector2>().x);
+            }
         }
+        else{
+            if(context.action.WasPerformedThisFrame()){
+                dir = Mathf.RoundToInt(context.ReadValue<Vector2>().x);
+            }
+        }
+        ChangeColor(dir);
     }
 
     public void ChangeColor(int dir){
