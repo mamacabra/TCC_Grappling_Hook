@@ -47,11 +47,15 @@ public class PlayersManager : MonoBehaviour
     }
 
     private void Start() {
-        if(playersConfigs.Count > 0) playerInputManager.playerPrefab = playerPrefab;
-        else playerInputManager.playerPrefab = playerUIPrefab;
-        foreach (var item in playersConfigs) {
-            playerInputManager.JoinPlayer(item.id, controlScheme: item.controlScheme, pairWithDevices: item.inputDevices);
+        if(playersConfigs.Count > 0) {
+            playerInputManager.playerPrefab = playerPrefab;
+            SceneManager.LoadSceneAsync("Level.Japan.01", LoadSceneMode.Additive).completed += delegate{
+                foreach (var item in playersConfigs) {
+                    playerInputManager.JoinPlayer(item.id, controlScheme: item.controlScheme, pairWithDevices: item.inputDevices);
+                }
+            };
         }
+        else playerInputManager.playerPrefab = playerUIPrefab;
     }
 
     public void OnPlayerJoinedEvent(PlayerInput _playerInput) {
@@ -64,6 +68,7 @@ public class PlayersManager : MonoBehaviour
                 characterBoxUI.playerConfig.inputDevices = _playerInput.devices.ToArray();
             }
         }else{
+            
             // Get Spawns positions
         }
     }
