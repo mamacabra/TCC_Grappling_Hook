@@ -27,6 +27,7 @@ namespace Character.GrapplingHook
         private Vector3 _hookDirection;
         private readonly Vector3 _hookOriginLocalPosition = new Vector3(0.4f, 1, 0.7f);
         [SerializeField] private Rigidbody hookRigidbody;
+        [SerializeField] private GrapplingHook grapplingHook;
 
         public void FixedUpdate()
         {
@@ -46,6 +47,7 @@ namespace Character.GrapplingHook
         {
             CharacterEntity = entity;
             hookRigidbody = transform.Find("GrapplingHook").GetComponent<Rigidbody>();
+            if (grapplingHook) grapplingHook.Setup(entity);
         }
 
         public void DispatchHook(Vector3 direction)
