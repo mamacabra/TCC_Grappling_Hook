@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1447535574629984747}
   - component: {fileID: 6305327517487173830}
   m_Layer: 0
-  m_Name: GrapplingHook - ForceText
+  m_Name: ForceText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,7 +103,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2008243344331471682}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.13238585, y: 0.7863774, z: 0.18084641, w: 0.5756556}
   m_LocalPosition: {x: 0, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -190,9 +190,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac00493928d7ff94cb834b909a327c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterUI: {fileID: 0}
-  statusText: {fileID: 0}
-  forceText: {fileID: 0}
+  characterUI: {fileID: 8729906752129017995}
+  statusText: {fileID: 5871677969771744498}
+  forceText: {fileID: 6305327517487173830}
 --- !u!114 &7747164800453218590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,6 +320,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9e1b953c-bd2b-411b-a2e5-09d556e7274f
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9591f640-83fd-4860-a8b3-4cc884feec5e
+    m_ActionName: Player/Join
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -390,6 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a451e9757444fc81957b627752e293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDebug: 0
 --- !u!1 &5542384946330030602
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,7 +509,6 @@ GameObject:
   - component: {fileID: 7184043238630248583}
   - component: {fileID: 7955503113553971195}
   - component: {fileID: 8172818251306161703}
-  - component: {fileID: 4045565601958702427}
   m_Layer: 0
   m_Name: ModelPointer
   m_TagString: Untagged
@@ -577,27 +581,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4045565601958702427
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7401714667755324967}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7657553021788337998
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,7 +700,7 @@ GameObject:
   - component: {fileID: 1234136481792543154}
   - component: {fileID: 5871677969771744498}
   m_Layer: 0
-  m_Name: Character - StateText
+  m_Name: CharacterStateText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -794,6 +777,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6217346655026089592}
   - component: {fileID: 3660774765619785525}
+  - component: {fileID: 5671700382720908195}
   m_Layer: 0
   m_Name: GrapplingHook
   m_TagString: Untagged
@@ -844,3 +828,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!65 &5671700382720908195
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8757592480263248349}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 0.5, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}

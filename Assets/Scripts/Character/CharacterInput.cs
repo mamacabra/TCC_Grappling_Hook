@@ -10,16 +10,19 @@ namespace Character
 
         public void OnMove(InputAction.CallbackContext context)
         {
+            if (CharacterEntity.IsDebug) return;
             movementInput = context.ReadValue<Vector2>();
         }
 
         public void OnDash(InputAction.CallbackContext context)
         {
+            if (CharacterEntity.IsDebug) return;
             CharacterEntity.CharacterState.SetDashHookState();
         }
 
         public void OnShoot(InputAction.CallbackContext context)
         {
+            if (CharacterEntity.IsDebug) return;
             CharacterEntity.CharacterState.SetDispatchHookState();
         }
     }

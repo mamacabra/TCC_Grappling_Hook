@@ -9,19 +9,19 @@ namespace Character
 
         private void Update()
         {
-            State.Update();
+            State?.Update();
         }
 
         private void FixedUpdate()
         {
-            State.FixedUpdate();
+            State?.FixedUpdate();
         }
 
         private void SetState(ACharacterState state)
         {
             State = state;
             State.Enter();
-            CharacterEntity.CharacterUI.UpdateStatusUI(State.GetType().Name);
+            CharacterEntity.CharacterUI.UpdateCharacterStateUI(State.GetType().Name);
         }
 
         public void SetDashHookState()

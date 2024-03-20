@@ -14,6 +14,8 @@ namespace Character
     [RequireComponent(typeof(Rigidbody))]
     public class CharacterSetup : MonoBehaviour
     {
+        [SerializeField] private bool isDebug;
+
         private void Awake()
         {
             var characterController = gameObject.GetComponent<CharacterController>();
@@ -24,6 +26,7 @@ namespace Character
 
             var entity = new CharacterEntity
             {
+                IsDebug = isDebug,
                 CharacterController = characterController,
                 CharacterInput = characterInput,
                 CharacterState = characterState,
@@ -36,8 +39,9 @@ namespace Character
             characterUI.Setup(entity);
             grapplingHookWeapon.Setup(entity);
 
-            characterState.SetWalkState();
             gameObject.tag = Tags.Character;
+
+            if (isDebug == false) characterState.SetWalkState();
         }
     }
 }
