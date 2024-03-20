@@ -34,6 +34,7 @@ public class PlayersManager : MonoBehaviour
     bool sharingKeyboard = false;
     int amountOfPlayersReady = 0;
     List<PlayerConfigurationData> playersConfigs = new List<PlayerConfigurationData>();
+    [SerializeField] private PrototypeCameraMoviment cameraMoviment;
 
     private void Awake() {
         if (Instance != null) {
@@ -68,7 +69,7 @@ public class PlayersManager : MonoBehaviour
                 characterBoxUI.playerConfig.inputDevices = _playerInput.devices.ToArray();
             }
         }else{
-            
+            cameraMoviment.RecivePlayers(_playerInput.transform);
             // Get Spawns positions
         }
     }

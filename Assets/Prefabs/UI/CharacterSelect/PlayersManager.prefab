@@ -103,8 +103,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb8eca6ab0ee98515afee8bed6ebcd8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 1102690380306755515, guid: daa1f20f5bd0ef143b0af00d7ac0ccb0,
+  playerPrefab: {fileID: 2160222834551465636, guid: 641da49de6b72a92fa0efc96d9704e70,
     type: 3}
   playerUIPrefab: {fileID: 1189765548623994011, guid: 5ad832e478b5caca1b66b4e75b396578,
     type: 3}
   characterSelect: {fileID: 0}
+  cameraMoviment: {fileID: 0}
