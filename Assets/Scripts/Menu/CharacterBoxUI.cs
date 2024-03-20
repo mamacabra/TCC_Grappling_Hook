@@ -2,41 +2,63 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using TMPro;
-using Unity.VisualScripting;
 
 public class CharacterBoxUI : MonoBehaviour
 {
     [SerializeField] private Image characterImage;
     [SerializeField] private TextMeshProUGUI characterName;
-    [SerializeField] PlayersManager.CharacterColor characterColor;
-    public void OnMove(InputAction.CallbackContext context)
-    {
+    [SerializeField] private TextMeshProUGUI characterStatus;
+    private bool hasConfirmed;
+
+    public PlayersManager.PlayerConfigurationData playerConfig;
+
+    public void OnMove(InputAction.CallbackContext context) {
         int dir = 0;
-        if(context.control.device.name == "Gamepad"){
-            if(context.action.WasPressedThisFrame()){
+        if (context.control.device.name == "Gamepad") {
+            if (context.action.WasPressedThisFrame()){
                 dir = Mathf.RoundToInt(context.ReadValue<Vector2>().x);
             }
-        }
-        else{
-            if(context.action.WasPerformedThisFrame()){
+        } else {
+            if (context.action.WasPerformedThisFrame()) {
                 dir = Mathf.RoundToInt(context.ReadValue<Vector2>().x);
             }
         }
         ChangeColor(dir);
     }
 
-    public void ChangeColor(int dir){
-        int value = ((int)characterColor + dir);
-        if(value < 0) value =  (int)PlayersManager.CharacterColor.Count - 1;
-        if(value > (int)PlayersManager.CharacterColor.Count - 1) value = 0;
-        characterColor = (PlayersManager.CharacterColor)value;
-        characterImage.color = GetColor(characterColor);
+    public void OnConfirm(InputAction.CallbackContext context) {
+        if (hasConfirmed) return;
+        if (context.action.WasPerformedThisFrame()) {
+            characterStatus.text = "Pronto";
+            characterStatus.color = Color.green;
+            PlayersManager.Instance?.SetPlayerStatus(true);
+            PlayersManager.Instance?.AddNewPlayerConfig(playerConfig);
+            hasConfirmed = true;
+        }
+    }
+    public void OnCancel(InputAction.CallbackContext context) {
+        if (!hasConfirmed) return;
+        if (context.action.WasPerformedThisFrame()) {
+            characterStatus.text = "Escolhendo";
+            characterStatus.color = Color.gray;
+            PlayersManager.Instance?.SetPlayerStatus(false);
+            PlayersManager.Instance?.RemovePLayerConfig(playerConfig);
+            hasConfirmed = false;
+        }
     }
 
-    public Color GetColor(PlayersManager.CharacterColor characterColor){
+    public void ChangeColor(int dir) {
+        if (hasConfirmed) return;
+        int value = ((int)playerConfig.characterColor + dir);
+        if (value < 0) value =  (int)PlayersManager.CharacterColor.Count - 1;
+        if (value > (int)PlayersManager.CharacterColor.Count - 1) value = 0;
+        playerConfig.characterColor = (PlayersManager.CharacterColor)value;
+        characterImage.color = GetColor(playerConfig.characterColor);
+    }
+
+    public Color GetColor(PlayersManager.CharacterColor characterColor) {
         Color color = Color.white;
-        switch (characterColor)
-        {
+        switch (characterColor) {
             case PlayersManager.CharacterColor.White: break;
             case PlayersManager.CharacterColor.Red: color = Color.red; break;
             case PlayersManager.CharacterColor.Green: color = Color.green; break;
