@@ -8,7 +8,7 @@ public class PrototypePlayer : MonoBehaviour
 {
     public GrapplingHookShoot grapplingHookShoot;
     private Rigidbody myRigidbody;
-    private CharacterController characterController;
+    
     Vector2 movementInput = Vector2.zero;
     public bool shooting; 
     public float shooting_value;
@@ -21,7 +21,7 @@ public class PrototypePlayer : MonoBehaviour
     private void Start()
     {
         myRigidbody = GetComponent<Rigidbody>();
-        characterController = GetComponent<CharacterController>();
+       
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -35,7 +35,8 @@ public class PrototypePlayer : MonoBehaviour
         moveDir.Normalize();
         if (!grapplingHookShoot.isShooting)
         {
-            characterController.Move(movePos * Time.deltaTime * speed);
+            
+            myRigidbody.MovePosition(transform.position+moveDir*Time.deltaTime*speed);
 
             //Rotation
             if (moveDir != Vector3.zero)

@@ -1,5 +1,6 @@
 using Character.Utils;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Character.States
 {
@@ -19,8 +20,9 @@ namespace Character.States
         {
             var movementInput = CharacterEntity.CharacterInput.movementInput;
             var direction = new Vector3(movementInput.x, 0, movementInput.y).normalized;
+            
 
-            CharacterEntity.CharacterController.Move(direction * (Time.deltaTime * MovementSpeed));
+            CharacterEntity.CharacterRigidbody.MovePosition(CharacterEntity.CharacterRigidbody.transform.position+direction*Time.deltaTime*MovementSpeed);
 
             if (direction != Vector3.zero)
             {

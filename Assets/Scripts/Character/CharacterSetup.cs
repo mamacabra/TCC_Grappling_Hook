@@ -18,7 +18,8 @@ namespace Character
 
         private void Awake()
         {
-            var characterController = gameObject.GetComponent<CharacterController>();
+            //var characterController = gameObject.GetComponent<CharacterController>();
+            var characterRigidbody = gameObject.GetComponent<Rigidbody>();
             var characterInput = gameObject.GetComponent<CharacterInput>();
             var characterState = gameObject.GetComponent<CharacterState>();
             var characterUI = gameObject.GetComponent<CharacterUI>();
@@ -27,7 +28,7 @@ namespace Character
             var entity = new CharacterEntity
             {
                 IsDebug = isDebug,
-                CharacterController = characterController,
+                CharacterRigidbody = characterRigidbody,
                 CharacterInput = characterInput,
                 CharacterState = characterState,
                 CharacterUI = characterUI,

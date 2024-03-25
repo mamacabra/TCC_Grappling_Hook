@@ -6,7 +6,7 @@ namespace Character
     public struct CharacterEntity
     {
         public bool IsDebug;
-        public CharacterController CharacterController;
+        public Rigidbody CharacterRigidbody;
         public CharacterInput CharacterInput;
         public CharacterState CharacterState;
         public CharacterUI CharacterUI;
