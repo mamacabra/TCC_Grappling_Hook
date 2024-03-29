@@ -1,5 +1,6 @@
 using Character.States;
 using Character.Utils;
+using UnityEngine;
 
 namespace Character
 {
@@ -36,9 +37,9 @@ namespace Character
             SetState(state);
         }
 
-        public void SetHookedState()
+        public void SetHookedState(Vector3 enemyPosition)
         {
-            var state = new HookedState(CharacterEntity);
+            var state = new HookedState(CharacterEntity, enemyPosition);
             SetState(state);
         }
 
