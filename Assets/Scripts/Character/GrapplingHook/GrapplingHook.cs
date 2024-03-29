@@ -11,8 +11,16 @@ namespace Character.GrapplingHook
     {
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag(Tags.Character) == false) return;
+            if (other.gameObject.CompareTag(Tags.Character))
+                CollideWithCharacter(other);
+            else if (other.gameObject.CompareTag(Tags.Wall))
+                CollideWithWall();
+            else if (other.gameObject.CompareTag(Tags.Object))
+                CollideWithObject(other);
+        }
 
+        private void CollideWithCharacter(Collider other)
+        {
             var character = other.gameObject.GetComponent<Character>();
             if (character == CharacterEntity.Character) return;
 
@@ -20,6 +28,17 @@ namespace Character.GrapplingHook
             if (enemy.CharacterEntity.CharacterState.State is HookedState) return;
 
             enemy.CharacterEntity.CharacterState.SetHookedState(CharacterEntity.CharacterState.transform.position);
+            CharacterEntity.CharacterState.SetRollbackHookState();
+        }
+
+        private static void CollideWithObject(Collider other)
+        {
+            Debug.Log("Collide with object");
+            Destroy(other.gameObject);
+        }
+
+        private void CollideWithWall()
+        {
             CharacterEntity.CharacterState.SetRollbackHookState();
         }
     }
