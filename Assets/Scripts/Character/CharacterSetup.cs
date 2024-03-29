@@ -29,6 +29,7 @@ namespace Character
             var entity = new CharacterEntity
             {
                 IsDebug = isDebug,
+                Character = character,
                 CharacterInput = characterInput,
                 CharacterRigidbody = characterRigidbody,
                 CharacterState = characterState,
