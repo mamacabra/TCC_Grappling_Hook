@@ -1,3 +1,4 @@
+using Character.States;
 using Character.Utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -23,7 +24,10 @@ namespace Character
         public void OnShoot(InputAction.CallbackContext context)
         {
             if (CharacterEntity.IsDebug) return;
-            CharacterEntity.CharacterState.SetDispatchHookState();
+            if (CharacterEntity.CharacterState.State is WalkState)
+            {
+                CharacterEntity.CharacterState.SetDispatchHookState();
+            }
         }
     }
 }
