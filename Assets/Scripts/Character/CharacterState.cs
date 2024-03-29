@@ -5,7 +5,7 @@ namespace Character
 {
     public class CharacterState : ACharacterMonoBehaviour
     {
-        private ACharacterState State { get; set; }
+        public ACharacterState State { get; private set; }
 
         private void Update()
         {
@@ -33,6 +33,12 @@ namespace Character
         public void SetDispatchHookState()
         {
             var state = new DispatchHookState(CharacterEntity);
+            SetState(state);
+        }
+
+        public void SetHookedState()
+        {
+            var state = new HookedState(CharacterEntity);
             SetState(state);
         }
 
