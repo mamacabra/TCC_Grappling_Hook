@@ -32,8 +32,6 @@ namespace Character.GrapplingHook
 
         public void FixedUpdate()
         {
-            // if (_isHookDispatch is false && _isHookRollback is false) return;
-
             if (_isHookDispatch || _isHookRollback)
                 hookRigidbody.MovePosition(hookRigidbody.transform.position + _hookDirection * (Time.fixedDeltaTime * _hookSpeed));
 
@@ -75,6 +73,15 @@ namespace Character.GrapplingHook
             _isHookRollback = false;
             _hookDirection = direction;
             EnableHook();
+        }
+
+        public void AttachHook()
+        {
+            if (hookRigidbody is null) return;
+
+            _isHookDispatch = false;
+            _isHookRollback = false;
+            DisableHook();
         }
 
         public void RollbackHook()

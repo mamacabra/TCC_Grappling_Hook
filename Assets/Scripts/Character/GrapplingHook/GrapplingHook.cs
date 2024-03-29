@@ -14,7 +14,7 @@ namespace Character.GrapplingHook
             if (other.gameObject.CompareTag(Tags.Character))
                 CollideWithCharacter(other);
             else if (other.gameObject.CompareTag(Tags.Wall))
-                CollideWithWall();
+                CollideWithWall(other);
             else if (other.gameObject.CompareTag(Tags.Object))
                 CollideWithObject(other);
         }
@@ -36,9 +36,9 @@ namespace Character.GrapplingHook
             Destroy(other.gameObject);
         }
 
-        private void CollideWithWall()
+        private void CollideWithWall(Collider other)
         {
-            CharacterEntity.CharacterState.SetRollbackHookState();
+            CharacterEntity.CharacterState.SetHookedToWallState(other.transform.position);
         }
     }
 }
