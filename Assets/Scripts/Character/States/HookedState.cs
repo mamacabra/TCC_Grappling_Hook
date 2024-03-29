@@ -5,7 +5,7 @@ namespace Character.States
 {
     public class HookedState : ACharacterState
     {
-        private const float MinDistanceToDrop = 1f;
+        private const float MinDistanceToDrop = 3f;
         private const float MovementSpeed = 20f;
         private readonly Vector3 _enemyPosition;
 
@@ -16,19 +16,13 @@ namespace Character.States
 
         public override void FixedUpdate()
         {
-            var characterPosition = CharacterEntity.CharacterState.transform.position;
+            var characterPosition = Transform.position;
             var direction = (_enemyPosition - characterPosition).normalized;
 
-            Debug.Log("characterPosition " + characterPosition.ToString());
-            Debug.Log( "_enemyPosition " + _enemyPosition.ToString());
-            Debug.Log("direction " + direction.ToString());
+            CharacterEntity.CharacterRigidbody.MovePosition(characterPosition + direction * (Time.fixedDeltaTime * MovementSpeed));
 
-            CharacterEntity.CharacterRigidbody.MovePosition(CharacterEntity.CharacterRigidbody.transform.position + direction * (Time.fixedDeltaTime * MovementSpeed));
-
-            var enemyDistance = Vector3.Distance(characterPosition, _enemyPosition);
-            Debug.Log("enemyDistance " + enemyDistance.ToString());
-
-            if (enemyDistance <= MinDistanceToDrop)
+            var distance = Vector3.Distance(characterPosition, _enemyPosition);
+            if (distance <= MinDistanceToDrop)
                 CharacterEntity.CharacterState.SetWalkState();
         }
     }
