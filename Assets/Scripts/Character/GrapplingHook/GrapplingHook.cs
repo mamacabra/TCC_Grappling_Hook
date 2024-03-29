@@ -33,7 +33,6 @@ namespace Character.GrapplingHook
 
         private static void CollideWithObject(Collider other)
         {
-            Debug.Log("Collide with object");
             Destroy(other.gameObject);
         }
 
