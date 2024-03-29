@@ -13,6 +13,9 @@ namespace Character.GrapplingHook
         {
             if (other.gameObject.CompareTag(Tags.Character) == false) return;
 
+            var character = other.gameObject.GetComponent<Character>();
+            if (character == CharacterEntity.Character) return;
+
             var enemy = other.GetComponent<Character>();
             if (enemy.CharacterEntity.CharacterState.State is HookedState) return;
 
