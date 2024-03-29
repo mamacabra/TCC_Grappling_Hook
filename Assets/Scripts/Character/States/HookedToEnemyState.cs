@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace Character.States
 {
-    public class HookedState : ACharacterState
+    public class HookedToEnemyState : ACharacterState
     {
         private const float MinDistanceToDrop = 3f;
         private const float MovementSpeed = 20f;
         private readonly Vector3 _enemyPosition;
 
-        public HookedState(CharacterEntity characterEntity, Vector3 enemyPosition) : base(characterEntity)
+        public HookedToEnemyState(CharacterEntity characterEntity, Vector3 enemyPosition) : base(characterEntity)
         {
             _enemyPosition = enemyPosition;
         }

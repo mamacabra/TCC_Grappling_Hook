@@ -37,9 +37,9 @@ namespace Character
             SetState(state);
         }
 
-        public void SetHookedState(Vector3 enemyPosition)
+        public void SetHookedToEnemyState(Vector3 enemyPosition)
         {
-            var state = new HookedState(CharacterEntity, enemyPosition);
+            var state = new HookedToEnemyState(CharacterEntity, enemyPosition);
             SetState(state);
         }
 
