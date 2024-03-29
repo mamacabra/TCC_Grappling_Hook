@@ -27,6 +27,7 @@ namespace Character.GrapplingHook
         private Vector3 _hookDirection;
         private readonly Vector3 _hookOriginLocalPosition = new Vector3(0.4f, 1, 0.7f);
         [SerializeField] private Rigidbody hookRigidbody;
+        [SerializeField] private BoxCollider hookCollider;
         [SerializeField] private GrapplingHook grapplingHook;
 
         public void FixedUpdate()
@@ -46,8 +47,23 @@ namespace Character.GrapplingHook
         public new void Setup(CharacterEntity entity)
         {
             CharacterEntity = entity;
-            hookRigidbody = transform.Find("GrapplingHook").GetComponent<Rigidbody>();
+
+            var hook = transform.Find("GrapplingHook");
+            hookCollider = hook.GetComponent<BoxCollider>();
+            hookRigidbody = hook.GetComponent<Rigidbody>();
             if (grapplingHook) grapplingHook.Setup(entity);
+
+            DisableHook();
+        }
+
+        private void DisableHook()
+        {
+            hookCollider.enabled = false;
+        }
+
+        private void EnableHook()
+        {
+            hookCollider.enabled = true;
         }
 
         public void DispatchHook(Vector3 direction)
@@ -58,6 +74,7 @@ namespace Character.GrapplingHook
             _isHookDispatch = true;
             _isHookRollback = false;
             _hookDirection = direction;
+            EnableHook();
         }
 
         public void RollbackHook()
@@ -77,6 +94,7 @@ namespace Character.GrapplingHook
             _isHookRollback = false;
             Force = DefaultGrapplingHookForce;
             hookRigidbody.transform.localPosition = _hookOriginLocalPosition;
+            DisableHook();
         }
 
         public void IncreaseHookForce()
