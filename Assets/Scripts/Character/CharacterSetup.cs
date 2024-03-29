@@ -5,7 +5,7 @@ using Const;
 
 namespace Character
 {
-    [RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(Character))]
     [RequireComponent(typeof(CharacterInput))]
     [RequireComponent(typeof(CharacterState))]
     [RequireComponent(typeof(CharacterUI))]
@@ -18,7 +18,7 @@ namespace Character
 
         private void Awake()
         {
-            //var characterController = gameObject.GetComponent<CharacterController>();
+            var character = gameObject.GetComponent<Character>();
             var characterRigidbody = gameObject.GetComponent<Rigidbody>();
             var characterInput = gameObject.GetComponent<CharacterInput>();
             var characterState = gameObject.GetComponent<CharacterState>();
@@ -35,6 +35,7 @@ namespace Character
                 GrapplingHookWeapon = grapplingHookWeapon,
             };
 
+            character.Setup(entity);
             characterInput.Setup(entity);
             characterState.Setup(entity);
             characterUI.Setup(entity);
