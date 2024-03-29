@@ -43,6 +43,12 @@ namespace Character
             SetState(state);
         }
 
+        public void SetHookedToWallState(Vector3 wallPoint)
+        {
+            var state = new HookedToWallState(CharacterEntity, wallPoint);
+            SetState(state);
+        }
+
         public void SetPrepareHookState()
         {
             var state = new PrepareHookState(CharacterEntity);
