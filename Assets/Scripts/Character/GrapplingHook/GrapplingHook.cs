@@ -1,3 +1,4 @@
+using Character.States;
 using Character.Utils;
 using Const;
 using UnityEngine;
@@ -10,11 +11,13 @@ namespace Character.GrapplingHook
     {
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag(Tags.Character))
-            {
-                Debug.Log("CARALHO");
-                CharacterEntity.CharacterState.SetRollbackHookState();
-            }
+            if (other.gameObject.CompareTag(Tags.Character) == false) return;
+
+            var enemy = other.GetComponent<Character>();
+            if (enemy.CharacterEntity.CharacterState.State is HookedState) return;
+
+            enemy.CharacterEntity.CharacterState.SetHookedState();
+            CharacterEntity.CharacterState.SetRollbackHookState();
         }
     }
 }

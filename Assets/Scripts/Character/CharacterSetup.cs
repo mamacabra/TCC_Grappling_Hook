@@ -9,6 +9,7 @@ namespace Character
     [RequireComponent(typeof(CharacterInput))]
     [RequireComponent(typeof(CharacterState))]
     [RequireComponent(typeof(CharacterUI))]
+    [RequireComponent(typeof(CapsuleCollider))]
     [RequireComponent(typeof(GrapplingHookWeapon))]
     [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(Rigidbody))]
@@ -19,8 +20,8 @@ namespace Character
         private void Awake()
         {
             var character = gameObject.GetComponent<Character>();
-            var characterRigidbody = gameObject.GetComponent<Rigidbody>();
             var characterInput = gameObject.GetComponent<CharacterInput>();
+            var characterRigidbody = gameObject.GetComponent<Rigidbody>();
             var characterState = gameObject.GetComponent<CharacterState>();
             var characterUI = gameObject.GetComponent<CharacterUI>();
             var grapplingHookWeapon = gameObject.GetComponent<GrapplingHookWeapon>();
@@ -28,8 +29,8 @@ namespace Character
             var entity = new CharacterEntity
             {
                 IsDebug = isDebug,
-                CharacterRigidbody = characterRigidbody,
                 CharacterInput = characterInput,
+                CharacterRigidbody = characterRigidbody,
                 CharacterState = characterState,
                 CharacterUI = characterUI,
                 GrapplingHookWeapon = grapplingHookWeapon,
