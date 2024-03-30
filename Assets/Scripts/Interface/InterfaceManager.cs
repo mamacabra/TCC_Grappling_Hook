@@ -5,12 +5,12 @@ using UnityEngine;
 
 public enum ScreensName
 {
-     Initial_Screen,
-     Options_Screen,
-     Credits_Screen,
-     CharacterChoice_Screen,
-     Controls_InGame_Screen,
-     Pause_InGame_Screen,
+     Initial_Screen=0,
+     Options_Screen=1,
+     Credits_Screen=2,
+     CharacterChoice_Screen=3,
+     Controls_InGame_Screen=4,
+     Pause_InGame_Screen=5,
      
 }
 public class InterfaceManager : MonoBehaviour
@@ -50,10 +50,9 @@ public class InterfaceManager : MonoBehaviour
           foreach (var o in screensObj)
                o.SetActive(false);
           
-          GameObject s = screensObj.Find(o => o.name == screenName.ToString());
-          s.SetActive(true);
+          screensObj[(int)screenName].SetActive(true);
           
-          screensIndex = screensObj.IndexOf(s);
+          screensIndex = (int)screenName;
      }
 
      public void QuitGame()
