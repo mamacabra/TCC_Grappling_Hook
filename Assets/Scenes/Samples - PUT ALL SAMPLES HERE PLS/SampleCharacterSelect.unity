@@ -625,6 +625,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5211769702129716279}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2067270938 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 244054044901606193, guid: 8cffc96efcba1926c82b67328cd6384e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5211769702129716279}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eb792b9290ab038a895fca396c9d14c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4019669102119267670
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -633,15 +645,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4325472550121591281, guid: ba8ed31823cf8e6dbbe38228ed066461,
+        type: 3}
+      propertyPath: characterSelect
+      value: 
+      objectReference: {fileID: 2067270938}
     - target: {fileID: 4589496029237601623, guid: ba8ed31823cf8e6dbbe38228ed066461,
         type: 3}
       propertyPath: m_Name
       value: PlayersManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 7770712065242538499, guid: ba8ed31823cf8e6dbbe38228ed066461,
-        type: 3}
-      propertyPath: m_AllowJoining
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8836442027467104043, guid: ba8ed31823cf8e6dbbe38228ed066461,
         type: 3}

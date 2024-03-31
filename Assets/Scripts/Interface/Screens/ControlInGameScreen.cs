@@ -18,5 +18,6 @@ public class ControlInGameScreen : Screens
         Time.timeScale = 1;
 
         InterfaceManager.Instance.inGame = true;
+        if (PlayersManager.Instance) PlayersManager.Instance.InitGame();
     }
 }

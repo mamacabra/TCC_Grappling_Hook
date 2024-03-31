@@ -31,18 +31,18 @@ public class CharacterBoxUI : MonoBehaviour
         if (context.action.WasPerformedThisFrame()) {
             characterStatus.text = "Pronto";
             characterStatus.color = Color.green;
-            PlayersManager.Instance?.SetPlayerStatus(true);
             PlayersManager.Instance?.AddNewPlayerConfig(playerConfig);
+            PlayersManager.Instance?.SetPlayerStatus(true);
             hasConfirmed = true;
         }
     }
     public void OnCancel(InputAction.CallbackContext context) {
-        if (!hasConfirmed) return;
         if (context.action.WasPerformedThisFrame()) {
+            if (!hasConfirmed) { Destroy(this.gameObject); return;}
             characterStatus.text = "Escolhendo";
             characterStatus.color = Color.gray;
+            PlayersManager.Instance?.RemovePlayerConfig(playerConfig);
             PlayersManager.Instance?.SetPlayerStatus(false);
-            PlayersManager.Instance?.RemovePLayerConfig(playerConfig);
             hasConfirmed = false;
         }
     }

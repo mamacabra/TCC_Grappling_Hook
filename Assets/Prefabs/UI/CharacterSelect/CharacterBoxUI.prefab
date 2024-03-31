@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 12bbd5042eb786d429622a4fb7a1a7f4,
+  m_Actions: {fileID: -944628639613478452, guid: c2378c8eee2fe30848e690910c31a630,
     type: 3}
   m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
@@ -145,73 +145,9 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 392067021939482319}
-        m_TargetAssemblyTypeName: CharacterBoxUI, Assembly-CSharp
-        m_MethodName: OnMove
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: e9752e09-1784-4669-a563-98fbc65d00d1
-    m_ActionName: Player/Move[/Keyboard/a,/Keyboard/d,/Keyboard/w,/Keyboard/s,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow,/Gamepad/leftStick]
-  - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: e77b7240-84f2-48cf-b387-37287d6374d8
-    m_ActionName: Player/Fire[/Keyboard/space,/Keyboard/rightCtrl,/Gamepad/buttonWest]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: e3762939-08b2-4f74-8926-14af5e374fed
-    m_ActionName: Player/Dash[/Keyboard/leftAlt,/Keyboard/rightAlt,/Gamepad/buttonSouth]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: e31d5159-a787-4b6a-bcc4-8adc9a4912e8
-    m_ActionName: UI/Navigate[/Gamepad/leftStick/up,/Gamepad/rightStick/up,/Gamepad/leftStick/down,/Gamepad/rightStick/down,/Gamepad/leftStick/left,/Gamepad/rightStick/left,/Gamepad/leftStick/right,/Gamepad/rightStick/right,/Gamepad/dpad,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 9b8ceee6-0202-4888-bd7e-e58a13ab8400
-    m_ActionName: UI/Submit[/Keyboard/enter,/Gamepad/buttonSouth]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 87d1b917-c349-4785-871d-96e88753c601
-    m_ActionName: UI/Cancel[/Keyboard/escape,/Gamepad/buttonEast]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 1287d5ec-9bd8-4926-819e-73e161d38ab2
-    m_ActionName: UI/Point[/Mouse/position]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 7e1a2924-1955-4db9-8b8e-e7dc6df18581
-    m_ActionName: UI/Click[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: f0f8bde2-5c43-4255-88d0-acc9384d2809
-    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: a64a6218-bac9-4709-bca5-d46c608a3b09
-    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: f57617fe-59e0-4112-9030-b90de2da7ebf
-    m_ActionName: UI/RightClick[/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: ada7e57d-2220-4724-a6a4-d8dec09cb4b2
-    m_ActionName: UI/TrackedDevicePosition
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 9e1b953c-bd2b-411b-a2e5-09d556e7274f
-    m_ActionName: UI/TrackedDeviceOrientation
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 96e72ec5-2a4d-4753-8a60-9a8a4cde89db
-    m_ActionName: UI/Join[/Gamepad/buttonSouth]
+    m_ActionId: 701e8e6b-07e5-4259-82a9-d9b09e2efa6d
+    m_ActionName: Navigation/Join[/Gamepad/buttonSouth,/Keyboard/space,/Keyboard/j]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 392067021939482319}
@@ -226,8 +162,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 9aedd7d0-c354-4217-8bb0-f7dfb7b1e28a
-    m_ActionName: Player/Confim[/Keyboard/enter,/Keyboard/space,/Keyboard/numpadEnter,/Keyboard/j,/Gamepad/buttonSouth,/Gamepad/start]
+    m_ActionId: 46a4754b-becb-4e95-abe0-cb4b938680c4
+    m_ActionName: Navigation/Confim[/Gamepad/buttonSouth,/Gamepad/start,/Keyboard/enter,/Keyboard/space,/Keyboard/numpadEnter,/Keyboard/j]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 392067021939482319}
@@ -242,11 +178,67 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 94d87255-8e17-49a8-b4de-d5dd2867734f
-    m_ActionName: Player/Cancel[/Gamepad/buttonEast,/Keyboard/backspace,/Keyboard/escape]
+    m_ActionId: c71ec794-49f8-4744-8f21-e13f52d768a5
+    m_ActionName: Navigation/Cancel[/Gamepad/buttonEast,/Keyboard/escape,/Keyboard/backspace]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 22bd4494-27a3-410e-b044-f906fde58fcf
+    m_ActionName: UI/Navigate[/Gamepad/leftStick/up,/Gamepad/rightStick/up,/Gamepad/leftStick/down,/Gamepad/rightStick/down,/Gamepad/leftStick/left,/Gamepad/rightStick/left,/Gamepad/leftStick/right,/Gamepad/rightStick/right,/Gamepad/dpad,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 23d5652c-4688-4a7f-9de2-d7600e2d1d15
+    m_ActionName: UI/Submit[/Keyboard/enter,/Keyboard/space,/Keyboard/numpadEnter,/Keyboard/j,/Gamepad/buttonSouth,/Gamepad/start]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 73aaee43-e7e6-4874-9f54-828a8f924199
+    m_ActionName: UI/Cancel[/Gamepad/buttonEast,/Keyboard/backspace,/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1bed0c24-0583-4f7a-9664-022d9a49a7c6
+    m_ActionName: UI/Point[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 86a60b41-3655-46c0-83ed-fdc19ad8f193
+    m_ActionName: UI/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c73929ca-af0b-4b47-8212-4bbd55a3d463
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 97db5b56-0eb8-4378-a817-a26dc8afc7c4
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3206cc13-2d4a-4cbc-a688-b69bbea250d3
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d1d3c4fa-2d7f-4f96-ae66-f70ccbd06341
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e966d688-692a-4943-848b-111c9c1f2b10
+    m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 392067021939482319}
+        m_TargetAssemblyTypeName: CharacterBoxUI, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fc55fb34-5311-4671-b7ed-bd7ffadb3de2
+    m_ActionName: Navigation/Move[/Keyboard/a,/Keyboard/d,/Keyboard/w,/Keyboard/s,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow,/Gamepad/leftStick,/Gamepad/dpad]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: Navigation
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &392067021939482319
@@ -265,7 +257,8 @@ MonoBehaviour:
   characterName: {fileID: 3872030163863900833}
   characterStatus: {fileID: 71138446914653221}
   playerConfig:
-    playerInput: {fileID: 0}
+    id: 0
+    controlScheme: 
     characterColor: 0
 --- !u!1 &2560141979712741859
 GameObject:

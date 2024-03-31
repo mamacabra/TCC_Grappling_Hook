@@ -11,6 +11,10 @@ public class PrototypeCameraMoviment : MonoBehaviour
     [SerializeField] private float rotationX = 80.0f; 
     [SerializeField] private float smoothness = 5.0f;
 
+    private void Start() {
+        PlayersManager.Instance.cameraMovement = this;
+    }
+
     public void RecivePlayers(Transform p)
     {
         players.Add(p);

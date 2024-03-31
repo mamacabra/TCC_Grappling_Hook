@@ -16,6 +16,10 @@ public class InitialScreen : Screens
             b.button.onClick.AddListener(delegate { GoToScreen(b.goToScreen); });
         quit_Button.onClick.AddListener(QuitGame);
     }
+    public override void Initialize()
+    {
+        PlayersManager.Instance.ClearPlayersConfig();
+    }
 
     public override void GoToScreen(ScreensName screensName)
     {
