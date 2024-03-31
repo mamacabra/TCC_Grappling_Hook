@@ -1,18 +1,35 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseInGameScreen : Screens
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private ButtonToScreen backToMenu;
+    [SerializeField] private Button continueButton;
+
+    private void Awake()
     {
-        
+        continueButton.onClick.AddListener(Close);
+        backToMenu.button.onClick.AddListener(delegate { GoToScreen(backToMenu.goToScreen); });
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Initialize()
+    { 
+       base.Initialize();
+       Time.timeScale = 0;
+    }
+    
+    public override void GoToScreen(ScreensName screensName)
     {
-        
+        base.GoToScreen(screensName);
+    }
+    
+    public override void Close()
+    {
+        //base.Close();
+        gameObject.SetActive(false);
+        Time.timeScale = 1;
     }
 }

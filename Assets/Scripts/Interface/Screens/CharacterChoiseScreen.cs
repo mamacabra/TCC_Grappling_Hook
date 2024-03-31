@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class CharacterChoiseScreen : Screens
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private ButtonToScreen backToMenu, playGame;
+    
+    private void Awake()
     {
-        
+        backToMenu.button.onClick.AddListener(delegate { GoToScreen(backToMenu.goToScreen); });
+        playGame.button.onClick.AddListener(delegate { GoToScreen(playGame.goToScreen); });
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void GoToScreen(ScreensName screensName)
     {
-        
+        base.GoToScreen(screensName);
     }
+
 }

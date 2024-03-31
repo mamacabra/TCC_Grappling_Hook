@@ -37,5 +37,6 @@ namespace Character
                 CharacterEntity.CharacterState.SetDispatchHookState();
             }
         }
+        
     }
 }

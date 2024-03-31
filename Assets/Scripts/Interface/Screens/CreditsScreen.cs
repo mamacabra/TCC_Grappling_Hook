@@ -1,18 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CreditsScreen : Screens
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private ButtonToScreen backButton;
+
+    private void Awake()
     {
-        
+        backButton.button.onClick.AddListener(delegate { GoToScreen(backButton.goToScreen); });
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void GoToScreen(ScreensName screensName)
     {
-        
+        base.GoToScreen(screensName);
     }
 }

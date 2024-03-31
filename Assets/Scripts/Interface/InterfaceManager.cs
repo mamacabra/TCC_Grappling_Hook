@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using Input = UnityEngine.Windows.Input;
 
 public enum ScreensName
 {
@@ -28,10 +30,32 @@ public class InterfaceManager : MonoBehaviour
      private int screensIndex = 0;
 
      public bool gameWithScreens;
+     [HideInInspector] public bool inGame = false;
+     [HideInInspector] public bool pause = false;
 
      private void Start()
      {
           if(gameWithScreens) ShowScreen();
+     }
+
+     private void Update()
+     {
+          if (Keyboard.current.escapeKey.wasPressedThisFrame)
+          {
+               if (inGame)
+               {
+                    if (!pause)
+                    {
+                         ShowSpecificScreen(ScreensName.Pause_InGame_Screen);
+                         pause = true;
+                    }
+                    else
+                    {
+                         HideSpecificScreen(ScreensName.Pause_InGame_Screen);
+                         pause = false;
+                    }
+               }
+          }
      }
 
      public void ShowScreen()
@@ -54,9 +78,16 @@ public class InterfaceManager : MonoBehaviour
           
           screensIndex = (int)screenName;
      }
+     
+     public void HideSpecificScreen(ScreensName screenName)
+     {
+          screensObj[(int)screenName].SetActive(false);
+          //Time.timeScale = 1;
+     }
 
      public void QuitGame()
      {
           Application.Quit();
      }
+     
 }

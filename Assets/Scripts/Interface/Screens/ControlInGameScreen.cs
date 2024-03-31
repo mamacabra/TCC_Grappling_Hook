@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ControlInGameScreen : Screens
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Button startGame;
+
+    private void Awake()
     {
-        
+        startGame.onClick.AddListener(StartGame);
     }
 
-    // Update is called once per frame
-    void Update()
+    void StartGame()
     {
-        
+        gameObject.SetActive(false);
+        Time.timeScale = 1;
+
+        InterfaceManager.Instance.inGame = true;
     }
 }

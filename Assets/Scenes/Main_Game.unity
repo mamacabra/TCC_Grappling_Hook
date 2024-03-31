@@ -4204,7 +4204,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 405902764}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1476205565}
+        m_TargetAssemblyTypeName: OptionsScreen, Assembly-CSharp
+        m_MethodName: ChangeMusicVolume
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &405902764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4659,7 +4671,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 499527405}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1476205565}
+        m_TargetAssemblyTypeName: OptionsScreen, Assembly-CSharp
+        m_MethodName: ChangeEcra
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &499527405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4780,7 +4804,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 511536894}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1476205565}
+        m_TargetAssemblyTypeName: OptionsScreen, Assembly-CSharp
+        m_MethodName: ChangeQuality
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: -1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &511536894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5074,7 +5110,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 534442735}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1476205565}
+        m_TargetAssemblyTypeName: OptionsScreen, Assembly-CSharp
+        m_MethodName: ChangeEcra
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: -1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &534442735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5195,7 +5243,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 535134691}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1476205565}
+        m_TargetAssemblyTypeName: OptionsScreen, Assembly-CSharp
+        m_MethodName: ChangeQuality
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &535134691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8186,8 +8246,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 526501480}
   - {fileID: 134752995}
+  - {fileID: 526501480}
   m_Father: {fileID: 1609918955}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -8977,7 +9037,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1040120332}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1476205565}
+        m_TargetAssemblyTypeName: OptionsScreen, Assembly-CSharp
+        m_MethodName: ChangeSFXVolume
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: -1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1040120332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9228,6 +9300,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17cb5e660264ce44eaebb28ee08b70bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backButton:
+    button: {fileID: 1349566328}
+    goToScreen: 0
 --- !u!1 &1057827210
 GameObject:
   m_ObjectHideFlags: 0
@@ -10133,6 +10208,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cf6121520e8b2f48ad21d498ef54f83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backToMenu:
+    button: {fileID: 1604349787}
+    goToScreen: 0
+  continueButton: {fileID: 1381164558}
 --- !u!1 &1147880739
 GameObject:
   m_ObjectHideFlags: 0
@@ -11656,7 +11735,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1291919413}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1476205565}
+        m_TargetAssemblyTypeName: OptionsScreen, Assembly-CSharp
+        m_MethodName: ChangeMusicVolume
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: -1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1291919413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12375,7 +12466,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1343301067}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1476205565}
+        m_TargetAssemblyTypeName: OptionsScreen, Assembly-CSharp
+        m_MethodName: ChangeResolution
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1343301067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13957,8 +14060,9 @@ GameObject:
   - component: {fileID: 1476205564}
   - component: {fileID: 1476205563}
   - component: {fileID: 1476205565}
+  - component: {fileID: 1476205566}
   m_Layer: 5
-  m_Name: Options_Screen
+  m_Name: Options_Screen_/GraphicSettings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14036,20 +14140,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a666a460bc32c4b4685dcb31c826d86d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resolutionValue_Text: {fileID: 0}
-  leftandRigth_Resolution_Buttons: []
-  ecraValue_Text: {fileID: 0}
-  leftandRigth_Ecra_Buttons: []
-  qualityValue_Text: {fileID: 0}
-  leftandRigth_Quality_Buttons: []
-  sFXValue_Text: {fileID: 0}
-  leftandRigth_SFX_Buttons: []
-  soundValue_Text: {fileID: 0}
-  leftandRigth_Sound_Buttons: []
+  resolutionValueText: {fileID: 711134116}
+  ecraValueText: {fileID: 269771589}
+  qualityValueText: {fileID: 1464080928}
+  sFXValueText: {fileID: 1129270303}
+  musicValueText: {fileID: 641597171}
   backButton:
-    button: {fileID: 0}
+    button: {fileID: 2077636538}
     goToScreen: 0
-  restoreButton: {fileID: 0}
+  restoreButton: {fileID: 337583434}
+  graphicSettings: {fileID: 1476205566}
+--- !u!114 &1476205566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476205561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65570ba2dd8474148bc9111f966ba40f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  optionsScreen: {fileID: 1476205565}
+  resolutions:
+  - {x: 1920, y: 1080}
+  - {x: 1680, y: 1050}
+  - {x: 1600, y: 1024}
+  ecra:
+  - Tela Cheia
+  - Em Janela
+  quality:
+  - Melhor Desempenho
+  - Balanceada
+  - Alta
 --- !u!1 &1479080576
 GameObject:
   m_ObjectHideFlags: 0
@@ -14143,6 +14267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962cc7af53e2e1445b3ad183465865eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startGame: {fileID: 209122322}
 --- !u!1 &1480513511
 GameObject:
   m_ObjectHideFlags: 0
@@ -15062,7 +15187,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1575758564}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1476205565}
+        m_TargetAssemblyTypeName: OptionsScreen, Assembly-CSharp
+        m_MethodName: ChangeSFXVolume
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1575758564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16814,7 +16951,9 @@ MonoBehaviour:
   - {fileID: 2112824725}
   - {fileID: 1479080576}
   - {fileID: 1144942419}
-  gameWithScreens: 1
+  gameWithScreens: 0
+  inGame: 0
+  pause: 0
 --- !u!1 &1748603167
 GameObject:
   m_ObjectHideFlags: 0
@@ -19227,7 +19366,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2066764013}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1476205565}
+        m_TargetAssemblyTypeName: OptionsScreen, Assembly-CSharp
+        m_MethodName: ChangeResolution
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: -1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2066764013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19901,6 +20052,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eca02aa70bedd4d4cb12e03319bd6880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backToMenu:
+    button: {fileID: 1057182568}
+    goToScreen: 0
+  playGame:
+    button: {fileID: 1198287570}
+    goToScreen: 4
 --- !u!1 &2120207216
 GameObject:
   m_ObjectHideFlags: 0
