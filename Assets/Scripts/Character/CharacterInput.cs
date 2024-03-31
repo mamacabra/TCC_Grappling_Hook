@@ -24,7 +24,15 @@ namespace Character
         public void OnShoot(InputAction.CallbackContext context)
         {
             if (CharacterEntity.IsDebug) return;
-            if (CharacterEntity.CharacterState.State is WalkState)
+            //if (CharacterEntity.CharacterState.State is WalkState)
+            //{
+            //    CharacterEntity.CharacterState.SetDispatchHookState();
+            //}
+
+            if(context.performed)
+            {
+                CharacterEntity.CharacterState.SetPrepareHookState();
+            }else if (context.canceled)
             {
                 CharacterEntity.CharacterState.SetDispatchHookState();
             }

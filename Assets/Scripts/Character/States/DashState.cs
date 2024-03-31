@@ -6,7 +6,7 @@ namespace Character.States
     public class DashState : ACharacterState
     {
         private float _countDown;
-        private const float DashDistance = 9f;
+        private const float DashDistance = 2f;
         private const float DashDuration = 0.1f;
 
         public DashState(CharacterEntity characterEntity) : base(characterEntity) {}

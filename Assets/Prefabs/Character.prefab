@@ -232,6 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hookRigidbody: {fileID: 3660774765619785525}
+  hookCollider: {fileID: 0}
   grapplingHook: {fileID: 5564170575563369833}
 --- !u!114 &6587030914899588108
 MonoBehaviour:
@@ -349,8 +350,16 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 9591f640-83fd-4860-a8b3-4cc884feec5e
-    m_ActionName: Player/Join
+    m_ActionId: 9aedd7d0-c354-4217-8bb0-f7dfb7b1e28a
+    m_ActionName: Player/Confim[/Keyboard/enter,/Keyboard/space,/Keyboard/numpadEnter,/Keyboard/j]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 94d87255-8e17-49a8-b4de-d5dd2867734f
+    m_ActionName: Player/Cancel[/Keyboard/backspace,/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 96e72ec5-2a4d-4753-8a60-9a8a4cde89db
+    m_ActionName: UI/Join[/Keyboard/space,/Keyboard/j]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -378,11 +387,11 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!136 &473405711396351122
 CapsuleCollider:
   m_ObjectHideFlags: 0
