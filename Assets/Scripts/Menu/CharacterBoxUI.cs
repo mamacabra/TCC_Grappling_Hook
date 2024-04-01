@@ -13,17 +13,23 @@ public class CharacterBoxUI : MonoBehaviour
     public PlayersManager.PlayerConfigurationData playerConfig;
 
     public void OnMove(InputAction.CallbackContext context) {
-        int dir = 0;
+        int dir_x = 0;
+        int dir_y = 0;
         if (context.control.device.name == "Gamepad") {
             if (context.action.WasPressedThisFrame()){
-                dir = Mathf.RoundToInt(context.ReadValue<Vector2>().x);
+                dir_x = Mathf.RoundToInt(context.ReadValue<Vector2>().x);
+                dir_y = Mathf.RoundToInt(context.ReadValue<Vector2>().y);
             }
         } else {
             if (context.action.WasPerformedThisFrame()) {
-                dir = Mathf.RoundToInt(context.ReadValue<Vector2>().x);
+                dir_x = Mathf.RoundToInt(context.ReadValue<Vector2>().x);
+                dir_y = Mathf.RoundToInt(context.ReadValue<Vector2>().y);
             }
         }
-        ChangeColor(dir);
+        if(dir_x != 0)
+            ChangeColor(dir_x);
+        else
+            ChangeModelImage(dir_y);
     }
 
     public void OnConfirm(InputAction.CallbackContext context) {
@@ -53,20 +59,10 @@ public class CharacterBoxUI : MonoBehaviour
         if (value < 0) value =  (int)PlayersManager.CharacterColor.Count - 1;
         if (value > (int)PlayersManager.CharacterColor.Count - 1) value = 0;
         playerConfig.characterColor = (PlayersManager.CharacterColor)value;
-        characterImage.color = GetColor(playerConfig.characterColor);
+        characterImage.color = PlayersManager.GetColor(playerConfig.characterColor);
     }
 
-    public Color GetColor(PlayersManager.CharacterColor characterColor) {
-        Color color = Color.white;
-        switch (characterColor) {
-            case PlayersManager.CharacterColor.White: break;
-            case PlayersManager.CharacterColor.Red: color = Color.red; break;
-            case PlayersManager.CharacterColor.Green: color = Color.green; break;
-            case PlayersManager.CharacterColor.Blue: color = Color.blue; break;
-            case PlayersManager.CharacterColor.Yellow: color = Color.yellow; break;
-            case PlayersManager.CharacterColor.Pink: color = Color.magenta; break;
-            default: break;
-        }
-        return color;
+    public void ChangeModelImage(int dir) {
+        
     }
 }

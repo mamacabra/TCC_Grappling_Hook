@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Character;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -83,7 +84,11 @@ public class PlayersManager : MonoBehaviour
                 SceneManager.LoadSceneAsync("Level.Japan.01", LoadSceneMode.Additive).completed += delegate {
                     foreach (var item in playersConfigs) {
                         // Set player material
-                        playerInputManager.JoinPlayer(item.id, controlScheme: item.controlScheme, pairWithDevices: GetDevicesFromString(item.inputDevices));
+                        PlayerInput playerInput = playerInputManager.JoinPlayer(item.id, controlScheme: item.controlScheme, pairWithDevices: GetDevicesFromString(item.inputDevices));
+                        if (playerInput.TryGetComponent(out CharacterMesh characterMesh)) {
+                            characterMesh.SetMesh(CharaterModel.Sushi);
+                            characterMesh.SetColor(item.characterColor);
+                        }
                     }
                     playerInputManager.DisableJoining();
                 };
@@ -91,7 +96,11 @@ public class PlayersManager : MonoBehaviour
             else {
                 foreach (var item in playersConfigs) {
                     // Set player material
-                    playerInputManager.JoinPlayer(item.id, controlScheme: item.controlScheme, pairWithDevices: GetDevicesFromString(item.inputDevices));
+                    PlayerInput playerInput = playerInputManager.JoinPlayer(item.id, controlScheme: item.controlScheme, pairWithDevices: GetDevicesFromString(item.inputDevices));
+                    if (playerInput.TryGetComponent(out CharacterMesh characterMesh)) {
+                        characterMesh.SetMesh(CharaterModel.Sushi);
+                        characterMesh.SetColor(item.characterColor);
+                    }
                 }
                 playerInputManager.DisableJoining();
             }
@@ -200,7 +209,7 @@ public class PlayersManager : MonoBehaviour
             Debug.LogWarning("USING DEFAULT PLAYER INPUTS!!!, probaly not started the game from menu");
             var devices = new int[] {Keyboard.current.deviceId, Mouse.current.deviceId };
             var p1Config = new PlayerConfigurationData {id = 0, characterColor = CharacterColor.White, controlScheme = "Keyboard&Mouse", inputDevices = devices};
-            var p2Config = new PlayerConfigurationData {id = 1, characterColor = CharacterColor.White, controlScheme = "KeyboardP2", inputDevices = new int[] {devices[0]} };
+            var p2Config = new PlayerConfigurationData {id = 1, characterColor = CharacterColor.Blue, controlScheme = "KeyboardP2", inputDevices = new int[] {devices[0]} };
             playersConfigs = new List<PlayerConfigurationData> {p1Config, p2Config};
         }
         PlayersInputData playersInputData = JsonUtility.FromJson<PlayersInputData>(json);
@@ -244,6 +253,20 @@ public class PlayersManager : MonoBehaviour
                 Destroy(playersGameObjects[i]);
             }
         }
+    }
+
+    public static Color GetColor(PlayersManager.CharacterColor characterColor) {
+        Color color = Color.white;
+        switch (characterColor) {
+            case PlayersManager.CharacterColor.White: break;
+            case PlayersManager.CharacterColor.Red: color = Color.red; break;
+            case PlayersManager.CharacterColor.Green: color = Color.green; break;
+            case PlayersManager.CharacterColor.Blue: color = Color.blue; break;
+            case PlayersManager.CharacterColor.Yellow: color = Color.yellow; break;
+            case PlayersManager.CharacterColor.Pink: color = Color.magenta; break;
+            default: break;
+        }
+        return color;
     }
 }
 [Serializable]

@@ -25,6 +25,7 @@ namespace Character
             var characterState = gameObject.GetComponent<CharacterState>();
             var characterUI = gameObject.GetComponent<CharacterUI>();
             var grapplingHookWeapon = gameObject.GetComponent<GrapplingHookWeapon>();
+            var characterMesh = gameObject.GetComponent<CharacterMesh>();
 
             var entity = new CharacterEntity
             {
@@ -35,6 +36,7 @@ namespace Character
                 CharacterState = characterState,
                 CharacterUI = characterUI,
                 GrapplingHookWeapon = grapplingHookWeapon,
+                CharacterMesh = characterMesh
             };
 
             character.Setup(entity);
@@ -42,6 +44,7 @@ namespace Character
             characterState.Setup(entity);
             characterUI.Setup(entity);
             grapplingHookWeapon.Setup(entity);
+            characterMesh.Setup(entity);
 
             gameObject.tag = Tags.Character;
 

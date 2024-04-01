@@ -12,5 +12,6 @@ namespace Character
         public CharacterUI CharacterUI;
         public GrapplingHookWeapon GrapplingHookWeapon;
         public Rigidbody CharacterRigidbody;
+        public CharacterMesh CharacterMesh;
     }
 }
