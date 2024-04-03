@@ -63,6 +63,12 @@ public class CharacterBoxUI : MonoBehaviour
     }
 
     public void ChangeModelImage(int dir) {
-        
+        if (hasConfirmed) return;
+        int value = ((int)playerConfig.characterModel + dir);
+        if (value < 0) value =  (int)ECharacterType.Count - 1;
+        if (value > (int)ECharacterType.Count - 1) value = 0;
+        playerConfig.characterModel = (ECharacterType)value;
+        Sprite sprite = Resources.Load<ResourcesCharacters>("ResourcesCharacters").GetCharacterData((ECharacterType)value).characterSprite;
+        characterImage.sprite = sprite;
     }
 }

@@ -21,9 +21,9 @@ namespace Character
             meshRenderer.material.color = PlayersManager.GetColor(characterColor);
         }
 
-        public void SetMesh(CharaterModel charaterModel) {
+        public void SetMesh(ECharacterType charaterType) {
             if(meshRenderer) meshRenderer.gameObject.SetActive(false);
-            GameObject modelPrefab = Resources.Load<ResourcesPrefabs>("CharacterModels").prefabs[(int)charaterModel];
+            GameObject modelPrefab = Resources.Load<ResourcesCharacters>("ResourcesCharacters").GetCharacterData(charaterType).characterPrefab;
             MeshRenderer _meshRenderer = modelPrefab.GetComponent<MeshRenderer>();
             meshRenderer = Instantiate(_meshRenderer, meshParent);
         }

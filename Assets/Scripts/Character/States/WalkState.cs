@@ -6,7 +6,7 @@ namespace Character.States
 {
     public class WalkState : ACharacterState
     {
-        private const float MovementSpeed = 12.0f;
+        private const float MovementSpeed = 30.0f;
         private const float RotationSpeed = 500;
 
         public WalkState(CharacterEntity characterEntity) : base(characterEntity) {}

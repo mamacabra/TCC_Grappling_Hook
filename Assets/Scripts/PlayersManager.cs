@@ -24,6 +24,7 @@ public class PlayersManager : MonoBehaviour
         public string controlScheme;
         public int[] inputDevices;
         public CharacterColor characterColor;
+        public ECharacterType characterModel;
     }
 
     // Singleton
@@ -86,7 +87,7 @@ public class PlayersManager : MonoBehaviour
                         // Set player material
                         PlayerInput playerInput = playerInputManager.JoinPlayer(item.id, controlScheme: item.controlScheme, pairWithDevices: GetDevicesFromString(item.inputDevices));
                         if (playerInput.TryGetComponent(out CharacterMesh characterMesh)) {
-                            characterMesh.SetMesh(CharaterModel.Sushi);
+                            characterMesh.SetMesh(item.characterModel);
                             characterMesh.SetColor(item.characterColor);
                         }
                     }
@@ -98,7 +99,7 @@ public class PlayersManager : MonoBehaviour
                     // Set player material
                     PlayerInput playerInput = playerInputManager.JoinPlayer(item.id, controlScheme: item.controlScheme, pairWithDevices: GetDevicesFromString(item.inputDevices));
                     if (playerInput.TryGetComponent(out CharacterMesh characterMesh)) {
-                        characterMesh.SetMesh(CharaterModel.Sushi);
+                        characterMesh.SetMesh(ECharacterType.Sushi);
                         characterMesh.SetColor(item.characterColor);
                     }
                 }
