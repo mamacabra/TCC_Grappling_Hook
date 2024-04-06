@@ -9,23 +9,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: ea51a99bfca29d463bbc3183808a881a, type: 3}
   m_Name: ResourcesCharacters
-  m_EditorClassIdentifier: Assembly-CSharp::ResourcesCharacters
+  m_EditorClassIdentifier: 
   characters:
-  - characterType: 0
-    characterPrefab: {fileID: 919132149155446097, guid: ebbd2eed2626aadc9870b478fcd365a8,
+  - characterName: Sushi
+    characterType: 0
+    characterPrefab: {fileID: 10592463959197784, guid: 61d4227b46558dcca96354493fbb4b39,
       type: 3}
     characterSprite: {fileID: 21300000, guid: 759567f9a873de9b9b61cc3f91ed6acf, type: 3}
-  - characterType: 1
+  - characterName: Capsule
+    characterType: 1
     characterPrefab: {fileID: 7895959900949702340, guid: 04a02a64bc09dee409509f2c2ada21e5,
       type: 3}
     characterSprite: {fileID: 21300000, guid: 9a532a283e2d639409dd80c33e112c81, type: 3}
-  - characterType: 2
+  - characterName: Cube
+    characterType: 2
     characterPrefab: {fileID: 1885291426440814412, guid: b017bc78f4a2cc245a543f61e58826a9,
       type: 3}
     characterSprite: {fileID: 21300000, guid: 6ce00cdabeb146f48bea087d2d1b78d7, type: 3}
-  - characterType: 3
+  - characterName: Sphere
+    characterType: 3
     characterPrefab: {fileID: 530712910973134754, guid: 6226050843bec594c87680f86c778ce9,
       type: 3}
-    characterSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    characterSprite: {fileID: 21300000, guid: 5d9faf37d1ebf3d1aa2a2d1329f18359, type: 3}
