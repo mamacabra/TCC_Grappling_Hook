@@ -24,7 +24,7 @@ namespace Character
         public void SetMesh(ECharacterType charaterType) {
             if(meshRenderer) meshRenderer.gameObject.SetActive(false);
             GameObject modelPrefab = Resources.Load<ResourcesCharacters>("ResourcesCharacters").GetCharacterData(charaterType).characterPrefab;
-            MeshRenderer _meshRenderer = modelPrefab.GetComponent<MeshRenderer>();
+            MeshRenderer _meshRenderer = modelPrefab.GetComponentInChildren<MeshRenderer>();
             meshRenderer = Instantiate(_meshRenderer, meshParent);
         }
     }
