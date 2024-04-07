@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using SceneSelect;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +24,8 @@ public class PauseInGameScreen : Screens
     
     public override void GoToScreen(ScreensName screensName)
     {
+        ScenesManager.Instance.UnloadCurrentScene();
+        InterfaceManager.Instance.inGame = false;
         base.GoToScreen(screensName);
     }
     

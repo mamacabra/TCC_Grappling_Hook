@@ -19,6 +19,7 @@ public class InitialScreen : Screens
     public override void Initialize()
     {
         PlayersManager.Instance.ClearPlayersConfig();
+        Debug.Log("Initilize");
     }
 
     public override void GoToScreen(ScreensName screensName)

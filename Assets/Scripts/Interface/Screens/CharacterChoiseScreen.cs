@@ -10,7 +10,7 @@ public class CharacterChoiseScreen : Screens
     private void Awake()
     {
         backToMenu.button.onClick.AddListener(delegate { GoToScreen(backToMenu.goToScreen); });
-        playGame.button.onClick.AddListener(delegate { TryInitGame(); });
+        playGame.button.onClick.AddListener(delegate { GoToScreen(playGame.goToScreen); });
     }
 
     public override void Initialize()
@@ -31,12 +31,9 @@ public class CharacterChoiseScreen : Screens
 
     public override void GoToScreen(ScreensName screensName)
     {
-        base.GoToScreen(screensName);
-    }
-
-    private void TryInitGame(){
-        if (PlayersManager.Instance.CanInitGame) {
-            GoToScreen(playGame.goToScreen);
+        if (PlayersManager.Instance.CanInitGame)
+        {
+            base.GoToScreen(screensName);
         }
     }
 }

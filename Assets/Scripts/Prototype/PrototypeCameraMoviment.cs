@@ -19,6 +19,10 @@ public class PrototypeCameraMoviment : MonoBehaviour
     {
         players.Add(p);
     }
+    public void RemoveAllPlayers()
+    {
+        players.Clear();
+    }
 
     void Update()
     {
