@@ -8,5 +8,10 @@ namespace Scene
         {
             gameObject.tag = Const.Tags.Object;
         }
+
+        private void Start()
+        {
+            Destroy(this);
+        }
     }
 }
