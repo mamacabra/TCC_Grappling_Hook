@@ -14,7 +14,11 @@ namespace Character.States
         public override void Update()
         {
             var direction = CharacterEntity.CharacterInput.transform.forward;
-            CharacterEntity.CharacterRigidbody.MovePosition(CharacterEntity.CharacterRigidbody.transform.position+direction * DashDistance / DashDuration * Time.deltaTime);
+
+            if (CharacterEntity.CharacterRaycast.HasHit == false)
+            {
+                CharacterEntity.CharacterRigidbody.MovePosition(CharacterEntity.CharacterRigidbody.transform.position + direction * DashDistance / DashDuration * Time.deltaTime);
+            }
 
             if (_countDown > DashDuration)
             {

@@ -6,7 +6,7 @@ namespace Character.States
     public class HookedToWallState : ACharacterState
     {
         private const float MinDistanceToDrop = 3f;
-        private const float MovementSpeed = 20f;
+        private const float MovementSpeed = 50f;
         private readonly Vector3 _wallPoint;
 
         public HookedToWallState(CharacterEntity characterEntity, Vector3 wallPoint) : base(characterEntity)

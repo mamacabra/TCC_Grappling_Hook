@@ -18,7 +18,7 @@ namespace Character
         public void OnDash(InputAction.CallbackContext context)
         {
             if (CharacterEntity.IsDebug) return;
-            CharacterEntity.CharacterState.SetDashHookState();
+            CharacterEntity.CharacterState.SetDashState();
         }
 
         public void OnShoot(InputAction.CallbackContext context)

@@ -8,10 +8,11 @@ namespace Character
         public bool IsDebug;
         public Character Character;
         public CharacterInput CharacterInput;
+        public CharacterMesh CharacterMesh;
+        public CharacterRaycast CharacterRaycast;
         public CharacterState CharacterState;
         public CharacterUI CharacterUI;
         public GrapplingHookWeapon GrapplingHookWeapon;
         public Rigidbody CharacterRigidbody;
-        public CharacterMesh CharacterMesh;
     }
 }
