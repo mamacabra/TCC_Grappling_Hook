@@ -6,7 +6,7 @@ namespace Character.GrapplingHook
     public class GrapplingHookWeapon : ACharacterMonoBehaviour
     {
         private int _force = 1;
-        public const int MaxGrapplingHookForce = 4;
+        public const int MaxGrapplingHookForce = 3;
         public const int DefaultGrapplingHookForce = 1;
         public int Force
         {
@@ -114,20 +114,16 @@ namespace Character.GrapplingHook
             switch (Force)
             {
                 case 1:
-                    _hookSpeed = GrapplingStats.SpeedDefault;
-                    _hookMaxDistance = GrapplingStats.DistanceDefault;
+                    _hookSpeed = GrapplingStats.ForceLv1.speed;
+                    _hookMaxDistance = GrapplingStats.ForceLv1.distance;
                     break;
                 case 2:
-                    _hookSpeed = GrapplingStats.SpeedMedium;
-                    _hookMaxDistance = GrapplingStats.DistanceDefault;
-                    break;
-                case 3:
-                    _hookSpeed = GrapplingStats.SpeedMedium;
-                    _hookMaxDistance = GrapplingStats.DistanceFar;
+                    _hookSpeed = GrapplingStats.ForceLv2.speed;
+                    _hookMaxDistance = GrapplingStats.ForceLv2.distance;
                     break;
                 default:
-                    _hookSpeed = GrapplingStats.SpeedFast;
-                    _hookMaxDistance = GrapplingStats.DistanceFar;
+                    _hookSpeed = GrapplingStats.ForceLv3.speed;
+                    _hookMaxDistance = GrapplingStats.ForceLv3.distance;
                     break;
             }
         }
