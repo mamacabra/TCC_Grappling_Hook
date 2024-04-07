@@ -9,7 +9,7 @@ namespace Character
     [RequireComponent(typeof(CharacterInput))]
     [RequireComponent(typeof(CharacterState))]
     [RequireComponent(typeof(CharacterUI))]
-    [RequireComponent(typeof(CapsuleCollider))]
+    [RequireComponent(typeof(BoxCollider))]
     [RequireComponent(typeof(GrapplingHookWeapon))]
     [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(Rigidbody))]
