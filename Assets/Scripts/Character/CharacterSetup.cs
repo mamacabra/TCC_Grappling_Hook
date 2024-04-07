@@ -5,11 +5,13 @@ using Const;
 
 namespace Character
 {
+    [RequireComponent(typeof(BoxCollider))]
     [RequireComponent(typeof(Character))]
     [RequireComponent(typeof(CharacterInput))]
+    [RequireComponent(typeof(CharacterMesh))]
+    [RequireComponent(typeof(CharacterRaycast))]
     [RequireComponent(typeof(CharacterState))]
     [RequireComponent(typeof(CharacterUI))]
-    [RequireComponent(typeof(BoxCollider))]
     [RequireComponent(typeof(GrapplingHookWeapon))]
     [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(Rigidbody))]
@@ -21,22 +23,24 @@ namespace Character
         {
             var character = gameObject.GetComponent<Character>();
             var characterInput = gameObject.GetComponent<CharacterInput>();
+            var characterMesh = gameObject.GetComponent<CharacterMesh>();
+            var characterRaycast = gameObject.GetComponent<CharacterRaycast>();
             var characterRigidbody = gameObject.GetComponent<Rigidbody>();
             var characterState = gameObject.GetComponent<CharacterState>();
             var characterUI = gameObject.GetComponent<CharacterUI>();
             var grapplingHookWeapon = gameObject.GetComponent<GrapplingHookWeapon>();
-            var characterMesh = gameObject.GetComponent<CharacterMesh>();
 
             var entity = new CharacterEntity
             {
                 IsDebug = isDebug,
                 Character = character,
                 CharacterInput = characterInput,
+                CharacterMesh = characterMesh,
+                CharacterRaycast = characterRaycast,
                 CharacterRigidbody = characterRigidbody,
                 CharacterState = characterState,
                 CharacterUI = characterUI,
                 GrapplingHookWeapon = grapplingHookWeapon,
-                CharacterMesh = characterMesh
             };
 
             character.Setup(entity);
