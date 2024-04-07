@@ -50,6 +50,8 @@ public class PlayersManager : MonoBehaviour
     private List<PlayerConfigurationData> playersConfigs = new List<PlayerConfigurationData>();
     private string path;
     private GameObject[] playersGameObjects;
+    private bool canInitGame = false;
+    public bool CanInitGame => canInitGame;
     #endregion
 
     // Input
@@ -175,9 +177,12 @@ public class PlayersManager : MonoBehaviour
             amountOfPlayersReady++;
         } else {
             amountOfPlayersReady--;
-        } if (amountOfPlayersReady == playerInputManager.playerCount) {
-            // Do stuff
+        } 
+        if (amountOfPlayersReady == playerInputManager.playerCount) {
             SavePlayersConfigs();
+            canInitGame = true;
+        } else {
+            canInitGame = false;
         }
     }
 
