@@ -1,3 +1,4 @@
+using Character.States;
 using Character.Utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -24,9 +25,10 @@ namespace Character
         {
             if (CharacterEntity.IsDebug) return;
 
-            if(context.performed)
+            var state = CharacterEntity.CharacterState.State;
+            if(context.performed && state is WalkState)
                 CharacterEntity.CharacterState.SetPrepareHookState();
-            else if (context.canceled)
+            else if (context.canceled && state is WalkState or PrepareHookState)
                 CharacterEntity.CharacterState.SetDispatchHookState();
         }
     }

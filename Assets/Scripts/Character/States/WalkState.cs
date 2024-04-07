@@ -21,8 +21,7 @@ namespace Character.States
             var movementInput = CharacterEntity.CharacterInput.movementInput;
             var direction = new Vector3(movementInput.x, 0, movementInput.y);
 
-            direction += CharacterEntity.CharacterRigidbody.transform.position;
-            CharacterEntity.CharacterRigidbody.MovePosition(direction * (MovementSpeed * Time.deltaTime));
+            CharacterEntity.CharacterRigidbody.MovePosition(CharacterEntity.CharacterRigidbody.transform.position + direction * (Time.deltaTime * MovementSpeed));
 
             if (direction != Vector3.zero)
             {
