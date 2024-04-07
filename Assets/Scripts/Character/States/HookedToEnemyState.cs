@@ -12,6 +12,7 @@ namespace Character.States
         public HookedToEnemyState(CharacterEntity characterEntity, Vector3 enemyPosition) : base(characterEntity)
         {
             _enemyPosition = enemyPosition;
+            Transform.LookAt(_enemyPosition);
         }
 
         public override void FixedUpdate()
