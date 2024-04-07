@@ -6,8 +6,8 @@ namespace Character.States
 {
     public class WalkState : ACharacterState
     {
-        private const float MovementSpeed = 30.0f;
-        private const float RotationSpeed = 500;
+        private const float MovementSpeed = 30f;
+        private const float RotationSpeed = 1000f;
 
         public WalkState(CharacterEntity characterEntity) : base(characterEntity) {}
 
@@ -20,7 +20,7 @@ namespace Character.States
         {
             var movementInput = CharacterEntity.CharacterInput.movementInput;
             var direction = new Vector3(movementInput.x, 0, movementInput.y);
-            
+
 
             CharacterEntity.CharacterRigidbody.MovePosition(CharacterEntity.CharacterRigidbody.transform.position+direction*Time.deltaTime*MovementSpeed);
 
