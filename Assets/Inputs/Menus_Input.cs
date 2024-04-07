@@ -59,8 +59,8 @@ public partial class @Menus_Input: IInputActionCollection2, IDisposable
                     ""type"": ""Value"",
                     ""id"": ""fc55fb34-5311-4671-b7ed-bd7ffadb3de2"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
+                    ""processors"": ""NormalizeVector2"",
+                    ""interactions"": ""Press"",
                     ""initialStateCheck"": true
                 }
             ],
@@ -324,7 +324,7 @@ public partial class @Menus_Input: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/dpad"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

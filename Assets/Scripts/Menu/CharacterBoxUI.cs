@@ -15,16 +15,10 @@ public class CharacterBoxUI : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context) {
         int dir_x = 0;
         int dir_y = 0;
-        if (context.control.device.name == "Gamepad") {
-            if (context.action.WasPressedThisFrame()){
-                dir_x = Mathf.RoundToInt(context.ReadValue<Vector2>().x);
-                dir_y = Mathf.RoundToInt(context.ReadValue<Vector2>().y);
-            }
-        } else {
-            if (context.action.WasPerformedThisFrame()) {
-                dir_x = Mathf.RoundToInt(context.ReadValue<Vector2>().x);
-                dir_y = Mathf.RoundToInt(context.ReadValue<Vector2>().y);
-            }
+        if (context.action.WasPerformedThisFrame()) {
+            var value = context.ReadValue<Vector2>();
+            dir_x = Mathf.RoundToInt(value.x);
+            dir_y = Mathf.RoundToInt(value.y);
         }
         if(dir_x != 0)
             ChangeColor(dir_x);
