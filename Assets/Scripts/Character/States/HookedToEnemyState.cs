@@ -24,7 +24,10 @@ namespace Character.States
 
             var distance = Vector3.Distance(characterPosition, _enemyPosition);
             if (distance <= MinDistanceToDrop)
+            {
                 CharacterEntity.CharacterState.SetWalkState();
+                // TODO: Chamar função que mata o personagem
+            }
         }
     }
 }
