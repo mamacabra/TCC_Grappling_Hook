@@ -7,7 +7,7 @@ namespace Character.States
     public class PrepareHookState : ACharacterState
     {
         private float _countDown;
-        private const float CountDownStep = 0.4f;
+        private const float CountDownStep = 0.25f;
 
         public PrepareHookState(CharacterEntity characterEntity) : base(characterEntity) {}
 
