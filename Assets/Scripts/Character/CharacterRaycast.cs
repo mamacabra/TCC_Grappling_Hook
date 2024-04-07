@@ -25,6 +25,10 @@ namespace Character
             {
                 HasHit = hit.collider.CompareTag(Const.Tags.Wall) || hit.collider.CompareTag(Const.Tags.Object);
             }
+            else
+            {
+                HasHit = false;
+            }
         }
     }
 }
