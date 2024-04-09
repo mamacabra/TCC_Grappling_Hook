@@ -143,28 +143,40 @@ public class PlayersManager : MonoBehaviour
         }
     }
 
-    public void OnPlayerJoinedEvent(PlayerInput _playerInput) {
+    public void OnPlayerJoinedEvent(PlayerInput _playerInput)
+    {
 
         bool inGame = InterfaceManager.Instance ? InterfaceManager.Instance.inGame : true;
-        if (!inGame) {// Is in character selection screen.
+        if (!inGame)
+        {
+            // Is in character selection screen.
             _playerInput.transform.SetParent(characterChoice.charactersGroup);
+
             freeId[_playerInput.playerIndex] = false;
-            if (_playerInput.TryGetComponent<CharacterBoxUI>(out CharacterBoxUI characterBoxUI)) {
+            if (_playerInput.TryGetComponent<CharacterBoxUI>(out CharacterBoxUI characterBoxUI))
+            {
                 characterBoxUI.playerConfig.id = _playerInput.playerIndex;
                 characterBoxUI.playerConfig.controlScheme = _playerInput.currentControlScheme;
                 characterBoxUI.playerConfig.inputDevices = GetStringFromDevices(_playerInput.devices.ToArray());
+
+                characterChoice.OrganizeGrid(_playerInput, characterBoxUI);
             }
-        } else {
+        }
+        else
+        {
             if (!cameraMovement) cameraMovement = FindAnyObjectByType<PrototypeCameraMoviment>();
             if (cameraMovement) cameraMovement.RecivePlayers(_playerInput.transform);
-            else {
+            else
+            {
                 ResourcesPrefabs resourcesPrefabs = Resources.Load<ResourcesPrefabs>("ResourcesPrefabs");
-                PrototypeCameraMoviment prototypeCameraMoviment = resourcesPrefabs.prefabs[(int)ResourcesPrefabs.PrefabType.Camera].GetComponent<PrototypeCameraMoviment>();
+                PrototypeCameraMoviment prototypeCameraMoviment = resourcesPrefabs
+                    .prefabs[(int) ResourcesPrefabs.PrefabType.Camera].GetComponent<PrototypeCameraMoviment>();
                 cameraMovement = Instantiate(prototypeCameraMoviment);
                 cameraMovement.RecivePlayers(_playerInput.transform);
             }
             // Get Spawns positions
         }
+
         playersGameObjects[_playerInput.playerIndex] = _playerInput.gameObject;
     }
 
@@ -193,6 +205,7 @@ public class PlayersManager : MonoBehaviour
 
     public void RemovePlayerConfig(PlayerConfigurationData playerConfiguration) {
         playersConfigs.Remove(playerConfiguration);
+        //characterChoice.OrganizeGrid(false, playerConfiguration);
     }
     public void ClearPlayersConfig() {
         amountOfPlayersReady = 0;
