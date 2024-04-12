@@ -72,5 +72,11 @@ namespace Character
             var state = new DeathState(CharacterEntity);
             SetState(state);
         }
+
+        public void SetMeleeState()
+        {
+            var state = new MeleeState(CharacterEntity);
+            SetState(state);
+        }
     }
 }

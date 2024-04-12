@@ -31,5 +31,11 @@ namespace Character
             else if (context.canceled && state is WalkState or PrepareHookState)
                 CharacterEntity.CharacterState.SetDispatchHookState();
         }
+
+        public void OnMelee(InputAction.CallbackContext context)
+        {
+            if (CharacterEntity.IsDebug) return;
+            CharacterEntity.CharacterState.SetMeleeState(); 
+        }
     }
 }
