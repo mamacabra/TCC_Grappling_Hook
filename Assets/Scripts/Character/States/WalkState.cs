@@ -10,6 +10,7 @@ namespace Character.States
 
         public WalkState(CharacterEntity characterEntity) : base(characterEntity) {}
 
+
         public override void Enter()
         {
             CharacterEntity.GrapplingHookWeapon.ResetHook();

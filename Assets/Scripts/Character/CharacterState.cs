@@ -66,5 +66,11 @@ namespace Character
             var state = new WalkState(CharacterEntity);
             SetState(state);
         }
+
+        public void SetDeathState()
+        {
+            var state = new DeathState(CharacterEntity);
+            SetState(state);
+        }
     }
 }
