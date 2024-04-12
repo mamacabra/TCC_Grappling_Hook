@@ -10,6 +10,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(PlayerInputManager))]
 public class PlayersManager : MonoBehaviour
 {
+    #region StructureAndEnum
     public enum CharacterColor {
         White = 0,
         Red = 1,
@@ -27,9 +28,11 @@ public class PlayersManager : MonoBehaviour
         public CharacterColor characterColor;
         public ECharacterType characterModel;
     }
+    #endregion
 
-    // Singleton
-    public static PlayersManager Instance {get; private set;}
+    public static PlayersManager Instance {get; private set;}// Singleton
+    private Menus_Input actions;// Input
+    [SerializeField] bool debug;
 
     #region PlayerPrefabs
     [Header("Player Prefab Type")]
@@ -54,10 +57,8 @@ public class PlayersManager : MonoBehaviour
     private bool canInitGame = false;
     public bool CanInitGame => canInitGame;
     #endregion
-
-    // Input
-    private Menus_Input actions;
-
+    
+    #region Initializers
     private void Awake() {
         if (Instance != null) {
             Destroy(Instance.gameObject);
@@ -70,51 +71,29 @@ public class PlayersManager : MonoBehaviour
         playersGameObjects = new GameObject[playerInputManager.maxPlayerCount];
         path = Application.persistentDataPath + "/playersInputs.json";
     }
-    
     public void InitCharacterSelection() {
         playerInputManager.playerPrefab = playerUIPrefab;
         playerInputManager.EnableJoining();
-        actions.Navigation.Enable();
+        EnableInputActions();
     }
-
     public void InitGame(bool loadScene = true) {
         ClearPlayersConfig();
         LoadPlayersConfigs(); // Reset playersConfig in characterSelect screen.
         playerInputManager.playerPrefab = playerPrefab;
-        Disable();
+        DisableInputActions();
         if (playersConfigs.Count > 0) {
             if (loadScene) {
                 ScenesManager.Instance.LoadRandomScene();
-                ScenesManager.onSceneLoadOperation.completed += delegate {
-                    foreach (var item in playersConfigs) {
-                        // Set player material
-                        PlayerInput playerInput = playerInputManager.JoinPlayer(item.id, controlScheme: item.controlScheme, pairWithDevices: GetDevicesFromString(item.inputDevices));
-                        if (playerInput.TryGetComponent(out CharacterMesh characterMesh)) {
-                            characterMesh.SetMesh(item.characterModel);
-                            characterMesh.SetColor(item.characterColor);
-                        }
-                    }
-                    playerInputManager.DisableJoining();
-                };
+                ScenesManager.onSceneLoadOperation.completed += delegate { SetPlayersConfigs(); };
             }
-            else {
-                foreach (var item in playersConfigs) {
-                    // Set player material
-                    PlayerInput playerInput = playerInputManager.JoinPlayer(item.id, controlScheme: item.controlScheme, pairWithDevices: GetDevicesFromString(item.inputDevices));
-                    if (playerInput.TryGetComponent(out CharacterMesh characterMesh)) {
-                        characterMesh.SetMesh(ECharacterType.Sushi);
-                        characterMesh.SetColor(item.characterColor);
-                    }
-                }
-                playerInputManager.DisableJoining();
+            else { // Test scene
+                SetPlayersConfigs();
             }
         }
     }
+    #endregion
 
-    public void Disable() {
-        actions.Navigation.Disable();
-    }
-
+    #region PlayerEvents
     private void OnJoin(InputAction.CallbackContext context) {// Join Input Pressed
         // Check if the action was triggered by a control
         if (context.control != null) {
@@ -128,6 +107,11 @@ public class PlayersManager : MonoBehaviour
             // Get free id
             int id = GetFreeId();
             if (id == -1) return; // not has free id return
+            
+            if (debug) { // For add ilimitted players pressing J
+                playerInputManager.JoinPlayer(id, controlScheme: controlScheme, pairWithDevices: device);
+                return;
+            }
 
             // Check if already has p2 on keyboard
             // Join a new player
@@ -137,19 +121,17 @@ public class PlayersManager : MonoBehaviour
                 playerInputManager.JoinPlayer(id, controlScheme: controlScheme, pairWithDevices: device);
             } 
             else {
-                if (sharingKeyboard &&  controlScheme == "Keyboard&Mouse") playerInputManager.JoinPlayer(id, controlScheme: controlScheme, pairWithDevices: device);
+                if (sharingKeyboard && controlScheme == "Keyboard&Mouse") playerInputManager.JoinPlayer(id, controlScheme: controlScheme, pairWithDevices: device);
                 else playerInputManager.JoinPlayerFromActionIfNotAlreadyJoined(context);
             }
         }
     }
-
-    public void OnPlayerJoinedEvent(PlayerInput _playerInput) {
-
+    public void OnPlayerJoinedEvent(PlayerInput _playerInput) { // Trigged when player joined : set in inspector: PlayerInputManager
         bool inGame = InterfaceManager.Instance ? InterfaceManager.Instance.inGame : true;
         if (!inGame) {// Is in character selection screen.
             _playerInput.transform.SetParent(characterChoice.charactersGroup);
             freeId[_playerInput.playerIndex] = false;
-            if (_playerInput.TryGetComponent<CharacterBoxUI>(out CharacterBoxUI characterBoxUI)) {
+            if (_playerInput.TryGetComponent(out CharacterBoxUI characterBoxUI)) {
                 characterBoxUI.playerConfig.id = _playerInput.playerIndex;
                 characterBoxUI.playerConfig.controlScheme = _playerInput.currentControlScheme;
                 characterBoxUI.playerConfig.inputDevices = GetStringFromDevices(_playerInput.devices.ToArray());
@@ -157,22 +139,33 @@ public class PlayersManager : MonoBehaviour
         } else {
             if (!cameraMovement) cameraMovement = FindAnyObjectByType<PrototypeCameraMoviment>();
             if (cameraMovement) cameraMovement.RecivePlayers(_playerInput.transform);
-            else {
+            else { // Instantiate camera if dont has one
                 ResourcesPrefabs resourcesPrefabs = Resources.Load<ResourcesPrefabs>("ResourcesPrefabs");
                 PrototypeCameraMoviment prototypeCameraMoviment = resourcesPrefabs.prefabs[(int)ResourcesPrefabs.PrefabType.Camera].GetComponent<PrototypeCameraMoviment>();
                 cameraMovement = Instantiate(prototypeCameraMoviment);
                 cameraMovement.RecivePlayers(_playerInput.transform);
             }
-            // Get Spawns positions
         }
         playersGameObjects[_playerInput.playerIndex] = _playerInput.gameObject;
     }
-
-    public void OnPlayerLeftEvent(PlayerInput _playerInput) {
+    public void OnPlayerLeftEvent(PlayerInput _playerInput) { // Trigged when player left : set in inspector : PlayerInputManager
         if (_playerInput.currentControlScheme == "KeyboardP2") sharingKeyboard = false;
         freeId[_playerInput.playerIndex] = true;
     }
+    #endregion
 
+    #region Setters
+    void SetPlayersConfigs(){
+        foreach (var item in playersConfigs) {
+            // Set player material
+            PlayerInput playerInput = playerInputManager.JoinPlayer(item.id, controlScheme: item.controlScheme, pairWithDevices: GetDevicesFromString(item.inputDevices));
+            if (playerInput.TryGetComponent(out CharacterMesh characterMesh)) {
+                characterMesh.SetMesh(ECharacterType.Sushi);
+                characterMesh.SetColor(item.characterColor);
+            }
+        }
+        playerInputManager.DisableJoining();
+    }
     public void SetPlayerStatus(bool isReady) {
         if (isReady) {
             amountOfPlayersReady++;
@@ -186,11 +179,12 @@ public class PlayersManager : MonoBehaviour
             canInitGame = false;
         }
     }
+    #endregion
 
+    #region PlayersConfigs
     public void AddNewPlayerConfig(PlayerConfigurationData playerConfiguration) {
         playersConfigs.Add(playerConfiguration);
     }
-
     public void RemovePlayerConfig(PlayerConfigurationData playerConfiguration) {
         playersConfigs.Remove(playerConfiguration);
     }
@@ -204,14 +198,24 @@ public class PlayersManager : MonoBehaviour
             }
         }
     }
+    #endregion
 
+    #region ActiveInputActions
+    public void EnableInputActions() {
+        actions.Navigation.Enable();
+    }
+    public void DisableInputActions() {
+        actions.Navigation.Disable();
+    }
+    #endregion
+
+    #region SaveAndLoad
     public void SavePlayersConfigs() {
         PlayersInputData playersInputData = new PlayersInputData();
         playersInputData.playersConfigs = this.playersConfigs.ToArray();
         string json = JsonUtility.ToJson(playersInputData);
         File.WriteAllText(path, json);
     }
-
     private void LoadPlayersConfigs() {
         string json = File.ReadAllText(path);
         if (string.IsNullOrEmpty(json)) {
@@ -226,7 +230,9 @@ public class PlayersManager : MonoBehaviour
             this.playersConfigs.Add(playersInputData.playersConfigs[i]);
         }
     }
+    #endregion
 
+    #region Getters
     private InputDevice[] GetDevicesFromString(int[] devices) {
         List<InputDevice> result = new List<InputDevice>();
         InputDevice[] allDevices = InputSystem.devices.ToArray();
@@ -270,7 +276,9 @@ public class PlayersManager : MonoBehaviour
         }
         return color;
     }
+    #endregion
 }
+
 [Serializable]
 public class PlayersInputData {
     public PlayersManager.PlayerConfigurationData[] playersConfigs;

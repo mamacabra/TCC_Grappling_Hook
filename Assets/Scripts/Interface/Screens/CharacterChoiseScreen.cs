@@ -25,7 +25,7 @@ public class CharacterChoiseScreen : Screens
     {
         if (PlayersManager.Instance)
         {
-            PlayersManager.Instance.Disable();
+            PlayersManager.Instance.DisableInputActions();
         }
     }
 
