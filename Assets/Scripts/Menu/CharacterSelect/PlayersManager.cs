@@ -190,7 +190,7 @@ public class PlayersManager : MonoBehaviour
     }
     public void ClearPlayersConfig() {
         amountOfPlayersReady = 0;
-        cameraMovement.RemoveAllPlayers();
+        if (cameraMovement) cameraMovement.RemoveAllPlayers();
         playersConfigs.Clear();
         for (int i = 0; i < playersGameObjects.Length; i++) {
             if (playersGameObjects[i]) {
