@@ -1,12 +1,15 @@
 using Character.States;
+using Character;
 using Character.Utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 
 namespace Character
 {
     public class CharacterInput : ACharacterMonoBehaviour
     {
+        public Melee.MeleeAttack meleeAttack;
         public Vector2 movementInput = Vector2.zero;
 
         public void OnMove(InputAction.CallbackContext context)
@@ -35,7 +38,7 @@ namespace Character
         public void OnMelee(InputAction.CallbackContext context)
         {
             if (CharacterEntity.IsDebug) return;
-            CharacterEntity.CharacterState.SetMeleeState(); 
+            meleeAttack.ActivateHitbox();
         }
     }
 }

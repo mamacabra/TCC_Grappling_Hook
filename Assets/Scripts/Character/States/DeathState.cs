@@ -12,10 +12,7 @@ namespace Character.States
 
         public override void Update()
         {
-            if (CharacterEntity.CharacterRaycast.HasHit == true)
-            {
-                
-            }
+            Debug.Log("Dead");
         }
 
     }

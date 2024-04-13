@@ -6,7 +6,6 @@ namespace Character
     public class CharacterRaycast : ACharacterMonoBehaviour
     {
         public bool HasHit { get; private set; }
-        public bool EnemyHit { get; private set; }
 
         private const float RaycastDistance = 2f;
         private Color RaycastColor => HasHit ? Color.red : Color.green;
@@ -18,6 +17,7 @@ namespace Character
             var direction = t.forward;
             var position = t.position;
             var origin = new Vector3(position.x, 1f, position.z);
+            
 
             Physics.Raycast(origin, direction, out var hit, RaycastDistance);
             Debug.DrawRay(origin, direction * RaycastDistance, RaycastColor);
@@ -31,14 +31,6 @@ namespace Character
                 HasHit = false;
             }
 
-            if(hit.collider)
-            {
-                EnemyHit = hit.collider.CompareTag(Const.Tags.Character);
-            }
-            else
-            {
-                EnemyHit = false;
-            }
         }
     }
 }

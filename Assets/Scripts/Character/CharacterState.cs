@@ -73,10 +73,6 @@ namespace Character
             SetState(state);
         }
 
-        public void SetMeleeState()
-        {
-            var state = new MeleeState(CharacterEntity);
-            SetState(state);
-        }
+       
     }
 }
