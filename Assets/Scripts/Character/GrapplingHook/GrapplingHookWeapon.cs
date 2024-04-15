@@ -25,7 +25,7 @@ namespace Character.GrapplingHook
         private float _hookMaxDistance;
 
         private Vector3 _hookDirection;
-        private readonly Vector3 _hookOriginLocalPosition = new (1.2f, 1, 1.2f);
+        private readonly Vector3 _hookOriginLocalPosition = new (0f, 1, 1.2f);
         [SerializeField] private Rigidbody hookRigidbody;
         [SerializeField] private BoxCollider hookCollider;
         [SerializeField] private GrapplingHook grapplingHook;
