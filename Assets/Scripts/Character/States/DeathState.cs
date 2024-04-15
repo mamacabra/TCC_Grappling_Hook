@@ -6,13 +6,12 @@ namespace Character.States
 {
     public class DeathState : ACharacterState
     {
-        
-
         public DeathState(CharacterEntity characterEntity) : base(characterEntity) { }
 
-        public override void Update()
+        public override void Enter()
         {
             Debug.Log("Dead");
+            CharacterEntity.Character.gameObject.SetActive(false);
         }
 
     }
