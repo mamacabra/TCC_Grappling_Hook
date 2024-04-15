@@ -23,7 +23,7 @@ namespace Character.States
 
             if (CharacterEntity.CharacterRaycast.HasHit == false)
             {
-                CharacterEntity.CharacterRigidbody.MovePosition(CharacterEntity.CharacterRigidbody.transform.position + direction * (Time.deltaTime * MovementSpeed));
+                CharacterEntity.Rigidbody.MovePosition(CharacterEntity.Rigidbody.transform.position + direction * (Time.deltaTime * MovementSpeed));
             }
 
             if (direction != Vector3.zero)

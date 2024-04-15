@@ -37,19 +37,19 @@ namespace Character
                 CharacterInput = characterInput,
                 CharacterMesh = characterMesh,
                 CharacterRaycast = characterRaycast,
-                CharacterRigidbody = characterRigidbody,
                 CharacterState = characterState,
                 CharacterUI = characterUI,
                 GrapplingHookWeapon = grapplingHookWeapon,
+                Rigidbody = characterRigidbody,
             };
 
             character.Setup(entity);
             characterInput.Setup(entity);
+            characterMesh.Setup(entity);
             characterState.Setup(entity);
             characterUI.Setup(entity);
             grapplingHookWeapon.Setup(entity);
-            characterMesh.Setup(entity);
-            
+
             SetupRigidbody(entity);
 
             gameObject.tag = Tags.Character;
@@ -59,9 +59,9 @@ namespace Character
 
         private static void SetupRigidbody(CharacterEntity entity)
         {
-            entity.CharacterRigidbody.useGravity = false;
-            entity.CharacterRigidbody.isKinematic = true;
-            entity.CharacterRigidbody.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
+            entity.Rigidbody.useGravity = false;
+            entity.Rigidbody.isKinematic = true;
+            entity.Rigidbody.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
         }
     }
 }

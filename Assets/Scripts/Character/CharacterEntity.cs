@@ -13,6 +13,6 @@ namespace Character
         public CharacterState CharacterState;
         public CharacterUI CharacterUI;
         public GrapplingHookWeapon GrapplingHookWeapon;
-        public Rigidbody CharacterRigidbody;
+        public Rigidbody Rigidbody;
     }
 }

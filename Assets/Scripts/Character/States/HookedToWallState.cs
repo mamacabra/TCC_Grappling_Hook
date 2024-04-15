@@ -24,7 +24,7 @@ namespace Character.States
             var characterPosition = Transform.position;
             var direction = (_wallPoint - characterPosition).normalized;
 
-            CharacterEntity.CharacterRigidbody.MovePosition(characterPosition + direction * (Time.fixedDeltaTime * MovementSpeed));
+            CharacterEntity.Rigidbody.MovePosition(characterPosition + direction * (Time.fixedDeltaTime * MovementSpeed));
 
             var distance = Vector3.Distance(characterPosition, _wallPoint);
             if (distance <= MinDistanceToDrop)

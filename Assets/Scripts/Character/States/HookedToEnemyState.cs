@@ -20,7 +20,7 @@ namespace Character.States
             var characterPosition = Transform.position;
             var direction = (_enemyPosition - characterPosition).normalized;
 
-            CharacterEntity.CharacterRigidbody.MovePosition(characterPosition + direction * (Time.fixedDeltaTime * MovementSpeed));
+            CharacterEntity.Rigidbody.MovePosition(characterPosition + direction * (Time.fixedDeltaTime * MovementSpeed));
 
             var distance = Vector3.Distance(characterPosition, _enemyPosition);
             if (distance <= MinDistanceToDrop)

@@ -17,7 +17,7 @@ namespace Character.States
 
             if (CharacterEntity.CharacterRaycast.HasHit == false)
             {
-                CharacterEntity.CharacterRigidbody.MovePosition(CharacterEntity.CharacterRigidbody.transform.position + direction * DashDistance / DashDuration * Time.deltaTime);
+                CharacterEntity.Rigidbody.MovePosition(CharacterEntity.Rigidbody.transform.position + direction * DashDistance / DashDuration * Time.deltaTime);
             }
 
             if (_countDown > DashDuration)
