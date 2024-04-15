@@ -49,10 +49,19 @@ namespace Character
             characterUI.Setup(entity);
             grapplingHookWeapon.Setup(entity);
             characterMesh.Setup(entity);
+            
+            SetupRigidbody(entity);
 
             gameObject.tag = Tags.Character;
 
             if (isDebug == false) characterState.SetWalkState();
+        }
+
+        private static void SetupRigidbody(CharacterEntity entity)
+        {
+            entity.CharacterRigidbody.useGravity = false;
+            entity.CharacterRigidbody.isKinematic = true;
+            entity.CharacterRigidbody.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
         }
     }
 }
