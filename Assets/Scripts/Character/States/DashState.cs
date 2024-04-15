@@ -6,8 +6,8 @@ namespace Character.States
     public class DashState : ACharacterState
     {
         private float _countDown;
-        private const float DashDistance = 2f;
-        private const float DashDuration = 0.1f;
+        private const float DashSpeed = 70f;
+        private const float DashDuration = 0.15f;
 
         public DashState(CharacterEntity characterEntity) : base(characterEntity) {}
 
@@ -17,7 +17,7 @@ namespace Character.States
 
             if (CharacterEntity.CharacterRaycast.HasHit == false)
             {
-                CharacterEntity.Rigidbody.MovePosition(CharacterEntity.Rigidbody.transform.position + direction * DashDistance / DashDuration * Time.deltaTime);
+                CharacterEntity.Rigidbody.MovePosition(CharacterEntity.Rigidbody.transform.position + direction * (DashSpeed * Time.deltaTime));
             }
 
             if (_countDown > DashDuration)
