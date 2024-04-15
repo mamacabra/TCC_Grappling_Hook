@@ -25,6 +25,7 @@ namespace Character
 
         public void SetMesh(ECharacterType charaterType) {
             if(meshRenderer) meshRenderer.gameObject.SetActive(false);
+            //animator.SetFloat("Blend", speed);
             GameObject modelPrefab = Resources.Load<ResourcesCharacters>("ResourcesCharacters").GetCharacterData(charaterType).characterPrefab;
             MeshRenderer _meshRenderer = modelPrefab.GetComponentInChildren<MeshRenderer>();
             meshRenderer = Instantiate(_meshRenderer, meshParent);
