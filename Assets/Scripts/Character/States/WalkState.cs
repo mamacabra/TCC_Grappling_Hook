@@ -5,7 +5,7 @@ namespace Character.States
 {
     public class WalkState : ACharacterState
     {
-        private const float MovementSpeed = 30f;
+        private const float WalkSpeed = 30f;
         private const float RotationSpeed = 1000f;
 
         public WalkState(CharacterEntity characterEntity) : base(characterEntity) {}
@@ -23,14 +23,14 @@ namespace Character.States
 
             if (CharacterEntity.CharacterRaycast.HasHit == false)
             {
-                CharacterEntity.Rigidbody.MovePosition(CharacterEntity.Rigidbody.transform.position + direction * (Time.deltaTime * MovementSpeed));
+                CharacterEntity.Rigidbody.MovePosition(CharacterEntity.Rigidbody.transform.position + direction * (WalkSpeed * Time.deltaTime));
             }
 
             if (direction != Vector3.zero)
             {
                 var transform = CharacterEntity.CharacterInput.transform;
                 var toRotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, Time.deltaTime * RotationSpeed);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, RotationSpeed * Time.deltaTime);
             }
         }
     }
