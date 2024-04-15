@@ -62,6 +62,7 @@ namespace Character
             entity.Rigidbody.useGravity = false;
             entity.Rigidbody.isKinematic = true;
             entity.Rigidbody.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
+            entity.Rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
         }
     }
 }
