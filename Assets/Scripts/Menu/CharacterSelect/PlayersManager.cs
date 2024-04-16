@@ -58,7 +58,7 @@ public class PlayersManager : MonoBehaviour
     private bool sharingKeyboard = false;
     private int amountOfPlayersReady = 0;
     private bool[] freeId = {true, true, true, true, true, true};
-    private List<PlayerConfigurationData> playersConfigs = new List<PlayerConfigurationData>();
+    [SerializeField]private List<PlayerConfigurationData> playersConfigs = new List<PlayerConfigurationData>();
     private string path;
     private GameObject[] playersGameObjects;
     private bool canInitGame = false;
@@ -174,19 +174,9 @@ public class PlayersManager : MonoBehaviour
     public int ScoreToWinGame = 30;
     public void PlayerDeath(int id)
     {
-        Debug.Log(id);
         playersDead++;
-        if (playersDead >= playersConfigs.Count - 1)
+        if (playersDead >= InterfaceManager.Instance.playerScores.Count - 1)
         {
-            foreach (var p in playersConfigs)
-            {
-                if (p.score >= ScoreToWinGame)
-                {
-                    InterfaceManager.Instance.ShowSpecificScreen(ScreensName.FinalFeedbackGame);
-                    break;
-                }
-            }
-            
             InterfaceManager.Instance.ShowSpecificScreen(ScreensName.FeedbackGame_Screen);
             OnPlayerDeath?.Invoke(id);
         }
@@ -195,9 +185,11 @@ public class PlayersManager : MonoBehaviour
     #endregion
 
     #region Setters
+
+   
     void SetPlayersConfigs(){
         foreach (var item in playersConfigs) {
-            OnPlayerConfigAdd?.Invoke(item);
+            
             // Set player material
             PlayerInput playerInput = playerInputManager.JoinPlayer(item.id, controlScheme: item.controlScheme, pairWithDevices: GetDevicesFromString(item.inputDevices));
             if(playerInput.TryGetComponent(out Character.Character character)){
@@ -207,8 +199,12 @@ public class PlayersManager : MonoBehaviour
                 characterMesh.SetMesh(ECharacterType.Sushi);
                 characterMesh.SetColor(item.characterColor);
             }
+            
+            if (!InterfaceManager.Instance.startNewGame)
+                OnPlayerConfigAdd?.Invoke(item);
         }
         playerInputManager.DisableJoining();
+        InterfaceManager.Instance.startNewGame = true;
     }
     public void SetPlayerStatus(bool isReady) {
         if (isReady) {

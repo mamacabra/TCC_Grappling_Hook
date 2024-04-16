@@ -15,17 +15,17 @@ namespace SceneSelect
 
         public void LoadRandomScene() {
             
-            if (onSceneLoadOperation != null)
-            {
+            if (currentSceneIndex != -1)
                 UnloadCurrentScene();
-            }
-            
+
             currentSceneIndex = scenesData.GetRandomSceneIndex();
             onSceneLoadOperation = SceneManager.LoadSceneAsync(currentSceneIndex, LoadSceneMode.Additive);
         }
 
         public void UnloadCurrentScene() {
+            
             onSceneUnloadOperation = SceneManager.UnloadSceneAsync(currentSceneIndex, UnloadSceneOptions.None);
+            currentSceneIndex = -1;
         }
     }
 }

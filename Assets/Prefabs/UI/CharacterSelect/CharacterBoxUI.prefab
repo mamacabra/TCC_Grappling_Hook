@@ -257,9 +257,17 @@ MonoBehaviour:
   characterName: {fileID: 3872030163863900833}
   characterStatus: {fileID: 71138446914653221}
   playerConfig:
-    id: 0
     controlScheme: 
+    inputDevices: 
     characterColor: 0
+    characterModel: 0
+    sCharacterData:
+      characterName: 
+      characterType: 0
+      characterPrefab: {fileID: 0}
+      characterSprite: {fileID: 0}
+    score: 0
+    id: 0
 --- !u!1 &2560141979712741859
 GameObject:
   m_ObjectHideFlags: 0

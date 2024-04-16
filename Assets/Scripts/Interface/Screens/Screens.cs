@@ -28,7 +28,7 @@ public abstract class Screens : MonoBehaviour
 
     public virtual void Close()
     {
-        
+        gameObject.SetActive(false);
     }
 
     public virtual void NextScreen()
@@ -39,5 +39,10 @@ public abstract class Screens : MonoBehaviour
     public virtual void GoToScreen(ScreensName screenName)
     {
         InterfaceManager.Instance.ShowSpecificScreen(screenName);
+    }
+
+    public virtual void HideButton()
+    {
+        
     }
 }

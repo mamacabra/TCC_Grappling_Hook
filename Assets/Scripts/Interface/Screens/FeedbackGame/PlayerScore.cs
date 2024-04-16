@@ -6,13 +6,21 @@ using UnityEngine.UI;
 
 public class PlayerScore : MonoBehaviour
 {
-    public PlayersManager.PlayerConfigurationData data;
+    PlayersManager.PlayerConfigurationData data;
     [SerializeField] private Image playerImg;
     [SerializeField] private Slider playeSlideScore;
 
     private void Start()
     {
+       
+    }
+
+    public void ChangeData(PlayersManager.PlayerConfigurationData d)
+    {
+        data = d;
         playerImg.sprite = data.sCharacterData.characterSprite;
-        playeSlideScore.value = data.score;
+        playerImg.color = PlayersManager.GetColor(data.characterColor);
+        if(playeSlideScore)
+            playeSlideScore.value = data.score;
     }
 }
