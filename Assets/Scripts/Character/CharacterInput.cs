@@ -38,8 +38,10 @@ namespace Character
         public void OnMelee(InputAction.CallbackContext context)
         {
             if (CharacterEntity.IsDebug) return;
-            meleeAttack.ActivateHitbox();
-            CharacterEntity.CharacterMesh.animator.SetTrigger("Melee");
+            if(context.started){
+                meleeAttack.ActivateHitbox();
+                CharacterEntity.CharacterMesh.animator.SetTrigger("Melee");
+            }
         }
     }
 }
