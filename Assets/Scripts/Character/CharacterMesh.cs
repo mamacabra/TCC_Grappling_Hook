@@ -29,21 +29,18 @@ namespace Character
 
         public void SetMesh(ECharacterType charaterType) {
             if (meshRenderer) meshRenderer.gameObject.SetActive(false);
-            //animator.SetFloat("Blend", speed);
+            if (skinnedMeshRenderer) skinnedMeshRenderer.gameObject.SetActive(false);
             GameObject _modelPrefab = Resources.Load<ResourcesCharacters>("ResourcesCharacters").GetCharacterData(charaterType).characterPrefab;
-            GameObject intance = Instantiate(_modelPrefab, meshParent);
-            MeshRenderer _meshRenderer = intance.GetComponentInChildren<MeshRenderer>();
-            if (_meshRenderer)
-            {
+            GameObject instance = Instantiate(_modelPrefab, meshParent);
+            MeshRenderer _meshRenderer = instance.GetComponentInChildren<MeshRenderer>();
+            if (_meshRenderer) {
                 meshRenderer = _meshRenderer;
-                animator = meshRenderer.GetComponent<Animator>();
             }
-            SkinnedMeshRenderer _skinnedMeshRenderer = intance.GetComponentInChildren<SkinnedMeshRenderer>();
-            if (_skinnedMeshRenderer)
-            {
+            SkinnedMeshRenderer _skinnedMeshRenderer = instance.GetComponentInChildren<SkinnedMeshRenderer>();
+            if (_skinnedMeshRenderer) {
                 skinnedMeshRenderer = _skinnedMeshRenderer;
-                animator = skinnedMeshRenderer.GetComponent<Animator>();
             }
+            animator = instance.GetComponentInChildren<Animator>();
         }
     }
 }
