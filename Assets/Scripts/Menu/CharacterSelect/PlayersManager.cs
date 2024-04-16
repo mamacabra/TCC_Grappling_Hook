@@ -23,13 +23,13 @@ public class PlayersManager : MonoBehaviour
     }
     [Serializable]
     public struct PlayerConfigurationData {
-        public int id;
         public string controlScheme;
         public int[] inputDevices;
         public CharacterColor characterColor;
         public ECharacterType characterModel;
-        public int score;
         public SCharacterData sCharacterData;
+        public int score;
+        public int id;
     }
     #endregion
 
@@ -222,7 +222,7 @@ public class PlayersManager : MonoBehaviour
     #region PlayersConfigs
     
     public void AddNewPlayerConfig(PlayerConfigurationData playerConfiguration) {
-        //playersConfigs.Add(playerConfiguration);
+        playersConfigs.Add(playerConfiguration);
         OnPlayerConfigAdd?.Invoke(playerConfiguration);
     }
     public void RemovePlayerConfig(PlayerConfigurationData playerConfiguration) {
