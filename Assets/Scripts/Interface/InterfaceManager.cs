@@ -128,11 +128,20 @@ public class InterfaceManager : MonoBehaviour
 
      public void OnPlayerDeath(int id)
      {
-          PlayersManager.PlayerConfigurationData pS = playerScores.Find(p => p.id == id);
+          PlayersManager.PlayerConfigurationData pS = playerScores[GetPlayerById(id)];
           pS.ChangeScore(10);
+          playerScores[GetPlayerById(id)] = pS;
           //Debug.Log(pS.score);
           
           OnAddPlayersToList?.Invoke();
+     }
+
+     int GetPlayerById(int id){
+          for (int i = 0; i < playerScores.Count; i++)
+          {
+               if(playerScores[i].id == id) return i;    
+          }
+          return -1;
      }
      
 }
