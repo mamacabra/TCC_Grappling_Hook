@@ -13,6 +13,8 @@ public enum ScreensName
      CharacterChoice_Screen=3,
      Controls_InGame_Screen=4,
      Pause_InGame_Screen=5,
+     FeedbackGame_Screen = 6,
+     FinalFeedbackGame = 7
      
 }
 public class InterfaceManager : MonoBehaviour
@@ -32,7 +34,7 @@ public class InterfaceManager : MonoBehaviour
      public bool gameWithScreens;
      [HideInInspector] public bool inGame = false;
      [HideInInspector] public bool pause = false;
-
+     
      private void Start()
      {
           if(gameWithScreens) ShowScreen();

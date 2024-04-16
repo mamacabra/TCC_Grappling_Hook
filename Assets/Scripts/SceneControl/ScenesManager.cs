@@ -14,6 +14,12 @@ namespace SceneSelect
         private int currentSceneIndex;
 
         public void LoadRandomScene() {
+            
+            if (onSceneLoadOperation != null)
+            {
+                UnloadCurrentScene();
+            }
+            
             currentSceneIndex = scenesData.GetRandomSceneIndex();
             onSceneLoadOperation = SceneManager.LoadSceneAsync(currentSceneIndex, LoadSceneMode.Additive);
         }

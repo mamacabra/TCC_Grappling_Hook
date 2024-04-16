@@ -6,6 +6,7 @@ using SceneSelect;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using Screen = UnityEngine.Device.Screen;
 
 [RequireComponent(typeof(PlayerInputManager))]
 public class PlayersManager : MonoBehaviour
@@ -27,6 +28,8 @@ public class PlayersManager : MonoBehaviour
         public int[] inputDevices;
         public CharacterColor characterColor;
         public ECharacterType characterModel;
+        public int score;
+        public SCharacterData sCharacterData;
     }
     #endregion
 
@@ -56,6 +59,16 @@ public class PlayersManager : MonoBehaviour
     private GameObject[] playersGameObjects;
     private bool canInitGame = false;
     public bool CanInitGame => canInitGame;
+    
+   
+    
+    #endregion
+
+    #region Actions
+    public event Action<PlayerConfigurationData> OnPlayerConfigAdd;
+    public event Action<PlayerConfigurationData> OnPlayerConfigRemove;
+    public event Action<int> OnPlayerDeath;
+
     #endregion
     
     #region Initializers
@@ -152,13 +165,38 @@ public class PlayersManager : MonoBehaviour
         if (_playerInput.currentControlScheme == "KeyboardP2") sharingKeyboard = false;
         freeId[_playerInput.playerIndex] = true;
     }
+
+    private int playersDead = 0;
+    public int ScoreToWinGame = 30;
+    public void PlayerDeath(int id)
+    {
+        OnPlayerDeath?.Invoke(id);
+        playersDead++;
+        if (playersDead >= playersConfigs.Count - 1)
+        {
+            foreach (var p in playersConfigs)
+            {
+                if (p.score >= ScoreToWinGame)
+                {
+                    InterfaceManager.Instance.ShowSpecificScreen(ScreensName.FinalFeedbackGame);
+                    break;
+                }
+            }
+            
+            InterfaceManager.Instance.ShowSpecificScreen(ScreensName.FeedbackGame_Screen);
+        }
+    }
     #endregion
 
     #region Setters
     void SetPlayersConfigs(){
         foreach (var item in playersConfigs) {
+            OnPlayerConfigAdd?.Invoke(item);
             // Set player material
             PlayerInput playerInput = playerInputManager.JoinPlayer(item.id, controlScheme: item.controlScheme, pairWithDevices: GetDevicesFromString(item.inputDevices));
+            if(playerInput.TryGetComponent(out Character.Character character)){
+                character.Id = item.id;
+            }
             if (playerInput.TryGetComponent(out CharacterMesh characterMesh)) {
                 characterMesh.SetMesh(ECharacterType.Sushi);
                 characterMesh.SetColor(item.characterColor);
@@ -182,11 +220,14 @@ public class PlayersManager : MonoBehaviour
     #endregion
 
     #region PlayersConfigs
+    
     public void AddNewPlayerConfig(PlayerConfigurationData playerConfiguration) {
-        playersConfigs.Add(playerConfiguration);
+        //playersConfigs.Add(playerConfiguration);
+        OnPlayerConfigAdd?.Invoke(playerConfiguration);
     }
     public void RemovePlayerConfig(PlayerConfigurationData playerConfiguration) {
         playersConfigs.Remove(playerConfiguration);
+        OnPlayerConfigRemove?.Invoke(playerConfiguration);
     }
     public void ClearPlayersConfig() {
         amountOfPlayersReady = 0;

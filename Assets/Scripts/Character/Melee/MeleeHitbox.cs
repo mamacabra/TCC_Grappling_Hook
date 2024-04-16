@@ -10,14 +10,14 @@ namespace Character.Melee
 {
     public class MeleeHitbox : ACharacterMonoBehaviour
     {
-       
-
+        [SerializeField] private Character character;
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Character"))
             {
                 var enemy = other.GetComponent<Character>();
                 enemy.CharacterEntity.CharacterState.SetDeathState();
+                PlayersManager.Instance.PlayerDeath(character.Id);
             }
         }
     }
