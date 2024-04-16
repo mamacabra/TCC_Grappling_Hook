@@ -5,43 +5,28 @@ using UnityEngine;
 
 public class PlayersScoreManager : MonoBehaviour
 {
-   [SerializeField]private List<PlayerScore> playerScores = new List<PlayerScore>();
    [SerializeField]private GameObject playerScoreGameObject;
    private void OnEnable()
    {
-      PlayersManager.Instance.OnPlayerConfigAdd += AddPlayersToList;
-      PlayersManager.Instance.OnPlayerConfigRemove += RemovePlayers;
-      PlayersManager.Instance.OnPlayerDeath += OnPlayerDeath;
-
-      if (playerScores.Count > 0)
-         playerScores.Clear();
+      InterfaceManager.Instance.OnAddPlayersToList += AddPlayersToList;
    }
 
    private void OnDisable()
    {
-      if (!PlayersManager.Instance) return;
-      PlayersManager.Instance.OnPlayerConfigAdd -= AddPlayersToList;
-      PlayersManager.Instance.OnPlayerConfigRemove -= RemovePlayers;
-      PlayersManager.Instance.OnPlayerDeath -= OnPlayerDeath;
+      if(!InterfaceManager.Instance) return;
+      InterfaceManager.Instance.OnAddPlayersToList -= AddPlayersToList;
    }
-
-   public void AddPlayersToList(PlayersManager.PlayerConfigurationData playerData)
+   public void AddPlayersToList()
    {
-      GameObject p = Instantiate(playerScoreGameObject);
-      PlayerScore pS = p.GetComponent<PlayerScore>();
-      pS.data.id = playerData.id;
-      pS.data.score = playerData.score;
-      playerScores.Add(pS);
-   }
-   public void RemovePlayers(PlayersManager.PlayerConfigurationData playerData)
-   {
-      PlayerScore pS =playerScores.Find(p => p.data.id == playerData.id);
-      playerScores.Remove(pS);
-   }
-
-   public void OnPlayerDeath(int id)
-   {
-      PlayerScore pS =playerScores.Find(p => p.data.id == id);
-      pS.data.score += 10;
+      foreach (var p in InterfaceManager.Instance.playerScores)
+      {
+         GameObject o = Instantiate(playerScoreGameObject, this.transform);
+         PlayerScore pS = o.GetComponent<PlayerScore>();
+         pS.data.id = p.id;
+         pS.data.score = p.score;
+         //InterfaceManager.Instance.playerScores.Add(pS);
+      }
+     
+     
    }
 }

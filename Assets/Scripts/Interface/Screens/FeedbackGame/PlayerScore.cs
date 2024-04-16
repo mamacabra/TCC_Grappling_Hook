@@ -10,7 +10,7 @@ public class PlayerScore : MonoBehaviour
     [SerializeField] private Image playerImg;
     [SerializeField] private Slider playeSlideScore;
 
-    private void OnEnable()
+    private void Start()
     {
         playerImg.sprite = data.sCharacterData.characterSprite;
         playeSlideScore.value = data.score;

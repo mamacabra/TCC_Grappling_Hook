@@ -30,6 +30,10 @@ public class PlayersManager : MonoBehaviour
         public SCharacterData sCharacterData;
         public int score;
         public int id;
+        
+        public void ChangeScore(int s) {
+            score += s;
+        }
     }
     #endregion
 
@@ -170,7 +174,7 @@ public class PlayersManager : MonoBehaviour
     public int ScoreToWinGame = 30;
     public void PlayerDeath(int id)
     {
-        OnPlayerDeath?.Invoke(id);
+        Debug.Log(id);
         playersDead++;
         if (playersDead >= playersConfigs.Count - 1)
         {
@@ -184,7 +188,9 @@ public class PlayersManager : MonoBehaviour
             }
             
             InterfaceManager.Instance.ShowSpecificScreen(ScreensName.FeedbackGame_Screen);
+            OnPlayerDeath?.Invoke(id);
         }
+        
     }
     #endregion
 
@@ -223,7 +229,6 @@ public class PlayersManager : MonoBehaviour
     
     public void AddNewPlayerConfig(PlayerConfigurationData playerConfiguration) {
         playersConfigs.Add(playerConfiguration);
-        OnPlayerConfigAdd?.Invoke(playerConfiguration);
     }
     public void RemovePlayerConfig(PlayerConfigurationData playerConfiguration) {
         playersConfigs.Remove(playerConfiguration);
