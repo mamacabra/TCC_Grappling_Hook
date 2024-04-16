@@ -477,16 +477,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data:
-    id: 0
     controlScheme: 
     inputDevices: 
     characterColor: 0
     characterModel: 0
-    score: 0
     sCharacterData:
       characterName: 
       characterType: 0
       characterPrefab: {fileID: 0}
       characterSprite: {fileID: 0}
-  playerImg: {fileID: 0}
-  playeSlideScore: {fileID: 0}
+    score: 0
+    id: 0
+  playerImg: {fileID: 3619680380305380330}
+  playeSlideScore: {fileID: 2826637015055817173}

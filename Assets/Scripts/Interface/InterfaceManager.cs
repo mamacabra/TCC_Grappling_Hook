@@ -35,6 +35,27 @@ public class InterfaceManager : MonoBehaviour
      [HideInInspector] public bool inGame = false;
      [HideInInspector] public bool pause = false;
      
+     [SerializeField]public List<PlayersManager.PlayerConfigurationData> playerScores = new List<PlayersManager.PlayerConfigurationData>();
+
+     public event Action OnAddPlayersToList;
+     private void OnEnable()
+     {
+          PlayersManager.Instance.OnPlayerConfigAdd += AddPlayersToList;
+          PlayersManager.Instance.OnPlayerConfigRemove += RemovePlayers;
+          PlayersManager.Instance.OnPlayerDeath += OnPlayerDeath;
+
+          if (playerScores.Count > 0)
+               playerScores.Clear();
+     }
+
+     private void OnDisable()
+     {
+          if (!PlayersManager.Instance) return;
+          PlayersManager.Instance.OnPlayerConfigAdd -= AddPlayersToList;
+          PlayersManager.Instance.OnPlayerConfigRemove -= RemovePlayers;
+          PlayersManager.Instance.OnPlayerDeath -= OnPlayerDeath;
+     }
+
      private void Start()
      {
           if(gameWithScreens) ShowScreen();
@@ -90,6 +111,37 @@ public class InterfaceManager : MonoBehaviour
      public void QuitGame()
      {
           Application.Quit();
+     }
+     
+     public void AddPlayersToList(PlayersManager.PlayerConfigurationData playerData)
+     {
+          /*GameObject p = Instantiate(playerScoreGameObject, playerScoreObj);
+          PlayerScore pS = p.GetComponent<PlayerScore>();
+          pS.data.id = playerData.id;
+          pS.data.score = playerData.score;*/
+          playerScores.Add(playerData);
+     }
+     public void RemovePlayers(PlayersManager.PlayerConfigurationData playerData)
+     {
+          playerScores.Remove(playerData);
+     }
+
+     public void OnPlayerDeath(int id)
+     {
+          PlayersManager.PlayerConfigurationData pS = playerScores[GetPlayerById(id)];
+          pS.ChangeScore(10);
+          playerScores[GetPlayerById(id)] = pS;
+          //Debug.Log(pS.score);
+          
+          OnAddPlayersToList?.Invoke();
+     }
+
+     int GetPlayerById(int id){
+          for (int i = 0; i < playerScores.Count; i++)
+          {
+               if(playerScores[i].id == id) return i;    
+          }
+          return -1;
      }
      
 }

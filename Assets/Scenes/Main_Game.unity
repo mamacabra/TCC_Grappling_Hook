@@ -5945,9 +5945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b5cbb7459b3d5345ae08082dc761851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerScores: []
-  playerScoreGameObject: {fileID: 8591084452098833011, guid: 48232a6417f94014b8b32388606667c5,
-    type: 3}
+  playerScoreGameObject: {fileID: 0}
 --- !u!114 &566809468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15020,7 +15018,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b5cbb7459b3d5345ae08082dc761851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerScores: []
   playerScoreGameObject: {fileID: 8591084452098833011, guid: 48232a6417f94014b8b32388606667c5,
     type: 3}
 --- !u!1 &1509955620
@@ -17338,6 +17335,10 @@ MonoBehaviour:
   gameWithScreens: 1
   inGame: 0
   pause: 0
+  playerScores: []
+  playerScoreGameObject: {fileID: 1497775803}
+  playerScoreObj: {fileID: 1355810043842179097, guid: 48232a6417f94014b8b32388606667c5,
+    type: 3}
 --- !u!1 &1748603167
 GameObject:
   m_ObjectHideFlags: 0
