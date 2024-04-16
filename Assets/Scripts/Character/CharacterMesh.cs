@@ -28,17 +28,20 @@ namespace Character
         }
 
         public void SetMesh(ECharacterType charaterType) {
-            if(meshRenderer) meshRenderer.gameObject.SetActive(false);
+            if (meshRenderer) meshRenderer.gameObject.SetActive(false);
             //animator.SetFloat("Blend", speed);
-            GameObject modelPrefab = Resources.Load<ResourcesCharacters>("ResourcesCharacters").GetCharacterData(charaterType).characterPrefab;
-            MeshRenderer _meshRenderer = modelPrefab.GetComponentInChildren<MeshRenderer>();
-            if(_meshRenderer) {
-                meshRenderer = Instantiate(_meshRenderer, meshParent);
+            GameObject _modelPrefab = Resources.Load<ResourcesCharacters>("ResourcesCharacters").GetCharacterData(charaterType).characterPrefab;
+            GameObject intance = Instantiate(_modelPrefab, meshParent);
+            MeshRenderer _meshRenderer = intance.GetComponentInChildren<MeshRenderer>();
+            if (_meshRenderer)
+            {
+                meshRenderer = _meshRenderer;
                 animator = meshRenderer.GetComponent<Animator>();
             }
-            SkinnedMeshRenderer _skinnedMeshRenderer = modelPrefab.GetComponentInChildren<SkinnedMeshRenderer>();
-            if(_skinnedMeshRenderer) {
-                skinnedMeshRenderer = Instantiate(_skinnedMeshRenderer, meshParent);
+            SkinnedMeshRenderer _skinnedMeshRenderer = intance.GetComponentInChildren<SkinnedMeshRenderer>();
+            if (_skinnedMeshRenderer)
+            {
+                skinnedMeshRenderer = _skinnedMeshRenderer;
                 animator = skinnedMeshRenderer.GetComponent<Animator>();
             }
         }

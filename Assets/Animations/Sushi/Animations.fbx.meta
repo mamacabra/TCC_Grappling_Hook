@@ -3,7 +3,12 @@ guid: fd80a9ae825fed8408a98206dde6bb53
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Char.Sushi.Validation_MAT
+    second: {fileID: 2100000, guid: db84fef2b1bfbd252911737d0a80ef78, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -24,7 +29,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -227,7 +232,128 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: Animations(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Char.Sushi.Validation
+      parentName: Animations(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Armature
+      parentName: Animations(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Root
+      parentName: Armature
+      position: {x: -0, y: -0.00011758387, z: 0}
+      rotation: {x: 1, y: 2.4143332e-14, z: 0.00000055233505, w: -0.00000004371139}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Grappling
+      parentName: Root
+      position: {x: -0.021641187, y: -0.00013153613, z: -0.010528192}
+      rotation: {x: 0.50000155, y: 0.4999989, z: -0.49999982, w: -0.49999973}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Blade
+      parentName: Root
+      position: {x: 0.02164125, y: -0.00013153613, z: -0.010528144}
+      rotation: {x: -0.49999982, y: 0.4999998, z: -0.5000002, w: 0.50000024}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MASTER_GERAL
+      parentName: Root
+      position: {x: 0.000000003309081, y: -0.00011758387, z: -0.0029955378}
+      rotation: {x: 1, y: -2.6764418e-10, z: 0.0000010291724, w: 0.0002600577}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hips
+      parentName: MASTER_GERAL
+      position: {x: -0.0000000022170719, y: 0.0000000011920929, z: 0.0023247679}
+      rotation: {x: -0.7071068, y: 2.2448777e-14, z: -0.0000006743497, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Feet.L
+      parentName: MASTER_GERAL
+      position: {x: -0.005061008, y: -0.004970304, z: -0.0016210872}
+      rotation: {x: 0.70710725, y: -0.00000022197233, z: 0.70710635, w: 0.00000022197261}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: Feet.R
+      parentName: MASTER_GERAL
+      position: {x: 0.005061012, y: 0.005029696, z: -0.0026210737}
+      rotation: {x: 0.7071072, y: 0.000000053385047, z: 0.70710635, w: -0.000000053385108}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Body_Bottom
+      parentName: Armature
+      position: {x: -0, y: 0, z: 0.005320306}
+      rotation: {x: 0.6823616, y: -0.02211475, z: 0.02066043, w: 0.7303881}
+      scale: {x: 1, y: 1, z: 0.9999998}
+    - name: Body_Top
+      parentName: Armature
+      position: {x: -0, y: 0, z: 0.008421863}
+      rotation: {x: 0.7071068, y: -0.00000008429372, z: -0.0000000842937, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: hand.L
+      parentName: Armature
+      position: {x: -0.01472739, y: 0.000013952553, z: 0.010528169}
+      rotation: {x: -0.7071058, y: 0.7071078, z: -0.0000029188616, w: -0.00000291887}
+      scale: {x: 1, y: 1, z: 1}
+    - name: hand.R
+      parentName: Armature
+      position: {x: 0.014714434, y: 0.000013952553, z: 0.010528169}
+      rotation: {x: 0.7071067, y: 0.7071068, z: -0.00000009415696, w: 0.00000009415697}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Eyes_Controller
+      parentName: Armature
+      position: {x: -0, y: -0.0035342951, z: 0.015103514}
+      rotation: {x: 0.99996376, y: 0.0000000010151583, z: -0.000000119204955, w: -0.008515808}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Eye.L
+      parentName: Eyes_Controller
+      position: {x: -0.0038268336, y: 0.006634297, z: 0.0048776134}
+      rotation: {x: 0.00000030575794, y: 0.99996376, z: -0.008514678, w: -0.00000007810416}
+      scale: {x: 1, y: 0.9999999, z: 1}
+    - name: Eye.R
+      parentName: Eyes_Controller
+      position: {x: 0.003826836, y: 0.006634297, z: 0.0048776106}
+      rotation: {x: -0.00000030575796, y: 0.99996376, z: -0.008514678, w: 0.000000078104165}
+      scale: {x: 1, y: 0.9999999, z: 1}
+    - name: Mouth_Controller
+      parentName: Armature
+      position: {x: -0, y: -0.0035342951, z: 0.008780931}
+      rotation: {x: 0.99996376, y: 0.0000000010151583, z: -0.000000119204955, w: -0.008515808}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Mouth.L
+      parentName: Mouth_Controller
+      position: {x: 2.6715805e-10, y: 0.0066650617, z: 0.0011205421}
+      rotation: {x: 0.00000010885066, y: 0.00000008119181, z: 0.7071068, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mouth.L.001
+      parentName: Mouth.L
+      position: {x: 2.3283064e-10, y: 0.0011088799, z: -8.9525e-11}
+      rotation: {x: -0.000000015171006, y: -3.4389322e-33, z: 4.390259e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mouth.R
+      parentName: Mouth_Controller
+      position: {x: 2.6715805e-10, y: 0.0066650617, z: 0.0011205421}
+      rotation: {x: -0.000000081191786, y: 0.00000010885067, z: -0.7071068, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mouth.R.001
+      parentName: Mouth.R
+      position: {x: -2.3283064e-10, y: 0.0011088799, z: -2.223371e-11}
+      rotation: {x: 0.000000015171004, y: -4.769197e-32, z: 4.2721658e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head
+      parentName: Armature
+      position: {x: -0, y: 0, z: 0.015981337}
+      rotation: {x: 0.7071068, y: -0.0000000842937, z: 0.00000003909643, w: 0.7071067}
+      scale: {x: 0.9999998, y: 1, z: 1}
+    - name: Loose_Head
+      parentName: Head
+      position: {x: 2.3748725e-10, y: 0.0039107925, z: 4.749745e-10}
+      rotation: {x: 0.000000007916242, y: 0.0000000037252903, z: 0.0000000062864274,
+        w: 1}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -238,13 +364,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
