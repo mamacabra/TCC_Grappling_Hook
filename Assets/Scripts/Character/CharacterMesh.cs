@@ -10,6 +10,7 @@ namespace Character
     {
         [SerializeField] private Transform meshParent;
         [SerializeField] private MeshRenderer meshRenderer;
+        [SerializeField] private SkinnedMeshRenderer skinnedMeshRenderer;
         [SerializeField] private Animator animator;
 
         public new void Setup(CharacterEntity entity)
@@ -20,7 +21,10 @@ namespace Character
         }
 
         public void SetColor(PlayersManager.CharacterColor characterColor) {
-            meshRenderer.material.color = PlayersManager.GetColor(characterColor);
+            if (meshRenderer)
+                meshRenderer.material.color = PlayersManager.GetColor(characterColor);
+            if (skinnedMeshRenderer)
+                skinnedMeshRenderer.material.color = PlayersManager.GetColor(characterColor);
         }
 
         public void SetMesh(ECharacterType charaterType) {
@@ -28,8 +32,15 @@ namespace Character
             //animator.SetFloat("Blend", speed);
             GameObject modelPrefab = Resources.Load<ResourcesCharacters>("ResourcesCharacters").GetCharacterData(charaterType).characterPrefab;
             MeshRenderer _meshRenderer = modelPrefab.GetComponentInChildren<MeshRenderer>();
-            meshRenderer = Instantiate(_meshRenderer, meshParent);
-            animator= meshRenderer.GetComponent<Animator>();
+            if(_meshRenderer) {
+                meshRenderer = Instantiate(_meshRenderer, meshParent);
+                animator = meshRenderer.GetComponent<Animator>();
+            }
+            SkinnedMeshRenderer _skinnedMeshRenderer = modelPrefab.GetComponentInChildren<SkinnedMeshRenderer>();
+            if(_skinnedMeshRenderer) {
+                skinnedMeshRenderer = Instantiate(_skinnedMeshRenderer, meshParent);
+                animator = skinnedMeshRenderer.GetComponent<Animator>();
+            }
         }
     }
 }
