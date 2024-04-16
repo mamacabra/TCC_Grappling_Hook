@@ -20,6 +20,7 @@ namespace Character.Melee
             if(isMeleeing)
             {
             timer -= Time.deltaTime;
+            
             }
             
             if(timer<0f)
@@ -31,8 +32,9 @@ namespace Character.Melee
         public void ActivateHitbox()
         {
             meleeHitbox?.SetActive(true);
-            isMeleeing = true;
+            isMeleeing = true;   
         }
+
         private void DeactivateHitbox()
         {
             meleeHitbox?.SetActive(false);

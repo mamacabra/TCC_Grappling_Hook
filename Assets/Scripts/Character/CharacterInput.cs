@@ -39,6 +39,7 @@ namespace Character
         {
             if (CharacterEntity.IsDebug) return;
             meleeAttack.ActivateHitbox();
+            CharacterEntity.CharacterMesh.animator.SetTrigger("Melee");
         }
     }
 }

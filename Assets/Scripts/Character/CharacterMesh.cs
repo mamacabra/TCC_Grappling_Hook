@@ -11,7 +11,7 @@ namespace Character
         [SerializeField] private Transform meshParent;
         [SerializeField] private MeshRenderer meshRenderer;
         [SerializeField] private SkinnedMeshRenderer skinnedMeshRenderer;
-        [SerializeField] private Animator animator;
+        public Animator animator ;
 
         public new void Setup(CharacterEntity entity)
         {

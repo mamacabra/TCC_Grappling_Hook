@@ -18,6 +18,7 @@ namespace Character.States
             if (CharacterEntity.CharacterRaycast.HasHit == false)
             {
                 CharacterEntity.Rigidbody.MovePosition(CharacterEntity.Rigidbody.transform.position + direction * (DashSpeed * Time.deltaTime));
+                CharacterEntity.CharacterMesh.animator.SetFloat("Speed", 1);
             }
 
             if (_countDown > DashDuration)

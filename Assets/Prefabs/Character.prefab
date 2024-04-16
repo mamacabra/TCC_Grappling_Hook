@@ -240,6 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshParent: {fileID: 8215146502865197739}
   meshRenderer: {fileID: 2067811761408879985}
+  skinnedMeshRenderer: {fileID: 0}
   animator: {fileID: -4475908397822895951}
 --- !u!114 &7747164800453218590
 MonoBehaviour:
