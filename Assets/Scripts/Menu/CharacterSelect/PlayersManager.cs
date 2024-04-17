@@ -196,7 +196,7 @@ public class PlayersManager : MonoBehaviour
                 character.Id = item.id;
             }
             if (playerInput.TryGetComponent(out CharacterMesh characterMesh)) {
-                characterMesh.SetMesh(ECharacterType.Sushi);
+                characterMesh.SetMesh(item.characterModel);
                 characterMesh.SetColor(item.characterColor);
             }
             
