@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using FMODUnity;
 
 public class OptionsScreen : Screens
 {
@@ -15,8 +16,10 @@ public class OptionsScreen : Screens
    [SerializeField] TextMeshProUGUI qualityValueText;
 
    [Header("Audio")]
-   [SerializeField] TextMeshProUGUI sFXValueText;
-   private int sfxValue = 0;
+    [SerializeField] private string busPath;
+    [SerializeField] TextMeshProUGUI sFXValueText;
+    private FMOD.Studio.Bus bus;
+    private int sfxValue = 0;
    
    [SerializeField] TextMeshProUGUI musicValueText;
    private int musicValue = 0;
@@ -34,8 +37,9 @@ public class OptionsScreen : Screens
    {
        backButton.button.onClick.AddListener(delegate { GoToScreen(backButton.goToScreen); });
        restoreButton.onClick.AddListener(ResetAllSettings);
-
-       sfxValue = musicValue = 10;
+        if (busPath != "")
+            bus = RuntimeManager.GetBus(busPath);
+       sfxValue = musicValue = 5;
    }
 
    public void ChangeResolution(int value)
@@ -96,8 +100,8 @@ public class OptionsScreen : Screens
            musicValue = 0;
            return;
        }
-      
-       musicValueText.text = musicValue.ToString();
+        bus.setVolume(musicValue * 0.5f);
+        musicValueText.text = musicValue.ToString();
    }
 
    public override void GoToScreen(ScreensName screensName)

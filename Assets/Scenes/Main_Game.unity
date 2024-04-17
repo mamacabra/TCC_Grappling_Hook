@@ -6782,7 +6782,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10
+  m_text: 5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -14830,6 +14830,7 @@ MonoBehaviour:
   resolutionValueText: {fileID: 711134116}
   ecraValueText: {fileID: 269771589}
   qualityValueText: {fileID: 1464080928}
+  busPath: bus:/Music
   sFXValueText: {fileID: 1129270303}
   musicValueText: {fileID: 641597171}
   backButton:
@@ -19420,11 +19421,6 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
-  hasTriggered: 0
-  isQuitting: 0
-  isOneshot: 0
-  cachedParams: []
-  <IsActive>k__BackingField: 0
 --- !u!1001 &1972449629
 PrefabInstance:
   m_ObjectHideFlags: 0
