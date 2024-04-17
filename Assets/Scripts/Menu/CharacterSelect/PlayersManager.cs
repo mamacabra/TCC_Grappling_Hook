@@ -37,7 +37,8 @@ public class PlayersManager : MonoBehaviour
     }
     #endregion
 
-    public static PlayersManager Instance {get; private set;}// Singleton
+    private static PlayersManager instance;// Singleton
+    public static PlayersManager Instance => instance ? instance : FindObjectOfType<PlayersManager>();
     private Menus_Input actions;// Input
     [SerializeField] bool debug;
 
@@ -77,11 +78,6 @@ public class PlayersManager : MonoBehaviour
     
     #region Initializers
     private void Awake() {
-        if (Instance != null) {
-            Destroy(Instance.gameObject);
-        }
-        Instance = this;
-
         playerInputManager = GetComponent<PlayerInputManager>();
         actions = new Menus_Input();
         actions.Navigation.Join.performed += OnJoin;
