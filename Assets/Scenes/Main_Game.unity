@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731715, g: 0.13414735, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -19243,7 +19243,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 8824510481395245147}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1969823946}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 325846d3ebcc1044f9d7dec886faf2f6, type: 3}
@@ -19383,6 +19383,48 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1954367489}
   m_CullTransparentMesh: 1
+--- !u!1 &1969823946 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8572422022813123813, guid: b45869a89314ab22c96c12b791142033,
+    type: 3}
+  m_PrefabInstance: {fileID: 8824510481395245147}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1969823948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969823946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 175275191
+      Data2: 1295363881
+      Data3: 97911990
+      Data4: -735725263
+    Path: event:/Demo
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+  hasTriggered: 0
+  isQuitting: 0
+  isOneshot: 0
+  cachedParams: []
+  <IsActive>k__BackingField: 0
 --- !u!1001 &1972449629
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21431,7 +21473,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8572422022813123813, guid: b45869a89314ab22c96c12b791142033,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1969823948}
   m_SourcePrefab: {fileID: 100100000, guid: b45869a89314ab22c96c12b791142033, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
