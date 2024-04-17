@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using Character.Utils;
-using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Character
