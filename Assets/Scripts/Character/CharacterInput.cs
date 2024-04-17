@@ -40,7 +40,7 @@ namespace Character
             if (CharacterEntity.IsDebug) return;
             if(context.started){
                 meleeAttack.ActivateHitbox();
-                CharacterEntity.CharacterMesh.animator.SetTrigger("Melee");
+                CharacterEntity.CharacterMesh.animator?.SetTrigger("Melee");
             }
         }
     }

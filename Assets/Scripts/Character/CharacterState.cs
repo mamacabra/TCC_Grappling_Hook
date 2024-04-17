@@ -20,7 +20,14 @@ namespace Character
 
         private void SetState(ACharacterState state)
         {
+            if (State is DeathState) return;
             State = state;
+            State.Enter();
+            CharacterEntity.CharacterUI.UpdateCharacterStateUI(State.GetType().Name);
+        }
+
+        public void InitialState(){
+            State = new WalkState(CharacterEntity);
             State.Enter();
             CharacterEntity.CharacterUI.UpdateCharacterStateUI(State.GetType().Name);
         }

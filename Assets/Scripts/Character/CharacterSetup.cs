@@ -54,7 +54,7 @@ namespace Character
 
             gameObject.tag = Tags.Character;
 
-            if (isDebug == false) characterState.SetWalkState();
+            if (isDebug == false) characterState.InitialState();
         }
 
         private static void SetupRigidbody(CharacterEntity entity)

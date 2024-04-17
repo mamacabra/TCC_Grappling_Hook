@@ -11,7 +11,7 @@ namespace Character.States
         public override void Enter()
         {
             Debug.Log("Dead");
-            CharacterEntity.CharacterMesh.animator.SetTrigger("isDead");
+            CharacterEntity.CharacterMesh.animator?.SetTrigger("isDead");
             //CharacterEntity.Character.gameObject.SetActive(false);
         }
 
