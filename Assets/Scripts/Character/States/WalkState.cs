@@ -27,20 +27,17 @@ namespace Character.States
             {
                 CharacterEntity.Rigidbody.MovePosition(CharacterEntity.Rigidbody.transform.position + direction * (WalkSpeed * Time.deltaTime));
             }
-            else
-            {
-                CharacterEntity.Rigidbody.velocity = Vector3.zero;
-            }
 
             if (direction != Vector3.zero)
             {
-                
-                
                 var transform = CharacterEntity.CharacterInput.transform;
                 var toRotation = Quaternion.LookRotation(direction);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, RotationSpeed * Time.deltaTime);
             }
-            CharacterEntity.CharacterMesh.animator.SetFloat("Speed", movementMagnitude);
+            else{
+                CharacterEntity.Rigidbody.Sleep();
+            }
+            if(CharacterEntity.CharacterMesh.animator) CharacterEntity.CharacterMesh.animator.SetFloat("Speed", movementMagnitude);
         }
     }
 }
