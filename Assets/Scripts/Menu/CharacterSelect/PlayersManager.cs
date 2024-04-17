@@ -179,6 +179,7 @@ public class PlayersManager : MonoBehaviour
         {
             InterfaceManager.Instance.ShowSpecificScreen(ScreensName.FeedbackGame_Screen);
             OnPlayerDeath?.Invoke(id);
+            playersDead = 0;
         }
         
     }

@@ -15,7 +15,11 @@ namespace Character.Melee
         {
             if (other.CompareTag("Character"))
             {
-                var enemy = other.GetComponent<Character>();          
+                var enemy = other.GetComponent<Character>();
+                if (enemy == null)
+                    return;
+                if (enemy.CharacterEntity.CharacterState.State is DeathState)
+                    return; 
                 enemy.CharacterEntity.CharacterState.SetDeathState();
                 PlayersManager.Instance.PlayerDeath(character.Id);
                 
