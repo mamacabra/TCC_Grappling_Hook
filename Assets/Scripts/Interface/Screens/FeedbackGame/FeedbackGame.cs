@@ -10,6 +10,7 @@ public class FeedbackGame : Screens
 
     public override void Initialize()
     {
+         nextGameButton.gameObject.SetActive(true);
         InterfaceManager.Instance.OnHideButton += HideButton;
     }
 

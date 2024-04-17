@@ -44,9 +44,6 @@ public class InterfaceManager : MonoBehaviour
           PlayersManager.Instance.OnPlayerConfigAdd += AddPlayersToList;
           PlayersManager.Instance.OnPlayerConfigRemove += RemovePlayers;
           PlayersManager.Instance.OnPlayerDeath += OnPlayerDeath;
-
-          if (playerScores.Count > 0)
-               playerScores.Clear();
      }
 
      private void OnDisable()

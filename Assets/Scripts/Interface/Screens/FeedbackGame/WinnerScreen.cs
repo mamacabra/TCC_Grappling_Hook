@@ -16,6 +16,7 @@ public class WinnerScreen : Screens
             GoToScreen(initialScreenButton.goToScreen);
             InterfaceManager.Instance.startNewGame = false;
             InterfaceManager.Instance.inGame = false;
+            InterfaceManager.Instance.playerScores.Clear();
             ScenesManager.Instance.UnloadCurrentScene();         
             
         });
