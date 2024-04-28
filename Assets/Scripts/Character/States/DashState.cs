@@ -48,7 +48,6 @@ namespace Character.States
             var position = Transform.position;
             var origin = new Vector3(position.x, 1f, position.z) + direction;
 
-            Debug.Log(RaycastDistance);
             Physics.Raycast(origin, direction, out var hit, RaycastDistance);
             Debug.DrawRay(origin, direction * RaycastDistance, RaycastColor);
 
