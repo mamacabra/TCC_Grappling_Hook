@@ -21,13 +21,9 @@ namespace Character
         private void SetState(ACharacterState state)
         {
             if (State is DeathState) return;
-            State = state;
-            State.Enter();
-            CharacterEntity.CharacterUI.UpdateCharacterStateUI(State.GetType().Name);
-        }
+            if (State is not DashState) State?.Exit();
 
-        public void InitialState(){
-            State = new WalkState(CharacterEntity);
+            State = state;
             State.Enter();
             CharacterEntity.CharacterUI.UpdateCharacterStateUI(State.GetType().Name);
         }
@@ -37,6 +33,12 @@ namespace Character
             if (CharacterEntity.Character.HasDashReady == false) return;
 
             var state = new DashState(CharacterEntity);
+            SetState(state);
+        }
+
+        public void SetDeathState()
+        {
+            var state = new DeathState(CharacterEntity);
             SetState(state);
         }
 
@@ -73,12 +75,6 @@ namespace Character
         public void SetWalkState()
         {
             var state = new WalkState(CharacterEntity);
-            SetState(state);
-        }
-
-        public void SetDeathState()
-        {
-            var state = new DeathState(CharacterEntity);
             SetState(state);
         }
     }
