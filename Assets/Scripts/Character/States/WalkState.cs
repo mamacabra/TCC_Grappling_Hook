@@ -39,11 +39,18 @@ namespace Character.States
 
         public override void FixedUpdate()
         {
+            RaycastTest();
+
             var axes = CharacterEntity.CharacterInput.movementInput;
             var direction = new Vector3(axes.x, 0, axes.y) + Transform.position;
-            Transform.LookAt(direction);
-
-            RaycastTest();
+            if (direction != Vector3.zero)
+            {
+                Transform.LookAt(direction);
+            }
+            else
+            {
+                CharacterEntity.Rigidbody.Sleep();
+            }
         }
 
         private void RaycastTest()
