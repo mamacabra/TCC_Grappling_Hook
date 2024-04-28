@@ -19,14 +19,16 @@ namespace Character
         {
             characterUI = transform.Find("CharacterUI");
 
-            forceText = characterUI?.Find("Canvas/ForceText").GetComponent<Text>();
-            characterStateText = characterUI?.Find("Canvas/CharacterStateText").GetComponent<Text>();
+            // forceText = characterUI?.Find("Canvas/ForceText").GetComponent<Text>();
+            // characterStateText = characterUI?.Find("Canvas/CharacterStateText").GetComponent<Text>();
+
+            characterUI.gameObject.SetActive(false);
         }
 
-        private void Update()
-        {
-            characterUI?.LookAt(Camera.main.transform.position);
-        }
+        // private void FixedUpdate()
+        // {
+        //     characterUI?.LookAt(Camera.main.transform.position);
+        // }
 
         public void UpdateCharacterStateUI(string status)
         {
