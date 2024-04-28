@@ -7,8 +7,6 @@ namespace Character.States
     {
         private const float WalkSpeed = 16f;
 
-        private float movementMagnitude;
-
         private bool _hasHit;
         private const float RaycastDistance = 1f;
         private Color RaycastColor => _hasHit ? Color.red : Color.green;
@@ -30,10 +28,10 @@ namespace Character.States
                 CharacterEntity.Rigidbody.MovePosition(CharacterEntity.Rigidbody.transform.position + direction * (WalkSpeed * Time.deltaTime));
             }
 
-            movementMagnitude = direction.magnitude;
+            var speed = direction.magnitude;
             if (CharacterEntity.CharacterMesh.animator)
             {
-                CharacterEntity.CharacterMesh.animator.SetFloat("Speed", movementMagnitude);
+                CharacterEntity.CharacterMesh.animator.SetFloat("Speed", speed);
             }
         }
 
