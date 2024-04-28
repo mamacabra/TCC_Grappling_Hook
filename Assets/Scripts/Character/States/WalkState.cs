@@ -10,8 +10,11 @@ namespace Character.States
 
         private float movementMagnitude;
 
-        public WalkState(CharacterEntity characterEntity) : base(characterEntity) {}
+        private bool _hasHit;
+        private const float RaycastDistance = 1f;
+        private Color RaycastColor => _hasHit ? Color.red : Color.green;
 
+        public WalkState(CharacterEntity characterEntity) : base(characterEntity) {}
 
         public override void Enter()
         {
@@ -22,8 +25,8 @@ namespace Character.States
         {
             var movementInput = CharacterEntity.CharacterInput.movementInput;
             var direction = new Vector3(movementInput.x, 0, movementInput.y);
-            movementMagnitude = direction.magnitude;
-            if (CharacterEntity.CharacterRaycast.HasHit == false)
+
+            if (_hasHit == false)
             {
                 CharacterEntity.Rigidbody.MovePosition(CharacterEntity.Rigidbody.transform.position + direction * (WalkSpeed * Time.deltaTime));
             }
@@ -37,7 +40,36 @@ namespace Character.States
             else{
                 CharacterEntity.Rigidbody.Sleep();
             }
-            if(CharacterEntity.CharacterMesh.animator) CharacterEntity.CharacterMesh.animator.SetFloat("Speed", movementMagnitude);
+
+            movementMagnitude = direction.magnitude;
+            if (CharacterEntity.CharacterMesh.animator)
+            {
+                CharacterEntity.CharacterMesh.animator.SetFloat("Speed", movementMagnitude);
+            }
+        }
+
+        public override void FixedUpdate()
+        {
+            RaycastTest();
+        }
+
+        private void RaycastTest()
+        {
+            var direction = Transform.forward;
+            var position = Transform.position;
+            var origin = new Vector3(position.x, 1f, position.z) + direction;
+
+            Physics.Raycast(origin, direction, out var hit, RaycastDistance);
+            Debug.DrawRay(origin, direction * RaycastDistance, RaycastColor);
+
+            if (hit.collider)
+            {
+                _hasHit = hit.collider.CompareTag(Const.Tags.Wall) || hit.collider.CompareTag(Const.Tags.Object);
+            }
+            else
+            {
+                _hasHit = false;
+            }
         }
     }
 }

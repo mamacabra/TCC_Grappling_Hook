@@ -9,7 +9,6 @@ namespace Character
     [RequireComponent(typeof(Character))]
     [RequireComponent(typeof(CharacterInput))]
     [RequireComponent(typeof(CharacterMesh))]
-    [RequireComponent(typeof(CharacterRaycast))]
     [RequireComponent(typeof(CharacterState))]
     [RequireComponent(typeof(CharacterUI))]
     [RequireComponent(typeof(GrapplingHookWeapon))]
@@ -24,7 +23,6 @@ namespace Character
             var character = gameObject.GetComponent<Character>();
             var characterInput = gameObject.GetComponent<CharacterInput>();
             var characterMesh = gameObject.GetComponent<CharacterMesh>();
-            var characterRaycast = gameObject.GetComponent<CharacterRaycast>();
             var characterRigidbody = gameObject.GetComponent<Rigidbody>();
             var characterState = gameObject.GetComponent<CharacterState>();
             var characterUI = gameObject.GetComponent<CharacterUI>();
@@ -36,7 +34,6 @@ namespace Character
                 Character = character,
                 CharacterInput = characterInput,
                 CharacterMesh = characterMesh,
-                CharacterRaycast = characterRaycast,
                 CharacterState = characterState,
                 CharacterUI = characterUI,
                 GrapplingHookWeapon = grapplingHookWeapon,
