@@ -35,24 +35,7 @@ public class InterfaceManager : MonoBehaviour
      [HideInInspector] public bool inGame = false;
      [HideInInspector] public bool pause = false;
      [HideInInspector] public bool startNewGame = false;
-     public List<PlayersManager.PlayerConfigurationData> playerScores = new List<PlayersManager.PlayerConfigurationData>();
-
-     public event Action OnAddPlayersToList;
      public event Action OnHideButton;
-     private void OnEnable()
-     {
-          PlayersManager.Instance.OnPlayerConfigAdd += AddPlayersToList;
-          PlayersManager.Instance.OnPlayerConfigRemove += RemovePlayers;
-          PlayersManager.Instance.OnPlayerDeath += OnPlayerDeath;
-     }
-
-     private void OnDisable()
-     {
-          if (!PlayersManager.Instance) return;
-          PlayersManager.Instance.OnPlayerConfigAdd -= AddPlayersToList;
-          PlayersManager.Instance.OnPlayerConfigRemove -= RemovePlayers;
-          PlayersManager.Instance.OnPlayerDeath -= OnPlayerDeath;
-     }
 
      private void Start()
      {
@@ -111,46 +94,19 @@ public class InterfaceManager : MonoBehaviour
           Application.Quit();
      }
      
-     public void AddPlayersToList(PlayersManager.PlayerConfigurationData playerData)
+     public void OnCallFeedbackGame(bool gameOver)
      {
-          playerData.sCharacterData.characterSprite = Resources.Load<ResourcesCharacters>("ResourcesCharacters").GetCharacterData(playerData.characterModel).characterSprite;
-          playerScores.Add(playerData);
-     }
-     public void RemovePlayers(PlayersManager.PlayerConfigurationData playerData)
-     {
-          playerScores.Remove(playerData);
-     }
-
-     public void OnPlayerDeath(int id)
-     {
-          PlayersManager.PlayerConfigurationData pS = playerScores[GetPlayerById(id)];
-          pS.ChangeScore(10);
-          playerScores[GetPlayerById(id)] = pS;
           
-          OnAddPlayersToList?.Invoke();
-
-          foreach (var p in playerScores)
-          {
-               if (p.score >= PlayersManager.Instance.ScoreToWinGame)
-               {
-                    OnHideButton?.Invoke();
-                    StartCoroutine(WaitToCheckWinnerGame());
-                    break;
-               }
-          }
+          ShowSpecificScreen(ScreensName.FeedbackGame_Screen);
+          
+          if(!gameOver) return;
+          OnHideButton?.Invoke();
+          StartCoroutine(WaitToCheckWinnerGame());
      }
-
      IEnumerator WaitToCheckWinnerGame()
      {
           yield return new WaitForSeconds(3);
           ShowSpecificScreen(ScreensName.FinalFeedbackGame);
-     }
-
-     int GetPlayerById(int id){
-          for (int i = 0; i < playerScores.Count; i++)
-               if(playerScores[i].id == id) return i;    
-          
-          return -1;
      }
      
 }

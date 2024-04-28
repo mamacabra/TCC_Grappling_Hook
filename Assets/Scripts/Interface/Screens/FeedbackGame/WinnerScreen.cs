@@ -16,7 +16,7 @@ public class WinnerScreen : Screens
             GoToScreen(initialScreenButton.goToScreen);
             InterfaceManager.Instance.startNewGame = false;
             InterfaceManager.Instance.inGame = false;
-            InterfaceManager.Instance.playerScores.Clear();
+            //InterfaceManager.Instance.playerScores.Clear();
             ScenesManager.Instance.UnloadCurrentScene();         
             
         });
@@ -25,9 +25,11 @@ public class WinnerScreen : Screens
     public override void Initialize()
     {
         base.Initialize();
-
-        PlayersManager.PlayerConfigurationData p = new PlayersManager.PlayerConfigurationData();
-        foreach (var w in InterfaceManager.Instance.playerScores)
+        List<PlayersManager.PlayerConfigurationData> list = new List<PlayersManager.PlayerConfigurationData>();
+        list = PlayersManager.Instance.ReturnPlayersList();
+        
+;       PlayersManager.PlayerConfigurationData p = new PlayersManager.PlayerConfigurationData();
+        foreach (var w in list)
         {
             if (w.score >=PlayersManager.Instance.ScoreToWinGame)
                 p = w;

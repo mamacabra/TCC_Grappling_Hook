@@ -26,7 +26,6 @@ public class PauseInGameScreen : Screens
     {
         ScenesManager.Instance.UnloadCurrentScene();
         InterfaceManager.Instance.inGame = false;
-        InterfaceManager.Instance.playerScores.Clear();
         base.GoToScreen(screensName);
     }
     

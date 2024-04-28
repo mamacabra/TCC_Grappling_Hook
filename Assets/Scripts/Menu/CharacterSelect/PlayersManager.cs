@@ -70,9 +70,9 @@ public class PlayersManager : MonoBehaviour
     #endregion
 
     #region Actions
-    public event Action<PlayerConfigurationData> OnPlayerConfigAdd;
-    public event Action<PlayerConfigurationData> OnPlayerConfigRemove;
-    public event Action<int> OnPlayerDeath;
+   // public event Action<PlayerConfigurationData> OnPlayerConfigAdd;
+   // public event Action<PlayerConfigurationData> OnPlayerConfigRemove;
+    //public event Action<int> OnPlayerDeath;
 
     #endregion
     
@@ -85,6 +85,9 @@ public class PlayersManager : MonoBehaviour
         path = Application.persistentDataPath + "/playersInputs.json";
     }
     public void InitCharacterSelection() {
+        ClearPlayersConfig();
+        
+        canInitGame = false;
         playerInputManager.playerPrefab = playerUIPrefab;
         playerInputManager.EnableJoining();
         EnableInputActions();
@@ -166,18 +169,53 @@ public class PlayersManager : MonoBehaviour
         freeId[_playerInput.playerIndex] = true;
     }
 
-    private int playersDead = 0;
-    public int ScoreToWinGame = 30;
-    public void PlayerDeath(int id)
+    private int playersCountInScene = 0;
+    public int ScoreToWinGame = 10;
+
+    private const int scoreToAddToKill = 1;
+    private const int scoreToAddToWinner = 2;
+    public void AddPointsToPlayer(int playerWhoKilled)
     {
-        playersDead++;
-        if (playersDead >= InterfaceManager.Instance.playerScores.Count - 1)
+        playersCountInScene++;
+        AddPoints(playerWhoKilled, scoreToAddToKill);
+
+        if (playersCountInScene >= playersConfigs.Count-1)
         {
-            InterfaceManager.Instance.ShowSpecificScreen(ScreensName.FeedbackGame_Screen);
-            OnPlayerDeath?.Invoke(id);
-            playersDead = 0;
+            //End Game
+            AddPoints(playerWhoKilled, scoreToAddToWinner);
+            InterfaceManager.Instance.OnCallFeedbackGame(CheckIfGameOver());
         }
-        
+
+        SavePlayersConfigs();
+    }
+
+    void AddPoints(int playerId, int value)
+    {
+        PlayerConfigurationData pS = playersConfigs[GetPlayerById(playerId)];
+        pS.ChangeScore(value);
+        playersConfigs[GetPlayerById(playerId)] = pS;
+    }
+    int GetPlayerById(int id){
+        for (int i = 0; i < playersConfigs.Count; i++)
+            if(playersConfigs[i].id == id) return i;    
+          
+        return -1;
+    }
+
+    bool CheckIfGameOver()
+    {
+        foreach (var p in playersConfigs)
+        {
+            if (p.score >= ScoreToWinGame)
+                return true;
+        }
+
+        return false;
+    }
+
+    public List<PlayerConfigurationData> ReturnPlayersList()
+    {
+        return playersConfigs;
     }
     #endregion
 
@@ -197,8 +235,8 @@ public class PlayersManager : MonoBehaviour
                 characterMesh.SetColor(item.characterColor);
             }
             
-            if (!InterfaceManager.Instance.startNewGame)
-                OnPlayerConfigAdd?.Invoke(item);
+            /*if (!InterfaceManager.Instance.startNewGame)
+                OnPlayerConfigAdd?.Invoke(item);*/
         }
         playerInputManager.DisableJoining();
         InterfaceManager.Instance.startNewGame = true;
@@ -225,7 +263,7 @@ public class PlayersManager : MonoBehaviour
     }
     public void RemovePlayerConfig(PlayerConfigurationData playerConfiguration) {
         playersConfigs.Remove(playerConfiguration);
-        OnPlayerConfigRemove?.Invoke(playerConfiguration);
+        //OnPlayerConfigRemove?.Invoke(playerConfiguration);
     }
     public void ClearPlayersConfig() {
         amountOfPlayersReady = 0;
@@ -322,4 +360,3 @@ public class PlayersManager : MonoBehaviour
 public class PlayersInputData {
     public PlayersManager.PlayerConfigurationData[] playersConfigs;
 }
-

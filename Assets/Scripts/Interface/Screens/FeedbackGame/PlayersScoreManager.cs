@@ -7,16 +7,12 @@ public class PlayersScoreManager : MonoBehaviour
 {
    [SerializeField]private GameObject playerScoreGameObject;
    private List<GameObject> childs = new List<GameObject>();
+
    private void OnEnable()
    {
-      InterfaceManager.Instance.OnAddPlayersToList += AddPlayersToList;
+      AddPlayersToList();
    }
 
-   private void OnDisable()
-   {
-      if(!InterfaceManager.Instance) return;
-      InterfaceManager.Instance.OnAddPlayersToList -= AddPlayersToList;
-   }
    public void AddPlayersToList()
    {
       if (childs.Count > 0)
@@ -25,8 +21,11 @@ public class PlayersScoreManager : MonoBehaviour
             Destroy(c);
          childs.Clear();
       }
-      
-      foreach (var p in InterfaceManager.Instance.playerScores)
+
+      List<PlayersManager.PlayerConfigurationData> list = new List<PlayersManager.PlayerConfigurationData>();
+      list = PlayersManager.Instance.ReturnPlayersList();
+
+      foreach (var p in list)
       {
          GameObject o = Instantiate(playerScoreGameObject, this.transform);
          childs.Add(o);
