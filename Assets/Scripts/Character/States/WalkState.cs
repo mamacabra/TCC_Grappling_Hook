@@ -6,8 +6,6 @@ namespace Character.States
     public class WalkState : ACharacterState
     {
         private const float WalkSpeed = 16f;
-        private const float WalkAnimationSpeed = 3f;
-        private const float RotationSpeed = 1000f;
 
         private float movementMagnitude;
 
