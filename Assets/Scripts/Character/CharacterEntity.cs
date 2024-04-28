@@ -9,7 +9,6 @@ namespace Character
         public Character Character;
         public CharacterInput CharacterInput;
         public CharacterMesh CharacterMesh;
-        public CharacterRaycast CharacterRaycast;
         public CharacterState CharacterState;
         public CharacterUI CharacterUI;
         public GrapplingHookWeapon GrapplingHookWeapon;

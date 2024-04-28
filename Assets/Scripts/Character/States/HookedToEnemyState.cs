@@ -26,7 +26,6 @@ namespace Character.States
             if (distance <= MinDistanceToDrop)
             {
                 CharacterEntity.CharacterState.SetWalkState();
-                // TODO: Chamar função que mata o personagem
             }
         }
     }
