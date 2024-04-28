@@ -1,5 +1,4 @@
 using Character.States;
-using Character;
 using Character.Utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,15 +14,17 @@ namespace Character
         public void OnMove(InputAction.CallbackContext context)
         {
             if (CharacterEntity.IsDebug) return;
-            if(CharacterEntity.CharacterState.State is DeathState) return;
+            if (CharacterEntity.CharacterState.State is DeathState) return;
             movementInput = context.ReadValue<Vector2>();
         }
 
         public void OnDash(InputAction.CallbackContext context)
         {
             if (CharacterEntity.IsDebug) return;
-            if(CharacterEntity.CharacterState.State is DeathState) return;
-            if(context.started) CharacterEntity.CharacterState.SetDashState();
+
+            var state = CharacterEntity.CharacterState.State;
+            if (state is DeathState) return;
+            if (context.started) CharacterEntity.CharacterState.SetDashState();
         }
 
         public void OnShoot(InputAction.CallbackContext context)
@@ -31,8 +32,8 @@ namespace Character
             if (CharacterEntity.IsDebug) return;
 
             var state = CharacterEntity.CharacterState.State;
-            if(state is DeathState) return;
-            if(context.performed && state is WalkState)
+            if (state is DeathState) return;
+            if (context.performed && state is WalkState)
                 CharacterEntity.CharacterState.SetPrepareHookState();
             else if (context.canceled && state is WalkState or PrepareHookState)
                 CharacterEntity.CharacterState.SetDispatchHookState();
@@ -41,8 +42,10 @@ namespace Character
         public void OnMelee(InputAction.CallbackContext context)
         {
             if (CharacterEntity.IsDebug) return;
-            if(CharacterEntity.CharacterState.State is DeathState) return;
-            if(context.started){
+
+            var state = CharacterEntity.CharacterState.State;
+            if (state is DeathState) return;
+            if (context.started) {
                 meleeAttack.ActivateHitbox();
                 CharacterEntity.CharacterMesh.animator?.SetTrigger("Melee");
             }

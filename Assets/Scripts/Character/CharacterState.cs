@@ -34,6 +34,8 @@ namespace Character
 
         public void SetDashState()
         {
+            if (CharacterEntity.Character.HasDashReady == false) return;
+
             var state = new DashState(CharacterEntity);
             SetState(state);
         }
@@ -79,7 +81,5 @@ namespace Character
             var state = new DeathState(CharacterEntity);
             SetState(state);
         }
-
-       
     }
 }

@@ -15,6 +15,11 @@ namespace Character.States
 
         public DashState(CharacterEntity characterEntity) : base(characterEntity) {}
 
+        public override void Enter()
+        {
+            CharacterEntity.Character.UseDash();
+        }
+
         public override void Update()
         {
             var direction = CharacterEntity.CharacterInput.transform.forward;
@@ -40,6 +45,7 @@ namespace Character.States
         public override void Exit()
         {
             CharacterEntity.CharacterState.SetWalkState();
+            CharacterEntity.Character.StartDashCountDown();
         }
 
         private void RaycastTest()
