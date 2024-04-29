@@ -13,16 +13,6 @@ namespace Character.States
 
         public PrepareHookState(CharacterEntity characterEntity) : base(characterEntity) {}
 
-        public override void FixedUpdate() {
-            _countDown += Time.fixedDeltaTime;
-
-            if (_countDown > CountDownStep && CharacterEntity.GrapplingHookWeapon.Force < GrapplingHookWeapon.MaxGrapplingHookForce)
-            {
-                _countDown = 0f;
-                CharacterEntity.GrapplingHookWeapon.IncreaseHookForce();
-            }
-        }
-
         public override void Update()
         {
             var movementInput = CharacterEntity.CharacterInput.movementInput;
@@ -35,6 +25,16 @@ namespace Character.States
                 var transform = CharacterEntity.CharacterInput.transform;
                 var toRotation = Quaternion.LookRotation(direction);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, Time.deltaTime * RotationSpeed);
+            }
+        }
+
+        public override void FixedUpdate() {
+            _countDown += Time.fixedDeltaTime;
+
+            if (_countDown > CountDownStep && CharacterEntity.GrapplingHookWeapon.Force < GrapplingHookWeapon.MaxGrapplingHookForce)
+            {
+                _countDown = 0f;
+                CharacterEntity.GrapplingHookWeapon.IncreaseHookForce();
             }
         }
     }
