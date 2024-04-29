@@ -30,5 +30,10 @@ namespace Character.States
             if (distance <= MinDistanceToDrop)
                 CharacterEntity.CharacterState.SetWalkState();
         }
+
+        public override void Exit()
+        {
+            CharacterEntity.Character.StartHookCountDown();
+        }
     }
 }

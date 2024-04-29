@@ -28,5 +28,10 @@ namespace Character.States
                 CharacterEntity.CharacterState.SetWalkState();
             }
         }
+
+        public override void Exit()
+        {
+            CharacterEntity.Character.StartHookCountDown();
+        }
     }
 }
