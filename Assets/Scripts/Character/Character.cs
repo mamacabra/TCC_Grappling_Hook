@@ -18,11 +18,6 @@ namespace Character
         public bool HasAttackMeleeReady { get; private set; } = true;
         private const float MaxCountDownMelee = 0.5f;
 
-        public Character(CharacterEntity characterEntity)
-        {
-            CharacterEntity = characterEntity;
-        }
-
         public void UseDash()
         {
             HasDashReady = false;

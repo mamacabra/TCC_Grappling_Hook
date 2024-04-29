@@ -3,7 +3,6 @@ using Character.Utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
 namespace Character
 {
     public class CharacterInput : ACharacterMonoBehaviour
