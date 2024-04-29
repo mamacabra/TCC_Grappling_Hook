@@ -6,11 +6,47 @@ namespace Character.States
     public class AttackState : ACharacterState
     {
         public AttackState(CharacterEntity characterEntity) : base(characterEntity) { }
-        // Start is called before the first frame update
-        void Start()
-        {
+        public GameObject meleeHitbox;
+        private float timer = 0.8f;
+        private bool isMeleeing;
 
+        public override void Enter()
+        {
+            meleeHitbox = Transform.Find("MeleeHitbox").gameObject;
+            ActivateHitbox();
         }
+
+        public override void Update()
+        {
+            if (isMeleeing)
+            {
+                timer -= Time.deltaTime;
+
+            }
+
+            if (timer < 0f)
+            {
+                DeactivateHitbox();
+            }
+        }
+
+        private void ActivateHitbox()
+        {
+            meleeHitbox?.SetActive(true);
+            isMeleeing = true;
+        }
+
+        private void DeactivateHitbox()
+        {
+            meleeHitbox?.SetActive(false);
+            isMeleeing = false;
+            timer = 0.8f;
+            CharacterEntity.CharacterState.SetWalkState();
+        }
+
+      
+            
+        
 
     }
 }

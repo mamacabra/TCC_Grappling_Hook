@@ -45,7 +45,8 @@ namespace Character
             var state = CharacterEntity.CharacterState.State;
             if (state is DeathState) return;
             if (context.started) {
-                meleeAttack.ActivateHitbox();
+                CharacterEntity.CharacterState.SetAttackState();
+                //meleeAttack.ActivateHitbox();
                 CharacterEntity.CharacterMesh.animator?.SetTrigger("Melee");
             }
         }

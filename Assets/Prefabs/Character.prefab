@@ -130,7 +130,6 @@ GameObject:
   - component: {fileID: 6587030914899588108}
   - component: {fileID: 6864274715603194859}
   - component: {fileID: 1461679183913746238}
-  - component: {fileID: 6118250674171351577}
   - component: {fileID: -4475908397822895951}
   m_Layer: 0
   m_Name: Character
@@ -196,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63435266756e8184c9b7361895c98bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meleeAttack: {fileID: 6118250674171351577}
+  meleeAttack: {fileID: 0}
   movementInput: {x: 0, y: 0}
 --- !u!114 &4521154744536779452
 MonoBehaviour:
@@ -447,19 +446,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.8, y: 1.5, z: 1.8}
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &6118250674171351577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2160222834551465636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4b17f79a3d80684c9147cd469912e22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  meleeHitbox: {fileID: 3856020092371790344}
 --- !u!95 &-4475908397822895951
 Animator:
   serializedVersion: 5
