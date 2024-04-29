@@ -81,5 +81,17 @@ namespace Character
             var state = new WalkState(CharacterEntity);
             SetState(state);
         }
+
+        public void SetAttackState()
+        {
+            var state = new AttackState(CharacterEntity);
+            SetState(state);
+        }
+
+        public void SetKnockbackState()
+        {
+            var state = new KnockbackState(CharacterEntity);
+            SetState(state);
+        }
     }
 }

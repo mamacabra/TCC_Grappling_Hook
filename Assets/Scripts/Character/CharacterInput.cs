@@ -49,5 +49,7 @@ namespace Character
                 CharacterEntity.CharacterMesh.animator?.SetTrigger("Melee");
             }
         }
+
+
     }
 }
