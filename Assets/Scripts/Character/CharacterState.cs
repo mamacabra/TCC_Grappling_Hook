@@ -44,6 +44,8 @@ namespace Character
 
         public void SetDispatchHookState()
         {
+            if (CharacterEntity.Character.HasHookReady == false) return;
+
             var state = new DispatchHookState(CharacterEntity);
             SetState(state);
         }
@@ -62,6 +64,8 @@ namespace Character
 
         public void SetPrepareHookState()
         {
+            if (CharacterEntity.Character.HasHookReady == false) return;
+
             var state = new PrepareHookState(CharacterEntity);
             SetState(state);
         }

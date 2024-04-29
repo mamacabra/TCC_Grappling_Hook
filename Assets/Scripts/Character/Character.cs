@@ -13,7 +13,7 @@ namespace Character
         private const float MaxCountDownDash = 0.2f;
 
         public bool HasHookReady { get; private set; } = true;
-        private const float MaxCountDownHook = 0.5f;
+        private const float MaxCountDownHook = 0.6f;
 
         public bool HasAttackMeleeReady { get; private set; } = true;
         private const float MaxCountDownMelee = 0.5f;
@@ -33,6 +33,11 @@ namespace Character
         public void StartDashCountDown()
         {
             StartCoroutine(DashCountDownCoroutine());
+        }
+
+        public void UseHook()
+        {
+            HasHookReady = false;
         }
 
         private IEnumerator HookCountDownCoroutine()
