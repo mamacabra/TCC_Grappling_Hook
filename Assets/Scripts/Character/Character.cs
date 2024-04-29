@@ -7,7 +7,7 @@ namespace Character
     public class Character : ACharacterMonoBehaviour
     {
         public int Id;
-        public new CharacterEntity CharacterEntity { get; }
+        public new CharacterEntity CharacterEntity { get; private set; }
 
         public bool HasDashReady { get; private set; } = true;
         private const float MaxCountDownDash = 0.2f;
@@ -17,6 +17,11 @@ namespace Character
 
         public bool HasAttackMeleeReady { get; private set; } = true;
         private const float MaxCountDownMelee = 0.5f;
+
+        public new void Setup(CharacterEntity entity)
+        {
+            CharacterEntity = entity;
+        }
 
         public void UseDash()
         {
