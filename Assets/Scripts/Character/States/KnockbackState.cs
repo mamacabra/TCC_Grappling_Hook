@@ -6,10 +6,16 @@ namespace Character.States
     public class KnockbackState : ACharacterState
     {
         public KnockbackState(CharacterEntity characterEntity) : base(characterEntity) { }
-        // Start is called before the first frame update
-        void Start()
-        {
 
+        private float knockbackForce = 100f;
+        private Vector3 knockbackDirection;
+
+        public override void Update()
+        {
+            knockbackDirection = CharacterEntity.CharacterInput.transform.forward;
+            CharacterEntity.Rigidbody.AddForce(-knockbackDirection * knockbackForce, ForceMode.Impulse);
+            
+            
         }
 
 

@@ -7,7 +7,7 @@ namespace Character.States
     {
         public AttackState(CharacterEntity characterEntity) : base(characterEntity) { }
         public GameObject meleeHitbox;
-        private float timer = 0.8f;
+        private float timer = 1f;
         private bool isMeleeing;
 
         public override void Enter()
@@ -34,13 +34,14 @@ namespace Character.States
         {
             meleeHitbox?.SetActive(true);
             isMeleeing = true;
+            
         }
 
         private void DeactivateHitbox()
         {
             meleeHitbox?.SetActive(false);
             isMeleeing = false;
-            timer = 0.8f;
+            timer = 0.1f;
             CharacterEntity.CharacterState.SetWalkState();
         }
 
