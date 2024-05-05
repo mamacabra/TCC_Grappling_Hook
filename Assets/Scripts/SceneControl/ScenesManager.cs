@@ -11,7 +11,7 @@ namespace SceneSelect
         public ScenesData scenesData;
         public static AsyncOperation onSceneLoadOperation;
         public static AsyncOperation onSceneUnloadOperation;
-        private int currentSceneIndex;
+        private int currentSceneIndex = -1;
 
         public void LoadRandomScene() {
             
