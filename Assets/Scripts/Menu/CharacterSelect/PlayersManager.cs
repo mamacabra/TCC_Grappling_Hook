@@ -5,8 +5,6 @@ using Character;
 using SceneSelect;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
-using Screen = UnityEngine.Device.Screen;
 
 [RequireComponent(typeof(PlayerInputManager))]
 public class PlayersManager : MonoBehaviour
@@ -52,7 +50,8 @@ public class PlayersManager : MonoBehaviour
     [Header("Refferences")]
     public CharacterChoiseScreen characterChoice;
     public PrototypeCameraMoviment cameraMovement;
-    PlayerInputManager playerInputManager;
+    public PlayersSpawners playersSpawners;
+    public PlayerInputManager playerInputManager;
     #endregion
 
     #region Data
@@ -63,8 +62,7 @@ public class PlayersManager : MonoBehaviour
     private string path;
     private GameObject[] playersGameObjects;
     private bool canInitGame = false;
-    public bool CanInitGame => canInitGame;
-    
+    public bool CanInitGame => canInitGame;    
    
     
     #endregion
@@ -227,12 +225,15 @@ public class PlayersManager : MonoBehaviour
             
             // Set player material
             PlayerInput playerInput = playerInputManager.JoinPlayer(item.id, controlScheme: item.controlScheme, pairWithDevices: GetDevicesFromString(item.inputDevices));
-            if(playerInput.TryGetComponent(out Character.Character character)){
+            if (playerInput.TryGetComponent(out Character.Character character)){
                 character.Id = item.id;
             }
             if (playerInput.TryGetComponent(out CharacterMesh characterMesh)) {
                 characterMesh.SetMesh(item.characterModel);
                 characterMesh.SetColor(item.characterColor);
+            }
+            if (playersSpawners) {
+                playerInput.transform.position = playersSpawners.spawners[item.id].position;
             }
             
             /*if (!InterfaceManager.Instance.startNewGame)
