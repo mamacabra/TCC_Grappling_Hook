@@ -250,7 +250,7 @@ public class PlayersManager : MonoBehaviour
         } 
         if (amountOfPlayersReady == playerInputManager.playerCount) {
             SavePlayersConfigs();
-            canInitGame = true;
+            canInitGame = playerInputManager.playerCount > 1;
         } else {
             canInitGame = false;
         }
