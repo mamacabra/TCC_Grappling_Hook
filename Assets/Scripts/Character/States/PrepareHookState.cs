@@ -7,7 +7,7 @@ namespace Character.States
     public class PrepareHookState : ACharacterState
     {
         private float _countDown;
-        private const float CountDownStep = 0.2f;
+        private const float CountDownStep = 0.1f;
         private const float MovementSpeed = 12f;
         private const float RotationSpeed = 800f;
 

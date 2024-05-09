@@ -12,7 +12,7 @@ namespace Character.Melee
     {
         
         public GameObject meleeHitbox;
-        private float timer = 1f;
+        private float timer = 0.3f;
         private bool isMeleeing;
        
          void Update()
@@ -39,7 +39,7 @@ namespace Character.Melee
         {
             meleeHitbox?.SetActive(false);
             isMeleeing = false;
-            timer = 1f;
+            timer = 0.3f;
         }
     }
 
