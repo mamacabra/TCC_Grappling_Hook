@@ -7,7 +7,6 @@ namespace Character
 {
     public class CharacterInput : ACharacterMonoBehaviour
     {
-        public Melee.MeleeAttack meleeAttack;
         public Vector2 movementInput = Vector2.zero;
 
         public void OnMove(InputAction.CallbackContext context)
@@ -44,13 +43,11 @@ namespace Character
 
             var state = CharacterEntity.CharacterState.State;
             if (state is DeathState) return;
+
             if (context.started) {
                 CharacterEntity.CharacterState.SetAttackState();
-                //meleeAttack.ActivateHitbox();
                 CharacterEntity.CharacterMesh.animator?.SetTrigger("Melee");
             }
         }
-
-
     }
 }
