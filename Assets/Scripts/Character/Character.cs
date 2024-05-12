@@ -7,6 +7,7 @@ namespace Character
     public class Character : ACharacterMonoBehaviour
     {
         public int Id;
+        public Transform characterBody;
         public new CharacterEntity CharacterEntity { get; private set; }
 
         public bool HasDashReady { get; private set; } = true;
