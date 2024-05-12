@@ -5,6 +5,8 @@ namespace Character.GrapplingHook
 {
     public class GrapplingHookWeapon : ACharacterMonoBehaviour
     {
+        [SerializeField] private Transform hook;
+
         private int _force = 1;
         public const int MaxGrapplingHookForce = 3;
         public const int DefaultGrapplingHookForce = 1;
@@ -49,7 +51,7 @@ namespace Character.GrapplingHook
         {
             CharacterEntity = entity;
 
-            var hook = transform.Find("GrapplingHook");
+            // var hook = transform.Find("GrapplingHook");
             hookCollider = hook.GetComponent<BoxCollider>();
             hookRigidbody = hook.GetComponent<Rigidbody>();
             if (grapplingHook) grapplingHook.Setup(entity);
