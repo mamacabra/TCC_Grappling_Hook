@@ -21,34 +21,38 @@ namespace Character.States
         public override void Update()
         {
             var axes = CharacterEntity.CharacterInput.movementInput;
-            var direction = new Vector3(axes.x, 0, axes.y);
+            var moveDirection = new Vector3(axes.x, 0, axes.y);
 
-            if (_hasHit == false)
-            {
-                CharacterEntity.Rigidbody.MovePosition(CharacterEntity.Rigidbody.transform.position + direction * (WalkSpeed * Time.deltaTime));
-            }
+            Debug.Log("WalkState FixedUpdate: " + moveDirection);
 
-            var speed = direction.magnitude;
-            if (CharacterEntity.CharacterMesh.animator)
-            {
-                CharacterEntity.CharacterMesh.animator.SetFloat("Speed", speed);
-            }
-        }
+            // if (_hasHit == false)
+            // {
+                // CharacterEntity.Rigidbody.MovePosition(CharacterEntity.Rigidbody.transform.position + direction * (WalkSpeed * Time.fixedDeltaTime));
+                Transform.Translate(moveDirection * (WalkSpeed * Time.deltaTime));
+            // }
 
-        public override void FixedUpdate()
-        {
-            RaycastTest();
+            // var speed = direction.magnitude;
+            // if (CharacterEntity.CharacterMesh.animator)
+            // {
+            //     CharacterEntity.CharacterMesh.animator.SetFloat("Speed", speed);
+            // }
+        // }
+        //
+        // public override void FixedUpdate()
+        // {
+            // RaycastTest();
 
-            var axes = CharacterEntity.CharacterInput.movementInput;
-            var direction = new Vector3(axes.x, 0, axes.y) + Transform.position;
-            if (direction != Vector3.zero)
+            // var axes = CharacterEntity.CharacterInput.movementInput;
+            // var moveDirection = new Vector3(axes.x, 0, axes.y);
+            var lookDirection = Transform.position + moveDirection;
+            if (lookDirection != Vector3.zero)
             {
-                Transform.LookAt(direction);
+                CharacterEntity.Character.characterBody.LookAt(lookDirection);
             }
-            else
-            {
-                CharacterEntity.Rigidbody.Sleep();
-            }
+            // else
+            // {
+            //     CharacterEntity.Rigidbody.Sleep();
+            // }
         }
 
         private void RaycastTest()
