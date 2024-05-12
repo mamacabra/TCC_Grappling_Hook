@@ -57,7 +57,7 @@ namespace Character
         private static void SetupRigidbody(CharacterEntity entity)
         {
             entity.Rigidbody.useGravity = false;
-            entity.Rigidbody.isKinematic = false;
+            entity.Rigidbody.isKinematic = true;
             entity.Rigidbody.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
             entity.Rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
         }
