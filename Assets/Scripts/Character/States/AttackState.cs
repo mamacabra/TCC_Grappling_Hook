@@ -12,7 +12,7 @@ namespace Character.States
 
         public override void Enter()
         {
-            meleeHitbox = Transform.Find("MeleeHitbox").gameObject;
+            meleeHitbox = Transform.Find("Body/MeleeHitbox").gameObject;
             meleeHitbox?.SetActive(true);
         }
 
