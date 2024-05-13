@@ -7,18 +7,17 @@ namespace Character.States
     {
         public KnockbackState(CharacterEntity characterEntity) : base(characterEntity) { }
 
-        private float knockbackForce = 100f;
+        private float knockbackForce = 10f;
         private Vector3 knockbackDirection;
+        
 
-        public override void Update()
+        public override void Enter()
         {
             knockbackDirection = CharacterEntity.CharacterInput.transform.forward;
-            CharacterEntity.Rigidbody.AddForce(-knockbackDirection * knockbackForce, ForceMode.Impulse);
-            
-            
+            CharacterEntity.Rigidbody.AddForce(-knockbackDirection * knockbackForce, ForceMode.Acceleration);
+            CharacterEntity.CharacterState.SetWalkState();
         }
-
-
+      
     }
 }
 

@@ -17,13 +17,26 @@ namespace Character.Melee
             if (character.CharacterEntity.CharacterState.State is DeathState)return;
             if (other.CompareTag("Character"))
             {
+                
                 var enemy = other.GetComponent<Character>();
-                if (enemy == null)
-                    return;
-                if (enemy.CharacterEntity.CharacterState.State is DeathState)
-                    return; 
-                enemy.CharacterEntity.CharacterState.SetDeathState();
-                PlayersManager.Instance.AddPointsToPlayer(character.Id);
+                if (enemy == null) return;
+
+                if (enemy.CharacterEntity.CharacterState.State is DeathState) return;
+                
+
+                if(enemy.CharacterEntity.CharacterState.State is AttackState)
+                {
+                    enemy.CharacterEntity.CharacterState.SetKnockbackState();
+                    character.CharacterEntity.CharacterState.SetKnockbackState();
+                }
+                
+                
+                    enemy.CharacterEntity.CharacterState.SetDeathState();
+                    PlayersManager.Instance.AddPointsToPlayer(character.Id);
+                
+                
+                        
+                
                 
             }
         }
