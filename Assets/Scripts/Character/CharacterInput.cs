@@ -11,26 +11,19 @@ namespace Character
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            if (CharacterEntity.IsDebug) return;
             if (CharacterEntity.CharacterState.State is DeathState) return;
             movementInput = context.ReadValue<Vector2>();
         }
 
         public void OnDash(InputAction.CallbackContext context)
         {
-            if (CharacterEntity.IsDebug) return;
-
-            var state = CharacterEntity.CharacterState.State;
-            if (state is DeathState) return;
             if (context.started) CharacterEntity.CharacterState.SetDashState();
         }
 
         public void OnShoot(InputAction.CallbackContext context)
         {
-            if (CharacterEntity.IsDebug) return;
-
             var state = CharacterEntity.CharacterState.State;
-            if (state is DeathState) return;
+
             if (context.performed && state is WalkState)
                 CharacterEntity.CharacterState.SetPrepareHookState();
             else if (context.canceled && state is WalkState or PrepareHookState)
@@ -39,11 +32,6 @@ namespace Character
 
         public void OnMelee(InputAction.CallbackContext context)
         {
-            if (CharacterEntity.IsDebug) return;
-
-            var state = CharacterEntity.CharacterState.State;
-            if (state is DeathState) return;
-
             if (context.started) {
                 CharacterEntity.CharacterState.SetAttackState();
                 CharacterEntity.CharacterMesh.animator?.SetTrigger("Melee");
