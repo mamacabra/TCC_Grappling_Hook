@@ -35,7 +35,7 @@ namespace Character.GrapplingHook
         public void FixedUpdate()
         {
             if (_isHookDispatch || _isHookRollback)
-                hookRigidbody.MovePosition(hookRigidbody.transform.position + _hookDirection * (Time.fixedDeltaTime * _hookSpeed));
+                hookRigidbody.transform.Translate(_hookDirection * (Time.fixedDeltaTime * _hookSpeed));
 
             var hookDistance = Vector3.Distance(_hookOriginLocalPosition, hookRigidbody.transform.localPosition);
             if (_isHookDispatch && hookDistance >= _hookMaxDistance)
