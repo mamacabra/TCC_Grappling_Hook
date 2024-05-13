@@ -21,8 +21,8 @@ namespace Character
         private void SetState(ACharacterState state)
         {
             if (State is DeathState) return;
-            if (State is not DashState) State?.Exit();
 
+            State?.Exit();
             State = state;
             State.Enter();
             CharacterEntity.CharacterUI.UpdateCharacterStateUI(State.GetType().Name);

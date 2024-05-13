@@ -22,17 +22,17 @@ namespace Character.States
 
         public override void Update()
         {
-            var direction = CharacterEntity.CharacterInput.transform.forward;
-
             if (_hasHit == false)
             {
-                CharacterEntity.Rigidbody.MovePosition(CharacterEntity.Rigidbody.transform.position + direction * (DashSpeed * Time.deltaTime));
+                var axes = CharacterEntity.CharacterInput.movementInput;
+                var moveDirection = new Vector3(axes.x, 0, axes.y);
+                Transform.Translate(moveDirection * (DashSpeed * Time.deltaTime));
                 CharacterEntity.CharacterMesh.animator?.SetFloat("Speed", 1);
             }
 
             if (_countDown > DashDuration)
             {
-                Exit();
+                CharacterEntity.CharacterState.SetWalkState();
             }
         }
 
@@ -44,7 +44,6 @@ namespace Character.States
 
         public override void Exit()
         {
-            CharacterEntity.CharacterState.SetWalkState();
             CharacterEntity.Character.StartDashCountDown();
         }
 
