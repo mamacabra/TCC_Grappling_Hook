@@ -23,11 +23,8 @@ namespace Character.States
             var axes = CharacterEntity.CharacterInput.movementInput;
             var moveDirection = new Vector3(axes.x, 0, axes.y);
 
-            Debug.Log("WalkState FixedUpdate: " + moveDirection);
-
             if (_hasHit == false)
             {
-                // CharacterEntity.Rigidbody.MovePosition(CharacterEntity.Rigidbody.transform.position + direction * (WalkSpeed * Time.fixedDeltaTime));
                 Transform.Translate(moveDirection * (WalkSpeed * Time.deltaTime));
             }
 
