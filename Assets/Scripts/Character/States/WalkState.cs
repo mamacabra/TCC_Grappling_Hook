@@ -25,25 +25,25 @@ namespace Character.States
 
             Debug.Log("WalkState FixedUpdate: " + moveDirection);
 
-            // if (_hasHit == false)
-            // {
+            if (_hasHit == false)
+            {
                 // CharacterEntity.Rigidbody.MovePosition(CharacterEntity.Rigidbody.transform.position + direction * (WalkSpeed * Time.fixedDeltaTime));
                 Transform.Translate(moveDirection * (WalkSpeed * Time.deltaTime));
-            // }
+            }
 
-            // var speed = direction.magnitude;
-            // if (CharacterEntity.CharacterMesh.animator)
-            // {
-            //     CharacterEntity.CharacterMesh.animator.SetFloat("Speed", speed);
-            // }
-        // }
-        //
-        // public override void FixedUpdate()
-        // {
-            // RaycastTest();
+            var speed = moveDirection.magnitude;
+            if (CharacterEntity.CharacterMesh.animator)
+            {
+                CharacterEntity.CharacterMesh.animator.SetFloat("Speed", speed);
+            }
+        }
 
-            // var axes = CharacterEntity.CharacterInput.movementInput;
-            // var moveDirection = new Vector3(axes.x, 0, axes.y);
+        public override void FixedUpdate()
+        {
+            RaycastTest();
+
+            var axes = CharacterEntity.CharacterInput.movementInput;
+            var moveDirection = new Vector3(axes.x, 0, axes.y);
             var lookDirection = Transform.position + moveDirection;
             if (lookDirection != Vector3.zero)
             {
@@ -57,8 +57,10 @@ namespace Character.States
 
         private void RaycastTest()
         {
-            var direction = Transform.forward;
+            var axes = CharacterEntity.CharacterInput.movementInput;
+            var moveDirection = new Vector3(axes.x, 0, axes.y);
             var position = Transform.position;
+            var direction = moveDirection;
             var origin = new Vector3(position.x, 1f, position.z) + direction;
 
             Physics.Raycast(origin, direction, out var hit, RaycastDistance);
