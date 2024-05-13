@@ -28,9 +28,16 @@ namespace Character
             CharacterEntity.CharacterUI.UpdateCharacterStateUI(State.GetType().Name);
         }
 
+        public void SetAttackState()
+        {
+            var state = new AttackState(CharacterEntity);
+            SetState(state);
+        }
+
         public void SetDashState()
         {
             if (CharacterEntity.Character.HasDashReady == false) return;
+            if (CharacterEntity.CharacterState.State is not WalkState or PrepareHookState) return;
 
             var state = new DashState(CharacterEntity);
             SetState(state);
@@ -79,12 +86,6 @@ namespace Character
         public void SetWalkState()
         {
             var state = new WalkState(CharacterEntity);
-            SetState(state);
-        }
-
-        public void SetAttackState()
-        {
-            var state = new AttackState(CharacterEntity);
             SetState(state);
         }
 
