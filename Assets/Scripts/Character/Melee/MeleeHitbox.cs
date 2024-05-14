@@ -17,8 +17,16 @@ namespace Character.Melee
             if (enemy == null) return;
             if (enemy.CharacterEntity.CharacterState.State is DeathState) return;
 
-            enemy.CharacterEntity.CharacterState.SetDeathState();
-            PlayersManager.Instance.AddPointsToPlayer(character.Id);
+            if (enemy.CharacterEntity.CharacterState.State is AttackState)
+            {   
+                enemy.CharacterEntity.CharacterState.SetKnockbackState();
+                character.CharacterEntity.CharacterState.SetKnockbackState();
+            }
+            else
+            {
+                enemy.CharacterEntity.CharacterState.SetDeathState();
+                PlayersManager.Instance.AddPointsToPlayer(character.Id);
+            }
         }
     }
 }
