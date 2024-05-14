@@ -25,7 +25,7 @@ namespace Character.States
 
             if (_hasHit == false)
             {
-                CharacterEntity.Rigidbody.MovePosition(CharacterEntity.Rigidbody.transform.position + direction * (WalkSpeed * Time.deltaTime));
+                CharacterEntity.Rigidbody.MovePosition(CharacterEntity.Rigidbody.transform.position + direction * (WalkSpeed * Time.fixedDeltaTime));
             }
 
             var speed = direction.magnitude;
@@ -47,6 +47,7 @@ namespace Character.States
             }
             else
             {
+                if (!CharacterEntity.Rigidbody.IsSleeping()) CharacterEntity.Rigidbody.velocity = Vector3.zero;
                 CharacterEntity.Rigidbody.Sleep();
             }
         }
