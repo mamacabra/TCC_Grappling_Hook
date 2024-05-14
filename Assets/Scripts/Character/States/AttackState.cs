@@ -5,45 +5,30 @@ namespace Character.States
 {
     public class AttackState : ACharacterState
     {
+        private GameObject meleeHitbox;
+        private float countDown = 0.3f;
+
         public AttackState(CharacterEntity characterEntity) : base(characterEntity) { }
-        public GameObject meleeHitbox;
-        private float timer = .2f;
-        private bool isMeleeing;
 
         public override void Enter()
         {
             meleeHitbox = Transform.Find("MeleeHitbox").gameObject;
-            ActivateHitbox();
+            meleeHitbox?.SetActive(true);
         }
 
         public override void Update()
         {
-            if (isMeleeing)
-            {
-                timer -= Time.deltaTime;
+            countDown -= Time.deltaTime;
 
-            }
-
-            if (timer < 0f)
+            if (countDown < 0f)
             {
-                DeactivateHitbox();
+                CharacterEntity.CharacterState.SetWalkState();
             }
         }
 
-        private void ActivateHitbox()
-        {
-            meleeHitbox?.SetActive(true);
-            isMeleeing = true;
-            
-        }
-
-        private void DeactivateHitbox()
+        public override void Exit()
         {
             meleeHitbox?.SetActive(false);
-            isMeleeing = false;
-            timer = .2f;
-            CharacterEntity.CharacterState.SetWalkState();
         }
     }
 }
-
