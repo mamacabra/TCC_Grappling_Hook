@@ -1,16 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class PrototypeCameraMoviment : MonoBehaviour
 {
-    [SerializeField] private List<Transform> players = new List<Transform>();
-    [SerializeField] private float minDistance = 5.0f;
-    [SerializeField] private float maxDistance = 10.0f;
-    [SerializeField] private float rotationX = 80.0f; 
-    [SerializeField] private float smoothness = 5.0f;
-
     private void Start() {
         PlayersManager.Instance.cameraMovement = this;
     }
@@ -18,61 +13,69 @@ public class PrototypeCameraMoviment : MonoBehaviour
     public void RecivePlayers(Transform p)
     {
         players.Add(p);
+        cinemachineTargetGroup.AddMember(p,1,2);
     }
     public void RemoveAllPlayers()
     {
         players.Clear();
     }
+    public List<Transform> players = new List<Transform>(); // Array dos Transforms dos personagens
+    public CinemachineTargetGroup cinemachineTargetGroup;
 
-    void Update()
+    /*public float minZoom = 5f; // Zoom mínimo da câmera
+    public float maxZoom = 15f; // Zoom máximo da câmera
+    public float zoomSpeed = 2f; // Velocidade de zoom da câmera
+    public float moveSpeed = 5f; // Velocidade de movimento da câmera
+    public Vector3 offset; // Offset da câmera em relação aos personagens
+
+    public Camera cam;
+    private Vector3 desiredPosition;
+
+    void LateUpdate()
     {
-        if (players.Count >= 2)
-        {
-            float maxDistanceBetweenPlayers = FindMaxDistanceBetweenPlayers();
-            
-            Vector3 midpoint = FindMidpointBetweenPlayers();
-            
-            float targetDistance = Mathf.Lerp(minDistance, maxDistance, Mathf.InverseLerp(0, maxDistance, maxDistanceBetweenPlayers));
-            Vector3 targetPosition = midpoint - transform.forward * targetDistance;
-            
-            Quaternion targetRotation = Quaternion.Euler(rotationX, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
-            
-            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * smoothness);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * smoothness);
-        }
+        if (players.Count == 0)
+            return;
+
+        Move();
+        Zoom();
     }
 
-    float FindMaxDistanceBetweenPlayers()
+    void Move()
     {
-        float maxDistance = 0;
-
-        for (int i = 0; i < players.Count; i++)
-        {
-            for (int j = i + 1; j < players.Count; j++)
-            {
-                float distance = Vector3.Distance(players[i].position, players[j].position);
-                if (distance > maxDistance)
-                {
-                    maxDistance = distance;
-                }
-            }
-        }
-
-        return maxDistance;
+        Vector3 centerPoint = GetCenterPoint();
+        desiredPosition = centerPoint + offset;
+        transform.position = Vector3.Lerp(transform.position, desiredPosition, moveSpeed * Time.deltaTime);
     }
 
-    Vector3 FindMidpointBetweenPlayers()
+    void Zoom()
     {
-        Vector3 minPosition = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
-        Vector3 maxPosition = new Vector3(float.MinValue, float.MinValue, float.MinValue);
-        
-        foreach (Transform player in players)
+        float distance = GetGreatestDistance();
+        float newZoom = Mathf.Lerp(maxZoom, minZoom, distance / 10f);
+        cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, newZoom, Time.deltaTime * zoomSpeed);
+    }
+
+    Vector3 GetCenterPoint()
+    {
+        if (players.Count == 1)
+            return players[0].position;
+
+        Bounds bounds = new Bounds(players[0].position, Vector3.zero);
+        foreach (Transform p in players)
         {
-            minPosition = Vector3.Min(minPosition, player.position);
-            maxPosition = Vector3.Max(maxPosition, player.position);
+            bounds.Encapsulate(p.position);
         }
 
-        // Calcula o ponto médio entre as posições mínima e máxima
-        return (minPosition + maxPosition) / 2.0f;
+        return bounds.center;
     }
+
+    float GetGreatestDistance()
+    {
+        Bounds bounds = new Bounds(players[0].position, Vector3.zero);
+        foreach (Transform p in players)
+        {
+            bounds.Encapsulate(p.position);
+        }
+
+        return bounds.size.magnitude;
+    }*/
 }
