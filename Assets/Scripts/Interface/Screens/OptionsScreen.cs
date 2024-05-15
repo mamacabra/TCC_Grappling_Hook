@@ -16,9 +16,9 @@ public class OptionsScreen : Screens
    [SerializeField] TextMeshProUGUI qualityValueText;
 
    [Header("Audio")]
-    [SerializeField] private string busPath;
+   
     [SerializeField] TextMeshProUGUI sFXValueText;
-    private FMOD.Studio.Bus bus;
+  
     private int sfxValue = 0;
    
    [SerializeField] TextMeshProUGUI musicValueText;
@@ -37,9 +37,11 @@ public class OptionsScreen : Screens
    {
        backButton.button.onClick.AddListener(delegate { GoToScreen(backButton.goToScreen); });
        restoreButton.onClick.AddListener(ResetAllSettings);
-        if (busPath != "")
-            bus = RuntimeManager.GetBus(busPath);
-       sfxValue = musicValue = 5;
+   }
+
+   void OnEnable()
+   {
+       graphicSettings.LoadSettings();
    }
 
    public void ChangeResolution(int value)
@@ -69,6 +71,7 @@ public class OptionsScreen : Screens
        qualityValueText.text = quality;
    }
 
+  
    public void ChangeSFXVolume(int value)
    {
        //Pro Luan
@@ -84,6 +87,8 @@ public class OptionsScreen : Screens
            return;
        }
        sFXValueText.text = sfxValue.ToString();
+       graphicSettings.SaveSettings("SFX",sfxValue);
+       graphicSettings.ApplySFXSound(sfxValue);
    }
 
    public void ChangeMusicVolume(int value)
@@ -100,10 +105,21 @@ public class OptionsScreen : Screens
            musicValue = 0;
            return;
        }
-        bus.setVolume(musicValue * 0.5f);
+       
         musicValueText.text = musicValue.ToString();
+        graphicSettings.SaveSettings("Music", musicValue);
+        graphicSettings.ApplyMusicSound(musicValue);
    }
-
+   public void UpdateSFX(int value)
+   {
+       sfxValue = value;
+       sFXValueText.text = sfxValue.ToString();
+   }
+   public void UpdateMusic(int value)
+   {
+       musicValue = value;
+       musicValueText.text = musicValue.ToString();
+   }
    public override void GoToScreen(ScreensName screensName)
    {
        base.GoToScreen(screensName);
@@ -113,4 +129,5 @@ public class OptionsScreen : Screens
    {
        graphicSettings.ResetAllSettings();
    }
+   
 }

@@ -7,10 +7,16 @@ using UnityEngine.UI;
 public class FeedbackGame : Screens
 {
     [SerializeField] private Button nextGameButton;
-
+    private bool canclick = false;
     public override void Initialize()
     {
-         nextGameButton.gameObject.SetActive(true);
+        StartCoroutine(WaitToCanClick());
+        IEnumerator WaitToCanClick()
+        {
+            yield return new WaitForSeconds(1.5f);
+            canclick = true;
+        }
+        nextGameButton.gameObject.SetActive(true);
         InterfaceManager.Instance.OnHideButton += HideButton;
     }
 
@@ -27,6 +33,8 @@ public class FeedbackGame : Screens
     }
     void NextGame()
     {
+        if(!canclick)return;
+        canclick = false;
         PlayersManager.Instance.InitGame(true);
         Close();
     }
