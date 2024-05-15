@@ -45,7 +45,14 @@ namespace Character
             var state = CharacterEntity.CharacterState.State;
             if (state is DeathState) return;
             if (context.started) {
+                if (CharacterEntity.CharacterState.State is HookedToEnemyState)
+                {
+                    return;
+                }
+                else
+                {
                 CharacterEntity.CharacterState.SetAttackState();
+                }
                 //meleeAttack.ActivateHitbox();
                 CharacterEntity.CharacterMesh.animator?.SetTrigger("Melee");
             }

@@ -13,14 +13,10 @@ namespace Character.States
         public override void Enter()
         {
             meleeHitbox = Transform.Find("MeleeHitbox").gameObject;
-            if(CharacterEntity.CharacterState.State is HookedToEnemyState) 
-            {
-                return;
-            }
-            else
-            {
+
+
             meleeHitbox?.SetActive(true);
-            }
+            
         }
 
         public override void Update()
