@@ -8,7 +8,6 @@ namespace Character.States
 
         public override void Enter()
         {
-            CharacterEntity.Character.UseHook();
             CharacterEntity.GrapplingHookWeapon.DispatchHook(CharacterEntity.CharacterState.transform.forward);
         }
     }

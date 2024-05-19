@@ -13,9 +13,6 @@ namespace Character
         public bool HasDashReady { get; private set; } = true;
         private const float MaxCountDownDash = 0.25f;
 
-        public bool HasHookReady { get; private set; } = true;
-        private const float MaxCountDownHook = 0.2f;
-
         public bool HasAttackReady { get; private set; } = true;
         private const float MaxCountDownMelee = 0.4f;
 
@@ -34,23 +31,6 @@ namespace Character
             HasDashReady = false;
             yield return new WaitForSeconds(MaxCountDownDash);
             HasDashReady = true;
-        }
-
-        public void UseHook()
-        {
-            HasHookReady = false;
-        }
-
-        private IEnumerator HookCountDownCoroutine()
-        {
-            HasHookReady = false;
-            yield return new WaitForSeconds(MaxCountDownHook);
-            HasHookReady = true;
-        }
-
-        public void StartHookCountDown()
-        {
-            StartCoroutine(HookCountDownCoroutine());
         }
 
         public void UseAttack()
