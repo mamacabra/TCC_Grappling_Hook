@@ -1,4 +1,3 @@
-using Character.States;
 using Character.Utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,7 +10,6 @@ namespace Character
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            if (CharacterEntity.CharacterState.State is DeathState) return;
             movementInput = context.ReadValue<Vector2>();
         }
 
@@ -23,11 +21,9 @@ namespace Character
 
         public void OnShoot(InputAction.CallbackContext context)
         {
-            var state = CharacterEntity.CharacterState.State;
-
-            if (context.performed && state is WalkState)
+            if (context.performed)
                 CharacterEntity.CharacterState.SetPrepareHookState();
-            else if (context.canceled && state is WalkState or PrepareHookState)
+            else if (context.canceled)
                 CharacterEntity.CharacterState.SetDispatchHookState();
         }
 

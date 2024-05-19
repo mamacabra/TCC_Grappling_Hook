@@ -39,7 +39,7 @@ namespace Character
         public void SetDashState()
         {
             if (CharacterEntity.Character.HasDashReady == false) return;
-            if (CharacterEntity.CharacterState.State is not WalkState or PrepareHookState) return;
+            if (CharacterEntity.CharacterState.State is not WalkState && CharacterEntity.CharacterState.State is not PrepareHookState) return;
 
             var state = new DashState(CharacterEntity);
             SetState(state);
@@ -54,6 +54,7 @@ namespace Character
         public void SetDispatchHookState()
         {
             if (CharacterEntity.Character.HasHookReady == false) return;
+            if (CharacterEntity.CharacterState.State is not WalkState && CharacterEntity.CharacterState.State is not PrepareHookState) return;
 
             var state = new DispatchHookState(CharacterEntity);
             SetState(state);
@@ -74,6 +75,7 @@ namespace Character
         public void SetPrepareHookState()
         {
             if (CharacterEntity.Character.HasHookReady == false) return;
+            if (CharacterEntity.CharacterState.State is not WalkState) return;
 
             var state = new PrepareHookState(CharacterEntity);
             SetState(state);
