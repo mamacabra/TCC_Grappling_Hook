@@ -42,11 +42,6 @@ namespace Character.States
             RaycastTest();
         }
 
-        public override void Exit()
-        {
-            CharacterEntity.Character.StartDashCountDown();
-        }
-
         private void RaycastTest()
         {
             var direction = Transform.forward;
