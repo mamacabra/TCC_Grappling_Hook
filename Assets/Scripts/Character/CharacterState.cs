@@ -28,12 +28,12 @@ namespace Character
             CharacterEntity.CharacterUI.UpdateCharacterStateUI(State.GetType().Name);
         }
 
-        public void SetAttackState()
+        public void SetAttackMeleeState()
         {
             if (CharacterEntity.Character.HasAttackReady == false) return;
             if (CharacterEntity.CharacterState.State is HookedToEnemyState) return;
 
-            var state = new AttackState(CharacterEntity);
+            var state = new AttackMeleeState(CharacterEntity);
             SetState(state);
         }
 

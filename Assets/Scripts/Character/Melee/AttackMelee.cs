@@ -17,7 +17,7 @@ namespace Character.Melee
             if (enemy == null) return;
             if (enemy.CharacterEntity.CharacterState.State is DeathState) return;
 
-            if (enemy.CharacterEntity.CharacterState.State is AttackState)
+            if (enemy.CharacterEntity.CharacterState.State is AttackMeleeState)
             {
                 enemy.CharacterEntity.CharacterState.SetKnockbackState();
                 CharacterEntity.CharacterState.SetKnockbackState();

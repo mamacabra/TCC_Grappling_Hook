@@ -30,7 +30,7 @@ namespace Character
         public void OnMelee(InputAction.CallbackContext context)
         {
             if (context.started)
-                CharacterEntity.CharacterState.SetAttackState();
+                CharacterEntity.CharacterState.SetAttackMeleeState();
         }
     }
 }

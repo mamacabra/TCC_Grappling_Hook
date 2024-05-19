@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace Character.States
 {
-    public class AttackState : ACharacterState
+    public class AttackMeleeState : ACharacterState
     {
         private GameObject meleeHitbox;
         private float countDown = 0.4f;
 
-        public AttackState(CharacterEntity characterEntity) : base(characterEntity) { }
+        public AttackMeleeState(CharacterEntity characterEntity) : base(characterEntity) { }
 
         public override void Enter()
         {
