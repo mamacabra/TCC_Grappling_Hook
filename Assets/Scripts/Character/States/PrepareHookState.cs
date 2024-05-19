@@ -15,16 +15,15 @@ namespace Character.States
 
         public override void Update()
         {
-            var movementInput = CharacterEntity.CharacterInput.movementInput;
-            var direction = new Vector3(movementInput.x, 0, movementInput.y);
+            var axes = CharacterEntity.CharacterInput.movementInput;
+            var moveDirection = new Vector3(axes.x, 0, axes.y);
 
-            CharacterEntity.Rigidbody.MovePosition(CharacterEntity.Rigidbody.transform.position + direction * (MovementSpeed * Time.deltaTime));
+            CharacterEntity.Rigidbody.MovePosition(CharacterEntity.Rigidbody.transform.position + moveDirection * (MovementSpeed * Time.deltaTime));
 
-            if (direction != Vector3.zero)
+            if (moveDirection != Vector3.zero)
             {
-                var transform = CharacterEntity.CharacterInput.transform;
-                var toRotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, Time.deltaTime * RotationSpeed);
+                var lookDirection = Transform.position + moveDirection;
+                CharacterEntity.Character.characterBody.LookAt(lookDirection);
             }
         }
 
