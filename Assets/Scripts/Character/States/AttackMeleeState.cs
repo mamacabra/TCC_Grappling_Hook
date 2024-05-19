@@ -6,25 +6,28 @@ namespace Character.States
     public class AttackMeleeState : ACharacterState
     {
         private GameObject meleeHitbox;
-        private float countDown = 0.4f;
+
+        private float countDown;
+        private const float TimeToEnableHitbox = 0.1f;
+        private const float TimeToDisableHitbox = 0.3f;
 
         public AttackMeleeState(CharacterEntity characterEntity) : base(characterEntity) { }
 
         public override void Enter()
         {
             CharacterEntity.Character.UseAttack();
-            CharacterEntity.AttackMelee.EnableHitbox();
             CharacterEntity.CharacterMesh.animator?.SetTrigger("Melee");
         }
 
-        public override void Update()
+        public override void FixedUpdate()
         {
-            countDown -= Time.deltaTime;
+            countDown += Time.fixedDeltaTime;
 
-            if (countDown < 0f)
-            {
+            if (countDown >= TimeToEnableHitbox)
+                CharacterEntity.AttackMelee.EnableHitbox();
+
+            if (countDown >= TimeToDisableHitbox)
                 CharacterEntity.CharacterState.SetWalkState();
-            }
         }
 
         public override void Exit()
