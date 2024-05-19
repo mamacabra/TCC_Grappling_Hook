@@ -11,13 +11,13 @@ namespace Character
         public new CharacterEntity CharacterEntity { get; private set; }
 
         public bool HasDashReady { get; private set; } = true;
-        private const float MaxCountDownDash = 0.2f;
+        private const float MaxCountDownDash = 0.25f;
 
         public bool HasHookReady { get; private set; } = true;
         private const float MaxCountDownHook = 0.2f;
 
-        public bool HasAttackMeleeReady { get; private set; } = true;
-        private const float MaxCountDownMelee = 0.5f;
+        public bool HasAttackReady { get; private set; } = true;
+        private const float MaxCountDownMelee = 0.4f;
 
         public new void Setup(CharacterEntity entity)
         {
@@ -26,7 +26,7 @@ namespace Character
 
         public void UseDash()
         {
-            HasDashReady = false;
+            StartCoroutine(DashCountDownCoroutine());
         }
 
         private IEnumerator DashCountDownCoroutine()
@@ -34,11 +34,6 @@ namespace Character
             HasDashReady = false;
             yield return new WaitForSeconds(MaxCountDownDash);
             HasDashReady = true;
-        }
-
-        public void StartDashCountDown()
-        {
-            StartCoroutine(DashCountDownCoroutine());
         }
 
         public void UseHook()
@@ -58,16 +53,16 @@ namespace Character
             StartCoroutine(HookCountDownCoroutine());
         }
 
-        private IEnumerator AttackMeleeCountDownCoroutine()
+        public void UseAttack()
         {
-            HasAttackMeleeReady = false;
-            yield return new WaitForSeconds(MaxCountDownMelee);
-            HasAttackMeleeReady = true;
+            StartCoroutine(AttackCountDownCoroutine());
         }
 
-        public void StartAttackMeleeCountDown()
+        private IEnumerator AttackCountDownCoroutine()
         {
-            StartCoroutine(AttackMeleeCountDownCoroutine());
+            HasAttackReady = false;
+            yield return new WaitForSeconds(MaxCountDownMelee);
+            HasAttackReady = true;
         }
     }
 }

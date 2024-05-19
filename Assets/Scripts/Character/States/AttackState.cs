@@ -12,6 +12,7 @@ namespace Character.States
 
         public override void Enter()
         {
+            CharacterEntity.Character.UseAttack();
             CharacterEntity.CharacterMesh.animator?.SetTrigger("Melee");
             meleeHitbox = Transform.Find("Body/MeleeHitbox").gameObject;
             meleeHitbox?.SetActive(true);

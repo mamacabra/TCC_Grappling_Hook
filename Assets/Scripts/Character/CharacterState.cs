@@ -30,6 +30,7 @@ namespace Character
 
         public void SetAttackState()
         {
+            if (CharacterEntity.Character.HasAttackReady == false) return;
             if (CharacterEntity.CharacterState.State is HookedToEnemyState) return;
 
             var state = new AttackState(CharacterEntity);
@@ -53,7 +54,7 @@ namespace Character
 
         public void SetDispatchHookState()
         {
-            if (CharacterEntity.Character.HasHookReady == false) return;
+            // if (CharacterEntity.Character.HasHookReady == false) return;
             if (CharacterEntity.CharacterState.State is not WalkState && CharacterEntity.CharacterState.State is not PrepareHookState) return;
 
             var state = new DispatchHookState(CharacterEntity);
@@ -74,7 +75,7 @@ namespace Character
 
         public void SetPrepareHookState()
         {
-            if (CharacterEntity.Character.HasHookReady == false) return;
+            // if (CharacterEntity.Character.HasHookReady == false) return;
             if (CharacterEntity.CharacterState.State is not WalkState) return;
 
             var state = new PrepareHookState(CharacterEntity);
