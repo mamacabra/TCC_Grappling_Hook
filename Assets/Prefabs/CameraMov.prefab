@@ -174,7 +174,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: []
-  minDistance: 50
-  maxDistance: 400
-  rotationX: 40
-  smoothness: 50
+  minZoom: 5
+  maxZoom: 15
+  zoomSpeed: 2
+  moveSpeed: 5
+  offset: {x: 0, y: 100, z: -25}
+  cam: {fileID: 5799883196595071316}

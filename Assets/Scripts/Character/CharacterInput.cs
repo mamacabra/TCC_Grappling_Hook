@@ -33,7 +33,15 @@ namespace Character
         public void OnMelee(InputAction.CallbackContext context)
         {
             if (context.started) {
+                if (CharacterEntity.CharacterState.State is HookedToEnemyState)
+                {
+                    return;
+                }
+                else
+                {
                 CharacterEntity.CharacterState.SetAttackState();
+                }
+                //meleeAttack.ActivateHitbox();
                 CharacterEntity.CharacterMesh.animator?.SetTrigger("Melee");
             }
         }
