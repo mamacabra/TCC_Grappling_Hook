@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Character.GrapplingHook;
+using Character.Melee;
 using Const;
 
 namespace Character
@@ -16,27 +17,31 @@ namespace Character
     [RequireComponent(typeof(Rigidbody))]
     public class CharacterSetup : MonoBehaviour
     {
-        [SerializeField] private bool isDebug;
-
         private void Awake()
         {
+            gameObject.tag = Tags.Character;
+
             var character = gameObject.GetComponent<Character>();
             var characterInput = gameObject.GetComponent<CharacterInput>();
             var characterMesh = gameObject.GetComponent<CharacterMesh>();
             var characterRigidbody = gameObject.GetComponent<Rigidbody>();
             var characterState = gameObject.GetComponent<CharacterState>();
             var characterUI = gameObject.GetComponent<CharacterUI>();
+
+            var attackMelee = gameObject.transform.Find("Body/AttackMelee").GetComponent<AttackMelee>();
             var grapplingHookWeapon = gameObject.GetComponent<GrapplingHookWeapon>();
 
             var entity = new CharacterEntity
             {
-                IsDebug = isDebug,
                 Character = character,
                 CharacterInput = characterInput,
                 CharacterMesh = characterMesh,
                 CharacterState = characterState,
                 CharacterUI = characterUI,
+
+                AttackMelee = attackMelee,
                 GrapplingHookWeapon = grapplingHookWeapon,
+
                 Rigidbody = characterRigidbody,
             };
 
@@ -45,13 +50,14 @@ namespace Character
             characterMesh.Setup(entity);
             characterState.Setup(entity);
             characterUI.Setup(entity);
+
+            attackMelee.Setup(entity);
+            attackMelee.DisableHitbox();
             grapplingHookWeapon.Setup(entity);
 
             SetupRigidbody(entity);
 
-            gameObject.tag = Tags.Character;
-
-            if (isDebug == false) characterState.SetWalkState();
+            characterState.SetWalkState();
         }
 
         private static void SetupRigidbody(CharacterEntity entity)

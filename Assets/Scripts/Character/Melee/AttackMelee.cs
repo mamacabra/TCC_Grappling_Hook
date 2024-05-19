@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace Character.Melee
 {
-    public class MeleeHitbox : ACharacterMonoBehaviour
+    public class AttackMelee : ACharacterMonoBehaviour
     {
-        [SerializeField] private Character character;
+        [SerializeField] private GameObject hitbox;
 
         private void OnTriggerEnter(Collider other)
         {
-            if (character.CharacterEntity.CharacterState.State is DeathState) return;
+            if (CharacterEntity.CharacterState.State is DeathState) return;
             if (other.CompareTag("Character") == false) return;
 
             var enemy = other.GetComponent<Character>();
@@ -20,13 +20,23 @@ namespace Character.Melee
             if (enemy.CharacterEntity.CharacterState.State is AttackState)
             {
                 enemy.CharacterEntity.CharacterState.SetKnockbackState();
-                character.CharacterEntity.CharacterState.SetKnockbackState();
+                CharacterEntity.CharacterState.SetKnockbackState();
             }
             else
             {
                 enemy.CharacterEntity.CharacterState.SetDeathState();
-                PlayersManager.Instance.AddPointsToPlayer(character.Id);
+                PlayersManager.Instance.AddPointsToPlayer(CharacterEntity.Character.Id);
             }
+        }
+
+        public void DisableHitbox()
+        {
+            hitbox?.SetActive(false);
+        }
+
+        public void EnableHitbox()
+        {
+            hitbox?.SetActive(true);
         }
     }
 }

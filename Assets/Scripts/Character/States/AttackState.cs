@@ -6,16 +6,15 @@ namespace Character.States
     public class AttackState : ACharacterState
     {
         private GameObject meleeHitbox;
-        private float countDown = 0.3f;
+        private float countDown = 0.4f;
 
         public AttackState(CharacterEntity characterEntity) : base(characterEntity) { }
 
         public override void Enter()
         {
             CharacterEntity.Character.UseAttack();
+            CharacterEntity.AttackMelee.EnableHitbox();
             CharacterEntity.CharacterMesh.animator?.SetTrigger("Melee");
-            meleeHitbox = Transform.Find("Body/MeleeHitbox").gameObject;
-            meleeHitbox?.SetActive(true);
         }
 
         public override void Update()
@@ -30,7 +29,7 @@ namespace Character.States
 
         public override void Exit()
         {
-            meleeHitbox?.SetActive(false);
+            CharacterEntity.AttackMelee.DisableHitbox();
         }
     }
 }
