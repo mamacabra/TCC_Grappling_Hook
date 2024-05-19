@@ -30,6 +30,8 @@ namespace Character
 
         public void SetAttackState()
         {
+            if (CharacterEntity.CharacterState.State is HookedToEnemyState) return;
+
             var state = new AttackState(CharacterEntity);
             SetState(state);
         }

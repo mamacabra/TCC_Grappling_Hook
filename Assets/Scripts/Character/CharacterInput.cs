@@ -17,7 +17,8 @@ namespace Character
 
         public void OnDash(InputAction.CallbackContext context)
         {
-            if (context.started) CharacterEntity.CharacterState.SetDashState();
+            if (context.started)
+                CharacterEntity.CharacterState.SetDashState();
         }
 
         public void OnShoot(InputAction.CallbackContext context)
@@ -32,18 +33,8 @@ namespace Character
 
         public void OnMelee(InputAction.CallbackContext context)
         {
-            if (context.started) {
-                if (CharacterEntity.CharacterState.State is HookedToEnemyState)
-                {
-                    return;
-                }
-                else
-                {
+            if (context.started)
                 CharacterEntity.CharacterState.SetAttackState();
-                }
-                //meleeAttack.ActivateHitbox();
-                CharacterEntity.CharacterMesh.animator?.SetTrigger("Melee");
-            }
         }
     }
 }
