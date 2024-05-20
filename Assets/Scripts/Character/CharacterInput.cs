@@ -10,15 +10,21 @@ namespace Character
         public Vector3 MoveDirection => new (Axes.x, 0, Axes.y);
         public Vector3 LookDirection => transform.position + MoveDirection;
 
-        public void OnMove(InputAction.CallbackContext context)
-        {
-            Axes = context.ReadValue<Vector2>();
-        }
-
         public void OnDash(InputAction.CallbackContext context)
         {
             if (context.started)
                 CharacterEntity.CharacterState.SetDashState();
+        }
+
+        public void OnMelee(InputAction.CallbackContext context)
+        {
+            if (context.started)
+                CharacterEntity.CharacterState.SetAttackMeleeState();
+        }
+
+        public void OnMove(InputAction.CallbackContext context)
+        {
+            Axes = context.ReadValue<Vector2>();
         }
 
         public void OnShoot(InputAction.CallbackContext context)
@@ -27,12 +33,6 @@ namespace Character
                 CharacterEntity.CharacterState.SetPrepareHookState();
             else if (context.canceled)
                 CharacterEntity.CharacterState.SetDispatchHookState();
-        }
-
-        public void OnMelee(InputAction.CallbackContext context)
-        {
-            if (context.started)
-                CharacterEntity.CharacterState.SetAttackMeleeState();
         }
     }
 }
