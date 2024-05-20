@@ -20,15 +20,15 @@ namespace Character.Utils
         public virtual void FixedUpdate() {}
         public virtual void Exit() {}
 
-        protected void Walk()
+        protected void Walk(float speed = WalkSpeed)
         {
             var direction = CharacterEntity.CharacterInput.MoveDirection;
-            Transform.Translate(direction * (WalkSpeed * Time.deltaTime));
+            Transform.Translate(direction * (speed * Time.deltaTime));
 
             if (CharacterEntity.CharacterMesh.animator)
             {
-                var speed = CharacterEntity.CharacterInput.MoveDirection.magnitude;
-                CharacterEntity.CharacterMesh.animator.SetFloat("Speed", speed);
+                var magnitude = CharacterEntity.CharacterInput.MoveDirection.magnitude;
+                CharacterEntity.CharacterMesh.animator.SetFloat("Speed", magnitude);
             }
         }
 

@@ -10,7 +10,6 @@ namespace Character.States
         private float countDown;
         private const float TimeToEnableHitbox = 0.1f;
         private const float TimeToDisableHitbox = 0.3f;
-        private float WalkSpeed = 10f;
 
         public AttackMeleeState(CharacterEntity characterEntity) : base(characterEntity) { }
 

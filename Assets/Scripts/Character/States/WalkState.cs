@@ -5,11 +5,9 @@ namespace Character.States
 {
     public class WalkState : ACharacterState
     {
-        private const float WalkSpeed = 16f;
-
-        private bool _hasHit;
+        private bool hasHit;
         private const float RaycastDistance = 1f;
-        private Color RaycastColor => _hasHit ? Color.red : Color.green;
+        private Color RaycastColor => hasHit ? Color.red : Color.green;
 
         public WalkState(CharacterEntity characterEntity) : base(characterEntity) {}
 
@@ -21,7 +19,7 @@ namespace Character.States
         public override void Update()
         {
             RaycastTest();
-            if (_hasHit == false) Walk();
+            if (hasHit == false) Walk();
             LookAt();
         }
 
@@ -38,11 +36,11 @@ namespace Character.States
 
             if (hit.collider)
             {
-                _hasHit = hit.collider.CompareTag(Const.Tags.Wall) || hit.collider.CompareTag(Const.Tags.Object);
+                hasHit = hit.collider.CompareTag(Const.Tags.Wall) || hit.collider.CompareTag(Const.Tags.Object);
             }
             else
             {
-                _hasHit = false;
+                hasHit = false;
             }
         }
     }

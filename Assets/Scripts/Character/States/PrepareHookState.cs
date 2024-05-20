@@ -6,24 +6,24 @@ namespace Character.States
 {
     public class PrepareHookState : ACharacterState
     {
-        private float _countDown;
+        private float countDown;
         private const float CountDownStep = 0.1f;
-        private const float WalkSpeed = 12f;
+        private const float WalkSpeed = 8f;
 
         public PrepareHookState(CharacterEntity characterEntity) : base(characterEntity) {}
 
         public override void Update()
         {
-            Walk();
+            Walk(WalkSpeed);
             LookAt();
         }
 
         public override void FixedUpdate() {
-            _countDown += Time.fixedDeltaTime;
+            countDown += Time.fixedDeltaTime;
 
-            if (_countDown > CountDownStep && CharacterEntity.GrapplingHookWeapon.Force < GrapplingHookWeapon.MaxGrapplingHookForce)
+            if (countDown > CountDownStep && CharacterEntity.GrapplingHookWeapon.Force < GrapplingHookWeapon.MaxGrapplingHookForce)
             {
-                _countDown = 0f;
+                countDown = 0f;
                 CharacterEntity.GrapplingHookWeapon.IncreaseHookForce();
             }
         }
