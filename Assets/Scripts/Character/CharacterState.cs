@@ -99,5 +99,11 @@ namespace Character
             var state = new KnockbackState(CharacterEntity);
             SetState(state);
         }
+
+        public void SetParryState()
+        {
+            var state = new ParryState(CharacterEntity);
+            SetState(state);
+        }
     }
 }
