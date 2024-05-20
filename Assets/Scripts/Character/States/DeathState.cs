@@ -1,6 +1,4 @@
 using Character.Utils;
-using Unity.VisualScripting;
-using UnityEngine;
 
 namespace Character.States
 {
@@ -10,11 +8,9 @@ namespace Character.States
 
         public override void Enter()
         {
-            Debug.Log("Dead");
+            CharacterEntity.AttackMelee.DisableHitbox();
+            CharacterEntity.GrapplingHookWeapon.DisableGrapplingHook();
             CharacterEntity.CharacterMesh.animator?.SetTrigger("isDead");
-            //CharacterEntity.Character.gameObject.SetActive(false);
         }
-
     }
-
 }

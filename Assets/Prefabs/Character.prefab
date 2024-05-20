@@ -181,7 +181,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a451e9757444fc81957b627752e293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDebug: 0
 --- !u!114 &284894761864324782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,7 +193,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63435266756e8184c9b7361895c98bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementInput: {x: 0, y: 0}
 --- !u!114 &4521154744536779452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,6 +252,8 @@ MonoBehaviour:
   hookRigidbody: {fileID: 3660774765619785525}
   hookCollider: {fileID: 5671700382720908195}
   grapplingHook: {fileID: 5564170575563369833}
+  grapplingHookRope: {fileID: 8232527587555799853}
+  grapplingHookRopeMuzzle: {fileID: 4026952589215357908}
 --- !u!114 &6587030914899588108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,7 +532,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d40ae3daaa4eb884ca3b26a685038960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 6126543144730987039}
   hitbox: {fileID: 3856020092371790344}
 --- !u!1 &4026952589215357908
 GameObject:

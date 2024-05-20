@@ -31,6 +31,8 @@ namespace Character.GrapplingHook
         [SerializeField] private Rigidbody hookRigidbody;
         [SerializeField] private BoxCollider hookCollider;
         [SerializeField] private GrapplingHook grapplingHook;
+        [SerializeField] private GameObject grapplingHookRope;
+        [SerializeField] private GameObject grapplingHookRopeMuzzle;
 
         public void FixedUpdate()
         {
@@ -128,6 +130,13 @@ namespace Character.GrapplingHook
                     _hookMaxDistance = GrapplingStats.ForceLv3.distance;
                     break;
             }
+        }
+
+        public void DisableGrapplingHook()
+        {
+            hook.gameObject.SetActive(false);
+            grapplingHookRope.SetActive(false);
+            grapplingHookRopeMuzzle.SetActive(false);
         }
     }
 }
