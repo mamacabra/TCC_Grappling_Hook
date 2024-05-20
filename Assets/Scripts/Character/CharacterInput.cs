@@ -23,7 +23,7 @@ namespace Character
 
         public void OnShoot(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.started)
                 CharacterEntity.CharacterState.SetPrepareHookState();
             else if (context.canceled)
                 CharacterEntity.CharacterState.SetDispatchHookState();
