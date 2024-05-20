@@ -20,36 +20,9 @@ namespace Character.States
 
         public override void Update()
         {
-            var axes = CharacterEntity.CharacterInput.movementInput;
-            var moveDirection = new Vector3(axes.x, 0, axes.y);
-
-            if (_hasHit == false)
-            {
-                Transform.Translate(moveDirection * (WalkSpeed * Time.deltaTime));
-            }
-
-            var speed = moveDirection.magnitude;
-            if (CharacterEntity.CharacterMesh.animator)
-            {
-                CharacterEntity.CharacterMesh.animator.SetFloat("Speed", speed);
-            }
-        }
-
-        public override void FixedUpdate()
-        {
             RaycastTest();
-
-            var axes = CharacterEntity.CharacterInput.movementInput;
-            var moveDirection = new Vector3(axes.x, 0, axes.y);
-            var lookDirection = Transform.position + moveDirection;
-            if (lookDirection != Vector3.zero)
-            {
-                CharacterEntity.Character.characterBody.LookAt(lookDirection);
-            }
-            // else
-            // {
-            //     CharacterEntity.Rigidbody.Sleep();
-            // }
+            if (_hasHit == false) Walk();
+            LookAt();
         }
 
         private void RaycastTest()

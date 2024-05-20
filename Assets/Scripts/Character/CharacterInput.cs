@@ -7,6 +7,8 @@ namespace Character
     public class CharacterInput : ACharacterMonoBehaviour
     {
         public Vector2 movementInput = Vector2.zero;
+        public Vector3 MoveDirection => new (movementInput.x, 0, movementInput.y);
+        public Vector3 LookDirection => transform.position + MoveDirection;
 
         public void OnMove(InputAction.CallbackContext context)
         {

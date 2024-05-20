@@ -10,6 +10,7 @@ namespace Character.States
         private float countDown;
         private const float TimeToEnableHitbox = 0.1f;
         private const float TimeToDisableHitbox = 0.3f;
+        private float WalkSpeed = 10f;
 
         public AttackMeleeState(CharacterEntity characterEntity) : base(characterEntity) { }
 
@@ -17,6 +18,12 @@ namespace Character.States
         {
             CharacterEntity.Character.UseAttack();
             CharacterEntity.CharacterMesh.animator?.SetTrigger("Melee");
+        }
+
+        public override void Update()
+        {
+            Walk();
+            LookAt();
         }
 
         public override void FixedUpdate()
