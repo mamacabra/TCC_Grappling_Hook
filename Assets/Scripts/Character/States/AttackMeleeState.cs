@@ -8,8 +8,8 @@ namespace Character.States
         private GameObject meleeHitbox;
 
         private float countDown;
-        private const float TimeToEnableHitbox = 0.1f;
-        private const float TimeToDisableHitbox = 0.3f;
+        private const float TimeToEnableHitbox = 0.05f;
+        private const float TimeToDisableHitbox = 0.2f;
 
         public AttackMeleeState(CharacterEntity characterEntity) : base(characterEntity) { }
 
