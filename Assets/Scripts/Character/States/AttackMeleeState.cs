@@ -29,10 +29,10 @@ namespace Character.States
         {
             countDown += Time.fixedDeltaTime;
 
-            if (countDown >= TimeToEnableHitbox)
+            if (countDown >= TimeToEnableHitbox && CharacterEntity.AttackMelee.IsHitboxEnabled == false)
                 CharacterEntity.AttackMelee.EnableHitbox();
 
-            if (countDown >= TimeToDisableHitbox)
+            if (countDown >= TimeToDisableHitbox && CharacterEntity.AttackMelee.IsHitboxEnabled)
                 CharacterEntity.CharacterState.SetWalkState();
         }
 

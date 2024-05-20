@@ -7,6 +7,7 @@ namespace Character.Melee
     public class AttackMelee : ACharacterMonoBehaviour
     {
         [SerializeField] private GameObject hitbox;
+        public bool IsHitboxEnabled => hitbox.activeSelf;
 
         private void OnTriggerEnter(Collider other)
         {
