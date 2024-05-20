@@ -24,7 +24,7 @@ namespace Character.States
         {
             if (_hasHit == false)
             {
-                var axes = CharacterEntity.CharacterInput.movementInput;
+                var axes = CharacterEntity.CharacterInput.Axes;
                 var moveDirection = new Vector3(axes.x, 0, axes.y);
                 Transform.Translate(moveDirection * (DashSpeed * Time.deltaTime));
                 CharacterEntity.CharacterMesh.animator?.SetFloat("Speed", 1);

@@ -27,7 +27,7 @@ namespace Character.States
 
         private void RaycastTest()
         {
-            var axes = CharacterEntity.CharacterInput.movementInput;
+            var axes = CharacterEntity.CharacterInput.Axes;
             var moveDirection = new Vector3(axes.x, 0, axes.y);
             var position = Transform.position;
             var direction = moveDirection;

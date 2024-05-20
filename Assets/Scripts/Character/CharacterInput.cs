@@ -6,13 +6,13 @@ namespace Character
 {
     public class CharacterInput : ACharacterMonoBehaviour
     {
-        public Vector2 movementInput = Vector2.zero;
-        public Vector3 MoveDirection => new (movementInput.x, 0, movementInput.y);
+        public Vector2 Axes { get; private set; } = Vector2.zero;
+        public Vector3 MoveDirection => new (Axes.x, 0, Axes.y);
         public Vector3 LookDirection => transform.position + MoveDirection;
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            movementInput = context.ReadValue<Vector2>();
+            Axes = context.ReadValue<Vector2>();
         }
 
         public void OnDash(InputAction.CallbackContext context)
