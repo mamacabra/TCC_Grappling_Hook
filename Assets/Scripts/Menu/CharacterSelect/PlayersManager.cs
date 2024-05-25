@@ -38,7 +38,7 @@ public class PlayersManager : MonoBehaviour
     private static PlayersManager instance;// Singleton
     public static PlayersManager Instance => instance ? instance : FindObjectOfType<PlayersManager>();
     private Menus_Input actions;// Input
-    [SerializeField] bool debug;
+   public  bool debug;
 
     #region PlayerPrefabs
     [Header("Player Prefab Type")]
@@ -122,28 +122,39 @@ public class PlayersManager : MonoBehaviour
             int id = GetFreeId();
             if (id == -1) return; // not has free id return
             
+            PlayerInput player;
+            
             if (debug) { // For add ilimitted players pressing J
-                playerInputManager.JoinPlayer(id, controlScheme: controlScheme, pairWithDevices: device);
+                //playerInputManager.JoinPlayer(id, controlScheme: controlScheme, pairWithDevices: device);
+                player = characterChoice.ReturnPlayerInput(true,false);
                 return;
             }
 
             // Check if already has p2 on keyboard
             // Join a new player
+
             if (controlScheme == "KeyboardP2") {
                 if (sharingKeyboard) return; 
                 else sharingKeyboard = true;
-                playerInputManager.JoinPlayer(id, controlScheme: controlScheme, pairWithDevices: device);
+                player = characterChoice.ReturnPlayerInput(false,false);
             } 
-            else {
-                if (sharingKeyboard && controlScheme == "Keyboard&Mouse") playerInputManager.JoinPlayer(id, controlScheme: controlScheme, pairWithDevices: device);
-                else playerInputManager.JoinPlayerFromActionIfNotAlreadyJoined(context);
+            else
+            {
+                if (controlScheme == "Keyboard&Mouse")
+                    player = characterChoice.ReturnPlayerInput(false, true);
+                else
+                    player = characterChoice.ReturnPlayerInput(true, false);
             }
+            
+            player.SwitchCurrentControlScheme(controlScheme: controlScheme, device);
         }
     }
-    public void OnPlayerJoinedEvent(PlayerInput _playerInput) { // Trigged when player joined : set in inspector: PlayerInputManager
+    public void OnPlayerJoinedEvent(PlayerInput _playerInput) {
+        
+        // Trigged when player joined : set in inspector: PlayerInputManager
         bool inGame = InterfaceManager.Instance ? InterfaceManager.Instance.inGame : true;
         if (!inGame) {// Is in character selection screen.
-            _playerInput.transform.SetParent(characterChoice.charactersGroup);
+            //_playerInput.transform.SetParent(characterChoice.charactersGroup);
             freeId[_playerInput.playerIndex] = false;
             if (_playerInput.TryGetComponent(out CharacterBoxUI characterBoxUI)) {
                 characterBoxUI.playerConfig.id = _playerInput.playerIndex;

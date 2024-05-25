@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CharacterChoiseScreen : Screens
 {
     [SerializeField] private ButtonToScreen backToMenu, playGame;
-    public Transform charactersGroup;
-    
+    [SerializeField] private List<Transform> charactersGroup = new List<Transform>();
+    [SerializeField] private PlayerInput playerInput1;
+    [SerializeField] private PlayerInput playerInput2;
+    [SerializeField] private List<PlayerInput> playerInputsGamePad = new List<PlayerInput>();
+    [SerializeField] private Transform tutorial;
+
+    private int objEnables = 0;
     private void Awake()
     {
         backToMenu.button.onClick.AddListener(delegate { GoToScreen(backToMenu.goToScreen); });
@@ -20,6 +26,13 @@ public class CharacterChoiseScreen : Screens
             PlayersManager.Instance.characterChoice = this;
             PlayersManager.Instance.InitCharacterSelection();
         }
+
+        tutorial.SetParent(charactersGroup[0]);
+        tutorial.gameObject.SetActive(true);
+        /*playerInput1.transform.SetParent(charactersGroup[0]);
+        playerInput2.transform.SetParent(charactersGroup[0]);
+        foreach (var obj in playerInputsGamePad)
+            obj.transform.SetParent(charactersGroup[0]);*/
     }
     public override void Close()
     {
@@ -33,4 +46,115 @@ public class CharacterChoiseScreen : Screens
     {
         base.GoToScreen(screensName);
     }
+
+    public PlayerInput ReturnPlayerInput(bool isGamePad = false, bool isP1 = false)
+    {
+        if (isP1)
+        {
+            CheckGroup(playerInput1.transform);
+            playerInput1.gameObject.SetActive(true);
+            return playerInput1;
+        }
+        if (!isGamePad)
+        {
+            CheckGroup(playerInput2.transform);
+            playerInput2.gameObject.SetActive(true);
+            return playerInput2;
+        }
+
+        foreach (var obj in playerInputsGamePad)
+        {
+            if (!obj.gameObject.activeSelf)
+            {
+                PlayerInput pGamePad = obj;
+                CheckGroup(pGamePad.transform);
+                pGamePad.gameObject.SetActive(true);
+                return pGamePad;
+            }
+        }
+
+        return null;
+    }
+    
+    public void CheckGroup(Transform obj, bool add = true)
+    {
+        if (add)
+        {
+            objEnables++;
+            if (objEnables == 4)
+            {
+                tutorial.SetParent(charactersGroup[1]);
+                tutorial.SetAsLastSibling();
+            }
+            if(objEnables==6)
+                tutorial.gameObject.SetActive(false);
+            
+            if (objEnables>4)
+            {
+                if (charactersGroup[0].childCount > 3)
+                    charactersGroup[0].GetChild(charactersGroup[0].childCount-1).SetParent(charactersGroup[1]);
+                obj.SetParent(charactersGroup[1]);
+                obj.SetAsLastSibling();
+                tutorial.SetAsLastSibling();
+            }
+            else
+            {
+                obj.SetParent(charactersGroup[0]);
+                obj.SetAsLastSibling();
+                tutorial.SetAsLastSibling();
+            }
+        }
+        else
+        {
+            objEnables--;
+            
+            List<Transform> objsInCharactersGroup1 = new List<Transform>();
+            
+            for (int i = 0; i < charactersGroup[0].childCount; i++)
+                objsInCharactersGroup1.Add(charactersGroup[0].GetChild(i));
+            
+            for (int j = 0; j < charactersGroup[1].childCount; j++)
+                objsInCharactersGroup1.Add(charactersGroup[1].GetChild(j));
+
+            if(objsInCharactersGroup1.Count == 0)return;
+            foreach (var o in objsInCharactersGroup1)
+            {
+                ReorganizeGroup(o);
+                //o.SetParent(charactersGroup[0]);
+            }
+            
+        }
+        
+    }
+
+    private int objEnablesAuxReorganize = 0;
+    void ReorganizeGroup(Transform obj)
+    {
+
+        objEnablesAuxReorganize++;
+        if (objEnablesAuxReorganize == 4)
+        {
+            tutorial.gameObject.SetActive(true);
+            tutorial.SetParent(charactersGroup[1]);
+            tutorial.SetAsLastSibling();
+        }
+        if(objEnablesAuxReorganize==6)
+            tutorial.gameObject.SetActive(false);
+            
+        if (objEnablesAuxReorganize>4)
+        {
+            if (charactersGroup[0].childCount > 3)
+                charactersGroup[0].GetChild(charactersGroup[0].childCount-1).SetParent(charactersGroup[1]);
+            obj.SetParent(charactersGroup[1]);
+            obj.SetAsLastSibling();
+            tutorial.SetAsLastSibling();
+        }
+        else
+        {
+            obj.SetParent(charactersGroup[0]);
+            obj.SetAsLastSibling();
+            tutorial.SetAsLastSibling();
+        }
+    }
+    
 }

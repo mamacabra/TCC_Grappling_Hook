@@ -5,6 +5,7 @@ using TMPro;
 
 public class CharacterBoxUI : MonoBehaviour
 {
+    [SerializeField] private PlayerInput PlayerInput;
     [SerializeField] private Image characterImage;
     [SerializeField] private TextMeshProUGUI characterName;
     [SerializeField] private TextMeshProUGUI characterStatus;
@@ -12,6 +13,10 @@ public class CharacterBoxUI : MonoBehaviour
 
     public PlayersManager.PlayerConfigurationData playerConfig;
 
+    public void ChangePlayerInput(PlayerInput p)
+    {
+        PlayerInput = p;
+    }
     public void OnMove(InputAction.CallbackContext context) {
         int dir_x = 0;
         int dir_y = 0;
@@ -27,6 +32,7 @@ public class CharacterBoxUI : MonoBehaviour
     }
 
     public void OnConfirm(InputAction.CallbackContext context) {
+        if(PlayersManager.Instance.debug)return;
         if (hasConfirmed) return;
         if (context.action.WasPerformedThisFrame()) {
             characterStatus.text = "Pronto";
@@ -36,9 +42,14 @@ public class CharacterBoxUI : MonoBehaviour
             hasConfirmed = true;
         }
     }
+
+    [SerializeField] private CharacterChoiseScreen choiseScreen;
     public void OnCancel(InputAction.CallbackContext context) {
         if (context.action.WasPerformedThisFrame()) {
-            if (!hasConfirmed) { Destroy(this.gameObject); return;}
+            if (!hasConfirmed) { 
+                choiseScreen.CheckGroup(transform, false);
+                gameObject.SetActive(false);
+                return;}
             characterStatus.text = "Escolhendo";
             characterStatus.color = Color.gray;
             PlayersManager.Instance?.RemovePlayerConfig(playerConfig);
