@@ -106,17 +106,30 @@ public class CharacterChoiseScreen : Screens
         }
         else
         {
+            objEnablesAuxReorganize = 0;
             objEnables--;
-            
+            obj.SetParent(transform.parent);
             List<Transform> objsInCharactersGroup1 = new List<Transform>();
-            
-            for (int i = 0; i < charactersGroup[0].childCount; i++)
-                objsInCharactersGroup1.Add(charactersGroup[0].GetChild(i));
-            
-            for (int j = 0; j < charactersGroup[1].childCount; j++)
-                objsInCharactersGroup1.Add(charactersGroup[1].GetChild(j));
 
-            if(objsInCharactersGroup1.Count == 0)return;
+            for (int i = 0; i < charactersGroup[0].childCount; i++)
+            {
+                if(charactersGroup[0].GetChild(i) != tutorial)
+                    objsInCharactersGroup1.Add(charactersGroup[0].GetChild(i));
+            }
+
+            for (int j = 0; j < charactersGroup[1].childCount; j++)
+            {
+                if(charactersGroup[1].GetChild(j) != tutorial)
+                    objsInCharactersGroup1.Add(charactersGroup[1].GetChild(j));
+            }
+
+            if (objsInCharactersGroup1.Count == 0)
+            {
+                tutorial.SetParent(charactersGroup[0]);
+                tutorial.SetAsLastSibling();
+                tutorial.gameObject.SetActive(true);
+                return;
+            }
             foreach (var o in objsInCharactersGroup1)
             {
                 ReorganizeGroup(o);
@@ -125,35 +138,39 @@ public class CharacterChoiseScreen : Screens
             
         }
         
+        if(objEnables <6)
+            tutorial.gameObject.SetActive(true);
+        
     }
 
     private int objEnablesAuxReorganize = 0;
     void ReorganizeGroup(Transform obj)
     {
-
         objEnablesAuxReorganize++;
+        obj.SetParent(charactersGroup[0]);
+        obj.SetAsLastSibling();
+        tutorial.SetAsLastSibling();
         if (objEnablesAuxReorganize == 4)
         {
-            tutorial.gameObject.SetActive(true);
             tutorial.SetParent(charactersGroup[1]);
             tutorial.SetAsLastSibling();
         }
         if(objEnablesAuxReorganize==6)
             tutorial.gameObject.SetActive(false);
-            
-        if (objEnablesAuxReorganize>4)
+        if (objEnablesAuxReorganize > 4)
         {
             if (charactersGroup[0].childCount > 3)
                 charactersGroup[0].GetChild(charactersGroup[0].childCount-1).SetParent(charactersGroup[1]);
             obj.SetParent(charactersGroup[1]);
             obj.SetAsLastSibling();
+            
             tutorial.SetAsLastSibling();
         }
         else
         {
-            obj.SetParent(charactersGroup[0]);
-            obj.SetAsLastSibling();
+            tutorial.SetParent(charactersGroup[0]);
             tutorial.SetAsLastSibling();
+            tutorial.gameObject.SetActive(true);
         }
     }
     

@@ -142,10 +142,11 @@ public class PlayersManager : MonoBehaviour
             {
                 if (controlScheme == "Keyboard&Mouse")
                     player = characterChoice.ReturnPlayerInput(false, true);
-                else
-                    player = characterChoice.ReturnPlayerInput(true, false);
+                else {
+                    if (PlayerInput.FindFirstPairedToDevice(device) != null) return;
+                        player = characterChoice.ReturnPlayerInput(true, false);
+                }
             }
-            
             player.SwitchCurrentControlScheme(controlScheme: controlScheme, device);
         }
     }
