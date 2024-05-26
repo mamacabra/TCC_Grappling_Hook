@@ -32,8 +32,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 8178178414503215550}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0.25}
+  m_AnchorMax: {x: 1, y: 0.75}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -52,7 +52,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1435174898559112837}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -99,7 +99,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1500608976613188578}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -108,10 +108,10 @@ RectTransform:
   - {fileID: 5074453326454322291}
   m_Father: {fileID: 1355810043842179097}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.13857146}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.1492787, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -0.8999634, y: -5}
+  m_SizeDelta: {x: -0.84698486, y: 57.018}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2826637015055817173
 MonoBehaviour:
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 6011580085729636942}
   m_HandleRect: {fileID: 0}
-  m_Direction: 2
+  m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 10
   m_WholeNumbers: 0
@@ -197,9 +197,9 @@ RectTransform:
   - {fileID: 2998526771343340920}
   m_Father: {fileID: 1355810043842179097}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 48}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 57.600037, y: -0.000044431785}
   m_SizeDelta: {x: 112.55301, y: 96.414}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3084977368406707553
@@ -275,7 +275,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 10}
+  m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6900366920526638084
 CanvasRenderer:
@@ -298,7 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.9830491, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -346,8 +346,8 @@ RectTransform:
   - {fileID: 6011580085729636942}
   m_Father: {fileID: 8178178414503215550}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0.25}
+  m_AnchorMax: {x: 1, y: 0.75}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -436,9 +436,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1355810043842179097}
   - component: {fileID: -5693629101482775419}
-  - component: {fileID: 7180043611835055177}
   m_Layer: 5
-  m_Name: Score_
+  m_Name: Score_ 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -463,7 +462,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 115, y: 700}
+  m_SizeDelta: {x: 915, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &-5693629101482775419
 MonoBehaviour:
@@ -479,33 +478,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerImg: {fileID: 3619680380305380330}
   playeSlideScore: {fileID: 2826637015055817173}
---- !u!114 &7180043611835055177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8591084452098833011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 471db6df55a537a46b5474cfba07e546, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  doScale: 1
-  doMove: 0
-  doScaleLoop: 0
-  doMoveloop: 0
-  doRotate: 0
-  waitCommand: 0
-  scaleEase: 27
-  moveEase: 4
-  initialScale: {x: 0, y: 0, z: 0}
-  finalScale: {x: 1, y: 1, z: 1}
-  initialPos: {x: 0, y: 0, z: 0}
-  finalRotate: {x: 0, y: 0, z: 0}
-  scaleDuration: 0.5
-  moveDuration: 1
-  rotateDuration: 1
-  waitBeforeDo: 0
-  pingPongLoopping: 0
-  waitBeforeDoReverse: 0

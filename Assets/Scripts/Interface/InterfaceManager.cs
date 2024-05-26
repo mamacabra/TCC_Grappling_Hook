@@ -14,8 +14,9 @@ public enum ScreensName
      Controls_InGame_Screen=4,
      Pause_InGame_Screen=5,
      FeedbackGame_Screen = 6,
-     FinalFeedbackGame = 7
-     
+     FinalFeedbackGame = 7,
+     Features_Screen = 8
+
 }
 public class InterfaceManager : MonoBehaviour
 {

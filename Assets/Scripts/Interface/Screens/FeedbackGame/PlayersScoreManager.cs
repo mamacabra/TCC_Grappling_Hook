@@ -25,12 +25,20 @@ public class PlayersScoreManager : MonoBehaviour
       List<PlayersManager.PlayerConfigurationData> list = new List<PlayersManager.PlayerConfigurationData>();
       list = PlayersManager.Instance.ReturnPlayersList();
 
-      foreach (var p in list)
+      StartCoroutine(PutPlayers());
+      IEnumerator PutPlayers()
       {
-         GameObject o = Instantiate(playerScoreGameObject, this.transform);
-         childs.Add(o);
-         PlayerScore pS = o.GetComponent<PlayerScore>();
-         pS.ChangeData(p);
+         foreach (var p in list)
+         {
+            yield return new WaitForSeconds(0.25f);
+            GameObject o = Instantiate(playerScoreGameObject, this.transform);
+            childs.Add(o);
+            PlayerScore pS = o.GetComponent<PlayerScore>();
+            pS.ChangeData(p);
+            yield return null;
+         }
       }
+
+      
    }
 }

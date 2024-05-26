@@ -14,11 +14,6 @@ public class CharacterBoxUI : MonoBehaviour
 
     public PlayersManager.PlayerConfigurationData playerConfig;
 
-    private void OnDisable()
-    {
-        choiseScreen.CheckGroup(transform, false);
-    }
-
     public void ChangePlayerInput(PlayerInput p)
     {
         PlayerInput = p;
