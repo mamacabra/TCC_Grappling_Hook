@@ -127,6 +127,7 @@ public class PlayersManager : MonoBehaviour
             if (debug) { // For add ilimitted players pressing J
                 //playerInputManager.JoinPlayer(id, controlScheme: controlScheme, pairWithDevices: device);
                 player = characterChoice.ReturnPlayerInput(true,false);
+                player.SwitchCurrentControlScheme(controlScheme: controlScheme, device);
                 return;
             }
 

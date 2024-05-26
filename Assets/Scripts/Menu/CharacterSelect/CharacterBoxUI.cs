@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
@@ -12,6 +13,11 @@ public class CharacterBoxUI : MonoBehaviour
     private bool hasConfirmed;
 
     public PlayersManager.PlayerConfigurationData playerConfig;
+
+    private void OnDisable()
+    {
+        choiseScreen.CheckGroup(transform, false);
+    }
 
     public void ChangePlayerInput(PlayerInput p)
     {

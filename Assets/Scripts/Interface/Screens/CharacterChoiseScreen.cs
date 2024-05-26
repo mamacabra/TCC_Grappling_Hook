@@ -81,7 +81,8 @@ public class CharacterChoiseScreen : Screens
         if (add)
         {
             objEnables++;
-            if (objEnables == 4)
+            if(objEnables >6) objEnables = 6;
+            if (objEnables == 3)
             {
                 tutorial.SetParent(charactersGroup[1]);
                 tutorial.SetAsLastSibling();
@@ -89,7 +90,7 @@ public class CharacterChoiseScreen : Screens
             if(objEnables==6)
                 tutorial.gameObject.SetActive(false);
             
-            if (objEnables>4)
+            if (objEnables>3)
             {
                 if (charactersGroup[0].childCount > 3)
                     charactersGroup[0].GetChild(charactersGroup[0].childCount-1).SetParent(charactersGroup[1]);
@@ -108,6 +109,7 @@ public class CharacterChoiseScreen : Screens
         {
             objEnablesAuxReorganize = 0;
             objEnables--;
+            if(objEnables <0) objEnables = 0;
             obj.SetParent(transform.parent);
             List<Transform> objsInCharactersGroup1 = new List<Transform>();
 
@@ -130,6 +132,7 @@ public class CharacterChoiseScreen : Screens
                 tutorial.gameObject.SetActive(true);
                 return;
             }
+            tutorial.gameObject.SetActive(false);
             foreach (var o in objsInCharactersGroup1)
             {
                 ReorganizeGroup(o);
@@ -150,23 +153,24 @@ public class CharacterChoiseScreen : Screens
         obj.SetParent(charactersGroup[0]);
         obj.SetAsLastSibling();
         tutorial.SetAsLastSibling();
-        if (objEnablesAuxReorganize == 4)
+        if (objEnablesAuxReorganize == 3)
         {
             tutorial.SetParent(charactersGroup[1]);
             tutorial.SetAsLastSibling();
+            tutorial.gameObject.SetActive(true);
         }
         if(objEnablesAuxReorganize==6)
             tutorial.gameObject.SetActive(false);
-        if (objEnablesAuxReorganize > 4)
+        if (objEnablesAuxReorganize > 3)
         {
-            if (charactersGroup[0].childCount > 3)
+            if (charactersGroup[0].childCount > 2)
                 charactersGroup[0].GetChild(charactersGroup[0].childCount-1).SetParent(charactersGroup[1]);
             obj.SetParent(charactersGroup[1]);
             obj.SetAsLastSibling();
             
             tutorial.SetAsLastSibling();
         }
-        else
+        else if(objEnablesAuxReorganize < 3)
         {
             tutorial.SetParent(charactersGroup[0]);
             tutorial.SetAsLastSibling();
