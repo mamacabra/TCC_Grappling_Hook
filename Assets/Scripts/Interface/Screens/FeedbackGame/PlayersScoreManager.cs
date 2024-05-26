@@ -28,15 +28,19 @@ public class PlayersScoreManager : MonoBehaviour
       StartCoroutine(PutPlayers());
       IEnumerator PutPlayers()
       {
+         yield return new WaitForSeconds(0.5f);
          foreach (var p in list)
          {
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.5f);
             GameObject o = Instantiate(playerScoreGameObject, this.transform);
             childs.Add(o);
             PlayerScore pS = o.GetComponent<PlayerScore>();
             pS.ChangeData(p);
             yield return null;
          }
+         yield return new WaitForSeconds(1f);
+
+         InterfaceManager.Instance.ShowScoreInFeedbackScreen();
       }
 
       

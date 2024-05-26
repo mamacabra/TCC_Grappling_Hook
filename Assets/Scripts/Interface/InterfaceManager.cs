@@ -37,7 +37,7 @@ public class InterfaceManager : MonoBehaviour
      [HideInInspector] public bool pause = false;
      [HideInInspector] public bool startNewGame = false;
      public event Action OnHideButton;
-
+     public event Action OnShowScoreInFeedbackScreen; 
      private void Start()
      {
           if(gameWithScreens) ShowScreen();
@@ -108,6 +108,11 @@ public class InterfaceManager : MonoBehaviour
      {
           yield return new WaitForSeconds(3);
           ShowSpecificScreen(ScreensName.FinalFeedbackGame);
+     }
+
+     public void ShowScoreInFeedbackScreen()
+     {
+          OnShowScoreInFeedbackScreen?.Invoke();
      }
      
 }
