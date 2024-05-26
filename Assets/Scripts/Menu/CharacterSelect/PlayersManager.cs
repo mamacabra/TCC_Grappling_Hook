@@ -55,7 +55,8 @@ public class PlayersManager : MonoBehaviour
     #endregion
 
     #region Data
-    private bool sharingKeyboard = false;
+    private bool keyboardP1 = false;
+    private bool keyboardP2 = false;
     private int amountOfPlayersReady = 0;
     private bool[] freeId = {true, true, true, true, true, true};
     [SerializeField]private List<PlayerConfigurationData> playersConfigs = new List<PlayerConfigurationData>();
@@ -125,38 +126,34 @@ public class PlayersManager : MonoBehaviour
             PlayerInput player;
             
             if (debug) { // For add ilimitted players pressing J
-                //playerInputManager.JoinPlayer(id, controlScheme: controlScheme, pairWithDevices: device);
                 player = characterChoice.ReturnPlayerInput(true,false);
                 player.SwitchCurrentControlScheme(controlScheme: controlScheme, device);
                 return;
             }
 
-            // Check if already has p2 on keyboard
             // Join a new player
-
-            if (controlScheme == "KeyboardP2") {
-                if (sharingKeyboard) return; 
-                else sharingKeyboard = true;
+            if (controlScheme == "Keyboard&Mouse") { // Keyboard P1
+                if (keyboardP1) return;
+                else keyboardP1 = true;
+                player = characterChoice.ReturnPlayerInput(false, true);
+            } else if (controlScheme == "KeyboardP2") { // Keyboard P2
+                if (keyboardP2) return; 
+                else keyboardP2 = true;
                 player = characterChoice.ReturnPlayerInput(false,false);
-            } 
-            else
-            {
-                if (controlScheme == "Keyboard&Mouse")
-                    player = characterChoice.ReturnPlayerInput(false, true);
-                else {
-                    if (PlayerInput.FindFirstPairedToDevice(device) != null) return;
-                        player = characterChoice.ReturnPlayerInput(true, false);
-                }
+            } else { // Gamepad
+                if (PlayerInput.FindFirstPairedToDevice(device) != null) return;
+                player = characterChoice.ReturnPlayerInput(true, false);
             }
             player.SwitchCurrentControlScheme(controlScheme: controlScheme, device);
+            OnPlayerJoinedEvent(player);
         }
     }
     public void OnPlayerJoinedEvent(PlayerInput _playerInput) {
-        
         // Trigged when player joined : set in inspector: PlayerInputManager
         bool inGame = InterfaceManager.Instance ? InterfaceManager.Instance.inGame : true;
         if (!inGame) {// Is in character selection screen.
             //_playerInput.transform.SetParent(characterChoice.charactersGroup);
+            if (String.IsNullOrEmpty(_playerInput.currentControlScheme)) return;
             freeId[_playerInput.playerIndex] = false;
             if (_playerInput.TryGetComponent(out CharacterBoxUI characterBoxUI)) {
                 characterBoxUI.playerConfig.id = _playerInput.playerIndex;
@@ -176,7 +173,8 @@ public class PlayersManager : MonoBehaviour
         playersGameObjects[_playerInput.playerIndex] = _playerInput.gameObject;
     }
     public void OnPlayerLeftEvent(PlayerInput _playerInput) { // Trigged when player left : set in inspector : PlayerInputManager
-        if (_playerInput.currentControlScheme == "KeyboardP2") sharingKeyboard = false;
+        if (_playerInput.currentControlScheme == "Keyboard&Mouse") keyboardP1 = false;
+        if (_playerInput.currentControlScheme == "KeyboardP2") keyboardP2 = false;
         freeId[_playerInput.playerIndex] = true;
     }
 

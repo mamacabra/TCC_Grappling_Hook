@@ -33,7 +33,7 @@ public class CharacterBoxUI : MonoBehaviour
     }
 
     public void OnConfirm(InputAction.CallbackContext context) {
-        if(PlayersManager.Instance.debug)return;
+        if(PlayersManager.Instance.debug) return;
         if (hasConfirmed) return;
         if (context.action.WasPerformedThisFrame()) {
             characterStatus.text = "Pronto";
