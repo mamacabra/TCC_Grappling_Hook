@@ -7,8 +7,6 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager audioManager;
 
-    
-
     private void Awake()
     {
         if (audioManager != null && audioManager != this)
@@ -23,8 +21,16 @@ public class AudioManager : MonoBehaviour
         }
         DontDestroyOnLoad(this);
     }
+
     public void PlayUiSoundEffect(string uiSound)
     {
         RuntimeManager.PlayOneShot("event:/MenuEffects/UiSounds/" + uiSound);
     }
+
+    public void PlayUiSoundEffect(SoundsList uiSound)
+    {
+        RuntimeManager.PlayOneShot("event:/MenuEffects/UiSounds/" + uiSound);
+    }
 }
+
+public enum SoundsList { None, Confirm, Return, Cancel, Select, SelectUpPitch, SelectDownPitch};

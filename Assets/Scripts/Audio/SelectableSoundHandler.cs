@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
-public class SelectableSoundHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, ISubmitHandler, ISelectHandler, IDeselectHandler
+public class SelectableSoundHandler : MonoBehaviour, IPointerEnterHandler, /*IPointerExitHandler,*/ IPointerClickHandler, ISubmitHandler, ISelectHandler, IDeselectHandler
 {
     [Header("Witch Sounds Will Play")]
     [SerializeField] bool playHoverSound;
@@ -12,22 +12,24 @@ public class SelectableSoundHandler : MonoBehaviour, IPointerEnterHandler, IPoin
     [SerializeField] bool playClickSound;
 
     [Header("Sounds To Play")]
-    [SerializeField] string hoverSound = "Select";
-    [SerializeField] string unhoverSound = "Cancel";
-    [SerializeField] string clickSound = "Confirm";
+    [SerializeField] SoundsList click;
+    [SerializeField] SoundsList hover;
+
 
     public void OnPointerEnter(PointerEventData eventData){
         if (playHoverSound)
-            AudioManager.audioManager?.PlayUiSoundEffect(hoverSound);
+            AudioManager.audioManager?.PlayUiSoundEffect(hover);
     }
-    public void OnPointerExit(PointerEventData eventData){
+    /*public void OnPointerExit(PointerEventData eventData){
         if (playUnhoverSound)
-            AudioManager.audioManager?.PlayUiSoundEffect(unhoverSound);
-    }
+            AudioManager.audioManager?.PlayUiSoundEffect();
+    }*/
+    
     public void OnPointerClick(PointerEventData eventData){
-        if (eventData.button == PointerEventData.InputButton.Left && playClickSound)
-            AudioManager.audioManager?.PlayUiSoundEffect(clickSound);
-    }
+         if (eventData.button == PointerEventData.InputButton.Left && playClickSound)
+             AudioManager.audioManager?.PlayUiSoundEffect(click);
+     }
+
     public void OnSubmit(BaseEventData baseEventData){// Only on mouse for now
         //if (playClickSound)
         //    AudioManager.audioManager?.PlayUiSoundEffect(clickSound);
