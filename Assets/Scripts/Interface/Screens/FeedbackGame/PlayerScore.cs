@@ -28,7 +28,7 @@ public class PlayerScore : MonoBehaviour
         data = d;
         playerImg.sprite = Resources.Load<ResourcesCharacters>("ResourcesCharacters").GetCharacterData(data.characterModel).characterSprite;
         playerImg.color = PlayersManager.GetColor(data.characterColor);
-        playeSlideScore.value = scoreValue;
+        if (playeSlideScore) playeSlideScore.value = scoreValue;
         
         scoreValue = data.score;
     }

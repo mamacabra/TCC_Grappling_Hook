@@ -92,7 +92,7 @@ public class PlayersManager : MonoBehaviour
         EnableInputActions();
     }
     public void InitGame(bool loadScene = true) {
-        ClearPlayersConfig();
+        ClearPlayersConfig(charactersFromGame: true);
         LoadPlayersConfigs(); // Reset playersConfig in characterSelect screen.
         playerInputManager.playerPrefab = playerPrefab;
         DisableInputActions();
@@ -284,13 +284,13 @@ public class PlayersManager : MonoBehaviour
         playersConfigs.Clear();
         if(charactersFromGame){
             for (int i = 0; i < playersGameObjects.Length; i++){
-                if (playersGameObjects[i])
+                if (playersGameObjects[i] && (playersGameObjects[i].layer != LayerMask.NameToLayer("UI")))
                     Destroy(playersGameObjects[i]);
             }
         } else {
             playersGameObjects = new GameObject[playerInputManager.maxPlayerCount];
+            characterChoice.RemoveAllChildrens();
         }
-        characterChoice.RemoveAllChildrens();
     }
     #endregion
 
