@@ -11,6 +11,7 @@ namespace Character.States
         private Vector3 knockbackDirection;
         private float knockbackDuration = 0.2f;
         private float knockbackTimer;
+        private float upwardForce = 5f;
         
 
         public override void Enter()
@@ -24,7 +25,10 @@ namespace Character.States
             if(knockbackTimer > 0)
             {
             float knockbackStep=knockbackForce*Time.deltaTime;
-            Vector3 knockbackVector = (-knockbackDirection+Vector3.up)*knockbackStep;
+            float upwardStep=upwardForce*Time.deltaTime;    
+
+            Vector3 knockbackVector = (-knockbackDirection*knockbackStep)+(Vector3.up * upwardStep);
+
             CharacterEntity.Rigidbody.MovePosition(CharacterEntity.Rigidbody.position + knockbackVector);
 
             knockbackTimer -= Time.deltaTime;
