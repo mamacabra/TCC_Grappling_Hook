@@ -6,7 +6,7 @@ using TMPro;
 
 public class CharacterBoxUI : MonoBehaviour
 {
-    [SerializeField] private PlayerInput PlayerInput;
+    [SerializeField] private PlayerInput playerInput;
     [SerializeField] private Image characterImage;
     [SerializeField] private TextMeshProUGUI characterName;
     [SerializeField] private TextMeshProUGUI characterStatus;
@@ -16,7 +16,7 @@ public class CharacterBoxUI : MonoBehaviour
 
     public void ChangePlayerInput(PlayerInput p)
     {
-        PlayerInput = p;
+        playerInput = p;
     }
     public void OnMove(InputAction.CallbackContext context) {
         int dir_x = 0;
@@ -76,5 +76,14 @@ public class CharacterBoxUI : MonoBehaviour
         playerConfig.characterModel = (ECharacterType)value;
         Sprite sprite = Resources.Load<ResourcesCharacters>("ResourcesCharacters").GetCharacterData((ECharacterType)value).characterSprite;
         characterImage.sprite = sprite;
+    }
+    
+    private void OnDisable() {
+        characterStatus.text = "Escolhendo";
+        characterStatus.color = Color.gray;
+        hasConfirmed = false;
+        playerConfig = new PlayersManager.PlayerConfigurationData();
+        ChangeColor((int)playerConfig.characterColor);
+        ChangeModelImage((int)playerConfig.characterModel);
     }
 }

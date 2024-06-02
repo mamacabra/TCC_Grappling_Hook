@@ -18,7 +18,7 @@ public class InitialScreen : Screens
     }
     public override void Initialize()
     {
-        PlayersManager.Instance.ClearPlayersConfig();
+        PlayersManager.Instance.ClearPlayersConfig(charactersFromGame: true);
     }
 
     public override void GoToScreen(ScreensName screensName)

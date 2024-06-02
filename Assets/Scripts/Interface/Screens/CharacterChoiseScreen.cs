@@ -75,6 +75,19 @@ public class CharacterChoiseScreen : Screens
 
         return null;
     }
+
+    public void RemoveAllChildrens() {
+        foreach (var item in playerInputsGamePad)
+        {
+            item.gameObject.SetActive(false);
+            item.transform.SetParent(transform);
+        }
+        playerInput1.gameObject.SetActive(false);
+        playerInput1.transform.SetParent(transform);
+        playerInput2.gameObject.SetActive(false);
+        playerInput2.transform.SetParent(transform);
+        objEnables = 0;
+    }
     
     public void CheckGroup(Transform obj, bool add = true)
     {
