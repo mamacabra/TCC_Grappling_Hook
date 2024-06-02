@@ -11,6 +11,7 @@ namespace Character.States
             CharacterEntity.AttackMelee.DisableHitbox();
             CharacterEntity.GrapplingHookWeapon.DisableGrapplingHook();
             CharacterEntity.CharacterMesh.animator?.SetTrigger("isDead");
+            CharacterEntity.GrapplingHookState.SetHookDestroyedState();
         }
     }
 }

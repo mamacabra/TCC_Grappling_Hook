@@ -24,6 +24,12 @@ namespace Character.GrapplingHook
             State.Enter();
         }
 
+        public void SetHookDestroyedState()
+        {
+            var state = new HookDestroyedState(CharacterEntity);
+            SetState(state);
+        }
+
         public void SetHookDispatchState()
         {
             var state = new HookDispatchState(CharacterEntity);
