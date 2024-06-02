@@ -18,8 +18,10 @@ namespace Character
     [RequireComponent(typeof(Rigidbody))]
     public class CharacterSetup : MonoBehaviour
     {
+        [Header("Grappling Hook")]
         [SerializeField] private GrapplingHookState grapplingHookState;
         [SerializeField] private GrapplingHookWeapon grapplingWeapon;
+        [SerializeField] private Transform grapplingHookTransform;
 
         private void Awake()
         {
@@ -46,6 +48,7 @@ namespace Character
                 AttackMelee = attackMelee,
                 GrapplingHookState = grapplingHookState,
                 GrapplingHookWeapon = grapplingHookWeapon,
+                GrapplingHookTransform = grapplingHookTransform,
 
                 Rigidbody = characterRigidbody,
             };

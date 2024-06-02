@@ -15,6 +15,7 @@ namespace Character
         public AttackMelee AttackMelee;
         public GrapplingHookState GrapplingHookState;
         public GrapplingHookWeapon GrapplingHookWeapon;
+        public Transform GrapplingHookTransform;
 
         public Rigidbody Rigidbody;
     }
