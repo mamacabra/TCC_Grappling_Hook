@@ -9,6 +9,7 @@ namespace Character.States
         public override void Enter()
         {
             CharacterEntity.GrapplingHookWeapon.ResetHook();
+            CharacterEntity.GrapplingHookState.SetHookReadyState();
         }
 
         public override void FixedUpdate()

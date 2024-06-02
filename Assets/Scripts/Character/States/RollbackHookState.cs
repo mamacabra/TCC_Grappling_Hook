@@ -8,7 +8,7 @@ namespace Character.States
 
         public override void Enter()
         {
-            CharacterEntity.GrapplingHookWeapon.RollbackHook();
+            CharacterEntity.GrapplingHookState.SetHookRollbackState();
         }
     }
 }
