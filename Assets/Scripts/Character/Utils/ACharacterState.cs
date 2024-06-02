@@ -28,7 +28,7 @@ namespace Character.Utils
         public virtual void FixedUpdate() {}
         public virtual void Exit() {}
 
-        protected void Walk(float speed = WalkSpeed)
+        protected void Walk(float speed = WalkSpeed, bool isDash = false)
         {
             if (CharacterEntity.CharacterMesh.animator)
             {
@@ -36,8 +36,9 @@ namespace Character.Utils
                 CharacterEntity.CharacterMesh.animator.SetFloat("Speed", magnitude);
             }
 
-            var direction = Vector3.forward * CharacterEntity.CharacterInput.MoveDirection.magnitude;
             var origin = new Vector3(Transform.position.x, 1f, Transform.position.z);
+            var direction = Vector3.forward * CharacterEntity.CharacterInput.MoveDirection.magnitude;
+            if (isDash) direction = Vector3.forward;
 
             var rayLeftDirection = (Transform.forward + Transform.right * -1).normalized;
             Physics.Raycast(origin, rayLeftDirection, out var hitLeft, RaycastDistance);

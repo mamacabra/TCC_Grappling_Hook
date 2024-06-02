@@ -5,58 +5,26 @@ namespace Character.States
 {
     public class DashState : ACharacterState
     {
-        private float _countDown;
+        private float countDown;
         private const float DashSpeed = 70f;
-        private const float DashDuration = 0.15f;
-
-        private bool _hasHit = true;
-        private const float RaycastDistance = 2.5f;
-        private Color RaycastColor => _hasHit ? Color.red : Color.green;
+        private const float DashDuration = 0.2f;
 
         public DashState(CharacterEntity characterEntity) : base(characterEntity) {}
 
         public override void Enter()
         {
             CharacterEntity.Character.UseDash();
-        }
-
-        public override void Update()
-        {
-            if (_hasHit == false)
-            {
-                var moveDirection = Vector3.forward * CharacterEntity.CharacterInput.MoveDirection.magnitude;
-                Transform.Translate(moveDirection * (DashSpeed * Time.deltaTime));
-                CharacterEntity.CharacterMesh.animator?.SetFloat("Speed", 1);
-            }
-
-            if (_countDown > DashDuration)
-            {
-                CharacterEntity.CharacterState.SetWalkState();
-            }
+            CharacterEntity.CharacterMesh.animator?.SetFloat("Speed", 1);
         }
 
         public override void FixedUpdate()
         {
-            _countDown += Time.fixedDeltaTime;
-            RaycastTest();
-        }
+            Walk(DashSpeed, true);
 
-        private void RaycastTest()
-        {
-            var direction = Transform.forward;
-            var position = Transform.position;
-            var origin = new Vector3(position.x, 1f, position.z) + direction;
-
-            Physics.Raycast(origin, direction, out var hit, RaycastDistance);
-            Debug.DrawRay(origin, direction * RaycastDistance, RaycastColor);
-
-            if (hit.collider)
+            countDown += Time.fixedDeltaTime;
+            if (countDown > DashDuration)
             {
-                _hasHit = hit.collider.CompareTag(Const.Tags.Wall) || hit.collider.CompareTag(Const.Tags.Object);
-            }
-            else
-            {
-                _hasHit = false;
+                CharacterEntity.CharacterState.SetWalkState();
             }
         }
     }
