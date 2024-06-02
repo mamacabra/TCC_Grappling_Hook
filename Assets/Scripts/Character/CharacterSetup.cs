@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Character.GrapplingHook;
 using Character.Melee;
+
 using Const;
 
 namespace Character
@@ -15,6 +16,7 @@ namespace Character
     [RequireComponent(typeof(GrapplingHookWeapon))]
     [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(GravityHandler))]
     public class CharacterSetup : MonoBehaviour
     {
         private void Awake()
@@ -27,6 +29,7 @@ namespace Character
             var characterRigidbody = gameObject.GetComponent<Rigidbody>();
             var characterState = gameObject.GetComponent<CharacterState>();
             var characterUI = gameObject.GetComponent<CharacterUI>();
+            var gravityHandler = gameObject.GetComponent<GravityHandler>();
 
             var attackMelee = gameObject.transform.Find("Body/AttackMelee").GetComponent<AttackMelee>();
             var grapplingHookWeapon = gameObject.GetComponent<GrapplingHookWeapon>();
@@ -38,6 +41,7 @@ namespace Character
                 CharacterMesh = characterMesh,
                 CharacterState = characterState,
                 CharacterUI = characterUI,
+                GravityHandler = gravityHandler,
 
                 AttackMelee = attackMelee,
                 GrapplingHookWeapon = grapplingHookWeapon,
@@ -50,6 +54,7 @@ namespace Character
             characterMesh.Setup(entity);
             characterState.Setup(entity);
             characterUI.Setup(entity);
+            gravityHandler.Setup(entity);
 
             attackMelee.Setup(entity);
             attackMelee.DisableHitbox();
@@ -58,13 +63,14 @@ namespace Character
             SetupRigidbody(entity);
 
             characterState.SetWalkState();
+            
         }
 
         private static void SetupRigidbody(CharacterEntity entity)
         {
             entity.Rigidbody.useGravity = false;
             entity.Rigidbody.isKinematic = true;
-            entity.Rigidbody.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
+            entity.Rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             entity.Rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
         }
     }

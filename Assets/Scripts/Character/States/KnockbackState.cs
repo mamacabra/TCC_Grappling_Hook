@@ -5,40 +5,41 @@ namespace Character.States
 {
     public class KnockbackState : ACharacterState
     {
-        public KnockbackState(CharacterEntity characterEntity) : base(characterEntity) { }
-
-        private float knockbackForce = 60f;
+        private float knockbackForce = 45f;
+        private float upwardForce = 15f; 
         private Vector3 knockbackDirection;
-        private float knockbackDuration = 0.2f;
+        private float knockbackDuration = 0.3f;
         private float knockbackTimer;
-        private float upwardForce = 5f;
-        
+
+        public KnockbackState(CharacterEntity characterEntity) : base(characterEntity) { }
 
         public override void Enter()
         {
+            
             knockbackDirection = CharacterEntity.Character.transform.Find("Body").forward;
             knockbackTimer = knockbackDuration;
+
+      
         }
 
         public override void Update()
         {
-            if(knockbackTimer > 0)
+            if (knockbackTimer > 0)
             {
-            float knockbackStep=knockbackForce*Time.deltaTime;
-            float upwardStep=upwardForce*Time.deltaTime;    
+                float knockbackStep = knockbackForce * Time.deltaTime;
+                float upwardStep = upwardForce * Time.deltaTime;
+                
+                Vector3 knockbackVector = (-knockbackDirection * knockbackStep) + (Vector3.up * upwardStep);                
+                Vector3 newPosition = CharacterEntity.Rigidbody.position + knockbackVector;
 
-            Vector3 knockbackVector = (-knockbackDirection*knockbackStep)+(Vector3.up * upwardStep);
+                CharacterEntity.Rigidbody.MovePosition(newPosition);
 
-            CharacterEntity.Rigidbody.MovePosition(CharacterEntity.Rigidbody.position + knockbackVector);
-
-            knockbackTimer -= Time.deltaTime;
+                knockbackTimer -= Time.deltaTime;
             }
             else
             {
                 CharacterEntity.CharacterState.SetWalkState();
             }
         }
-
     }
 }
-
