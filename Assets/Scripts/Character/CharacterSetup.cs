@@ -44,26 +44,21 @@ namespace Character
                 CharacterUI = characterUI,
 
                 AttackMelee = attackMelee,
+                GrapplingHookState = grapplingHookState,
                 GrapplingHookWeapon = grapplingHookWeapon,
 
                 Rigidbody = characterRigidbody,
             };
 
-            var grapplingEntity = new GrapplingEntity
-            {
-                FSM = grapplingHookState,
-                // GrapplingHookWeapon = grapplingWeapon,
-            };
+            character.Setup(characterEntity);
+            characterInput.Setup(characterEntity);
+            characterMesh.Setup(characterEntity);
+            characterState.Setup(characterEntity);
+            characterUI.Setup(characterEntity);
 
-            character.Setup(characterEntity, grapplingEntity);
-            characterInput.Setup(characterEntity, grapplingEntity);
-            characterMesh.Setup(characterEntity, grapplingEntity);
-            characterState.Setup(characterEntity, grapplingEntity);
-            characterUI.Setup(characterEntity, grapplingEntity);
-
-            attackMelee.Setup(characterEntity, grapplingEntity);
+            attackMelee.Setup(characterEntity);
             attackMelee.DisableHitbox();
-            grapplingHookWeapon.Setup(characterEntity, grapplingEntity);
+            grapplingHookWeapon.Setup(characterEntity);
 
             SetupRigidbody(characterEntity);
 

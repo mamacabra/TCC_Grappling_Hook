@@ -6,12 +6,10 @@ namespace Character.Utils
     public abstract class ACharacterMonoBehaviour : MonoBehaviour
     {
         protected CharacterEntity CharacterEntity;
-        protected GrapplingEntity GrapplingEntity;
 
-        public void Setup(CharacterEntity entity, GrapplingEntity grapplingEntity)
+        public void Setup(CharacterEntity entity)
         {
             CharacterEntity = entity;
-            GrapplingEntity = grapplingEntity;
         }
     }
 }

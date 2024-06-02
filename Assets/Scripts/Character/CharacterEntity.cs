@@ -13,6 +13,7 @@ namespace Character
         public CharacterUI CharacterUI;
 
         public AttackMelee AttackMelee;
+        public GrapplingHookState GrapplingHookState;
         public GrapplingHookWeapon GrapplingHookWeapon;
 
         public Rigidbody Rigidbody;
