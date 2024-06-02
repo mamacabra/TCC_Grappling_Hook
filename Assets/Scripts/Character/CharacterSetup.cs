@@ -19,6 +19,9 @@ namespace Character
     public class CharacterSetup : MonoBehaviour
     {
         [Header("Grappling Hook")]
+        [SerializeField] private GameObject grapplingHookRope;
+        [SerializeField] private GameObject grapplingHookRopeMuzzle;
+        [SerializeField] private BoxCollider grapplingHookCollider;
         [SerializeField] private GrapplingHookState grapplingHookState;
         [SerializeField] private GrapplingHookWeapon grapplingWeapon;
         [SerializeField] private Transform grapplingHookTransform;
@@ -46,6 +49,10 @@ namespace Character
                 CharacterUI = characterUI,
 
                 AttackMelee = attackMelee,
+
+                GrapplingHookRope = grapplingHookRope,
+                GrapplingHookRopeMuzzle = grapplingHookRopeMuzzle,
+                GrapplingHookCollider = grapplingHookCollider,
                 GrapplingHookState = grapplingHookState,
                 GrapplingHookWeapon = grapplingHookWeapon,
                 GrapplingHookTransform = grapplingHookTransform,

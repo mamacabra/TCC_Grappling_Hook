@@ -13,6 +13,11 @@ namespace Character
         public CharacterUI CharacterUI;
 
         public AttackMelee AttackMelee;
+
+
+        public GameObject GrapplingHookRope;
+        public GameObject GrapplingHookRopeMuzzle;
+        public BoxCollider GrapplingHookCollider;
         public GrapplingHookState GrapplingHookState;
         public GrapplingHookWeapon GrapplingHookWeapon;
         public Transform GrapplingHookTransform;
