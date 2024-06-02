@@ -181,6 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a451e9757444fc81957b627752e293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grapplingHookCollider: {fileID: 5671700382720908195}
   grapplingHookState: {fileID: 7447832766166676774}
   grapplingWeapon: {fileID: 0}
   grapplingHookTransform: {fileID: 6217346655026089592}
