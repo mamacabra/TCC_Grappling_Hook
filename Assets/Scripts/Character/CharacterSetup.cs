@@ -3,7 +3,6 @@ using UnityEngine.InputSystem;
 using Character.GrapplingHook;
 using Character.Melee;
 using Const;
-using UnityEngine.Serialization;
 
 namespace Character
 {
@@ -13,7 +12,6 @@ namespace Character
     [RequireComponent(typeof(CharacterMesh))]
     [RequireComponent(typeof(CharacterState))]
     [RequireComponent(typeof(CharacterUI))]
-    [RequireComponent(typeof(GrapplingHookWeapon))]
     [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(Rigidbody))]
     public class CharacterSetup : MonoBehaviour
@@ -23,7 +21,6 @@ namespace Character
         [SerializeField] private GameObject grapplingHookRopeMuzzle;
         [SerializeField] private BoxCollider grapplingHookCollider;
         [SerializeField] private GrapplingHookState grapplingHookState;
-        [SerializeField] private GrapplingHookWeapon grapplingWeapon;
         [SerializeField] private Transform grapplingHookTransform;
 
         private void Awake()
@@ -38,7 +35,6 @@ namespace Character
             var characterUI = gameObject.GetComponent<CharacterUI>();
 
             var attackMelee = gameObject.transform.Find("Body/AttackMelee").GetComponent<AttackMelee>();
-            var grapplingHookWeapon = gameObject.GetComponent<GrapplingHookWeapon>();
 
             var characterEntity = new CharacterEntity
             {
@@ -54,7 +50,6 @@ namespace Character
                 GrapplingHookRopeMuzzle = grapplingHookRopeMuzzle,
                 GrapplingHookCollider = grapplingHookCollider,
                 GrapplingHookState = grapplingHookState,
-                GrapplingHookWeapon = grapplingHookWeapon,
                 GrapplingHookTransform = grapplingHookTransform,
 
                 Rigidbody = characterRigidbody,
@@ -69,7 +64,6 @@ namespace Character
             attackMelee.Setup(characterEntity);
             attackMelee.DisableHitbox();
             grapplingHookState.Setup(characterEntity);
-            grapplingHookWeapon.Setup(characterEntity);
 
             SetupRigidbody(characterEntity);
 

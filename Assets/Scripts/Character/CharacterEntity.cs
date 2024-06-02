@@ -19,7 +19,6 @@ namespace Character
         public GameObject GrapplingHookRopeMuzzle;
         public BoxCollider GrapplingHookCollider;
         public GrapplingHookState GrapplingHookState;
-        public GrapplingHookWeapon GrapplingHookWeapon;
         public Transform GrapplingHookTransform;
 
         public Rigidbody Rigidbody;

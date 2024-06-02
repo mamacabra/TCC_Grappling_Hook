@@ -1,5 +1,4 @@
 using UnityEngine;
-using Character.GrapplingHook;
 using Character.Utils;
 
 namespace Character.States
@@ -21,10 +20,10 @@ namespace Character.States
         public override void FixedUpdate() {
             countDown += Time.fixedDeltaTime;
 
-            if (countDown > CountDownStep && CharacterEntity.GrapplingHookWeapon.Force < GrapplingHookWeapon.MaxGrapplingHookForce)
+            if (countDown > CountDownStep)
             {
                 countDown = 0f;
-                CharacterEntity.GrapplingHookWeapon.IncreaseHookForce();
+                // CharacterEntity.GrapplingHookWeapon.IncreaseHookForce();
             }
         }
     }

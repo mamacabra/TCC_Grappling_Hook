@@ -16,7 +16,7 @@ namespace Character.States
 
         public override void Enter()
         {
-            CharacterEntity.GrapplingHookWeapon.AttachHook();
+            // CharacterEntity.GrapplingHookWeapon.AttachHook();
         }
 
         public override void FixedUpdate()
