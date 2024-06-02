@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using Character.GrapplingHook;
 using Character.Melee;
 using Const;
+using UnityEngine.Serialization;
 
 namespace Character
 {
@@ -17,6 +18,9 @@ namespace Character
     [RequireComponent(typeof(Rigidbody))]
     public class CharacterSetup : MonoBehaviour
     {
+        [SerializeField] private GrapplingHookState grapplingHookState;
+        [SerializeField] private GrapplingHookWeapon grapplingWeapon;
+
         private void Awake()
         {
             gameObject.tag = Tags.Character;
@@ -31,7 +35,7 @@ namespace Character
             var attackMelee = gameObject.transform.Find("Body/AttackMelee").GetComponent<AttackMelee>();
             var grapplingHookWeapon = gameObject.GetComponent<GrapplingHookWeapon>();
 
-            var entity = new CharacterEntity
+            var characterEntity = new CharacterEntity
             {
                 Character = character,
                 CharacterInput = characterInput,
@@ -45,17 +49,23 @@ namespace Character
                 Rigidbody = characterRigidbody,
             };
 
-            character.Setup(entity);
-            characterInput.Setup(entity);
-            characterMesh.Setup(entity);
-            characterState.Setup(entity);
-            characterUI.Setup(entity);
+            var grapplingEntity = new GrapplingEntity
+            {
+                FSM = grapplingHookState,
+                // GrapplingHookWeapon = grapplingWeapon,
+            };
 
-            attackMelee.Setup(entity);
+            character.Setup(characterEntity, grapplingEntity);
+            characterInput.Setup(characterEntity, grapplingEntity);
+            characterMesh.Setup(characterEntity, grapplingEntity);
+            characterState.Setup(characterEntity, grapplingEntity);
+            characterUI.Setup(characterEntity, grapplingEntity);
+
+            attackMelee.Setup(characterEntity, grapplingEntity);
             attackMelee.DisableHitbox();
-            grapplingHookWeapon.Setup(entity);
+            grapplingHookWeapon.Setup(characterEntity, grapplingEntity);
 
-            SetupRigidbody(entity);
+            SetupRigidbody(characterEntity);
 
             characterState.SetWalkState();
         }
