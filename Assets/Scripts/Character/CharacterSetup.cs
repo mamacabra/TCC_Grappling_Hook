@@ -61,6 +61,7 @@ namespace Character
 
             attackMelee.Setup(characterEntity);
             attackMelee.DisableHitbox();
+            grapplingHookState.Setup(characterEntity);
             grapplingHookWeapon.Setup(characterEntity);
 
             SetupRigidbody(characterEntity);

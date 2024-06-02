@@ -22,18 +22,23 @@ namespace Character.GrapplingHook
             State?.Exit();
             State = state;
             State.Enter();
-            CharacterEntity.CharacterUI.UpdateCharacterStateUI(State.GetType().Name);
         }
 
         public void SetHookDispatchState()
         {
-            var state = new HookDispatchState();
+            var state = new HookDispatchState(CharacterEntity);
             SetState(state);
         }
 
         public void SetHookReadyState()
         {
-            var state = new HookReadyState();
+            var state = new HookReadyState(CharacterEntity);
+            SetState(state);
+        }
+
+        public void SetHookRollbackState()
+        {
+            var state = new HookRollbackState(CharacterEntity);
             SetState(state);
         }
     }

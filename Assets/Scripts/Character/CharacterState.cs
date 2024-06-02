@@ -25,7 +25,6 @@ namespace Character
             State?.Exit();
             State = state;
             State.Enter();
-            CharacterEntity.CharacterUI.UpdateCharacterStateUI(State.GetType().Name);
         }
 
         public void SetAttackMeleeState()
