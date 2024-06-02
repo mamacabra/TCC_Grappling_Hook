@@ -46,17 +46,17 @@ namespace Character.GrapplingHook
                 CharacterEntity.CharacterState.SetWalkState();
         }
 
-        public new void Setup(CharacterEntity entity)
-        {
-            CharacterEntity = entity;
-
-            // var hook = transform.Find("GrapplingHook");
-            hookCollider = hook.GetComponent<BoxCollider>();
-            hookRigidbody = hook.GetComponent<Rigidbody>();
-            if (grapplingHook) grapplingHook.Setup(entity);
-
-            DisableHook();
-        }
+        // public new void Setup(CharacterEntity entity)
+        // {
+        //     CharacterEntity = entity;
+        //
+        //     // var hook = transform.Find("GrapplingHook");
+        //     hookCollider = hook.GetComponent<BoxCollider>();
+        //     hookRigidbody = hook.GetComponent<Rigidbody>();
+        //     if (grapplingHook) grapplingHook.Setup(entity);
+        //
+        //     DisableHook();
+        // }
 
         private void DisableHook()
         {
