@@ -11,6 +11,11 @@ namespace Character.States
 
         public PrepareHookState(CharacterEntity characterEntity) : base(characterEntity) {}
 
+        public override void Enter()
+        {
+            CharacterEntity.Hook.ResetHookForce();
+        }
+
         public override void Update()
         {
             Walk(WalkSpeed);
