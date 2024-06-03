@@ -11,10 +11,10 @@ namespace Character
         public new CharacterEntity CharacterEntity { get; private set; }
 
         public bool HasDashReady { get; private set; } = true;
-        private const float MaxCountDownDash = 0.25f;
+        private const float MaxCountDownDash = 0.3f;
 
         public bool HasAttackReady { get; private set; } = true;
-        private const float MaxCountDownMelee = 0.4f;
+        private const float MaxCountDownMelee = 0.3f;
 
         public new void Setup(CharacterEntity entity)
         {
