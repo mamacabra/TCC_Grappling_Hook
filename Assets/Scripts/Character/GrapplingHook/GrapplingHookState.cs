@@ -1,5 +1,6 @@
 using Character.GrapplingHook.States;
 using Character.Utils;
+using UnityEngine;
 
 namespace Character.GrapplingHook
 {
@@ -33,6 +34,12 @@ namespace Character.GrapplingHook
         public void SetHookDispatchState()
         {
             var state = new HookDispatchState(CharacterEntity);
+            SetState(state);
+        }
+
+        public void SetHookFixWallState(Vector3 wallPoint)
+        {
+            var state = new HookFixWallState(CharacterEntity, wallPoint);
             SetState(state);
         }
 
