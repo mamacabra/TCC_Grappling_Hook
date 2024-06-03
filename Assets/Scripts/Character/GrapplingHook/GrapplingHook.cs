@@ -27,8 +27,7 @@ namespace Character.GrapplingHook
             var enemy = other.GetComponent<Character>();
             if (enemy.CharacterEntity.CharacterState.State is HookedToEnemyState) return;
 
-            enemy.CharacterEntity.CharacterState.SetHookedToEnemyState(CharacterEntity.CharacterState.transform.position);
-            CharacterEntity.CharacterState.SetRollbackHookState();
+            CharacterEntity.CharacterState.SetCaughtEnemyState(enemy.CharacterEntity);
         }
 
         private static void CollideWithObject(Collider other)

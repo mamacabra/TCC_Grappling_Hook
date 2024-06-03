@@ -6,6 +6,9 @@ namespace Character.GrapplingHook.States
     {
         public HookFixEnemy(CharacterEntity characterEntity) : base(characterEntity) { }
 
-
+        public override void Enter()
+        {
+            CharacterEntity.GrapplingHookCollider.enabled = false;
+        }
     }
 }
