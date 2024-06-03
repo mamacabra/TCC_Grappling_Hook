@@ -21,19 +21,19 @@ namespace Character.GrapplingHook
 
         private void CollideWithCharacter(Collider other)
         {
-            var character = other.gameObject.GetComponent<Character>();
-            if (character == CharacterEntity.Character) return;
-
-            var enemy = other.GetComponent<Character>();
-            if (enemy.CharacterEntity.CharacterState.State is HookedToEnemyState) return;
-
-            enemy.CharacterEntity.CharacterState.SetHookedToEnemyState(CharacterEntity.CharacterState.transform.position);
-            CharacterEntity.CharacterState.SetRollbackHookState();
+            // var character = other.gameObject.GetComponent<Character>();
+            // if (character == CharacterEntity.Character) return;
+            //
+            // var enemy = other.GetComponent<Character>();
+            // if (enemy.CharacterEntity.CharacterState.State is HookedToEnemyState) return;
+            //
+            // enemy.CharacterEntity.CharacterState.SetHookedToEnemyState(CharacterEntity.CharacterState.transform.position);
+            // CharacterEntity.CharacterState.SetRollbackHookState();
         }
 
         private static void CollideWithObject(Collider other)
         {
-            Destroy(other.gameObject);
+            // Destroy(other.gameObject);
         }
 
         private void CollideWithWall(Collider other)

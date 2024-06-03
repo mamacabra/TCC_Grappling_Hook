@@ -17,6 +17,7 @@ namespace Character
     public class CharacterSetup : MonoBehaviour
     {
         [Header("Grappling Hook")]
+        [SerializeField] private GrapplingHook.GrapplingHook grapplingHook;
         [SerializeField] private GameObject grapplingHookRope;
         [SerializeField] private GameObject grapplingHookRopeMuzzle;
         [SerializeField] private BoxCollider grapplingHookCollider;
@@ -63,10 +64,11 @@ namespace Character
 
             attackMelee.Setup(characterEntity);
             attackMelee.DisableHitbox();
-            grapplingHookState.Setup(characterEntity);
+
+            grapplingHook?.Setup(characterEntity);
+            grapplingHookState?.Setup(characterEntity);
 
             SetupRigidbody(characterEntity);
-
             characterState.SetWalkState();
         }
 
