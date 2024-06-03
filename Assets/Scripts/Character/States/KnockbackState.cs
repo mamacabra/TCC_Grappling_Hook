@@ -6,7 +6,7 @@ namespace Character.States
     public class KnockbackState : ACharacterState
     {
         private float knockbackForce = 45f;
-        private float upwardForce = 15f; 
+        private float upwardForce = 45f; 
         private Vector3 knockbackDirection;
         private float knockbackDuration = 0.3f;
         private float knockbackTimer;

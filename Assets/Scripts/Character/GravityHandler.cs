@@ -6,7 +6,8 @@ namespace Character
 {
     public class GravityHandler : ACharacterMonoBehaviour
     {
-        public float gravityForce = 9.81f; 
+        private const float gravityForce = -9.81f;
+        private float gravityMultiplyer = 5.0f;
         public LayerMask groundLayer; 
         public float groundCheckDistance = 0.1f; 
         private float currentVelocity = 0f;
@@ -20,44 +21,34 @@ namespace Character
             CheckGround();
             if(!isGrounded )
             {
-                currentVelocity = -gravityForce * Time.deltaTime;
-                CharacterEntity.Rigidbody.MovePosition( currentVelocity*Vector3.down);
+                ApplyGravity();
             }
-            else
-            {
-                currentVelocity = 0f;
-            }
+           
           
         }
 
         
         public void ApplyGravity()
         {
-            if (!isGrounded)
-            {
-                
- 
-            }
-            else
-            {
-               
-                
-            }
+            currentVelocity += gravityForce * gravityMultiplyer * Time.deltaTime;
+            transform.Translate(new Vector3(transform.position.x, currentVelocity, transform.position.z)*Time.deltaTime);
         }
 
-        private void CheckGround()
-        {
-            
-            if (Physics.Raycast(transform.position, Vector3.down, out _, groundCheckDistance, groundLayer))
-            {
-                isGrounded = true;
-                Debug.Log("Grounded.");
-            }
-            else
-            {
-                isGrounded = false;
-                Debug.Log("Not grounded.");
-            }
-        }
+       
+
+         private void CheckGround()
+         {
+             
+             if (Physics.Raycast(transform.position, Vector3.down, out _, groundCheckDistance, groundLayer))
+             {
+                 isGrounded = true;
+                 Debug.Log("Grounded.");
+             }
+             else
+             {
+                 isGrounded = false;
+                 Debug.Log("Not grounded.");
+             }
+         }
     }
 }

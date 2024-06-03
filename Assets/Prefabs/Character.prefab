@@ -485,11 +485,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe64d3f767ce3ea4985f0a1feeb1b32b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityForce: 9.81
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
-  groundCheckDistance: 0.1
+  groundCheckDistance: 0.3
 --- !u!1 &3856020092371790344
 GameObject:
   m_ObjectHideFlags: 0
