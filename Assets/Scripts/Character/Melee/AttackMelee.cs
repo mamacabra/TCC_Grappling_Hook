@@ -28,7 +28,7 @@ namespace Character.Melee
                 enemy.CharacterEntity.CharacterState.SetDeathState();
                 CameraManager.Instance.DeathFeedBack(this.transform,other.transform);
                 PlayersManager.Instance.AddPointsToPlayer(CharacterEntity.Character.Id);
-                PlayersManager.Instance.PlayersToSendToCamera(other.transform);
+                PlayersManager.Instance.PlayersToSendToCamera(other.transform, false);
             }
         }
 

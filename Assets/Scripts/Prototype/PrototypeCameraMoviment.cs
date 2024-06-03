@@ -22,7 +22,11 @@ public class PrototypeCameraMoviment : MonoBehaviour
     }
     public void RemoveAllPlayers()
     {
+        foreach (var p in players)
+            cinemachineTargetGroup.RemoveMember(p);
+        
         players.Clear();
+        
     }
     public List<Transform> players = new List<Transform>(); // Array dos Transforms dos personagens
     public CinemachineTargetGroup cinemachineTargetGroup;
