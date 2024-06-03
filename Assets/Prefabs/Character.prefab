@@ -55,8 +55,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 6864274715603194859}
   - component: {fileID: 1461679183913746238}
   - component: {fileID: -4475908397822895951}
+  - component: {fileID: -4338280605253921044}
   m_Layer: 0
   m_Name: Character
   m_TagString: Character
@@ -165,8 +166,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 906378f20e954dcc9d3fdbe97b2e6f90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   Id: 0
   characterBody: {fileID: 5115332766215830745}
 --- !u!114 &6154435207289440195
@@ -179,8 +180,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22a451e9757444fc81957b627752e293, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   grapplingHook: {fileID: 5564170575563369833}
   grapplingHookRope: {fileID: 8232527587555799853}
   grapplingHookRopeMuzzle: {fileID: 4026952589215357908}
@@ -197,8 +198,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63435266756e8184c9b7361895c98bc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!114 &4521154744536779452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,8 +210,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd795428ee957f48aa2c2bec71d2e0ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!114 &2688841092658867242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,8 +222,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac00493928d7ff94cb834b909a327c57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   characterUI: {fileID: 8729906752129017995}
   characterStateText: {fileID: 5871677969771744498}
   forceText: {fileID: 6305327517487173830}
@@ -236,8 +237,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 153210f129bb00de596dbd8129ac3762, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   meshParent: {fileID: 8215146502865197739}
   meshRenderer: {fileID: 2067811761408879985}
   skinnedMeshRenderer: {fileID: 0}
@@ -252,8 +253,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cee17264136394a02a0f5917d398ec1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   hook: {fileID: 6217346655026089592}
   hookRigidbody: {fileID: 3660774765619785525}
   hookCollider: {fileID: 5671700382720908195}
@@ -270,8 +271,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Actions: {fileID: -944628639613478452, guid: 12bbd5042eb786d429622a4fb7a1a7f4,
     type: 3}
   m_NotificationBehavior: 2
@@ -297,7 +298,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: e9752e09-1784-4669-a563-98fbc65d00d1
@@ -313,7 +314,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: e77b7240-84f2-48cf-b387-37287d6374d8
@@ -329,7 +330,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: e3762939-08b2-4f74-8926-14af5e374fed
@@ -393,13 +394,13 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 6ca61224-f2dc-449b-8086-ea4625b24008
     m_ActionName: Player/Melee[/XInputControllerWindows/buttonNorth,/Keyboard/leftShift,/Keyboard/rightShift]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -467,11 +468,28 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: 
+  m_WarningMessage:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-4338280605253921044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2160222834551465636}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe64d3f767ce3ea4985f0a1feeb1b32b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  gravityForce: 9.81
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  groundCheckDistance: 0.1
 --- !u!1 &3856020092371790344
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,8 +554,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d40ae3daaa4eb884ca3b26a685038960, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   hitbox: {fileID: 3856020092371790344}
 --- !u!1 &4026952589215357908
 GameObject:
@@ -643,8 +661,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
@@ -666,8 +684,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_IgnoreReversedGraphics: 1
   m_BlockingObjects: 0
   m_BlockingMask:
@@ -1018,8 +1036,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 820f69a33c040ac42aa9e3bf375af8a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   lineRenderer: {fileID: 329752209497349408}
   ropeStart: {fileID: 4026952589215357908}
   ropeTarget: {fileID: 8757592480263248349}
@@ -1078,8 +1096,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
@@ -1196,8 +1214,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9218ea309bfd46ba980fbb076d88b05a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!114 &7447832766166676774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1208,8 +1226,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e73d063b2a65479491dba923a09cefde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1 &9174391079033744155
 GameObject:
   m_ObjectHideFlags: 0
