@@ -9,8 +9,9 @@ public class PlayerScore : MonoBehaviour
 {
     PlayersManager.PlayerConfigurationData data;
     [SerializeField] private Image playerImg;
-    [SerializeField] private Slider playeSlideScore;
-
+    //[SerializeField] private Slider playeSlideScore;
+    [SerializeField]private List<Image> pointsImages;
+    [SerializeField] private Sprite caveira, caveiraOp;
     private int scoreValue = 0;
     private void OnEnable()
     {
@@ -28,19 +29,14 @@ public class PlayerScore : MonoBehaviour
         data = d;
         playerImg.sprite = Resources.Load<ResourcesCharacters>("ResourcesCharacters").GetCharacterData(data.characterModel).characterSprite;
         playerImg.color = PlayersManager.GetColor(data.characterColor);
-        if (playeSlideScore) playeSlideScore.value = scoreValue;
-        
+        foreach (var p in pointsImages) p.sprite = caveiraOp;
+
         scoreValue = data.score;
     }
 
     public void AtualizeScore()
     {
-        if (playeSlideScore)
-        {
-            playeSlideScore.DOValue(scoreValue, 1f).SetEase(Ease.OutBack).SetDelay(0.35f).OnComplete(() =>
-            {
-                //transform.DOShakeScale(0.5f, 0.25f);
-            });
-        }
+        for (int i = 0; i < scoreValue; i++)
+            pointsImages[i].sprite = caveira;
     }
 }

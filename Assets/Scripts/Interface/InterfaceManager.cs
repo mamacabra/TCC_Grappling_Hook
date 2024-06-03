@@ -97,16 +97,21 @@ public class InterfaceManager : MonoBehaviour
      
      public void OnCallFeedbackGame(bool gameOver)
      {
-          
-          ShowSpecificScreen(ScreensName.FeedbackGame_Screen);
-          
-          if(!gameOver) return;
-          OnHideButton?.Invoke();
-          StartCoroutine(WaitToCheckWinnerGame());
+          StartCoroutine(WaitToShowFeedback());
+          IEnumerator WaitToShowFeedback()
+          {
+               yield return new WaitForSeconds(0.25f);
+               yield return new WaitUntil(() => CameraManager.Instance.OnEndFeedback); 
+               ShowSpecificScreen(ScreensName.FeedbackGame_Screen);
+               
+               if(!gameOver) yield break;
+               OnHideButton?.Invoke();
+               StartCoroutine(WaitToCheckWinnerGame());
+          }
      }
      IEnumerator WaitToCheckWinnerGame()
      {
-          yield return new WaitForSeconds(3);
+          yield return new WaitForSeconds(6);
           ShowSpecificScreen(ScreensName.FinalFeedbackGame);
      }
 

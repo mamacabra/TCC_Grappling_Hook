@@ -162,12 +162,15 @@ public class PlayersManager : MonoBehaviour
             }
         } else {
             if (!cameraMovement) cameraMovement = FindAnyObjectByType<PrototypeCameraMoviment>();
-            if (cameraMovement) cameraMovement.RecivePlayers(_playerInput.transform);
-            else { // Instantiate camera if dont has one
+            if (cameraMovement) PlayersToSendToCamera(_playerInput.transform);
+            else
+            {
+                // Instantiate camera if dont has one
                 ResourcesPrefabs resourcesPrefabs = Resources.Load<ResourcesPrefabs>("ResourcesPrefabs");
-                PrototypeCameraMoviment prototypeCameraMoviment = resourcesPrefabs.prefabs[(int)ResourcesPrefabs.PrefabType.Camera].GetComponent<PrototypeCameraMoviment>();
+                PrototypeCameraMoviment prototypeCameraMoviment = resourcesPrefabs
+                    .prefabs[(int)ResourcesPrefabs.PrefabType.Camera].GetComponent<PrototypeCameraMoviment>();
                 cameraMovement = Instantiate(prototypeCameraMoviment);
-                cameraMovement.RecivePlayers(_playerInput.transform);
+                PlayersToSendToCamera(_playerInput.transform);
             }
         }
         playersGameObjects[_playerInput.playerIndex] = _playerInput.gameObject;
@@ -176,6 +179,12 @@ public class PlayersManager : MonoBehaviour
         if (_playerInput.currentControlScheme == "Keyboard&Mouse") keyboardP1 = false;
         if (_playerInput.currentControlScheme == "KeyboardP2") keyboardP2 = false;
         freeId[_playerInput.playerIndex] = true;
+    }
+
+    public void PlayersToSendToCamera(Transform p, bool isAlive = true)
+    {
+        if(isAlive)cameraMovement.RecivePlayers(p);
+        else cameraMovement.RemovePlayers(p);
     }
 
     private int playersCountInScene = 0;

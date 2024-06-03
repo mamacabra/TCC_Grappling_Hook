@@ -31,12 +31,12 @@ public class PlayersScoreManager : MonoBehaviour
          yield return new WaitForSeconds(0.5f);
          foreach (var p in list)
          {
-            yield return new WaitForSeconds(0.5f);
+            //yield return new WaitForSeconds(0.5f);
             GameObject o = Instantiate(playerScoreGameObject, this.transform);
             childs.Add(o);
             PlayerScore pS = o.GetComponent<PlayerScore>();
             pS.ChangeData(p);
-            yield return null;
+            //yield return null;
          }
          yield return new WaitForSeconds(1f);
 

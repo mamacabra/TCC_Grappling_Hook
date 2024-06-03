@@ -15,6 +15,11 @@ public class PrototypeCameraMoviment : MonoBehaviour
         players.Add(p);
         cinemachineTargetGroup.AddMember(p,1,2);
     }
+    public void RemovePlayers(Transform p)
+    {
+        players.Remove(p);
+        cinemachineTargetGroup.RemoveMember(p);
+    }
     public void RemoveAllPlayers()
     {
         players.Clear();
