@@ -47,7 +47,7 @@ namespace Character.GrapplingHook
         public void IncreaseHookForce()
         {
             Force += 1;
-            if (Force > MaxGrapplingHookForce) Force = DefaultGrapplingHookForce;
+            if (Force > MaxGrapplingHookForce) Force = MaxGrapplingHookForce;
         }
 
         public void ResetHookForce()
