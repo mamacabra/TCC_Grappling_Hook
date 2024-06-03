@@ -12,6 +12,7 @@ namespace Character.GrapplingHook.States
 
         public override void Enter()
         {
+            SetHookStats();
             CharacterEntity.GrapplingHookCollider.enabled = true;
         }
 
@@ -28,6 +29,25 @@ namespace Character.GrapplingHook.States
         public override void Exit()
         {
             CharacterEntity.GrapplingHookCollider.enabled = false;
+        }
+
+        private void SetHookStats()
+        {
+            switch (CharacterEntity.Hook.Force)
+            {
+                case 1:
+                    hookSpeed = GrapplingStats.ForceLv1.speed;
+                    hookMaxDistance = GrapplingStats.ForceLv1.distance;
+                    break;
+                case 2:
+                    hookSpeed = GrapplingStats.ForceLv2.speed;
+                    hookMaxDistance = GrapplingStats.ForceLv2.distance;
+                    break;
+                default:
+                    hookSpeed = GrapplingStats.ForceLv3.speed;
+                    hookMaxDistance = GrapplingStats.ForceLv3.distance;
+                    break;
+            }
         }
     }
 }

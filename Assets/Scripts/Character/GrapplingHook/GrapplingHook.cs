@@ -9,7 +9,7 @@ namespace Character.GrapplingHook
     [RequireComponent(typeof(BoxCollider))]
     public class GrapplingHook : ACharacterMonoBehaviour
     {
-        public int HookForce { get; private set; }
+        public int Force { get; private set; }
         private const int MaxGrapplingHookForce = 3;
         private const int DefaultGrapplingHookForce = 1;
 
@@ -46,13 +46,13 @@ namespace Character.GrapplingHook
 
         public void IncreaseHookForce()
         {
-            HookForce += 1;
-            if (HookForce > MaxGrapplingHookForce) HookForce = DefaultGrapplingHookForce;
+            Force += 1;
+            if (Force > MaxGrapplingHookForce) Force = DefaultGrapplingHookForce;
         }
 
         public void ResetHookForce()
         {
-            HookForce = DefaultGrapplingHookForce;
+            Force = DefaultGrapplingHookForce;
         }
     }
 }
