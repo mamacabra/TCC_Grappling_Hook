@@ -36,6 +36,12 @@ namespace Character
             SetState(state);
         }
 
+        public void SetCaughtEnemyState(CharacterEntity enemy)
+        {
+            var state = new CaughtEnemy(CharacterEntity, enemy);
+            SetState(state);
+        }
+
         public void SetDashState()
         {
             if (CharacterEntity.Character.HasDashReady == false) return;
