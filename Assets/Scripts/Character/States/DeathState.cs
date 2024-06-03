@@ -10,6 +10,8 @@ namespace Character.States
         public override void Enter()
         {
             // Object.Destroy(CharacterEntity.Character.gameObject);
+            CharacterEntity.Character.tag = "Untagged";
+            CharacterEntity.CharacterCollider.enabled = false;
 
             CharacterEntity.AttackMelee.DisableHitbox();
             CharacterEntity.CharacterMesh.animator?.SetTrigger("isDead");

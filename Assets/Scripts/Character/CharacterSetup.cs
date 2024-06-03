@@ -31,6 +31,7 @@ namespace Character
             gameObject.tag = Tags.Character;
 
             var character = gameObject.GetComponent<Character>();
+            var characterCollider = gameObject.GetComponent<BoxCollider>();
             var characterInput = gameObject.GetComponent<CharacterInput>();
             var characterMesh = gameObject.GetComponent<CharacterMesh>();
             var characterRigidbody = gameObject.GetComponent<Rigidbody>();
@@ -43,6 +44,7 @@ namespace Character
             var characterEntity = new CharacterEntity
             {
                 Character = character,
+                CharacterCollider = characterCollider,
                 CharacterInput = characterInput,
                 CharacterMesh = characterMesh,
                 CharacterState = characterState,

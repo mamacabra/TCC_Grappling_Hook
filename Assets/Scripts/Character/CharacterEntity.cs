@@ -7,6 +7,7 @@ namespace Character
     public struct CharacterEntity
     {
         public Character Character;
+        public BoxCollider CharacterCollider;
         public CharacterInput CharacterInput;
         public CharacterMesh CharacterMesh;
         public CharacterState CharacterState;
