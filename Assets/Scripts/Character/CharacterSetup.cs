@@ -51,6 +51,7 @@ namespace Character
 
                 AttackMelee = attackMelee,
 
+                Hook = grapplingHook,
                 GrapplingHookRope = grapplingHookRope,
                 GrapplingHookRopeMuzzle = grapplingHookRopeMuzzle,
                 GrapplingHookCollider = grapplingHookCollider,

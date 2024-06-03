@@ -15,7 +15,7 @@ namespace Character
 
         public AttackMelee AttackMelee;
 
-
+        public GrapplingHook.GrapplingHook Hook;
         public GameObject GrapplingHookRope;
         public GameObject GrapplingHookRopeMuzzle;
         public BoxCollider GrapplingHookCollider;

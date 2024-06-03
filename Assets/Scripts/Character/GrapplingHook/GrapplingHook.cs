@@ -9,6 +9,10 @@ namespace Character.GrapplingHook
     [RequireComponent(typeof(BoxCollider))]
     public class GrapplingHook : ACharacterMonoBehaviour
     {
+        public int HookForce { get; private set; }
+        private const int MaxGrapplingHookForce = 3;
+        private const int DefaultGrapplingHookForce = 1;
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag(Tags.Character))
@@ -38,6 +42,17 @@ namespace Character.GrapplingHook
         private void CollideWithWall(Collider other)
         {
             CharacterEntity.CharacterState.SetHookedToWallState(other.transform.position);
+        }
+
+        public void IncreaseHookForce()
+        {
+            HookForce += 1;
+            if (HookForce > MaxGrapplingHookForce) HookForce = DefaultGrapplingHookForce;
+        }
+
+        public void ResetHookForce()
+        {
+            HookForce = DefaultGrapplingHookForce;
         }
     }
 }

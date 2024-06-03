@@ -23,7 +23,7 @@ namespace Character.States
             if (countDown > CountDownStep)
             {
                 countDown = 0f;
-                // CharacterEntity.GrapplingHookWeapon.IncreaseHookForce();
+                CharacterEntity.Hook.IncreaseHookForce();
             }
         }
     }
