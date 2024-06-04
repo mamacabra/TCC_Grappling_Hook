@@ -8,12 +8,12 @@ namespace Character.GrapplingHook.States
         private float hookSpeed = 80;
         private float hookMaxDistance = 24;
 
-        public HookDispatchState(CharacterEntity characterEntity) : base(characterEntity) { }
+        public HookDispatchState(CharacterEntity characterEntity) : base(characterEntity) {}
 
         public override void Enter()
         {
             SetHookStats();
-            CharacterEntity.GrapplingHookCollider.enabled = true;
+            EnableHookCollider();
         }
 
         public override void FixedUpdate()
@@ -24,11 +24,6 @@ namespace Character.GrapplingHook.States
             var hookDistance = Vector3.Distance(GrapplingStats.originPosition, transform.localPosition);
             if (hookDistance >= hookMaxDistance)
                 CharacterEntity.CharacterState.SetRollbackHookState();
-        }
-
-        public override void Exit()
-        {
-            CharacterEntity.GrapplingHookCollider.enabled = false;
         }
 
         private void SetHookStats()

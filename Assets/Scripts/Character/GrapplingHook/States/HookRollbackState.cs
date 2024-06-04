@@ -8,7 +8,12 @@ namespace Character.GrapplingHook.States
         private float hookSpeed = 80;
         private float hookMaxDistance = 24;
 
-        public HookRollbackState(CharacterEntity characterEntity) : base(characterEntity) { }
+        public HookRollbackState(CharacterEntity characterEntity) : base(characterEntity) {}
+
+        public override void Enter()
+        {
+            EnableHookCollider();
+        }
 
         public override void FixedUpdate()
         {

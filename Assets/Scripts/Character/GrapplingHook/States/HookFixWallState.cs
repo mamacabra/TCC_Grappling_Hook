@@ -12,6 +12,11 @@ namespace Character.GrapplingHook.States
             this.wallPoint = wallPoint;
         }
 
+        public override void Enter()
+        {
+            DisableHookCollider();
+        }
+
         public override void FixedUpdate()
         {
             CharacterEntity.GrapplingHookTransform.position = wallPoint;
