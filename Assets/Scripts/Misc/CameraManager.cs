@@ -15,10 +15,10 @@ public class CameraManager : MonoBehaviour
 
     #endregion
 
-    [SerializeField] private GameObject cameraTargetOfficial;
-    [SerializeField] private GameObject cameraTargetDeathFeedback;
-    [SerializeField] private CinemachineTargetGroup cinemachineTargetGroupDeathFeedback;
-    [HideInInspector] public List<Transform> players = new List<Transform>(); // Array dos Transforms dos personagens
+    //[SerializeField] private GameObject cameraTargetOfficial;
+    //[SerializeField] private GameObject cameraTargetDeathFeedback;
+   // [SerializeField] private CinemachineTargetGroup cinemachineTargetGroupDeathFeedback;
+    //[HideInInspector] public List<Transform> players = new List<Transform>(); // Array dos Transforms dos personagens
 
     [SerializeField] private Slider slider;
     private bool onEndFeedback;
@@ -36,7 +36,7 @@ public class CameraManager : MonoBehaviour
 
     public void DeathFeedBack(Transform p1, Transform p2)
     {
-        if (players.Count > 0)
+       /* if (players.Count > 0)
         {
             cinemachineTargetGroupDeathFeedback.RemoveMember(players[0]);
             cinemachineTargetGroupDeathFeedback.RemoveMember(players[1]);
@@ -48,7 +48,7 @@ public class CameraManager : MonoBehaviour
         players.Add(p2);
         cinemachineTargetGroupDeathFeedback.AddMember(p1,1,2);
         cinemachineTargetGroupDeathFeedback.AddMember(p2,1,2);
-        cameraTargetDeathFeedback.SetActive(true);
+        cameraTargetDeathFeedback.SetActive(true);*/
         
         slider.maxValue = 1;
         slider.value = 1;
