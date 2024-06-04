@@ -15,7 +15,6 @@ namespace Character
     [RequireComponent(typeof(CharacterUI))]
     [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(Rigidbody))]
-    [RequireComponent(typeof(GravityHandler))]
     public class CharacterSetup : MonoBehaviour
     {
         [Header("Grappling Hook")]
@@ -37,7 +36,6 @@ namespace Character
             var characterRigidbody = gameObject.GetComponent<Rigidbody>();
             var characterState = gameObject.GetComponent<CharacterState>();
             var characterUI = gameObject.GetComponent<CharacterUI>();
-            var gravityHandler = gameObject.GetComponent<GravityHandler>();
 
             var attackMelee = gameObject.transform.Find("Body/AttackMelee").GetComponent<AttackMelee>();
 
@@ -49,7 +47,6 @@ namespace Character
                 CharacterMesh = characterMesh,
                 CharacterState = characterState,
                 CharacterUI = characterUI,
-                GravityHandler = gravityHandler,
 
                 AttackMelee = attackMelee,
 
@@ -68,7 +65,6 @@ namespace Character
             characterMesh.Setup(characterEntity);
             characterState.Setup(characterEntity);
             characterUI.Setup(characterEntity);
-            gravityHandler.Setup(characterEntity);
 
             attackMelee.Setup(characterEntity);
             attackMelee.DisableHitbox();

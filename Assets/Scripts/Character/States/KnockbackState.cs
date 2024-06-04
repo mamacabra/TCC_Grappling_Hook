@@ -21,7 +21,7 @@ namespace Character.States
             knockbackTimer = knockbackDuration;
 
             
-            CharacterEntity.Character.GetComponent<GravityHandler>().isKnockback = true;
+            //CharacterEntity.Character.GetComponent<GravityHandler>().isKnockback = true;
         }
 
         public override void Update()
