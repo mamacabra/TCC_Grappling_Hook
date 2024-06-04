@@ -9,6 +9,8 @@ namespace Character.States
 
         public override void Enter()
         {
+            AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.AttackHitPlayer);
+
             // Object.Destroy(CharacterEntity.Character.gameObject);
             CharacterEntity.Character.tag = "Untagged";
             CharacterEntity.CharacterCollider.enabled = false;

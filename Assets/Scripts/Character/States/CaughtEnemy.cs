@@ -18,6 +18,7 @@ namespace Character.States
         {
             CharacterEntity.GrapplingHookState.SetHookFixEnemyState();
             enemy.CharacterState.SetHookedToEnemyState(CharacterEntity.CharacterState.transform.position);
+            AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.HookHitPlayer);
         }
 
         public override void FixedUpdate()

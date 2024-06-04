@@ -84,4 +84,4 @@ public class AudioManager : MonoBehaviour
 }
 
 public enum UiSoundsList { None, Confirm, Return, Cancel, Select, SelectUpPitch, SelectDownPitch};
-public enum PlayerSoundsList { HookCharge, HookFire, HookHitWall, HookReturn, AttackParry, AttackMiss, AttackHitPlayer};
+public enum PlayerSoundsList { HookCharge, HookFire, HookHitPlayer, HookHitWall, HookReturn, AttackParry, AttackMiss, AttackHitPlayer};

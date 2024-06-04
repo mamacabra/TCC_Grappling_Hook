@@ -17,6 +17,7 @@ namespace Character.States
         {
             CharacterEntity.Character.UseAttack();
             CharacterEntity.CharacterMesh.animator?.SetTrigger("Melee");
+            AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.AttackMiss);
         }
 
         public override void Update()

@@ -16,7 +16,10 @@ namespace Character.States
 
             Physics.Raycast(origin, direction, out var hit, RaycastDistance);
             if (hit.collider) CharacterEntity.CharacterState.SetWalkState();
-            else CharacterEntity.GrapplingHookState.SetHookDispatchState();
+            else {
+                CharacterEntity.GrapplingHookState.SetHookDispatchState();
+                AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.HookFire);
+            }
         }
     }
 }

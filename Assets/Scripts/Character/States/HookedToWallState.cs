@@ -17,6 +17,7 @@ namespace Character.States
         public override void Enter()
         {
             CharacterEntity.GrapplingHookState.SetHookFixWallState(wallPoint);
+            AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.HookHitWall);
         }
 
         public override void FixedUpdate()
