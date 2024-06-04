@@ -13,5 +13,15 @@ namespace Character.Utils
         public virtual void Update() {}
         public virtual void FixedUpdate() {}
         public virtual void Exit() {}
+
+        protected void DisableHookCollider()
+        {
+            CharacterEntity.GrapplingHookCollider.enabled = false;
+        }
+
+        protected void EnableHookCollider()
+        {
+            CharacterEntity.GrapplingHookCollider.enabled = true;
+        }
     }
 }

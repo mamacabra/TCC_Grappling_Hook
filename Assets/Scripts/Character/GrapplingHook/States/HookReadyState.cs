@@ -4,11 +4,11 @@ namespace Character.GrapplingHook.States
 {
     public class HookReadyState : AGrapplingHookState
     {
-        public HookReadyState(CharacterEntity characterEntity) : base(characterEntity) { }
+        public HookReadyState(CharacterEntity characterEntity) : base(characterEntity) {}
 
         public override void Enter()
         {
-            CharacterEntity.GrapplingHookCollider.enabled = false;
+            DisableHookCollider();
             CharacterEntity.GrapplingHookTransform.localPosition = GrapplingStats.originPosition;
         }
     }
