@@ -38,6 +38,9 @@ public class GraphicSettings : MonoBehaviour
         int quality = PlayerPrefs.GetInt("Quality", QualitySettings.GetQualityLevel());
         int sfx = PlayerPrefs.GetInt("SFX",5);
         int music = PlayerPrefs.GetInt("Music",5);
+
+        AudioManager.audioManager.sfxVolume = sfx;
+        AudioManager.audioManager.musicVolume = music;
         ApplyResolution(r);
         ApplyEcra(screenMode);
         ApplyQuality(quality);
@@ -158,5 +161,11 @@ public class GraphicSettings : MonoBehaviour
         QualitySettings.SetQualityLevel(qualityValue);
         optionsScreen.ChangeQualityText(quality[qualityValue]);
         SaveSettings("Quality", qualityValue);
+
+        // @TODO: refactor this shits
+        AudioManager.audioManager.sfxVolume = 10;
+        AudioManager.audioManager.musicVolume = 10;
+        ApplyMusicSound(10);
+        ApplySFXSound(10);
     }
 }
