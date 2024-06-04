@@ -37,9 +37,14 @@ public class AudioManager : MonoBehaviour
         RuntimeManager.PlayOneShot("event:/MenuEffects/UiSounds/" + uiSound);
     }
 
-    public void PlayUiSoundEffect(SoundsList uiSound)
+    public void PlayUiSoundEffect(UiSoundsList uiSound)
     {
         RuntimeManager.PlayOneShot("event:/MenuEffects/UiSounds/" + uiSound);
+    }
+
+    public void PlayPlayerSoundEffect(PlayerSoundsList sound)
+    {
+        RuntimeManager.PlayOneShot("event:/PlayerEffects/" + sound);
     }
 
     public void ChangeMusicVolume(int value)
@@ -74,6 +79,9 @@ public class AudioManager : MonoBehaviour
         sfxBus.setVolume(sfxVolume / 10);
 
     }
+
+    
 }
 
-public enum SoundsList { None, Confirm, Return, Cancel, Select, SelectUpPitch, SelectDownPitch};
+public enum UiSoundsList { None, Confirm, Return, Cancel, Select, SelectUpPitch, SelectDownPitch};
+public enum PlayerSoundsList { HookCharge, HookFire, HookHitWall, HookReturn, AttackParry, AttackMiss, AttackHitPlayer};

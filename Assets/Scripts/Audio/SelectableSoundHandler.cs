@@ -12,8 +12,9 @@ public class SelectableSoundHandler : MonoBehaviour, IPointerEnterHandler, /*IPo
     [SerializeField] bool playClickSound;
 
     [Header("Sounds To Play")]
-    [SerializeField] SoundsList click;
-    [SerializeField] SoundsList hover;
+    [SerializeField] UiSoundsList click;
+    [SerializeField] UiSoundsList hover;
+    
 
 
     public void OnPointerEnter(PointerEventData eventData){
