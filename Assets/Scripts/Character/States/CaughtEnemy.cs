@@ -37,5 +37,11 @@ namespace Character.States
                 enemy.CharacterState.SetWalkState();
             }
         }
+
+        public override void Exit()
+        {
+            if (enemy.CharacterState.State is HookedToEnemyState)
+                enemy.CharacterState.SetWalkState();
+        }
     }
 }
