@@ -107,19 +107,21 @@ public class OptionsScreen : Screens
            return;
        }
        
-        /*musicValueText.text = musicValue.ToString();
-        graphicSettings.SaveSettings("Music", musicValue);*/
+        //musicValueText.text = musicValue.ToString();
+        //graphicSettings.SaveSettings("Music", musicValue);
         //graphicSettings.ApplyMusicSound(musicValue);
    }
    public void UpdateSFX(int value)
    {
         sfxValue = ((int)AudioManager.audioManager.sfxVolume);
-       sFXValueText.text = sfxValue.ToString();
+        sFXValueText.text = sfxValue.ToString();
+        graphicSettings.SaveSettings("SFX", sfxValue);
    }
    public void UpdateMusic(int value) //estou usando esse metodo apenas para atualizar o texto do volume 
    {
         musicValue = ((int)AudioManager.audioManager.musicVolume);
-       musicValueText.text = musicValue.ToString();
+        musicValueText.text = musicValue.ToString();
+        graphicSettings.SaveSettings("Music", musicValue);
    }
    public override void GoToScreen(ScreensName screensName)
    {
