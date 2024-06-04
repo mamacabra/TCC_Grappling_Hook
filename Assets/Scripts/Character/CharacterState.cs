@@ -59,7 +59,7 @@ namespace Character
 
         public void SetDispatchHookState()
         {
-            if (CharacterEntity.CharacterState.State is not WalkState && CharacterEntity.CharacterState.State is not PrepareHookState) return;
+            if (CharacterEntity.CharacterState.State is not PrepareHookState) return;
 
             var state = new DispatchHookState(CharacterEntity);
             SetState(state);
