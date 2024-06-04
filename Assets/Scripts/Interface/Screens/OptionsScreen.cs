@@ -22,7 +22,7 @@ public class OptionsScreen : Screens
     private int sfxValue = 0;
    
    [SerializeField] TextMeshProUGUI musicValueText;
-   private int musicValue = 0;
+   private int musicValue = 10;
    
    [Header("Back Button")] [SerializeField]
    private ButtonToScreen backButton;
@@ -75,7 +75,7 @@ public class OptionsScreen : Screens
    public void ChangeSFXVolume(int value)
    {
        //Pro Luan
-       sfxValue += value;
+       /*sfxValue += value;
        if (sfxValue >= 10)
        {
            sfxValue = 10;
@@ -86,16 +86,17 @@ public class OptionsScreen : Screens
            sfxValue = 0;
            return;
        }
-       sFXValueText.text = sfxValue.ToString();
-       graphicSettings.SaveSettings("SFX",sfxValue);
-       graphicSettings.ApplySFXSound(sfxValue);
+       sFXValueText.text = sfxValue.ToString();*/
+       //graphicSettings.SaveSettings("SFX",sfxValue);
+       //graphicSettings.ApplySFXSound(sfxValue);
    }
 
    public void ChangeMusicVolume(int value)
    {
        //Pro Luan
-       musicValue += value;
-       if (musicValue >= 10)
+      musicValue += value;
+
+       if (musicValue > 10)
        {
            musicValue = 10;
            return;
@@ -106,18 +107,18 @@ public class OptionsScreen : Screens
            return;
        }
        
-        musicValueText.text = musicValue.ToString();
-        graphicSettings.SaveSettings("Music", musicValue);
-        graphicSettings.ApplyMusicSound(musicValue);
+        /*musicValueText.text = musicValue.ToString();
+        graphicSettings.SaveSettings("Music", musicValue);*/
+        //graphicSettings.ApplyMusicSound(musicValue);
    }
    public void UpdateSFX(int value)
    {
-       sfxValue = value;
+        sfxValue = ((int)AudioManager.audioManager.sfxVolume);
        sFXValueText.text = sfxValue.ToString();
    }
-   public void UpdateMusic(int value)
+   public void UpdateMusic(int value) //estou usando esse metodo apenas para atualizar o texto do volume 
    {
-       musicValue = value;
+        musicValue = ((int)AudioManager.audioManager.musicVolume);
        musicValueText.text = musicValue.ToString();
    }
    public override void GoToScreen(ScreensName screensName)

@@ -20,13 +20,13 @@ public class GraphicSettings : MonoBehaviour
     [Header("Quality")] [SerializeField] private List<string> quality;
     private int qualityValue = 2;
     
-    [SerializeField] private string busPath;
-    private FMOD.Studio.Bus bus;
+    /*[SerializeField] private string busPath;
+    private FMOD.Studio.Bus bus;*/
 
     private void Start()
     {
-        if (busPath != "")
-            bus = RuntimeManager.GetBus(busPath);
+        /*if (busPath != "")
+            bus = RuntimeManager.GetBus(busPath);*/
         LoadSettings();
     }
     
@@ -134,7 +134,7 @@ public class GraphicSettings : MonoBehaviour
     public void ApplyMusicSound(int value)
     {
         optionsScreen.UpdateMusic(value);
-        bus.setVolume(value * 0.5f);
+        //bus.setVolume(value * 0.5f);
     }
     public void ResetAllSettings()
     {
