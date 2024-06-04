@@ -31,10 +31,10 @@ namespace Character.States
                 float knockbackStep = knockbackForce * Time.deltaTime;
                 float upwardStep = upwardForce * Time.deltaTime;
 
-                Vector3 knockbackVector = (-knockbackDirection * knockbackStep) + (Vector3.up * upwardStep);
+                Vector3 knockbackVector = (-knockbackDirection * knockbackStep)/* + (Vector3.up * upwardStep)*/;
                 Vector3 newPosition = CharacterEntity.Rigidbody.position + knockbackVector;
-                xforKnocbackGravity = new Vector3(-knockbackDirection.x, 0, 0);
-                zforKnocbackGravity = new Vector3(0, 0, -knockbackDirection.z);
+                //xforKnocbackGravity = new Vector3(-knockbackDirection.x, 0, 0);
+                //zforKnocbackGravity = new Vector3(0, 0, -knockbackDirection.z);
 
                 CharacterEntity.Rigidbody.MovePosition(newPosition);
 
@@ -42,7 +42,6 @@ namespace Character.States
             }
             else
             {
-                
                 CharacterEntity.Character.GetComponent<GravityHandler>().isKnockback = false;
                 CharacterEntity.CharacterState.SetWalkState();
             }
