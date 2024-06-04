@@ -54,9 +54,9 @@ public class CameraManager : MonoBehaviour
         slider.value = 1;
 
         OnEndFeedback = false;
-        slider.DOValue(0.1f, 0.1f).SetEase(Ease.OutBounce).OnComplete(() =>
+        slider.DOValue(0.1f, 0.05f).SetEase(Ease.OutBounce).OnComplete(() =>
         {
-            slider.DOValue(1, 1).SetEase(Ease.InOutBounce).SetDelay(1.5f).OnComplete(() =>
+            slider.DOValue(1, 0.5f).SetEase(Ease.InOutBounce).SetDelay(1f).OnComplete(() =>
             {
                 StartCoroutine(WaitToBoolTrue());
                 IEnumerator WaitToBoolTrue()
