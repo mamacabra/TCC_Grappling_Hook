@@ -12,6 +12,7 @@ namespace Character.States
         private float knockbackTimer;
         public Vector3 xforKnocbackGravity;
         public Vector3 zforKnocbackGravity;
+        private bool hasHitBack;
 
         public KnockbackState(CharacterEntity characterEntity) : base(characterEntity) { }
 
@@ -35,8 +36,20 @@ namespace Character.States
                 Vector3 newPosition = CharacterEntity.Rigidbody.position + knockbackVector;
                 //xforKnocbackGravity = new Vector3(-knockbackDirection.x, 0, 0);
                 //zforKnocbackGravity = new Vector3(0, 0, -knockbackDirection.z);
+                var rayBackDirection = (-Transform.forward).normalized;
+                var origin = new Vector3(Transform.position.x, 1f, Transform.position.z);
+                Physics.Raycast(origin, rayBackDirection, out var hitBack, RaycastDistance);
+
+                if (hitBack.collider)
+                {
+                    hasHitBack = hitBack.collider.CompareTag(Const.Tags.Wall) || hitBack.collider.CompareTag(Const.Tags.Object);
+                    newPosition = CharacterEntity.Rigidbody.position + -knockbackVector;
+                }
+                else hasHitBack = false;
 
                 CharacterEntity.Rigidbody.MovePosition(newPosition);
+
+                //Debug.DrawRay(origin, rayRightDirection * RaycastDistance, RaycastColorRight);
 
                 knockbackTimer -= Time.deltaTime;
             }

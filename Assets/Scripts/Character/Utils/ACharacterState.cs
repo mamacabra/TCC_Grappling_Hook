@@ -15,7 +15,7 @@ namespace Character.Utils
         private Color RaycastColorCenter => hasHitCenter ? Color.red : Color.green;
         private bool hasHitRight;
         private Color RaycastColorRight => hasHitRight ? Color.red : Color.green;
-        private const float RaycastDistance = 2f;
+        protected const float RaycastDistance = 2f;
 
         protected ACharacterState(CharacterEntity characterEntity)
         {
