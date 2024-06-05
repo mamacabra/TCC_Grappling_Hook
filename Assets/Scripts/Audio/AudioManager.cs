@@ -6,6 +6,10 @@ using FMODUnity;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager audioManager;
+
+    [Header("Press M to play the selected sound")]
+    [SerializeField] PlayerSoundsList soundTest;
+    [SerializeField] bool debugActivated;
     
     [SerializeField]
     private string musicBusPath;
@@ -61,6 +65,17 @@ public class AudioManager : MonoBehaviour
             return;
         }
         musicBus.setVolume(musicVolume / 10);
+    }
+
+    private void Update()
+    {
+        if (debugActivated)
+        {
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                PlayPlayerSoundEffect(soundTest);
+            }
+        }      
     }
 
     public void ChangeSfxVolume(int value)
