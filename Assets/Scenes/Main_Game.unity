@@ -5307,21 +5307,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 846183287}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: ChangeMusicVolume
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1476205565}
         m_TargetAssemblyTypeName: OptionsScreen, Assembly-CSharp
-        m_MethodName: UpdateMusic
+        m_MethodName: ChangeMusicVolume
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9495,6 +9483,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d69c9bc498ca10438e5f5517ce6fe99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundTest: 0
+  debugActivated: 0
   musicBusPath: bus:/MusicBus
   musicVolume: 10
   sfxBusPath: bus:/SfxBus
@@ -10668,21 +10658,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 846183287}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: ChangeSfxVolume
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: -1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1476205565}
         m_TargetAssemblyTypeName: OptionsScreen, Assembly-CSharp
-        m_MethodName: UpdateSFX
+        m_MethodName: ChangeSFXVolume
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13722,21 +13700,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 846183287}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: ChangeMusicVolume
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: -1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1476205565}
         m_TargetAssemblyTypeName: OptionsScreen, Assembly-CSharp
-        m_MethodName: UpdateMusic
+        m_MethodName: ChangeMusicVolume
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17406,21 +17372,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 846183287}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: ChangeSfxVolume
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1476205565}
         m_TargetAssemblyTypeName: OptionsScreen, Assembly-CSharp
-        m_MethodName: UpdateSFX
+        m_MethodName: ChangeSFXVolume
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

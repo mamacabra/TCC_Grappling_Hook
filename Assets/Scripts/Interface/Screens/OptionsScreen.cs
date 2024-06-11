@@ -8,129 +8,95 @@ using FMODUnity;
 
 public class OptionsScreen : Screens
 {
-   [Header("Graphics")]
-   [SerializeField] TextMeshProUGUI resolutionValueText;
+    [Header("Graphics")]
+    [SerializeField] TextMeshProUGUI resolutionValueText;
 
-   [SerializeField] TextMeshProUGUI ecraValueText;
+    [SerializeField] TextMeshProUGUI ecraValueText;
 
-   [SerializeField] TextMeshProUGUI qualityValueText;
+    [SerializeField] TextMeshProUGUI qualityValueText;
 
-   [Header("Audio")]
-   
+    [Header("Audio")]
     [SerializeField] TextMeshProUGUI sFXValueText;
-  
-    private int sfxValue = 0;
-   
-   [SerializeField] TextMeshProUGUI musicValueText;
-   private int musicValue = 10;
-   
-   [Header("Back Button")] [SerializeField]
-   private ButtonToScreen backButton;
-   
-   [Header("Restore button")] [SerializeField]
-   private Button restoreButton;
 
-   [Header("Graphic Settings")] [SerializeField]
-   private GraphicSettings graphicSettings;
+    [SerializeField] TextMeshProUGUI musicValueText;
+    
+    [Header("Back Button")]
+    [SerializeField]
+    private ButtonToScreen backButton;
 
-   private void Awake()
-   {
-       backButton.button.onClick.AddListener(delegate { GoToScreen(backButton.goToScreen); });
-       restoreButton.onClick.AddListener(ResetAllSettings);
-   }
+    [Header("Restore button")]
+    [SerializeField]
+    private Button restoreButton;
 
-   void OnEnable()
-   {
-       graphicSettings.LoadSettings();
-   }
+    [Header("Graphic Settings")]
+    [SerializeField]
+    private GraphicSettings graphicSettings;
 
-   public void ChangeResolution(int value)
-   {
-       graphicSettings.ApplyResolution(value);
-   }
-   public void ChangeResolutionText(string resolution)
-   {
-       resolutionValueText.text = resolution;
-   }
-   
-   public void ChangeEcra(int value)
-   {
-       graphicSettings.ApplyEcra(value);
-   }
-   public void ChangeEcraText(string ecra)
-   {
-       ecraValueText.text = ecra;
-   }
-   
-   public void ChangeQuality(int value)
-   {
-       graphicSettings.ApplyQuality(value);
-   }
-   public void ChangeQualityText(string quality)
-   {
-       qualityValueText.text = quality;
-   }
+    private void Awake()
+    {
+        backButton.button.onClick.AddListener(delegate { GoToScreen(backButton.goToScreen); });
+        restoreButton.onClick.AddListener(ResetAllSettings);
+    }
 
-  
-   public void ChangeSFXVolume(int value)
-   {
-       //Pro Luan
-       /*sfxValue += value;
-       if (sfxValue >= 10)
-       {
-           sfxValue = 10;
-           return;
-       }
-       if (sfxValue < 0)
-       {
-           sfxValue = 0;
-           return;
-       }
-       sFXValueText.text = sfxValue.ToString();*/
-       //graphicSettings.SaveSettings("SFX",sfxValue);
-       //graphicSettings.ApplySFXSound(sfxValue);
-   }
+    void OnEnable()
+    {
+        graphicSettings.LoadSettings();
+    }
 
-   public void ChangeMusicVolume(int value)
-   {
-       //Pro Luan
-      musicValue += value;
+    public void ChangeResolution(int value)
+    {
+        graphicSettings.ApplyResolution(value);
+    }
+    public void ChangeResolutionText(string resolution)
+    {
+        resolutionValueText.text = resolution;
+    }
 
-       if (musicValue > 10)
-       {
-           musicValue = 10;
-           return;
-       }
-       if (musicValue < 0)
-       {
-           musicValue = 0;
-           return;
-       }
-       
-        //musicValueText.text = musicValue.ToString();
-        //graphicSettings.SaveSettings("Music", musicValue);
-        //graphicSettings.ApplyMusicSound(musicValue);
-   }
-   public void UpdateSFX(int value)
-   {
-        sfxValue = ((int)AudioManager.audioManager.sfxVolume);
-        sFXValueText.text = sfxValue.ToString();
-        graphicSettings.SaveSettings("SFX", sfxValue);
-   }
-   public void UpdateMusic(int value) //estou usando esse metodo apenas para atualizar o texto do volume 
-   {
-        musicValue = ((int)AudioManager.audioManager.musicVolume);
-        musicValueText.text = musicValue.ToString();
-        graphicSettings.SaveSettings("Music", musicValue);
-   }
-   public override void GoToScreen(ScreensName screensName)
-   {
-       base.GoToScreen(screensName);
-   }
+    public void ChangeEcra(int value)
+    {
+        graphicSettings.ApplyEcra(value);
+    }
+    public void ChangeEcraText(string ecra)
+    {
+        ecraValueText.text = ecra;
+    }
 
-   void ResetAllSettings()
-   {
-       graphicSettings.ResetAllSettings();
-   }
-   
+    public void ChangeQuality(int value)
+    {
+        graphicSettings.ApplyQuality(value);
+    }
+    public void ChangeQualityText(string quality)
+    {
+        qualityValueText.text = quality;
+    }
+
+    public void ChangeSFXVolume(int value)
+    {
+        graphicSettings.ApplySFXSound(value);
+    }
+    public void ChangeSFXVolumeText(string sfx)
+    {
+        sFXValueText.text = sfx;
+    }
+
+    public void ChangeMusicVolume(int value)
+    {
+        graphicSettings.ApplyMusicSound(value);
+    }
+
+    public void ChangeMusicVolumeText(string music)
+    {
+        musicValueText.text = music;
+    }
+
+    public override void GoToScreen(ScreensName screensName)
+    {
+        base.GoToScreen(screensName);
+    }
+
+    void ResetAllSettings()
+    {
+        graphicSettings.ResetAllSettings();
+    }
+
 }
