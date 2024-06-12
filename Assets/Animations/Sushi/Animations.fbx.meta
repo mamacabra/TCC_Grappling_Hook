@@ -7,7 +7,37 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Char.BreadBased.01
+    second: {fileID: 2100000, guid: cc8757cdf568cd246ba5ecdfdd5121bb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Char.BreadBased.02
+    second: {fileID: 2100000, guid: f5b1050826ce29e41aed249a12e553e4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Char.Candy.02
+    second: {fileID: 2100000, guid: f785d2a5235a19444a4ac0ead0fdd931, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Char.Churros.V.01
+    second: {fileID: 2100000, guid: 0b8ef7a785615ff4e82d8ae57c052092, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Char.Sushi.V.01
+    second: {fileID: 2100000, guid: b4b078c4b56a25b408150b9614b861e6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Char.Sushi.Validation_MAT
+    second: {fileID: 2100000, guid: db84fef2b1bfbd252911737d0a80ef78, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Char.Sushi.Validation_MAT.001
     second: {fileID: 2100000, guid: db84fef2b1bfbd252911737d0a80ef78, type: 2}
   materials:
     materialImportMode: 2
@@ -38,8 +68,8 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|CharIdleSmall01
-      takeName: Armature|CharIdleSmall01
+      name: CharIdleSmall01
+      takeName: CharIdleSmall01
       internalID: 3629517885996159053
       firstFrame: 0
       lastFrame: 41
@@ -67,8 +97,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|CharSmallAttack01
-      takeName: Armature|CharSmallAttack01
+      name: CharSmallAttack01
+      takeName: CharSmallAttack01
       internalID: -4352159992869153908
       firstFrame: 0
       lastFrame: 25
@@ -96,40 +126,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|CharSmallDance01
-      takeName: Armature|CharSmallDance01
-      internalID: -8997666200991314693
-      firstFrame: 0
-      lastFrame: 41
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|CharSmallWalk01
-      takeName: Armature|CharSmallWalk01
+      name: CharSmallWalk01
+      takeName: CharSmallWalk01
       internalID: -4342376487444250573
       firstFrame: 0
-      lastFrame: 41
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
