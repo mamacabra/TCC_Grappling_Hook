@@ -5,11 +5,13 @@ using System;
 
 public enum ECharacterType{
     Sushi = 0,
-    Capsule = 1,
-    Cube = 2,
-    Sphere = 3,
-    Count = 4
-}
+    Salmon = 1,
+    Roulade = 2,
+    Churros = 3,
+    Pancake = 4,
+    Sausage_Roll = 5,
+    Count = 6,
+q}
 [Serializable]
 public struct SCharacterData{
     public string characterName;

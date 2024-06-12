@@ -17,19 +17,29 @@ MonoBehaviour:
     characterType: 0
     characterPrefab: {fileID: 5671407100541207112, guid: c24be300141fd404b9710cd54d00cab5,
       type: 3}
-    characterSprite: {fileID: 21300000, guid: 759567f9a873de9b9b61cc3f91ed6acf, type: 3}
-  - characterName: Capsule
+    characterSprite: {fileID: 21300000, guid: 62b6d6f137e2c1c4db7a5dbd104175cc, type: 3}
+  - characterName: Salmon
     characterType: 1
-    characterPrefab: {fileID: 6996666764659456673, guid: 5db741d44d4613ef48d45d1909c0bf77,
+    characterPrefab: {fileID: 8384251429947084853, guid: c931ed5d2d62e0d40a856a53bdb3e370,
       type: 3}
-    characterSprite: {fileID: 21300000, guid: 9a532a283e2d639409dd80c33e112c81, type: 3}
-  - characterName: Cube
+    characterSprite: {fileID: 21300000, guid: 0c0d0ee44dbeecb4da14470beadca1d9, type: 3}
+  - characterName: Roulade
     characterType: 2
-    characterPrefab: {fileID: 7520114141086972501, guid: 6742a721277c488b8ba137fc795ace25,
+    characterPrefab: {fileID: 2481304333914528050, guid: 5027b45e1ed1d9c46851d4b0b94bb623,
       type: 3}
-    characterSprite: {fileID: 21300000, guid: 6ce00cdabeb146f48bea087d2d1b78d7, type: 3}
-  - characterName: Sphere
+    characterSprite: {fileID: 21300000, guid: 69c7c514497204c45a4af9a57ae8f08a, type: 3}
+  - characterName: Churros
     characterType: 3
-    characterPrefab: {fileID: 4982901780360902274, guid: c774e6918d8eb0b13b39a8412074b543,
+    characterPrefab: {fileID: 4016588110558816693, guid: 9161e258c9e3f2444ba3c22a2980c496,
       type: 3}
-    characterSprite: {fileID: 21300000, guid: 5d9faf37d1ebf3d1aa2a2d1329f18359, type: 3}
+    characterSprite: {fileID: 21300000, guid: 5f6b43a5ca30c3e42ab18643202355fe, type: 3}
+  - characterName: Pankace
+    characterType: 4
+    characterPrefab: {fileID: 6380874893263415263, guid: 49aa4bdb42c74614d80699749e8e22b4,
+      type: 3}
+    characterSprite: {fileID: 21300000, guid: 9bcfe68cbfcb63046872ab8e96e2de0c, type: 3}
+  - characterName: Sausage Roll
+    characterType: 5
+    characterPrefab: {fileID: 7991415319283025978, guid: b52a016bcc293ba4c8307f6da291be80,
+      type: 3}
+    characterSprite: {fileID: 21300000, guid: 249b1a2ea2d88694cbcf72f5eba84fdc, type: 3}
