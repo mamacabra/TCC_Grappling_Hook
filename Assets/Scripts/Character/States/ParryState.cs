@@ -15,6 +15,7 @@ namespace Character.States
         {
             parryTimer = parryDuration;
             isParrySuccessful = false;
+            AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.AttackParry);
             Debug.Log("Parry initiated!");
         }
 
