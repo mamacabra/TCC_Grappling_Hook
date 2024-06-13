@@ -10,8 +10,6 @@ namespace Character.States
         private Vector3 knockbackDirection;
         private float knockbackDuration = 0.3f;
         private float knockbackTimer;
-        public Vector3 xforKnocbackGravity;
-        public Vector3 zforKnocbackGravity;
         private bool hasHitBack;
 
         public KnockbackState(CharacterEntity characterEntity) : base(characterEntity) { }
@@ -22,7 +20,7 @@ namespace Character.States
             knockbackTimer = knockbackDuration;
 
             
-            //CharacterEntity.Character.GetComponent<GravityHandler>().isKnockback = true;
+            
         }
 
         public override void Update()
@@ -34,8 +32,6 @@ namespace Character.States
 
                 Vector3 knockbackVector = (-knockbackDirection * knockbackStep)/* + (Vector3.up * upwardStep)*/;
                 Vector3 newPosition = CharacterEntity.Rigidbody.position + knockbackVector;
-                //xforKnocbackGravity = new Vector3(-knockbackDirection.x, 0, 0);
-                //zforKnocbackGravity = new Vector3(0, 0, -knockbackDirection.z);
                 var rayBackDirection = (-Transform.forward).normalized;
                 var origin = new Vector3(Transform.position.x, 1f, Transform.position.z);
                 Physics.Raycast(origin, rayBackDirection, out var hitBack, RaycastDistance);
@@ -55,7 +51,7 @@ namespace Character.States
             }
             else
             {
-                CharacterEntity.Character.GetComponent<GravityHandler>().isKnockback = false;
+                
                 CharacterEntity.CharacterState.SetWalkState();
             }
         }
