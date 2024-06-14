@@ -192,7 +192,7 @@ public class PlayersManager : MonoBehaviour
 
     private const int scoreToAddToKill = 1;
     private const int scoreToAddToWinner = 0;
-    public void AddPointsToPlayer(int playerWhoKilled)
+    public void AddPointsToPlayer(int playerWhoKilled,Transform p1, Transform p2)
     {
         playersCountInScene++;
         AddPoints(playerWhoKilled, scoreToAddToKill);
@@ -201,6 +201,7 @@ public class PlayersManager : MonoBehaviour
         {
             playersCountInScene = 0;
             //End Game
+            CameraManager.Instance.DeathFeedBack(p1,p2);
             AddPoints(playerWhoKilled, scoreToAddToWinner);
             InterfaceManager.Instance.OnCallFeedbackGame(CheckIfGameOver());
         }
