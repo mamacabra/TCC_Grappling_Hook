@@ -10,9 +10,8 @@ namespace Character.States
         private float countDown;
         private const float TimeToEnableHitbox = 0.05f;
         private const float TimeToDisableHitbox = 0.2f;
-        private const float SphereCastRadius = 2.0f;
-        private const float SphereCastDistance = 2.0f;
 
+        
 
         public AttackMeleeState(CharacterEntity characterEntity) : base(characterEntity) { }
 
@@ -20,7 +19,7 @@ namespace Character.States
         {
             CharacterEntity.Character.UseAttack();
             CharacterEntity.CharacterMesh.animator?.SetTrigger("Melee");
-            CheckForParry();
+            
             AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.AttackMiss);
         }
 
@@ -28,6 +27,7 @@ namespace Character.States
         {
             Walk();
             LookAt();
+            
         }
 
         public override void FixedUpdate()
@@ -42,20 +42,8 @@ namespace Character.States
 
             
         }
+        
 
-        private void CheckForParry()
-        {
-            Vector3 origin = CharacterEntity.Character.transform.position;
-            RaycastHit hit;
-
-            if(Physics.SphereCast(origin, SphereCastRadius, CharacterEntity.Character.transform.forward, out hit, SphereCastDistance))
-            {
-                if (hit.collider.CompareTag("MeleeHitbox") || hit.collider.CompareTag("GrapplingHook"))
-                {
-                    CharacterEntity.CharacterState.SetParryState();
-                }
-            }
-        }
 
         public override void Exit()
         {

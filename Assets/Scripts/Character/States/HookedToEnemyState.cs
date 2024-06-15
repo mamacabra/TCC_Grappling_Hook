@@ -9,6 +9,7 @@ namespace Character.States
 
         public HookedToEnemyState(CharacterEntity characterEntity, Vector3 enemyPosition) : base(characterEntity)
         {
+
             _enemyPosition = enemyPosition;
             CharacterEntity.Character.characterBody.LookAt(_enemyPosition);
         }

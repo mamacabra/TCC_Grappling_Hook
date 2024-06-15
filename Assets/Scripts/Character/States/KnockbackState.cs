@@ -17,10 +17,7 @@ namespace Character.States
         public override void Enter()
         {
             knockbackDirection = CharacterEntity.Character.transform.Find("Body").forward;
-            knockbackTimer = knockbackDuration;
-
-            
-            
+            knockbackTimer = knockbackDuration;            
         }
 
         public override void Update()

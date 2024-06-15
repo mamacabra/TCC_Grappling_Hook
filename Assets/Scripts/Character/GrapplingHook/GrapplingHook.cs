@@ -30,6 +30,10 @@ namespace Character.GrapplingHook
 
             var enemy = other.GetComponent<Character>();
             if (enemy.CharacterEntity.CharacterState.State is HookedToEnemyState) return;
+            if(enemy.CharacterEntity.CharacterState.State is ParryState)
+            {
+                return;
+            }
 
             CharacterEntity.CharacterState.SetCaughtEnemyState(enemy.CharacterEntity);
         }

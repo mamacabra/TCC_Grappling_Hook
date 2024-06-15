@@ -7,23 +7,26 @@ namespace Character.States
     {
         private float parryDuration = 1.0f;
         private float parryTimer;
-        private bool isParrySuccessful;
+
+        private Vector3 initialPosition;
 
         public ParryState(CharacterEntity characterEntity) : base(characterEntity) { }
 
         public override void Enter()
         {
+            initialPosition = CharacterEntity.Character.transform.position;
             parryTimer = parryDuration;
-            isParrySuccessful = false;
             AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.AttackParry);
-            Debug.Log("Parry initiated!");
+            Debug.Log("Parry");
+            
         }
 
         public override void Update()
-        {
+        {            
             if (parryTimer > 0)
             {
                 parryTimer -= Time.deltaTime;
+                CharacterEntity.Character.transform.position = initialPosition;
             }
             else
             {
@@ -31,16 +34,5 @@ namespace Character.States
             }
         }
 
-        public override void Exit()
-        {
-            if (isParrySuccessful)
-            {
-                Debug.Log("Parry successful! Enemy attack canceled.");
-            }
-            else
-            {
-                Debug.Log("Parry failed.");
-            }
-        }
     }
 }
