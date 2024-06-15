@@ -302,6 +302,17 @@ public class PlayersManager : MonoBehaviour
             characterChoice.RemoveAllChildrens();
         }
     }
+
+    public bool PlayerTypeIsAvailable(ECharacterType _characterType) {
+        bool isAvailable = true;
+        for (int i = 0; i < playersConfigs.Count; i++) {
+            if (playersConfigs[i].characterModel == _characterType) {
+                isAvailable = false;
+                break;
+            }
+        }
+        return isAvailable;
+    }
     #endregion
 
     #region ActiveInputActions
