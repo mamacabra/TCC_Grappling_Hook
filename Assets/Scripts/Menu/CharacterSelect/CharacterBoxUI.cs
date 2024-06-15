@@ -27,9 +27,9 @@ public class CharacterBoxUI : MonoBehaviour
             dir_y = Mathf.RoundToInt(value.y);
         }
         if(dir_x != 0)
-            ChangeColor(dir_x);
-        else
-            ChangeModelImage(dir_y);
+            ChangeModelImage(dir_x);
+        // else
+        //     ChangeColor(dir_y);
     }
 
     public void OnConfirm(InputAction.CallbackContext context) {
@@ -60,12 +60,15 @@ public class CharacterBoxUI : MonoBehaviour
     }
 
     public void ChangeColor(int dir) {
-        if (hasConfirmed) return;
-        int value = ((int)playerConfig.characterColor + dir);
-        if (value < 0) value =  (int)PlayersManager.CharacterColor.Count - 1;
-        if (value > (int)PlayersManager.CharacterColor.Count - 1) value = 0;
-        playerConfig.characterColor = (PlayersManager.CharacterColor)value;
-        characterImage.color = PlayersManager.GetColor(playerConfig.characterColor);
+        // Not using this anymore at this time.
+        /*{ 
+            if (hasConfirmed) return;
+            int value = ((int)playerConfig.characterColor + dir);
+            if (value < 0) value =  (int)PlayersManager.CharacterColor.Count - 1;
+            if (value > (int)PlayersManager.CharacterColor.Count - 1) value = 0;
+            playerConfig.characterColor = (PlayersManager.CharacterColor)value;
+            characterImage.color = PlayersManager.GetColor(playerConfig.characterColor);
+        }*/
     }
 
     public void ChangeModelImage(int dir) {
