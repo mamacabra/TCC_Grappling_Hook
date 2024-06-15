@@ -12,15 +12,13 @@ namespace Character.States
         private const float TimeToEnableHitbox = TimePerFrame * 2f; // 2 frames
         private const float TimeToDisableHitbox = TimeToEnableHitbox + TimePerFrame * 5; // 5 frames
 
-        
-
-        public AttackMeleeState(CharacterEntity characterEntity) : base(characterEntity) { }
+        public AttackMeleeState(CharacterEntity characterEntity) : base(characterEntity) {}
 
         public override void Enter()
         {
             CharacterEntity.Character.UseAttack();
             CharacterEntity.CharacterMesh.animator?.SetTrigger("Melee");
-            
+
             AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.AttackMiss);
         }
 
@@ -28,7 +26,6 @@ namespace Character.States
         {
             Walk();
             LookAt();
-            
         }
 
         public override void FixedUpdate()
@@ -40,11 +37,7 @@ namespace Character.States
 
             if (countDown >= TimeToDisableHitbox && CharacterEntity.AttackMelee.IsHitboxEnabled)
                 CharacterEntity.CharacterState.SetWalkState();
-
-            
         }
-        
-
 
         public override void Exit()
         {
