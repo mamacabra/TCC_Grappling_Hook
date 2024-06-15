@@ -12,7 +12,7 @@ namespace Character
         public CharacterMesh CharacterMesh;
         public CharacterState CharacterState;
         public CharacterUI CharacterUI;
-        
+        public CharacterVFX CharacterVFX;
 
         public AttackMelee AttackMelee;
 

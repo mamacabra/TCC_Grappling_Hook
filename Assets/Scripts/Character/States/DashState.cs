@@ -14,7 +14,9 @@ namespace Character.States
         public override void Enter()
         {
             CharacterEntity.Character.UseDash();
-            CharacterEntity.CharacterMesh.animator?.SetFloat("Speed", 1);
+            CharacterEntity.CharacterMesh.animator?.SetFloat("Speed", 0);
+            CharacterEntity.CharacterMesh.animator?.SetBool("isDash", true);
+            CharacterEntity.CharacterVFX.PlayDashVFX();
         }
 
         public override void FixedUpdate()
@@ -26,6 +28,12 @@ namespace Character.States
             {
                 CharacterEntity.CharacterState.SetWalkState();
             }
+        }
+
+        public override void Exit()
+        {
+            CharacterEntity.CharacterMesh.animator?.SetBool("isDash", false);
+            CharacterEntity.CharacterVFX.StopDashVFXWithDelay();
         }
     }
 }
