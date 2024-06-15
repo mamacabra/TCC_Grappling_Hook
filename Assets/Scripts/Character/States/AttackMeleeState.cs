@@ -8,8 +8,9 @@ namespace Character.States
         private GameObject meleeHitbox;
 
         private float countDown;
-        private const float TimeToEnableHitbox = 0.05f;
-        private const float TimeToDisableHitbox = 0.2f;
+        private const float TimePerFrame = 0.03f; // 30 FPS
+        private const float TimeToEnableHitbox = TimePerFrame * 2f; // 2 frames
+        private const float TimeToDisableHitbox = TimeToEnableHitbox + TimePerFrame * 5; // 5 frames
 
         
 
