@@ -8,7 +8,6 @@ namespace Character.States
         private float countDown;
         private const float DashSpeed = 70f;
         private const float DashDuration = 0.12f;
-        private ParticleSystem dashVfx;
 
         public DashState(CharacterEntity characterEntity) : base(characterEntity) {}
 
@@ -17,8 +16,7 @@ namespace Character.States
             CharacterEntity.Character.UseDash();
             CharacterEntity.CharacterMesh.animator?.SetFloat("Speed", 0);
             CharacterEntity.CharacterMesh.animator?.SetBool("isDash", true);
-            dashVfx = CharacterEntity.CharacterMesh.animator?.transform.Find("vfx.Dash").GetComponent<ParticleSystem>();
-            dashVfx?.Play();
+            CharacterEntity.CharacterVFX.PlayDashVFX();
         }
 
         public override void FixedUpdate()
@@ -35,7 +33,7 @@ namespace Character.States
         public override void Exit()
         {
             CharacterEntity.CharacterMesh.animator?.SetBool("isDash", false);
-            dashVfx?.Stop();
+            CharacterEntity.CharacterVFX.StopDashVFXWithDelay();
         }
     }
 }
