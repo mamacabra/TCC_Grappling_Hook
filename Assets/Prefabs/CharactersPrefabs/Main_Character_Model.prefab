@@ -14625,7 +14625,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5165428823875815984}
   m_Layer: 0
-  m_Name: Sushi_Model
+  m_Name: Main_Character_Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24949,7 +24949,7 @@ PrefabInstance:
     - target: {fileID: -2405866757419353351, guid: fd80a9ae825fed8408a98206dde6bb53,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -1410705044068964500, guid: fd80a9ae825fed8408a98206dde6bb53,
         type: 3}
@@ -25019,7 +25019,7 @@ PrefabInstance:
     - target: {fileID: 1784767486189246176, guid: fd80a9ae825fed8408a98206dde6bb53,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1953782436159161075, guid: fd80a9ae825fed8408a98206dde6bb53,
         type: 3}
@@ -25059,7 +25059,7 @@ PrefabInstance:
     - target: {fileID: 2832157942542106706, guid: fd80a9ae825fed8408a98206dde6bb53,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3135000724568210690, guid: fd80a9ae825fed8408a98206dde6bb53,
         type: 3}
@@ -25099,7 +25099,7 @@ PrefabInstance:
     - target: {fileID: 4747904234454317671, guid: fd80a9ae825fed8408a98206dde6bb53,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5746564759562468899, guid: fd80a9ae825fed8408a98206dde6bb53,
         type: 3}
@@ -25194,7 +25194,7 @@ PrefabInstance:
     - target: {fileID: 8365261199476705365, guid: fd80a9ae825fed8408a98206dde6bb53,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8859582958931248225, guid: fd80a9ae825fed8408a98206dde6bb53,
         type: 3}
