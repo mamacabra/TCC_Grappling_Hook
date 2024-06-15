@@ -13,6 +13,7 @@ namespace Character
     [RequireComponent(typeof(CharacterMesh))]
     [RequireComponent(typeof(CharacterState))]
     [RequireComponent(typeof(CharacterUI))]
+    [RequireComponent(typeof(CharacterVFX))]
     [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(Rigidbody))]
     public class CharacterSetup : MonoBehaviour
@@ -36,6 +37,7 @@ namespace Character
             var characterRigidbody = gameObject.GetComponent<Rigidbody>();
             var characterState = gameObject.GetComponent<CharacterState>();
             var characterUI = gameObject.GetComponent<CharacterUI>();
+            var characterVFX = gameObject.GetComponent<CharacterVFX>();
 
             var attackMelee = gameObject.transform.Find("Body/AttackMelee").GetComponent<AttackMelee>();
 
@@ -47,6 +49,7 @@ namespace Character
                 CharacterMesh = characterMesh,
                 CharacterState = characterState,
                 CharacterUI = characterUI,
+                CharacterVFX = characterVFX,
 
                 AttackMelee = attackMelee,
 
@@ -65,6 +68,7 @@ namespace Character
             characterMesh.Setup(characterEntity);
             characterState.Setup(characterEntity);
             characterUI.Setup(characterEntity);
+            characterVFX.Setup(characterEntity);
 
             attackMelee.Setup(characterEntity);
             attackMelee.DisableHitbox();
