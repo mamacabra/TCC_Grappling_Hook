@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: SampleSceneProfile
+  m_Name: Generic_01
   m_EditorClassIdentifier: 
   components:
   - {fileID: -7893295128165547882}
@@ -110,10 +110,10 @@ MonoBehaviour:
     m_Value: 0.3
   contrast:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: -10
   colorFilter:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_Value: {r: 1, g: 0.9515686, b: 0.87, a: 1}
   hueShift:
     m_OverrideState: 1
     m_Value: 0
@@ -138,7 +138,7 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 0.15
   response:
     m_OverrideState: 1
     m_Value: 0.8
