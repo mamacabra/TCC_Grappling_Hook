@@ -16,6 +16,7 @@ namespace Character.States
 
         public override void Enter()
         {
+            CharacterEntity.CharacterVFX.PlayParryVFX();
             knockbackDirection = CharacterEntity.Character.transform.Find("Body").forward;
             knockbackTimer = knockbackDuration;            
         }
