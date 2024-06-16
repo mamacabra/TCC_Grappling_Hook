@@ -25,6 +25,7 @@ namespace Character.States
         {
             CharacterEntity.Character.UseAttack();
             CharacterEntity.CharacterMesh.animator?.SetTrigger("Melee");
+            CharacterEntity.GrapplingHookState.SetHookReadyState();
         }
 
         public override void FixedUpdate()

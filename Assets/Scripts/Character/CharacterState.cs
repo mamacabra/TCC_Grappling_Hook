@@ -46,7 +46,7 @@ namespace Character
         public void SetDashState()
         {
             if (CharacterEntity.Character.HasDashReady == false) return;
-            if (CharacterEntity.CharacterState.State is not WalkState && CharacterEntity.CharacterState.State is not PrepareHookState) return;
+            if (CharacterEntity.CharacterState.State is HookedToEnemyState or AttackMeleeState) return;
 
             var state = new DashState(CharacterEntity);
             SetState(state);
