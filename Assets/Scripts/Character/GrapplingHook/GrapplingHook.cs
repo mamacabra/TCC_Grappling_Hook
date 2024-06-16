@@ -1,6 +1,8 @@
+using System;
 using Character.States;
 using Character.Utils;
 using Const;
+using UnityEditor;
 using UnityEngine;
 
 namespace Character.GrapplingHook
@@ -12,6 +14,15 @@ namespace Character.GrapplingHook
         public int Force { get; private set; }
         private const int MaxGrapplingHookForce = 3;
         private const int DefaultGrapplingHookForce = 1;
+
+        private void Update()
+        {
+            const float raycastDistance = 100f;
+            var origin = new Vector3(transform.position.x, 1f, transform.position.z);
+            var direction = CharacterEntity.Character.transform.forward;
+
+            Debug.DrawRay(origin, direction * raycastDistance, Color.red);
+        }
 
         private void OnTriggerEnter(Collider other)
         {
@@ -41,7 +52,21 @@ namespace Character.GrapplingHook
 
         private void CollideWithWall(Collider other)
         {
-            CharacterEntity.CharacterState.SetHookedToWallState(other.transform.position);
+            var hasHit = false;
+            var origin = new Vector3(transform.position.x, 1f, transform.position.z);
+            var direction = CharacterEntity.Character.transform.forward;
+
+            var hits = Physics.RaycastAll(origin, direction, 100f);
+            foreach (var hit in hits)
+            {
+                if (hit.collider.gameObject != other.transform.gameObject) continue;
+
+                hasHit = true;
+                CharacterEntity.CharacterState.SetHookedToWallState(hit.point);
+                break;
+            }
+
+            if (hasHit == false) CharacterEntity.CharacterState.SetHookedToWallState(other.transform.position);
         }
 
         public void IncreaseHookForce()
