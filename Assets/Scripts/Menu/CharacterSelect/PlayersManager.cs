@@ -255,7 +255,7 @@ public class PlayersManager : MonoBehaviour
                 characterMesh.SetColor(item.characterColor);
             }
             if (playersSpawners) {
-                playerInput.transform.position = playersSpawners.spawners[item.id].position;
+                playerInput.transform.position = playersSpawners.GetSpawners[item.id].position;
             }
             
             /*if (!InterfaceManager.Instance.startNewGame)
