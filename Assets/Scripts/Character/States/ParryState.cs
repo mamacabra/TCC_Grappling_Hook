@@ -16,6 +16,7 @@ namespace Character.States
         {
             initialPosition = CharacterEntity.Character.transform.position;
             parryTimer = parryDuration;
+            CharacterEntity.CharacterVFX.PlayParryVFX();
             AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.AttackParry);
             Debug.Log("Parry");
             
