@@ -38,7 +38,6 @@ public abstract class Screens : MonoBehaviour
     
     public virtual void GoToScreen(ScreensName screenName)
     {
-        Debug.Log("Go to screen: " + screenName);
         InterfaceManager.Instance.ShowSpecificScreen(screenName);
     }
 

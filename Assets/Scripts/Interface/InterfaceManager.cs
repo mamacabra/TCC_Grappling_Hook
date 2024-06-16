@@ -66,7 +66,6 @@ public class InterfaceManager : MonoBehaviour
 
      public void ShowScreen()
      {
-          Debug.Log("Show Screen :C");
           foreach (var o in screensObj)
                o.SetActive(false);
           
@@ -78,7 +77,6 @@ public class InterfaceManager : MonoBehaviour
 
      public void ShowSpecificScreen(ScreensName screenName)
      {
-          Debug.Log("Show Specific Screen");
           foreach (var o in screensObj)
                o.SetActive(false);
           

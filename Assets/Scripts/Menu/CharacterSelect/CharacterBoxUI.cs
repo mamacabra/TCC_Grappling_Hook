@@ -76,8 +76,9 @@ public class CharacterBoxUI : MonoBehaviour
     public void OnCancel(InputAction.CallbackContext context) {
         if (context.action.WasPerformedThisFrame()) {
             if (!hasConfirmed) { 
-                choiseScreen.CheckGroup(transform, false);
+                if(!gameObject.activeSelf) return;
                 gameObject.SetActive(false);
+                choiseScreen.CheckGroup(transform, false);
                 return;}
             characterStatus.text = "Escolhendo";
             characterStatus.color = Color.gray;
