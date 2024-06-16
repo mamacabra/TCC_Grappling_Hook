@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
@@ -23,6 +24,7 @@ public class CharacterBoxUI : MonoBehaviour
         playerInput = p;
     }
     public void OnMove(InputAction.CallbackContext context) {
+       
         int dir_x = 0;
         int dir_y = 0;
         if (context.action.WasPerformedThisFrame()) {
@@ -30,8 +32,11 @@ public class CharacterBoxUI : MonoBehaviour
             dir_x = Mathf.RoundToInt(value.x);
             dir_y = Mathf.RoundToInt(value.y);
         }
-        if(dir_x != 0)
+
+        if (dir_x != 0)
+        {
             ChangeModelImage(dir_x);
+        }
         // else
         //     ChangeColor(dir_y);
     }
@@ -47,13 +52,23 @@ public class CharacterBoxUI : MonoBehaviour
                 pressTime = 0.0f;
             }
         }
-        if (!PlayersManager.Instance.PlayerTypeIsAvailable(playerConfig.characterModel)) return;
+
+        if(hasConfirmed) return;
+        if (!PlayersManager.Instance.PlayerTypeIsAvailable(playerConfig.characterModel))
+        {
+            characterStatus.text = "Já escolhido";
+            characterStatus.color = Color.red;
+            
+            return;
+        }
+
+
         if (context.action.WasPerformedThisFrame()) {
             characterStatus.text = "Pronto";
             characterStatus.color = Color.green;
+            hasConfirmed = true;
             PlayersManager.Instance?.AddNewPlayerConfig(playerConfig);
             PlayersManager.Instance?.SetPlayerStatus(true);
-            hasConfirmed = true;
         }
     }
 
@@ -72,6 +87,16 @@ public class CharacterBoxUI : MonoBehaviour
         }
     }
 
+    public void UpdateText()
+    {
+        if (hasConfirmed) return;
+        if (!PlayersManager.Instance.PlayerTypeIsAvailable(playerConfig.characterModel))
+        {
+            characterStatus.text = "Já escolhido";
+            characterStatus.color = Color.red;
+        }
+    }
+
     public void ChangeColor(int dir) {
         // Not using this anymore at this time.
         /*{ 
@@ -85,6 +110,7 @@ public class CharacterBoxUI : MonoBehaviour
     }
 
     public void ChangeModelImage(int dir) {
+      
         if (hasConfirmed) return;
         int value = ((int)playerConfig.characterModel + dir);
         if (value < 0) value =  (int)ECharacterType.Count - 1;
@@ -92,8 +118,24 @@ public class CharacterBoxUI : MonoBehaviour
         playerConfig.characterModel = (ECharacterType)value;
         Sprite sprite = Resources.Load<ResourcesCharacters>("ResourcesCharacters").GetCharacterData((ECharacterType)value).characterSprite;
         characterImage.sprite = sprite;
+        
+        if (!PlayersManager.Instance.PlayerTypeIsAvailable(playerConfig.characterModel))
+        {
+            characterStatus.text = "Já escolhido";
+            characterStatus.color = Color.red;
+        }
+        else
+        {
+            characterStatus.text = "Escolhendo";
+            characterStatus.color = Color.gray;
+        }
     }
-    
+
+    private void OnEnable()
+    {
+        PlayersManager.Instance.OnUpdateText+= UpdateText;
+    }
+
     private void OnDisable() {
         characterStatus.text = "Escolhendo";
         characterStatus.color = Color.gray;
@@ -101,6 +143,9 @@ public class CharacterBoxUI : MonoBehaviour
         playerConfig = new PlayersManager.PlayerConfigurationData();
         ChangeColor((int)playerConfig.characterColor);
         ChangeModelImage((int)playerConfig.characterModel);
+        
+        if(PlayersManager.Instance)
+            PlayersManager.Instance.OnUpdateText-= UpdateText;
     }
 
     private void Update() {

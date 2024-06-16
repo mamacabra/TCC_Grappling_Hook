@@ -31,10 +31,6 @@ public class CharacterChoiseScreen : Screens
         EventSystem.current.SetSelectedGameObject(tutorial.gameObject);
         tutorial.SetParent(charactersGroup[0]);
         tutorial.gameObject.SetActive(true);
-        /*playerInput1.transform.SetParent(charactersGroup[0]);
-        playerInput2.transform.SetParent(charactersGroup[0]);
-        foreach (var obj in playerInputsGamePad)
-            obj.transform.SetParent(charactersGroup[0]);*/
     }
     public override void Close()
     {
