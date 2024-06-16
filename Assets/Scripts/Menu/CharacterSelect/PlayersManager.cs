@@ -59,9 +59,9 @@ public class PlayersManager : MonoBehaviour
     private bool keyboardP2 = false;
     private int amountOfPlayersReady = 0;
     private bool[] freeId = {true, true, true, true, true, true};
-    [SerializeField]private List<PlayerConfigurationData> playersConfigs = new List<PlayerConfigurationData>();
+    [SerializeField] private List<PlayerConfigurationData> playersConfigs = new List<PlayerConfigurationData>();
     private string path;
-    private GameObject[] playersGameObjects;
+    [SerializeField] private GameObject[] playersGameObjects;
     private bool canInitGame = false;
     public bool CanInitGame => canInitGame;
 
@@ -149,8 +149,7 @@ public class PlayersManager : MonoBehaviour
         }
     }
     public void OnPlayerJoinedEvent(PlayerInput _playerInput) {
-        var colorLayer = PlayerColorLayerManager.GetAvailableColorLayer();
-        Debug.Log("Player joined with color layer: " + colorLayer);
+        PlayerColorLayerManager.DefineCharacterColorLayer(_playerInput.playerIndex);
 
         // Trigged when player joined : set in inspector: PlayerInputManager
         bool inGame = InterfaceManager.Instance ? InterfaceManager.Instance.inGame : true;
