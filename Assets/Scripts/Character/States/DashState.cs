@@ -7,7 +7,7 @@ namespace Character.States
     {
         private float countDown;
         private const float DashSpeed = 70f;
-        private const float DashDuration = 0.12f;
+        private const float DashDuration = 0.08f;
 
         public DashState(CharacterEntity characterEntity) : base(characterEntity) {}
 
