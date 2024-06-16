@@ -2,18 +2,19 @@ namespace Character.Utils
 {
     public class PlayerColorLayer
     {
-        public int Layer { get; }
-        public bool IsAvailable { get; private set; }
+        public const int InvalidCharacterId = -1;
 
-        public PlayerColorLayer(int layer, bool isAvailable)
+        public int CharacterId { get; private set; } = InvalidCharacterId;
+        public int ColorLayer { get; }
+
+        public PlayerColorLayer(int colorLayer)
         {
-            Layer = layer;
-            IsAvailable = isAvailable;
+            ColorLayer = colorLayer;
         }
 
-        public void SetAvailable(bool isAvailable)
+        public void SetCharacterId(int characterId)
         {
-            IsAvailable = isAvailable;
+            CharacterId = characterId;
         }
     }
 }

@@ -4,28 +4,29 @@ namespace Character.Utils
 {
     public static class PlayerColorLayerManager
     {
-        public static string bolinhas = "PlayerColorLayerManager";
-
-        private static readonly PlayerColorLayer[] colors =
+        private static readonly PlayerColorLayer[] colorLayers =
         {
-            new (0, true),
-            new (1, true),
-            new (2, true),
-            new (3, true),
-            new (4, true),
-            new (5, true),
+            new (0),
+            new (1),
+            new (2),
+            new (3),
+            new (4),
+            new (5),
         };
 
-        public static int GetAvailableColorLayer()
+        public static int DefineCharacterColorLayer(int characterId)
         {
-            var color = colors.FirstOrDefault(color => color.IsAvailable);
-            color?.SetAvailable(false);
-            return color!.Layer;
+            var color = colorLayers.FirstOrDefault(c => c.CharacterId == characterId);
+            color ??= colorLayers.FirstOrDefault(c => c.CharacterId == PlayerColorLayer.InvalidCharacterId);
+
+            color?.SetCharacterId(characterId);
+            return color!.ColorLayer;
         }
 
-        public static void DisableColorLayer(int layer)
+        public static void RemoveCharacterColorLayer(int characterId)
         {
-            colors[layer].SetAvailable(false);
+            var color = colorLayers.FirstOrDefault(c => c.CharacterId == characterId);
+            color?.SetCharacterId(PlayerColorLayer.InvalidCharacterId);
         }
     }
 }
