@@ -1,4 +1,5 @@
 using System.Linq;
+using Const;
 
 namespace Character.Utils
 {
@@ -6,12 +7,12 @@ namespace Character.Utils
     {
         private static readonly PlayerColorLayer[] colorLayers =
         {
-            new (0),
-            new (1),
-            new (2),
-            new (3),
-            new (4),
-            new (5),
+            new (ControlColors.Yellow),
+            new (ControlColors.Green),
+            new (ControlColors.Blue),
+            new (ControlColors.Purple),
+            new (ControlColors.Red),
+            new (ControlColors.White),
         };
 
         public static int DefineCharacterColorLayer(int characterId)
