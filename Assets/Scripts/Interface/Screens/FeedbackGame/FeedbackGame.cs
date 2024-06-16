@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class FeedbackGame : Screens
@@ -18,6 +19,7 @@ public class FeedbackGame : Screens
         }
         nextGameButton.gameObject.SetActive(true);
         InterfaceManager.Instance.OnHideButton += HideButton;
+        EventSystem.current.SetSelectedGameObject(nextGameButton.gameObject);
     }
 
     public override void Close()

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class InitialScreen : Screens
@@ -19,6 +20,7 @@ public class InitialScreen : Screens
     public override void Initialize()
     {
         PlayersManager.Instance.ClearPlayersConfig(charactersFromGame: true);
+        EventSystem.current.SetSelectedGameObject(buttons[0].button.gameObject);
     }
 
     public override void GoToScreen(ScreensName screensName)

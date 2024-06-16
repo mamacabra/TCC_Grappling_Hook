@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class CharacterChoiseScreen : Screens
@@ -27,6 +28,7 @@ public class CharacterChoiseScreen : Screens
             PlayersManager.Instance.InitCharacterSelection();
         }
 
+        EventSystem.current.SetSelectedGameObject(tutorial.gameObject);
         tutorial.SetParent(charactersGroup[0]);
         tutorial.gameObject.SetActive(true);
         /*playerInput1.transform.SetParent(charactersGroup[0]);

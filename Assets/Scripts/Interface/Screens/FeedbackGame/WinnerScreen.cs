@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using SceneSelect;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class WinnerScreen : Screens
 {
@@ -36,6 +37,7 @@ public class WinnerScreen : Screens
         }
 
         playerScore.ChangeData(p);
+        EventSystem.current.SetSelectedGameObject(initialScreenButton.button.gameObject);
     }
     
 }

@@ -3,35 +3,43 @@ using System.Collections;
 using System.Collections.Generic;
 using SceneSelect;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class PauseInGameScreen : Screens
 {
     [SerializeField] private ButtonToScreen backToMenu;
-    [SerializeField] private Button continueButton;
+    [SerializeField] private ButtonToScreen continueButton;
 
     private void Awake()
     {
-        continueButton.onClick.AddListener(Close);
-        backToMenu.button.onClick.AddListener(delegate { GoToScreen(backToMenu.goToScreen); });
+        continueButton.button.onClick.AddListener(Close);
+        backToMenu.button.onClick.AddListener(QuitGame);
     }
 
     public override void Initialize()
     { 
        base.Initialize();
+       EventSystem.current.SetSelectedGameObject(continueButton.button.gameObject);
        Time.timeScale = 0;
     }
     
     public override void GoToScreen(ScreensName screensName)
     {
+        base.GoToScreen(screensName);
+    }
+
+    public void QuitGame()
+    {
         ScenesManager.Instance.UnloadCurrentScene();
         InterfaceManager.Instance.inGame = false;
-        base.GoToScreen(screensName);
+        GoToScreen(backToMenu.goToScreen);
     }
     
     public override void Close()
     {
         //base.Close();
+        GoToScreen(continueButton.goToScreen);
         gameObject.SetActive(false);
         Time.timeScale = 1;
     }

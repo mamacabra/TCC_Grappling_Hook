@@ -15,7 +15,8 @@ public enum ScreensName
      Pause_InGame_Screen=5,
      FeedbackGame_Screen = 6,
      FinalFeedbackGame = 7,
-     Features_Screen = 8
+     Features_Screen = 8,
+     Hud = 9
 
 }
 public class InterfaceManager : MonoBehaviour
@@ -65,6 +66,7 @@ public class InterfaceManager : MonoBehaviour
 
      public void ShowScreen()
      {
+          Debug.Log("Show Screen :C");
           foreach (var o in screensObj)
                o.SetActive(false);
           
@@ -76,6 +78,7 @@ public class InterfaceManager : MonoBehaviour
 
      public void ShowSpecificScreen(ScreensName screenName)
      {
+          Debug.Log("Show Specific Screen");
           foreach (var o in screensObj)
                o.SetActive(false);
           

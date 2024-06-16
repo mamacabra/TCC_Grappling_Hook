@@ -1,19 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ControlInGameScreen : Screens
 {
-    [SerializeField] private Button startGame;
+    [SerializeField] private ButtonToScreen startGame;
 
     private void Awake()
     {
-        startGame.onClick.AddListener(StartGame);
+        startGame.button.onClick.AddListener(StartGame);
+    }
+
+    public override void Initialize()
+    {
+        EventSystem.current.SetSelectedGameObject(startGame.button.gameObject);
     }
 
     void StartGame()
     {
+        
+        GoToScreen(startGame.goToScreen);
         gameObject.SetActive(false);
         Time.timeScale = 1;
 
