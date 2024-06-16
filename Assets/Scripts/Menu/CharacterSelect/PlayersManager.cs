@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Character;
-using Menu.CharacterSelect;
+using Character.Utils;
 using SceneSelect;
 using UnityEngine;
 using UnityEngine.InputSystem;
