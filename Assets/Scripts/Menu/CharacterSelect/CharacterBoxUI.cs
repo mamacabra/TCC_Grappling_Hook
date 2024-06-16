@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
@@ -12,7 +11,12 @@ public class CharacterBoxUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI characterStatus;
     private bool hasConfirmed;
 
+    private bool pressed = false;
+    [SerializeField] private float pressTime = 0.0f;
+
     public PlayersManager.PlayerConfigurationData playerConfig;
+
+    public float GetPressTime => pressTime;
 
     public void ChangePlayerInput(PlayerInput p)
     {
@@ -34,7 +38,15 @@ public class CharacterBoxUI : MonoBehaviour
 
     public void OnConfirm(InputAction.CallbackContext context) {
         if(PlayersManager.Instance.debug) return;
-        if (hasConfirmed) return;
+        if (hasConfirmed) {
+            if(context.performed){
+                pressed = true;
+            }
+            if(context.canceled){
+                pressed = false;
+                pressTime = 0.0f;
+            }
+        }
         if (!PlayersManager.Instance.PlayerTypeIsAvailable(playerConfig.characterModel)) return;
         if (context.action.WasPerformedThisFrame()) {
             characterStatus.text = "Pronto";
@@ -89,5 +101,9 @@ public class CharacterBoxUI : MonoBehaviour
         playerConfig = new PlayersManager.PlayerConfigurationData();
         ChangeColor((int)playerConfig.characterColor);
         ChangeModelImage((int)playerConfig.characterModel);
+    }
+
+    private void Update() {
+        if (pressed) pressTime += Time.deltaTime;
     }
 }
