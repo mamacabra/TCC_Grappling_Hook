@@ -5214,6 +5214,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Japan.Temple.Wall.Corner_01
       objectReference: {fileID: 0}
+    - target: {fileID: 3451118302482216456, guid: fbfac8e04f9919c4a9d34e8915ff8552,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6752,6 +6757,7 @@ MonoBehaviour:
   - {fileID: 1143364855}
   - {fileID: 1362608497}
   - {fileID: 1109416427}
+  sortedSpawners: []
 --- !u!4 &1530916645
 Transform:
   m_ObjectHideFlags: 0
