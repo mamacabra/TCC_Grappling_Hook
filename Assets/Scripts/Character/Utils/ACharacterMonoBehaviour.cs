@@ -5,7 +5,7 @@ namespace Character.Utils
 {
     public abstract class ACharacterMonoBehaviour : MonoBehaviour
     {
-        protected CharacterEntity CharacterEntity;
+        public CharacterEntity CharacterEntity;
 
         public void Setup(CharacterEntity entity)
         {
