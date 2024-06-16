@@ -95,6 +95,11 @@ public class CharacterBoxUI : MonoBehaviour
             characterStatus.text = "Já escolhido";
             characterStatus.color = Color.red;
         }
+        else
+        {
+            characterStatus.text = "Escolhendo";
+            characterStatus.color = Color.gray;
+        }
     }
 
     public void ChangeColor(int dir) {

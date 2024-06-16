@@ -290,6 +290,7 @@ public class PlayersManager : MonoBehaviour
     }
     public void RemovePlayerConfig(PlayerConfigurationData playerConfiguration) {
         playersConfigs.Remove(playerConfiguration);
+        OnUpdateText?.Invoke();
         //OnPlayerConfigRemove?.Invoke(playerConfiguration);
     }
     public void ClearPlayersConfig(bool charactersFromGame = false) {
