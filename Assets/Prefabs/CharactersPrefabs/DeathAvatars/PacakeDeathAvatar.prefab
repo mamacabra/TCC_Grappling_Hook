@@ -143,6 +143,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5798185687277825740}
+  - component: {fileID: 1105264952784868131}
   m_Layer: 6
   m_Name: PacakeDeathAvatar
   m_TagString: Untagged
@@ -171,6 +172,25 @@ Transform:
   - {fileID: 1147322622519210345}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1105264952784868131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822225749756624578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4b570a86607f9db82c7f3986475de9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbodies:
+  - {fileID: 5035427021456978409}
+  - {fileID: 5473004051500685528}
+  - {fileID: 7067634358082639490}
+  - {fileID: 7299694214145673269}
+  - {fileID: 6262915355640385660}
+  - {fileID: 7958987268033902064}
 --- !u!1 &4124792191079435537
 GameObject:
   m_ObjectHideFlags: 0

@@ -680,6 +680,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6188147363635425071}
+  - component: {fileID: 2637403785250852497}
   m_Layer: 6
   m_Name: RouladeDeathAvatar
   m_TagString: Untagged
@@ -707,3 +708,21 @@ Transform:
   - {fileID: 1650787821564415489}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2637403785250852497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6380839163315031030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4b570a86607f9db82c7f3986475de9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbodies:
+  - {fileID: 2965108369073808015}
+  - {fileID: 2198747003536548405}
+  - {fileID: 2003750767125943465}
+  - {fileID: 7232626315212019739}
+  - {fileID: 2585344013656523051}

@@ -411,6 +411,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4837675553150782912}
+  - component: {fileID: 8272016319923611381}
   m_Layer: 6
   m_Name: SushiDeathAvatar
   m_TagString: Untagged
@@ -437,6 +438,23 @@ Transform:
   - {fileID: 6206176039018602923}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8272016319923611381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3620091301039201480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4b570a86607f9db82c7f3986475de9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbodies:
+  - {fileID: 7530913468612699688}
+  - {fileID: 3821163636445545172}
+  - {fileID: 3453147777526545594}
+  - {fileID: 3537931416044764377}
 --- !u!1 &4155912979306380991
 GameObject:
   m_ObjectHideFlags: 0

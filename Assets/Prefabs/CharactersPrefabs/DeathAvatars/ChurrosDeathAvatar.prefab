@@ -144,6 +144,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 313993591377633252}
+  - component: {fileID: 7618598679961119403}
   m_Layer: 6
   m_Name: ChurrosDeathAvatar
   m_TagString: Untagged
@@ -170,6 +171,23 @@ Transform:
   - {fileID: 4173567181794021830}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7618598679961119403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2592279745711275043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4b570a86607f9db82c7f3986475de9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbodies:
+  - {fileID: 7166614422132188875}
+  - {fileID: 4897926895077741219}
+  - {fileID: 1151525744695172021}
+  - {fileID: 322004814362482818}
 --- !u!1 &2850547367051211555
 GameObject:
   m_ObjectHideFlags: 0
