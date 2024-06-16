@@ -1,6 +1,4 @@
-
 using Character.Utils;
-using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 namespace Character
@@ -72,7 +70,7 @@ namespace Character
             ChangeChildColorLayer(CharacterEntity.Character.transform, colorLayer);
         }
 
-        private void ChangeChildColorLayer(Transform parent, int layer) {
+        private void ChangeChildColorLayer(Transform parent, int layer = 0) {
             foreach (Transform child in parent) {
                 child.gameObject.layer = layer;
                 ChangeChildColorLayer(child, layer);
