@@ -39,7 +39,7 @@ namespace Character.Melee
                 enemy.CharacterEntity.CharacterState.SetDeathState(CharacterEntity.Character.characterBody);
                
                 PlayersManager.Instance.AddPointsToPlayer(CharacterEntity.Character.Id,this.transform,other.transform);
-                //PlayersManager.Instance.PlayersToSendToCamera(other.transform, false);
+                PlayersManager.Instance.PlayersToSendToCamera(other.transform, false);
             }
 
         }
