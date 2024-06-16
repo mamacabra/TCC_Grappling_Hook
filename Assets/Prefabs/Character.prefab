@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 6864274715603194859}
   - component: {fileID: 1461679183913746238}
   - component: {fileID: -4475908397822895951}
+  - component: {fileID: 4885482313262736802}
   m_Layer: 0
   m_Name: Character
   m_TagString: Character
@@ -243,6 +244,18 @@ MonoBehaviour:
   meshRenderer: {fileID: 2067811761408879985}
   skinnedMeshRenderer: {fileID: 0}
   animator: {fileID: -4475908397822895951}
+  colorLayer01Material: {fileID: 2100000, guid: e39dbbe99117d8448a841935b5f142ce,
+    type: 2}
+  colorLayer02Material: {fileID: 2100000, guid: 05df8c38641b6f4c899fb7e0daf2d96b,
+    type: 2}
+  colorLayer03Material: {fileID: 2100000, guid: c73207ca0f928bc388e6f5d867ca37a5,
+    type: 2}
+  colorLayer04Material: {fileID: 2100000, guid: 671dd536120b466d699880146a2a4cfc,
+    type: 2}
+  colorLayer05Material: {fileID: 2100000, guid: 0890a70c8ae14f5d08b35eba330bbc79,
+    type: 2}
+  colorLayer06Material: {fileID: 2100000, guid: c8f187926226b75b5aa576f80cfb6ef8,
+    type: 2}
 --- !u!114 &7747164800453218590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,6 +486,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4885482313262736802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2160222834551465636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 533c6a18046044199284251fee58fd01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3856020092371790344
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 
 using Character.Utils;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 namespace Character
@@ -12,6 +13,14 @@ namespace Character
         [SerializeField] private SkinnedMeshRenderer skinnedMeshRenderer;
         private CharacterDeathAvatarHandler characterDeathAvatarHandler;
         public Animator animator ;
+
+        [Header("Color Layer Materials")]
+        [SerializeField] private Material colorLayer01Material;
+        [SerializeField] private Material colorLayer02Material;
+        [SerializeField] private Material colorLayer03Material;
+        [SerializeField] private Material colorLayer04Material;
+        [SerializeField] private Material colorLayer05Material;
+        [SerializeField] private Material colorLayer06Material;
 
         public void SetColor(PlayersManager.CharacterColor characterColor) {
             if (meshRenderer)
@@ -63,11 +72,30 @@ namespace Character
             ChangeChildColorLayer(CharacterEntity.Character.transform, colorLayer);
         }
 
-        private static void ChangeChildColorLayer(Transform parent, int layer) {
+        private void ChangeChildColorLayer(Transform parent, int layer) {
             foreach (Transform child in parent) {
                 child.gameObject.layer = layer;
                 ChangeChildColorLayer(child, layer);
+
+                if (child.name == "CharDirection") {
+                    var meshRenderer = child.GetComponent<MeshRenderer>();
+                    meshRenderer.material = GetColorLayerMaterial(layer);
+                }
             }
+        }
+
+        private Material GetColorLayerMaterial(int layer)
+        {
+            return layer switch
+            {
+                Const.ControlColors.Yellow => colorLayer01Material,
+                Const.ControlColors.Green => colorLayer02Material,
+                Const.ControlColors.Blue => colorLayer03Material,
+                Const.ControlColors.Purple => colorLayer04Material,
+                Const.ControlColors.Red => colorLayer05Material,
+                Const.ControlColors.White => colorLayer06Material,
+                _ => colorLayer01Material
+            };
         }
     }
 }
