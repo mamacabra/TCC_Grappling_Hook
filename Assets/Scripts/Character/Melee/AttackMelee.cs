@@ -8,7 +8,6 @@ namespace Character.Melee
     public class AttackMelee : ACharacterMonoBehaviour
     {
         [SerializeField] private GameObject hitbox;
-        public bool IsHitboxEnabled => hitbox.activeSelf;
 
         private const float SphereCastRadius = 2.0f;
         private const float SphereCastDistance = 2.0f;
@@ -16,7 +15,6 @@ namespace Character.Melee
         private void Update()
         {
             Parrynator();
-            
         }
 
         private void OnTriggerEnter(Collider other)
@@ -37,7 +35,7 @@ namespace Character.Melee
             else
             {
                 enemy.CharacterEntity.CharacterState.SetDeathState(CharacterEntity.Character.characterBody);
-               
+
                 PlayersManager.Instance.AddPointsToPlayer(CharacterEntity.Character.Id,this.transform,other.transform);
                 PlayersManager.Instance.PlayersToSendToCamera(other.transform, false);
             }
@@ -70,7 +68,6 @@ namespace Character.Melee
         {
             hitbox?.SetActive(true);
             AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.AttackMiss);
-            Debug.Log("Attack sound");
         }
     }
 }

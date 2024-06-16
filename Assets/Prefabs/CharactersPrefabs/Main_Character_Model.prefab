@@ -4919,8 +4919,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.1, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 4.5, y: 6, z: 6}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5165428823875815984}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
@@ -14740,11 +14740,12 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6812646090546449587}
   - {fileID: 6898389111061185305}
+  - {fileID: 730995403173381469}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7601386295082883836
@@ -30006,7 +30007,7 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: fd80a9ae825fed8408a98206dde6bb53,
         type: 3}
       propertyPath: m_Controller
-      value: 
+      value:
       objectReference: {fileID: 9100000, guid: 321bcf957e6171b45b3bcef459212902, type: 2}
     - target: {fileID: 5877405058494430611, guid: fd80a9ae825fed8408a98206dde6bb53,
         type: 3}

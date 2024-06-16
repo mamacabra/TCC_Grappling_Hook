@@ -1,4 +1,3 @@
-
 using Character.Utils;
 using UnityEngine;
 
@@ -12,6 +11,22 @@ namespace Character
         [SerializeField] private SkinnedMeshRenderer skinnedMeshRenderer;
         private CharacterDeathAvatarHandler characterDeathAvatarHandler;
         public Animator animator ;
+
+        [Header("Color Layer Materials")]
+        [SerializeField] private Material colorLayer01Material;
+        [SerializeField] private Material colorLayer02Material;
+        [SerializeField] private Material colorLayer03Material;
+        [SerializeField] private Material colorLayer04Material;
+        [SerializeField] private Material colorLayer05Material;
+        [SerializeField] private Material colorLayer06Material;
+
+        [Header("Color Layer Materials")]
+        [SerializeField] private Material colorLayerArrow01Material;
+        [SerializeField] private Material colorLayerArrow02Material;
+        [SerializeField] private Material colorLayerArrow03Material;
+        [SerializeField] private Material colorLayerArrow04Material;
+        [SerializeField] private Material colorLayerArrow05Material;
+        [SerializeField] private Material colorLayerArrow06Material;
 
         public void SetColor(PlayersManager.CharacterColor characterColor) {
             if (meshRenderer)
@@ -63,11 +78,48 @@ namespace Character
             ChangeChildColorLayer(CharacterEntity.Character.transform, colorLayer);
         }
 
-        private static void ChangeChildColorLayer(Transform parent, int layer) {
+        private void ChangeChildColorLayer(Transform parent, int layer = 0) {
             foreach (Transform child in parent) {
                 child.gameObject.layer = layer;
                 ChangeChildColorLayer(child, layer);
+
+                if (child.name == "CharDirection") {
+                    var meshRenderer = child.GetComponent<MeshRenderer>();
+                    meshRenderer.material = GetCircleColorLayerMaterial(layer);
+                }
+                if (child.name == "CharDirectionArrow") {
+                    var meshRenderer = child.GetComponent<MeshRenderer>();
+                    meshRenderer.material = GetArrowColorLayerMaterial(layer);
+                }
             }
+        }
+
+        private Material GetCircleColorLayerMaterial(int layer)
+        {
+            return layer switch
+            {
+                Const.ControlColors.Yellow => colorLayer01Material,
+                Const.ControlColors.Green => colorLayer02Material,
+                Const.ControlColors.Blue => colorLayer03Material,
+                Const.ControlColors.Purple => colorLayer04Material,
+                Const.ControlColors.Red => colorLayer05Material,
+                Const.ControlColors.White => colorLayer06Material,
+                _ => colorLayer01Material
+            };
+        }
+
+        private Material GetArrowColorLayerMaterial(int layer)
+        {
+            return layer switch
+            {
+                Const.ControlColors.Yellow => colorLayerArrow01Material,
+                Const.ControlColors.Green => colorLayerArrow02Material,
+                Const.ControlColors.Blue => colorLayerArrow03Material,
+                Const.ControlColors.Purple => colorLayerArrow04Material,
+                Const.ControlColors.Red => colorLayerArrow05Material,
+                Const.ControlColors.White => colorLayerArrow06Material,
+                _ => colorLayerArrow01Material
+            };
         }
     }
 }
