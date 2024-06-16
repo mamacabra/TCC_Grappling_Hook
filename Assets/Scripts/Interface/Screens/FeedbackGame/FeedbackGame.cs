@@ -11,6 +11,7 @@ public class FeedbackGame : Screens
     private bool canclick = false;
     public override void Initialize()
     {
+        InterfaceManager.Instance.inGame = false;
         StartCoroutine(WaitToCanClick());
         IEnumerator WaitToCanClick()
         {

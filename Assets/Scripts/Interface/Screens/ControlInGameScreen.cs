@@ -24,8 +24,7 @@ public class ControlInGameScreen : Screens
         GoToScreen(startGame.goToScreen);
         gameObject.SetActive(false);
         Time.timeScale = 1;
-
-        InterfaceManager.Instance.inGame = true;
+        
         if (PlayersManager.Instance) PlayersManager.Instance.InitGame();
     }
 }

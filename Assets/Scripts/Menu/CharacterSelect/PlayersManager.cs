@@ -93,6 +93,7 @@ public class PlayersManager : MonoBehaviour
         EnableInputActions();
     }
     public void InitGame(bool loadScene = true) {
+        InterfaceManager.Instance.inGame = true;
         ClearPlayersConfig(charactersFromGame: true);
         LoadPlayersConfigs(); // Reset playersConfig in characterSelect screen.
         playerInputManager.playerPrefab = playerPrefab;
