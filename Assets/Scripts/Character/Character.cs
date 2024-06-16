@@ -11,7 +11,7 @@ namespace Character
         public new CharacterEntity CharacterEntity { get; private set; }
 
         public bool HasDashReady { get; private set; } = true;
-        private const float MaxCountDownDash = 0.3f;
+        private const float MaxCountDownDash = 0.6f;
 
         public bool HasAttackReady { get; private set; } = true;
         private const float MaxCountDownMelee = 0.3f;

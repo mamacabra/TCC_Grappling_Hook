@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 521d38a8f2544674d9618ecafb8a601b,
+  m_LightingDataAsset: {fileID: 112000000, guid: 052e27a3e05de2f46be9a056ea3dc216,
     type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 05750cd65df3ae4b29dbf0cf379ac41a,
     type: 2}
@@ -937,6 +937,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Japan.Temple.Wall_08
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dcdf981679ead0a49acaa64b6f3bab39,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3451118302482216456, guid: dcdf981679ead0a49acaa64b6f3bab39,
         type: 3}
@@ -2377,7 +2382,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &915548948
 Transform:
@@ -2710,6 +2715,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Japan.Temple.Wall_18
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dcdf981679ead0a49acaa64b6f3bab39,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3451118302482216456, guid: dcdf981679ead0a49acaa64b6f3bab39,
         type: 3}
@@ -3738,6 +3748,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Japan.Temple.Wall_11
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dcdf981679ead0a49acaa64b6f3bab39,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 3451118302482216456, guid: dcdf981679ead0a49acaa64b6f3bab39,
         type: 3}
       propertyPath: m_Convex
@@ -4012,6 +4027,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Japan.Temple.Wall_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dcdf981679ead0a49acaa64b6f3bab39,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3451118302482216456, guid: dcdf981679ead0a49acaa64b6f3bab39,
         type: 3}
@@ -4429,6 +4449,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Japan.Temple.Wall_10
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dcdf981679ead0a49acaa64b6f3bab39,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 3451118302482216456, guid: dcdf981679ead0a49acaa64b6f3bab39,
         type: 3}
       propertyPath: m_Convex
@@ -4510,7 +4535,7 @@ Terrain:
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50
-  m_DetailObjectDistance: 80
+  m_DetailObjectDistance: 1000
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 5
   m_SplatMapDistance: 1000
@@ -4826,6 +4851,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Japan.Temple.Wall_09
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dcdf981679ead0a49acaa64b6f3bab39,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 3451118302482216456, guid: dcdf981679ead0a49acaa64b6f3bab39,
         type: 3}
       propertyPath: m_Convex
@@ -5037,7 +5067,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1524381396
 Transform:
@@ -5635,6 +5665,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Japan.Temple.Wall_07
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dcdf981679ead0a49acaa64b6f3bab39,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 3451118302482216456, guid: dcdf981679ead0a49acaa64b6f3bab39,
         type: 3}
       propertyPath: m_Convex
@@ -5970,6 +6005,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Japan.Temple.Wall_16
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dcdf981679ead0a49acaa64b6f3bab39,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 3451118302482216456, guid: dcdf981679ead0a49acaa64b6f3bab39,
         type: 3}
       propertyPath: m_Convex
@@ -6046,6 +6086,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Japan.Temple.Wall_17
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dcdf981679ead0a49acaa64b6f3bab39,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3451118302482216456, guid: dcdf981679ead0a49acaa64b6f3bab39,
         type: 3}
@@ -6301,6 +6346,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Japan.Temple.Wall_13
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dcdf981679ead0a49acaa64b6f3bab39,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3451118302482216456, guid: dcdf981679ead0a49acaa64b6f3bab39,
         type: 3}
@@ -6949,6 +6999,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Japan.Temple.Wall_04
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dcdf981679ead0a49acaa64b6f3bab39,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 3451118302482216456, guid: dcdf981679ead0a49acaa64b6f3bab39,
         type: 3}
       propertyPath: m_Convex
@@ -7148,6 +7203,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Japan.Temple.Wall_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dcdf981679ead0a49acaa64b6f3bab39,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3451118302482216456, guid: dcdf981679ead0a49acaa64b6f3bab39,
         type: 3}

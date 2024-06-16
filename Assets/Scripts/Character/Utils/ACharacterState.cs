@@ -7,7 +7,7 @@ namespace Character.Utils
         protected readonly CharacterEntity CharacterEntity;
         protected readonly Transform Transform;
 
-        private const float WalkSpeed = 24f;
+        private const float WalkSpeed = 20f;
 
         private bool hasHitLeft;
         private Color RaycastColorLeft => hasHitLeft ? Color.red : Color.green;
