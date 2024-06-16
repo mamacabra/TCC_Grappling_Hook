@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Character;
+using Menu.CharacterSelect;
 using SceneSelect;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -17,7 +18,6 @@ public class PlayersManager : MonoBehaviour
         Blue = 3,
         Yellow = 4,
         Pink = 5,
-        Count = 6
     }
     [Serializable]
     public struct PlayerConfigurationData {
@@ -28,7 +28,7 @@ public class PlayersManager : MonoBehaviour
         public SCharacterData sCharacterData;
         public int score;
         public int id;
-        
+
         public void ChangeScore(int s) {
             score += s;
         }
@@ -63,9 +63,9 @@ public class PlayersManager : MonoBehaviour
     private string path;
     private GameObject[] playersGameObjects;
     private bool canInitGame = false;
-    public bool CanInitGame => canInitGame;    
-   
-    
+    public bool CanInitGame => canInitGame;
+
+
     #endregion
 
     #region Actions
@@ -74,7 +74,7 @@ public class PlayersManager : MonoBehaviour
     //public event Action<int> OnPlayerDeath;
 
     #endregion
-    
+
     #region Initializers
     private void Awake() {
         playerInputManager = GetComponent<PlayerInputManager>();
@@ -85,7 +85,7 @@ public class PlayersManager : MonoBehaviour
     }
     public void InitCharacterSelection() {
         ClearPlayersConfig();
-        
+
         canInitGame = false;
         playerInputManager.playerPrefab = playerUIPrefab;
         playerInputManager.EnableJoining();
@@ -122,9 +122,9 @@ public class PlayersManager : MonoBehaviour
             // Get free id
             int id = GetFreeId();
             if (id == -1) return; // not has free id return
-            
+
             PlayerInput player;
-            
+
             if (debug) { // For add ilimitted players pressing J
                 player = characterChoice.ReturnPlayerInput(true,false);
                 player.SwitchCurrentControlScheme(controlScheme: controlScheme, device);
@@ -137,7 +137,7 @@ public class PlayersManager : MonoBehaviour
                 else keyboardP1 = true;
                 player = characterChoice.ReturnPlayerInput(false, true);
             } else if (controlScheme == "KeyboardP2") { // Keyboard P2
-                if (keyboardP2) return; 
+                if (keyboardP2) return;
                 else keyboardP2 = true;
                 player = characterChoice.ReturnPlayerInput(false,false);
             } else { // Gamepad
@@ -149,6 +149,9 @@ public class PlayersManager : MonoBehaviour
         }
     }
     public void OnPlayerJoinedEvent(PlayerInput _playerInput) {
+        var colorLayer = PlayerColorLayerManager.GetAvailableColorLayer();
+        Debug.Log("Player joined with color layer: " + colorLayer);
+
         // Trigged when player joined : set in inspector: PlayerInputManager
         bool inGame = InterfaceManager.Instance ? InterfaceManager.Instance.inGame : true;
         if (!inGame) {// Is in character selection screen.
@@ -217,8 +220,8 @@ public class PlayersManager : MonoBehaviour
     }
     int GetPlayerById(int id){
         for (int i = 0; i < playersConfigs.Count; i++)
-            if(playersConfigs[i].id == id) return i;    
-          
+            if(playersConfigs[i].id == id) return i;
+
         return -1;
     }
 
@@ -241,10 +244,10 @@ public class PlayersManager : MonoBehaviour
 
     #region Setters
 
-   
+
     void SetPlayersConfigs(){
         foreach (var item in playersConfigs) {
-            
+
             // Set player material
             PlayerInput playerInput = playerInputManager.JoinPlayer(item.id, controlScheme: item.controlScheme, pairWithDevices: GetDevicesFromString(item.inputDevices));
             if (playerInput.TryGetComponent(out Character.Character character)){
@@ -257,7 +260,7 @@ public class PlayersManager : MonoBehaviour
             if (playersSpawners) {
                 playerInput.transform.position = playersSpawners.GetSpawners[item.id].position;
             }
-            
+
             /*if (!InterfaceManager.Instance.startNewGame)
                 OnPlayerConfigAdd?.Invoke(item);*/
         }
@@ -269,7 +272,7 @@ public class PlayersManager : MonoBehaviour
             amountOfPlayersReady++;
         } else {
             amountOfPlayersReady--;
-        } 
+        }
         if (amountOfPlayersReady == playerInputManager.playerCount) {
             SavePlayersConfigs();
             canInitGame = playerInputManager.playerCount > 1;
@@ -280,7 +283,7 @@ public class PlayersManager : MonoBehaviour
     #endregion
 
     #region PlayersConfigs
-    
+
     public void AddNewPlayerConfig(PlayerConfigurationData playerConfiguration) {
         playersConfigs.Add(playerConfiguration);
     }
