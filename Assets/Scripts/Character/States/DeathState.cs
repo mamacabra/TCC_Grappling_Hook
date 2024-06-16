@@ -5,8 +5,8 @@ namespace Character.States
 {
     public class DeathState : ACharacterState
     {
-        public DeathState(CharacterEntity characterEntity) : base(characterEntity) { }
-
+        public DeathState(CharacterEntity characterEntity, Transform killefBy) : base(characterEntity) { m_killedBy = killefBy; }
+        Transform m_killedBy;
         public override void Enter()
         {
             AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.AttackHitPlayer);
@@ -16,7 +16,7 @@ namespace Character.States
             CharacterEntity.CharacterCollider.enabled = false;
 
             CharacterEntity.AttackMelee.DisableHitbox();
-            CharacterEntity.CharacterMesh.animator?.SetTrigger("isDead");
+            CharacterEntity.CharacterMesh.ActiveDeath(m_killedBy);
             CharacterEntity.GrapplingHookState.SetHookDestroyedState();
 
             CharacterEntity.GrapplingHookRope.SetActive(false);

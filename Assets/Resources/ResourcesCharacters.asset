@@ -17,29 +17,41 @@ MonoBehaviour:
     characterType: 0
     characterPrefab: {fileID: 5874292453103814834, guid: b3ad30a806d6e366e9b00cfd6eaeb222,
       type: 3}
+    deathCharacterPrefab: {fileID: 3620091301039201480, guid: e1b9bfa46235e9022b8c9cd5db960745,
+      type: 3}
     characterSprite: {fileID: 21300000, guid: 62b6d6f137e2c1c4db7a5dbd104175cc, type: 3}
   - characterName: Salmon
     characterType: 1
     characterPrefab: {fileID: 8384251429947084853, guid: c931ed5d2d62e0d40a856a53bdb3e370,
       type: 3}
+    deathCharacterPrefab: {fileID: 2965606137143870481, guid: 3eca4a24b0b90427fb2b576e5d78c63c,
+      type: 3}
     characterSprite: {fileID: 21300000, guid: 0c0d0ee44dbeecb4da14470beadca1d9, type: 3}
   - characterName: Roulade
     characterType: 2
-    characterPrefab: {fileID: 2481304333914528050, guid: 5027b45e1ed1d9c46851d4b0b94bb623,
+    characterPrefab: {fileID: 4016588110558816693, guid: 9161e258c9e3f2444ba3c22a2980c496,
+      type: 3}
+    deathCharacterPrefab: {fileID: 6380839163315031030, guid: 3cc7d3fd84fdc91a29c3326595c91f54,
       type: 3}
     characterSprite: {fileID: 21300000, guid: 69c7c514497204c45a4af9a57ae8f08a, type: 3}
   - characterName: Churros
     characterType: 3
-    characterPrefab: {fileID: 4016588110558816693, guid: 9161e258c9e3f2444ba3c22a2980c496,
+    characterPrefab: {fileID: 2481304333914528050, guid: 5027b45e1ed1d9c46851d4b0b94bb623,
+      type: 3}
+    deathCharacterPrefab: {fileID: 2592279745711275043, guid: fe5a71f39d78f2da09f32d2efb255af2,
       type: 3}
     characterSprite: {fileID: 21300000, guid: 5f6b43a5ca30c3e42ab18643202355fe, type: 3}
-  - characterName: Pankace
+  - characterName: Pancake
     characterType: 4
-    characterPrefab: {fileID: 6380874893263415263, guid: 49aa4bdb42c74614d80699749e8e22b4,
+    characterPrefab: {fileID: 7991415319283025978, guid: b52a016bcc293ba4c8307f6da291be80,
+      type: 3}
+    deathCharacterPrefab: {fileID: 3822225749756624578, guid: 01089a03dc02bb8fe8bd24c39f33b33e,
       type: 3}
     characterSprite: {fileID: 21300000, guid: 9bcfe68cbfcb63046872ab8e96e2de0c, type: 3}
   - characterName: Sausage Roll
     characterType: 5
-    characterPrefab: {fileID: 7991415319283025978, guid: b52a016bcc293ba4c8307f6da291be80,
+    characterPrefab: {fileID: 6380874893263415263, guid: 49aa4bdb42c74614d80699749e8e22b4,
+      type: 3}
+    deathCharacterPrefab: {fileID: 2246937371612609613, guid: 8cf0f6a505889f9d4bda855e296dab07,
       type: 3}
     characterSprite: {fileID: 21300000, guid: 249b1a2ea2d88694cbcf72f5eba84fdc, type: 3}

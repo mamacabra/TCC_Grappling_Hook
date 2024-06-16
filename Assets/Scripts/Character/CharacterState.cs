@@ -51,9 +51,9 @@ namespace Character
             SetState(state);
         }
 
-        public void SetDeathState()
+        public void SetDeathState(Transform killedBy)
         {
-            var state = new DeathState(CharacterEntity);
+            var state = new DeathState(CharacterEntity, killedBy);
             SetState(state);
         }
 

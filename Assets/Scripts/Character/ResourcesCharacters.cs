@@ -17,6 +17,7 @@ public struct SCharacterData{
     public string characterName;
     public ECharacterType characterType;
     public GameObject characterPrefab;
+    public GameObject deathCharacterPrefab;
     public Sprite characterSprite;
 }
 

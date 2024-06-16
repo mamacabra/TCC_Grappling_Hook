@@ -34,7 +34,7 @@ namespace Character.Melee
             }
             else
             {
-                enemy.CharacterEntity.CharacterState.SetDeathState();
+                enemy.CharacterEntity.CharacterState.SetDeathState(CharacterEntity.Character.characterBody);
                
                 PlayersManager.Instance.AddPointsToPlayer(CharacterEntity.Character.Id,this.transform,other.transform);
                 PlayersManager.Instance.PlayersToSendToCamera(other.transform, false);
