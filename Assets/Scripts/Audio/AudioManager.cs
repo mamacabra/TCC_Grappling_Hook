@@ -97,11 +97,10 @@ public class AudioManager : MonoBehaviour
             return;
         }
         sfxBus.setVolume(sfxVolume / 10);
-
     }
     public void SetSFXVolume(int value) {
         sfxVolume = value;
-        sfxBus.setVolume(musicVolume / 10);
+        sfxBus.setVolume(sfxVolume / 10);
     }
     
 }

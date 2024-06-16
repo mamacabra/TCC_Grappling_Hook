@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using FMODUnity;
 using UnityEngine;
 using Screen = UnityEngine.Device.Screen;
 
@@ -22,17 +19,11 @@ public class GraphicSettings : MonoBehaviour
 
     private int sfxVolume = 10;
     private int musicVolume = 10;
-    
-    /*[SerializeField] private string busPath;
-    private FMOD.Studio.Bus bus;*/
 
     private void Start()
     {
-        /*if (busPath != "")
-            bus = RuntimeManager.GetBus(busPath);*/
         LoadSettings();
     }
-    
 
     public void LoadSettings()
     {
@@ -78,7 +69,6 @@ public class GraphicSettings : MonoBehaviour
             resolutionValue = 0;
             return;
         }
-       
 
         Vector2 selectedResolution = resolutions[resolutionValue];
         Screen.SetResolution((int) selectedResolution.x, (int) selectedResolution.y, Screen.fullScreen);

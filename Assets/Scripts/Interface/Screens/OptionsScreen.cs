@@ -98,5 +98,4 @@ public class OptionsScreen : Screens
     {
         graphicSettings.ResetAllSettings();
     }
-
 }
