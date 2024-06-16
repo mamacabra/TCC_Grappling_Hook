@@ -31,6 +31,7 @@ namespace Character
         {
             if (CharacterEntity.Character.HasAttackReady == false) return;
             if (CharacterEntity.CharacterState.State is HookedToEnemyState) return;
+            if (CharacterEntity.CharacterState.State is AttackMeleeState) return;
 
             var state = new AttackMeleeState(CharacterEntity);
             SetState(state);

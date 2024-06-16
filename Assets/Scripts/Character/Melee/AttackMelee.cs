@@ -69,6 +69,8 @@ namespace Character.Melee
         public void EnableHitbox()
         {
             hitbox?.SetActive(true);
+            AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.AttackMiss);
+            Debug.Log("Attack sound");
         }
     }
 }
