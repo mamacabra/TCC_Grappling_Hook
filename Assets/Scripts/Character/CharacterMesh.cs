@@ -13,11 +13,6 @@ namespace Character
         private CharacterDeathAvatarHandler characterDeathAvatarHandler;
         public Animator animator ;
 
-        public new void Setup(CharacterEntity entity)
-        {
-            CharacterEntity = entity;
-        }
-
         public void SetColor(PlayersManager.CharacterColor characterColor) {
             if (meshRenderer)
                 meshRenderer.material.color = PlayersManager.GetColor(characterColor);
@@ -44,6 +39,8 @@ namespace Character
                 skinnedMeshRenderer = _skinnedMeshRenderer;
             }
             animator = instance.GetComponentInChildren<Animator>();
+
+            ChangeColorLayer();
         }
 
         public void ActiveDeath(Transform killedBy) {
@@ -56,6 +53,21 @@ namespace Character
         public void ResetMesh() {
             deathMeshParent.gameObject.SetActive(false);
             meshParent.gameObject.SetActive(true);
+        }
+
+        private void ChangeColorLayer() {
+            var characterId = CharacterEntity.Character.Id;
+            var colorLayer = PlayerColorLayerManager.DefineCharacterColorLayer(characterId);
+
+            CharacterEntity.Character.gameObject.layer = colorLayer;
+            ChangeChildColorLayer(CharacterEntity.Character.transform, colorLayer);
+        }
+
+        private static void ChangeChildColorLayer(Transform parent, int layer) {
+            foreach (Transform child in parent) {
+                child.gameObject.layer = layer;
+                ChangeChildColorLayer(child, layer);
+            }
         }
     }
 }
