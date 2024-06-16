@@ -1,6 +1,7 @@
 using Character.States;
 using Character.Utils;
 using UnityEngine;
+using Character.GrapplingHook;
 
 namespace Character.Melee
 {
@@ -31,6 +32,7 @@ namespace Character.Melee
             {
                 enemy.CharacterEntity.CharacterState.SetKnockbackState();
                 CharacterEntity.CharacterState.SetKnockbackState();
+                AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.AttackParry);
             }
             else
             {
@@ -52,6 +54,8 @@ namespace Character.Melee
                 if (hit.collider.CompareTag("GrapplingHook"))
                 {
                     CharacterEntity.CharacterState.SetParryState();
+                    var hook = hit.collider.gameObject.GetComponent<GrapplingHook.GrapplingHook>();
+                    hook.CharacterEntity.CharacterState.SetRollbackHookState();
                 }
             }
         }
