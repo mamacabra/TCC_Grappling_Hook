@@ -27,17 +27,13 @@ namespace Character.States
             CharacterEntity.CharacterMesh.animator?.SetTrigger("Melee");
         }
 
-        public override void Update()
+        public override void FixedUpdate()
         {
             if (countDown >= TimeToBeginDash && dashCountDown < TimeToStopDash){
                 dashCountDown += Time.fixedDeltaTime;
                 Walk(AttackDashSpeed, true);
             }
-            //LookAt();
-        }
 
-        public override void FixedUpdate()
-        {
             countDown += Time.fixedDeltaTime;
 
             if (countDown >= TimeToChangeState)
