@@ -15,7 +15,7 @@ namespace Character
         private const float MaxCountDownDash = 0.6f;
 
         public bool HasAttackReady { get; private set; } = true;
-        private const float MaxCountDownMelee = Animations.TimePerFrame * 13f; // 13 frames animation
+        private const float MaxCountDownMelee = Animations.TimePerFrame * 26f; // 13 frames animation
 
         public new void Setup(CharacterEntity entity)
         {

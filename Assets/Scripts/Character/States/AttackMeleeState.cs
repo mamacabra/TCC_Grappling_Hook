@@ -9,10 +9,13 @@ namespace Character.States
         private GameObject meleeHitbox;
 
         private float countDown;
-        private const float AttackDashSpeed = 25f;
+        private float dashCountDown;
+        private const float AttackDashSpeed = 35f;
         private const float TimeToEnableHitbox = Animations.TimePerFrame * 2f; // 2 frames
+        private const float TimeToBeginDash = Animations.TimePerFrame * 4f; // 4 frames
+        private const float TimeToStopDash = Animations.TimePerFrame * 4f; // 4 frames
         private const float TimeToDisableHitbox = TimeToEnableHitbox + Animations.TimePerFrame * 5f; // 5 frames
-        private const float TimeToChangeState = TimeToDisableHitbox + Animations.TimePerFrame * 5f; // 5 frames
+        private const float TimeToChangeState = TimeToDisableHitbox + (Animations.TimePerFrame * 6f); // 5 frames
 
         private bool attacked = false;
 
@@ -26,7 +29,10 @@ namespace Character.States
 
         public override void Update()
         {
-            Walk(AttackDashSpeed, true);
+            if (countDown >= TimeToBeginDash && dashCountDown < TimeToStopDash){
+                dashCountDown += Time.fixedDeltaTime;
+                Walk(AttackDashSpeed, true);
+            }
             //LookAt();
         }
 
