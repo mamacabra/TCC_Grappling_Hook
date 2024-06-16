@@ -11,7 +11,6 @@ namespace Character.States
         {
             AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.AttackHitPlayer);
 
-            // Object.Destroy(CharacterEntity.Character.gameObject);
             CharacterEntity.Character.tag = "Untagged";
             CharacterEntity.CharacterCollider.enabled = false;
 
@@ -24,6 +23,15 @@ namespace Character.States
             CharacterEntity.GrapplingHookTransform.gameObject.SetActive(false);
 
             CharacterEntity.Character.transform.Find("Body/MeshParent/Sushi_Model(Clone)/DirectionPointer")?.gameObject.SetActive(false);
+
+            RemoveColorLayer(CharacterEntity.Character.transform);
+        }
+
+        private static void RemoveColorLayer(Transform parent, int layer = 0) {
+            foreach (Transform child in parent) {
+                child.gameObject.layer = layer;
+                RemoveColorLayer(child, layer);
+            }
         }
     }
 }

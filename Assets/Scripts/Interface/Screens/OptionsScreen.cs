@@ -5,9 +5,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using FMODUnity;
+using UnityEngine.EventSystems;
 
 public class OptionsScreen : Screens
 {
+    [Header("event System GameObjects")] 
+    [SerializeField] private GameObject resolutionGameObj;
+
     [Header("Graphics")]
     [SerializeField] TextMeshProUGUI resolutionValueText;
 
@@ -40,6 +44,7 @@ public class OptionsScreen : Screens
 
     void OnEnable()
     {
+        EventSystem.current.SetSelectedGameObject(resolutionGameObj);
         graphicSettings.LoadSettings();
     }
 

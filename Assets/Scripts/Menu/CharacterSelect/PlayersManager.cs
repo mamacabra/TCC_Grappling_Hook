@@ -72,6 +72,7 @@ public class PlayersManager : MonoBehaviour
    // public event Action<PlayerConfigurationData> OnPlayerConfigAdd;
    // public event Action<PlayerConfigurationData> OnPlayerConfigRemove;
     //public event Action<int> OnPlayerDeath;
+    public event Action OnUpdateText;
 
     #endregion
 
@@ -285,9 +286,11 @@ public class PlayersManager : MonoBehaviour
 
     public void AddNewPlayerConfig(PlayerConfigurationData playerConfiguration) {
         playersConfigs.Add(playerConfiguration);
+        OnUpdateText?.Invoke();
     }
     public void RemovePlayerConfig(PlayerConfigurationData playerConfiguration) {
         playersConfigs.Remove(playerConfiguration);
+        OnUpdateText?.Invoke();
         //OnPlayerConfigRemove?.Invoke(playerConfiguration);
     }
     public void ClearPlayersConfig(bool charactersFromGame = false) {

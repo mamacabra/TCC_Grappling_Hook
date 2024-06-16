@@ -181,6 +181,7 @@ MonoBehaviour:
   characterImage: {fileID: 5040185680029532273}
   characterName: {fileID: 2469044275776995719}
   characterStatus: {fileID: 1658244193340514051}
+  pressTime: 0
   playerConfig:
     controlScheme: 
     inputDevices: 
@@ -190,6 +191,7 @@ MonoBehaviour:
       characterName: 
       characterType: 0
       characterPrefab: {fileID: 0}
+      deathCharacterPrefab: {fileID: 0}
       characterSprite: {fileID: 0}
     score: 0
     id: 0

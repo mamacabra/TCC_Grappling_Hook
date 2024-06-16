@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class FeaturesScreen : Screens
 {
@@ -14,6 +15,7 @@ public class FeaturesScreen : Screens
     }
     public override void Initialize()
     {
+        EventSystem.current.SetSelectedGameObject(buttons[0].button.gameObject);
         PlayersManager.Instance.ClearPlayersConfig();
     }
 
