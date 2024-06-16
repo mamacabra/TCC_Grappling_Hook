@@ -52,25 +52,23 @@ namespace Character.Utils
             Physics.Raycast(origin, rayRightDirection, out var hitRight, RaycastDistance);
             Debug.DrawRay(origin, rayRightDirection * RaycastDistance, RaycastColorRight);
 
-            //if (hitLeft.collider && hitCenter.collider && hitRight.collider) return;
-
             if (hitLeft.collider)
             {
-                hasHitLeft = hitLeft.collider.CompareTag(Const.Tags.Wall) || hitLeft.collider.CompareTag(Const.Tags.Object);
+                hasHitLeft = hitLeft.collider.CompareTag(Const.Tags.Wall) || hitLeft.collider.CompareTag(Const.Tags.Object) || hitLeft.collider.CompareTag(Const.Tags.Character);
                 if (hasHitLeft) direction += Vector3.right * 0.5f;
             }
             else hasHitLeft = false;
 
             if (hitCenter.collider)
             {
-                hasHitCenter = hitCenter.collider.CompareTag(Const.Tags.Wall) || hitCenter.collider.CompareTag(Const.Tags.Object);
+                hasHitCenter = hitCenter.collider.CompareTag(Const.Tags.Wall) || hitCenter.collider.CompareTag(Const.Tags.Object) || hitCenter.collider.CompareTag(Const.Tags.Character);
                 if (hasHitCenter) direction = new Vector3(direction.x, direction.y, 0);
             }
             else hasHitCenter = false;
 
             if (hitRight.collider)
             {
-                hasHitRight = hitRight.collider.CompareTag(Const.Tags.Wall) || hitRight.collider.CompareTag(Const.Tags.Object);
+                hasHitRight = hitRight.collider.CompareTag(Const.Tags.Wall) || hitRight.collider.CompareTag(Const.Tags.Object) || hitRight.collider.CompareTag(Const.Tags.Character);
                 if (hasHitRight) direction += Vector3.right * -0.5f;
             }
             else hasHitRight = false;
