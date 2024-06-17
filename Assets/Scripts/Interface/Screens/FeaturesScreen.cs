@@ -7,6 +7,8 @@ public class FeaturesScreen : Screens
 {
     [Header("Buttons")]
     [SerializeField] private List<ButtonToScreen> buttons;
+
+    [SerializeField] private GameObject handler;
     
     private void Awake()
     {
@@ -15,7 +17,7 @@ public class FeaturesScreen : Screens
     }
     public override void Initialize()
     {
-        EventSystem.current.SetSelectedGameObject(buttons[0].button.gameObject);
+        EventSystem.current.SetSelectedGameObject(handler);
         PlayersManager.Instance.ClearPlayersConfig();
     }
 

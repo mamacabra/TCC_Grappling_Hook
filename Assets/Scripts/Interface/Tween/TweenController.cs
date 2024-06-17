@@ -47,12 +47,11 @@ public class TweenController : MonoBehaviour
         private void Awake()
         {
             rectTransform = transform.GetComponent<RectTransform>();
+            finalPos = transform.localPosition;
         }
 
         private void OnEnable()
         {
-            finalPos = transform.localPosition;
-            
             Stop();
             Reset();
             
