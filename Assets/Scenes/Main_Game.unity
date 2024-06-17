@@ -7174,7 +7174,7 @@ MonoBehaviour:
     a corpo executados ao mesmo tempo ser\xE3o cancelados e os jogadores empurrados.\r\n\r\nAtaques
     efetuados em ganchos j\xE1 disparados cancelam o gancho imediatamente.\r\n\r\nDestrui\xE7\xE3o
     de cen\xE1rio.\r\n\r\nTela de pontua\xE7\xE3o quando apenas um jogador ficar
-    vivo.\r\n\r\nBugs a serem evitados"
+    vivo.\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -20330,7 +20330,7 @@ MonoBehaviour:
   playHoverSound: 0
   playUnhoverSound: 0
   playClickSound: 1
-  click: 3
+  click: 2
   hover: 0
 --- !u!95 &1475088334
 Animator:
