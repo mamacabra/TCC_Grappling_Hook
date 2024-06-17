@@ -81,6 +81,7 @@ public class PlayersManager : MonoBehaviour
         playerInputManager = GetComponent<PlayerInputManager>();
         actions = new Menus_Input();
         actions.Navigation.Join.performed += OnJoin;
+        actions.Navigation.Cancel.performed += OnCancel;
         playersGameObjects = new GameObject[playerInputManager.maxPlayerCount];
         path = Application.persistentDataPath + "/playersInputs.json";
     }
@@ -149,6 +150,13 @@ public class PlayersManager : MonoBehaviour
             }
             player.SwitchCurrentControlScheme(controlScheme: controlScheme, device);
             OnPlayerJoinedEvent(player);
+        }
+    }
+    private void OnCancel(InputAction.CallbackContext context) {
+        if (context.control == null) return;
+        
+        if (context.action.WasPerformedThisFrame()) {
+            if (playerInputManager.playerCount == 0) characterChoice.GoToScreen(ScreensName.Initial_Screen);
         }
     }
     public void OnPlayerJoinedEvent(PlayerInput _playerInput) {
