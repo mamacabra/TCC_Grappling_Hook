@@ -20,7 +20,7 @@ namespace Character
 
         private void SetState(ACharacterState state)
         {
-            if (State is DeathState) return;
+            if (State is DeathState or EndGameState) return;
 
             State?.Exit();
             State = state;
@@ -63,6 +63,12 @@ namespace Character
             if (CharacterEntity.CharacterState.State is not PrepareHookState) return;
 
             var state = new DispatchHookState(CharacterEntity);
+            SetState(state);
+        }
+
+        public void SetEndGameState()
+        {
+            var state = new EndGameState(CharacterEntity);
             SetState(state);
         }
 
