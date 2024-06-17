@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class CharacterChoiseScreen : Screens
 {
@@ -12,6 +13,7 @@ public class CharacterChoiseScreen : Screens
     [SerializeField] private PlayerInput playerInput2;
     [SerializeField] private List<PlayerInput> playerInputsGamePad = new List<PlayerInput>();
     [SerializeField] private Transform tutorial;
+    [SerializeField] private Slider startGameSlider;
 
     private int objEnables = 0;
     private void Awake()
@@ -188,5 +190,12 @@ public class CharacterChoiseScreen : Screens
             tutorial.gameObject.SetActive(true);
         }
     }
-    
+    private void Update() {
+        SetButtonStartSlider(startGameSlider.value - Time.deltaTime);
+    }
+    public void SetButtonStartSlider(float value){
+        startGameSlider.value = value;
+        Mathf.Clamp(startGameSlider.value, startGameSlider.minValue, startGameSlider.maxValue);
+        if (startGameSlider.value >= startGameSlider.maxValue) {if (PlayersManager.Instance.CanInitGame) { GoToScreen(playGame.goToScreen); } }
+    }
 }

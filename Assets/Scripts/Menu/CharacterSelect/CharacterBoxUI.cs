@@ -49,6 +49,7 @@ public class CharacterBoxUI : MonoBehaviour
             }
             if(context.canceled){
                 pressed = false;
+                choiseScreen.SetButtonStartSlider(-(pressTime / 2));
                 pressTime = 0.0f;
             }
         }
@@ -155,6 +156,6 @@ public class CharacterBoxUI : MonoBehaviour
     }
 
     private void Update() {
-        if (pressed) pressTime += Time.deltaTime;
+        if (pressed) {pressTime += Time.deltaTime; choiseScreen.SetButtonStartSlider(pressTime);}
     }
 }
