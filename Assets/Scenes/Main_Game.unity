@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731715, g: 0.13414735, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15761,10 +15761,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 682bc2cec66592741835d83dce6923a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerScore: {fileID: 1293464237}
   initialScreenButton:
     button: {fileID: 103359894}
     goToScreen: 0
+  winner: {fileID: 3975033119811622244}
 --- !u!114 &1210836990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17488,7 +17488,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1293464233}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57946d2dc260f57488c54e140de49c77, type: 3}
   m_Name: 
@@ -29945,7 +29945,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

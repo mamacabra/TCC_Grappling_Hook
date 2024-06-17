@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using SceneSelect;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class WinnerScreen : Screens
 {
-    [SerializeField]private PlayerScore playerScore;
+   // [SerializeField]private PlayerScore playerScore;
     [SerializeField] private ButtonToScreen initialScreenButton;
-
+    [SerializeField] private Image winner;
     private void Awake()
     {
         initialScreenButton.button.onClick.AddListener(delegate 
@@ -29,14 +30,16 @@ public class WinnerScreen : Screens
         List<PlayersManager.PlayerConfigurationData> list = new List<PlayersManager.PlayerConfigurationData>();
         list = PlayersManager.Instance.ReturnPlayersList();
         
-;       PlayersManager.PlayerConfigurationData p = new PlayersManager.PlayerConfigurationData();
         foreach (var w in list)
         {
-            if (w.score >=PlayersManager.Instance.ScoreToWinGame)
-                p = w;
+            if (w.score >= PlayersManager.Instance.ScoreToWinGame)
+            {
+                winner.sprite = Resources.Load<ResourcesCharacters>("ResourcesCharacters").GetCharacterData(w.characterModel).characterSprite;
+            }
         }
 
-        playerScore.ChangeData(p);
+       
+        //playerScore.ChangeData(p);
         EventSystem.current.SetSelectedGameObject(initialScreenButton.button.gameObject);
     }
     

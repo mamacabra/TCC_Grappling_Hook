@@ -209,7 +209,7 @@ public class PlayersManager : MonoBehaviour
         playersCountInScene++;
         AddPoints(playerWhoKilled, scoreToAddToKill);
 
-        if (playersCountInScene >= playersConfigs.Count-1)
+        if (playersCountInScene >= playersConfigs.Count-1 || CheckIfGameOver())
         {
             GameOver = true;
             playersCountInScene = 0;
@@ -217,6 +217,16 @@ public class PlayersManager : MonoBehaviour
             CameraManager.Instance.OnEndFeedback = false;
             AddPoints(playerWhoKilled, scoreToAddToWinner);
             InterfaceManager.Instance.OnCallFeedbackGame(CheckIfGameOver());
+
+            foreach (var p in playersGameObjects)
+            {
+                if (p != null)
+                {
+                    var pC =p.GetComponent<Character.Character>();
+                    pC.CharacterEntity.CharacterState.SetEndGameState();
+                    pC.CharacterEntity.CharacterMesh.animator.SetFloat("Speed", 0);
+                }
+            }
         }
 
         SavePlayersConfigs();
