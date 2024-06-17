@@ -93,6 +93,7 @@ public class PlayersManager : MonoBehaviour
         EnableInputActions();
     }
     public void InitGame(bool loadScene = true) {
+        GameOver = false;
         InterfaceManager.Instance.inGame = true;
         ClearPlayersConfig(charactersFromGame: true);
         LoadPlayersConfigs(); // Reset playersConfig in characterSelect screen.
@@ -196,6 +197,13 @@ public class PlayersManager : MonoBehaviour
 
     private const int scoreToAddToKill = 1;
     private const int scoreToAddToWinner = 0;
+
+    bool gameOver;
+    public bool GameOver
+    {
+        get => gameOver;
+        set { gameOver = value; }
+    }
     public void AddPointsToPlayer(int playerWhoKilled,Transform p1, Transform p2)
     {
         playersCountInScene++;
@@ -203,9 +211,10 @@ public class PlayersManager : MonoBehaviour
 
         if (playersCountInScene >= playersConfigs.Count-1)
         {
+            GameOver = true;
             playersCountInScene = 0;
             //End Game
-            CameraManager.Instance.DeathFeedBack(p1,p2);
+            CameraManager.Instance.OnEndFeedback = false;
             AddPoints(playerWhoKilled, scoreToAddToWinner);
             InterfaceManager.Instance.OnCallFeedbackGame(CheckIfGameOver());
         }

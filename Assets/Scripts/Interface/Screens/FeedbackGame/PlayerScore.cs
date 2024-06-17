@@ -37,6 +37,9 @@ public class PlayerScore : MonoBehaviour
     public void AtualizeScore()
     {
         for (int i = 0; i < scoreValue; i++)
-            pointsImages[i].sprite = caveira;
+        {
+            if(scoreValue <= PlayersManager.Instance.ScoreToWinGame)
+                pointsImages[i].sprite = caveira;
+        }
     }
 }

@@ -31,10 +31,12 @@ public class CameraManager : MonoBehaviour
 
     private void Start()
     {
+        slider.maxValue = 1;
+        slider.value = 1;
         OnEndFeedback = true;
     }
 
-    public void DeathFeedBack(Transform p1, Transform p2)
+    public void DeathFeedBack()
     {
        /* if (players.Count > 0)
         {
@@ -50,8 +52,7 @@ public class CameraManager : MonoBehaviour
         cinemachineTargetGroupDeathFeedback.AddMember(p2,1,2);
         cameraTargetDeathFeedback.SetActive(true);*/
         
-        slider.maxValue = 1;
-        slider.value = 1;
+       
 
         OnEndFeedback = false;
         slider.DOValue(0.4f, 0.05f).SetEase(Ease.OutBounce).OnComplete(() =>

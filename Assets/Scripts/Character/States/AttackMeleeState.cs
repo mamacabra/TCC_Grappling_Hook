@@ -50,6 +50,9 @@ namespace Character.States
         public override void Exit()
         {
             CharacterEntity.AttackMelee.DisableHitbox();
+
+            if(PlayersManager.Instance.GameOver)
+                CameraManager.Instance.DeathFeedBack();
         }
     }
 }
