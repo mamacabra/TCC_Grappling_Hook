@@ -20,7 +20,7 @@ namespace Character
 
         private void SetState(ACharacterState state)
         {
-            if (State is DeathState or WinnerState or EndGameState) return;
+            if (State is DeathState or WinnerState or LoserState) return;
 
             State?.Exit();
             State = state;
@@ -66,12 +66,6 @@ namespace Character
             SetState(state);
         }
 
-        public void SetEndGameState()
-        {
-            var state = new EndGameState(CharacterEntity);
-            SetState(state);
-        }
-
         public void SetHookedToEnemyState(Vector3 enemyPosition)
         {
             var state = new HookedToEnemyState(CharacterEntity, enemyPosition);
@@ -87,6 +81,12 @@ namespace Character
         public void SetKnockbackState()
         {
             var state = new KnockbackState(CharacterEntity);
+            SetState(state);
+        }
+
+        public void SetLoserState()
+        {
+            var state = new LoserState(CharacterEntity);
             SetState(state);
         }
 

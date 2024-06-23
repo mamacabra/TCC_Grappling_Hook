@@ -232,7 +232,7 @@ public class PlayersManager : MonoBehaviour
                 if (p != null)
                 {
                     var pC =p.GetComponent<Character.Character>();
-                    pC.CharacterEntity.CharacterState.SetEndGameState();
+                    pC.CharacterEntity.CharacterState.SetLoserState();
                     pC.CharacterEntity.CharacterMesh.animator.SetFloat("Speed", 0);
                 }
             }
