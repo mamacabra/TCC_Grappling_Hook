@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
@@ -8,6 +7,7 @@ public class CharacterBoxUI : MonoBehaviour
 {
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private Image characterImage;
+    public Image characterImageBackground;
     [SerializeField] private TextMeshProUGUI characterName;
     [SerializeField] private TextMeshProUGUI characterStatus;
     private bool hasConfirmed;
@@ -24,7 +24,7 @@ public class CharacterBoxUI : MonoBehaviour
         playerInput = p;
     }
     public void OnMove(InputAction.CallbackContext context) {
-       
+
         int dir_x = 0;
         int dir_y = 0;
         if (context.action.WasPerformedThisFrame()) {
@@ -59,7 +59,7 @@ public class CharacterBoxUI : MonoBehaviour
         {
             characterStatus.text = "Já escolhido";
             characterStatus.color = Color.red;
-            
+
             return;
         }
 
@@ -76,7 +76,7 @@ public class CharacterBoxUI : MonoBehaviour
     [SerializeField] private CharacterChoiseScreen choiseScreen;
     public void OnCancel(InputAction.CallbackContext context) {
         if (context.action.WasPerformedThisFrame()) {
-            if (!hasConfirmed) { 
+            if (!hasConfirmed) {
                 if(!gameObject.activeSelf) return;
                 gameObject.SetActive(false);
                 choiseScreen.CheckGroup(transform, false);
@@ -106,7 +106,7 @@ public class CharacterBoxUI : MonoBehaviour
 
     public void ChangeColor(int dir) {
         // Not using this anymore at this time.
-        /*{ 
+        /*{
             if (hasConfirmed) return;
             int value = ((int)playerConfig.characterColor + dir);
             if (value < 0) value =  (int)PlayersManager.CharacterColor.Count - 1;
@@ -117,7 +117,7 @@ public class CharacterBoxUI : MonoBehaviour
     }
 
     public void ChangeModelImage(int dir) {
-      
+
         if (hasConfirmed) return;
         int value = ((int)playerConfig.characterModel + dir);
         if (value < 0) value =  (int)ECharacterType.Count - 1;
@@ -125,7 +125,7 @@ public class CharacterBoxUI : MonoBehaviour
         playerConfig.characterModel = (ECharacterType)value;
         Sprite sprite = Resources.Load<ResourcesCharacters>("ResourcesCharacters").GetCharacterData((ECharacterType)value).characterSprite;
         characterImage.sprite = sprite;
-        
+
         if (!PlayersManager.Instance.PlayerTypeIsAvailable(playerConfig.characterModel))
         {
             characterStatus.text = "Já escolhido";
@@ -148,14 +148,18 @@ public class CharacterBoxUI : MonoBehaviour
         characterStatus.color = Color.gray;
         hasConfirmed = false;
         playerConfig = new PlayersManager.PlayerConfigurationData();
-        ChangeColor((int)playerConfig.characterColor);
-        ChangeModelImage((int)playerConfig.characterModel);
-        
-        if(PlayersManager.Instance)
+        // ChangeColor((int) playerConfig.characterColor);
+        ChangeModelImage((int) playerConfig.characterModel);
+
+        if (PlayersManager.Instance)
             PlayersManager.Instance.OnUpdateText-= UpdateText;
     }
 
     private void Update() {
-        if (pressed) {pressTime += Time.deltaTime; choiseScreen.SetButtonStartSlider(pressTime);}
+        if (pressed)
+        {
+            pressTime += Time.deltaTime;
+            choiseScreen.SetButtonStartSlider(pressTime);
+        }
     }
 }
