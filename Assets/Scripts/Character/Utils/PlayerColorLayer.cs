@@ -1,3 +1,4 @@
+using Const;
 using UnityEngine;
 
 namespace Character.Utils
@@ -8,16 +9,11 @@ namespace Character.Utils
 
         public int CharacterId { get; private set; } = InvalidCharacterId;
         public Color ColorBase { get; }
-        public int ColorLayer { get; }
+        public ControlColorsLayer ColorsLayer { get; }
 
-        public PlayerColorLayer(int colorLayer)
+        public PlayerColorLayer(ControlColorsLayer colorsLayer, Color colorBase)
         {
-            ColorLayer = colorLayer;
-        }
-
-        public PlayerColorLayer(int colorLayer, Color colorBase)
-        {
-            ColorLayer = colorLayer;
+            ColorsLayer = colorsLayer;
             ColorBase = colorBase;
         }
 
