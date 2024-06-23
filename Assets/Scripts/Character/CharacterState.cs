@@ -20,7 +20,7 @@ namespace Character
 
         private void SetState(ACharacterState state)
         {
-            if (State is DeathState or EndGameState) return;
+            if (State is DeathState or WinnerState or EndGameState) return;
 
             State?.Exit();
             State = state;
@@ -84,11 +84,29 @@ namespace Character
             SetState(state);
         }
 
+        public void SetKnockbackState()
+        {
+            var state = new KnockbackState(CharacterEntity);
+            SetState(state);
+        }
+
+        public void SetParryState()
+        {
+            var state = new ParryState(CharacterEntity);
+            SetState(state);
+        }
+
         public void SetPrepareHookState()
         {
             if (CharacterEntity.CharacterState.State is not WalkState) return;
 
             var state = new PrepareHookState(CharacterEntity);
+            SetState(state);
+        }
+
+        public void SetReadyState()
+        {
+            var state = new ReadyState(CharacterEntity);
             SetState(state);
         }
 
@@ -104,15 +122,9 @@ namespace Character
             SetState(state);
         }
 
-        public void SetKnockbackState()
+        public void SetWinnerState()
         {
-            var state = new KnockbackState(CharacterEntity);
-            SetState(state);
-        }
-
-        public void SetParryState()
-        {
-            var state = new ParryState(CharacterEntity);
+            var state = new WinnerState(CharacterEntity);
             SetState(state);
         }
     }
