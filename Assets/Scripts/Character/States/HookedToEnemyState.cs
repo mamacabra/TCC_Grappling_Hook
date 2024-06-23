@@ -12,6 +12,7 @@ namespace Character.States
 
             _enemyPosition = enemyPosition;
             CharacterEntity.Character.characterBody.LookAt(_enemyPosition);
+            CharacterEntity.GrapplingHookState.SetHookReadyState();
         }
     }
 }
