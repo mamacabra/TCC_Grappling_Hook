@@ -5,52 +5,41 @@ namespace Character.States
 {
     public class KnockbackState : ACharacterState
     {
-        private float knockbackForce = 100.0f;
-        
-        private Vector3 knockbackDirection;
-        private float knockbackDuration = 0.2f;
-        private float knockbackTimer;
-        private bool hasHitBack;
+        private const float KnockbackForce = 100.0f;
+        private const float KnockbackDuration = 0.2f;
 
-        public KnockbackState(CharacterEntity characterEntity) : base(characterEntity) { }
+        private float knockbackTimer;
+        private Vector3 knockbackDirection;
+
+        public KnockbackState(CharacterEntity characterEntity) : base(characterEntity) {}
 
         public override void Enter()
         {
             CharacterEntity.CharacterVFX.PlayParryVFX();
             knockbackDirection = CharacterEntity.Character.transform.Find("Body").forward;
-            knockbackTimer = knockbackDuration;            
+            knockbackTimer = KnockbackDuration;
         }
 
         public override void Update()
         {
             if (knockbackTimer > 0)
             {
-                float knockbackStep = knockbackForce * Time.deltaTime;
-                
+                var knockbackStep = KnockbackForce * Time.deltaTime;
+                var knockbackVector = (-knockbackDirection * knockbackStep);
+                var newPosition = CharacterEntity.Rigidbody.position + knockbackVector;
 
-                Vector3 knockbackVector = (-knockbackDirection * knockbackStep);
-                Vector3 newPosition = CharacterEntity.Rigidbody.position + knockbackVector;
+                var rayDirection = (-Transform.forward).normalized;
+                var rayOrigin = new Vector3(Transform.position.x, 1f, Transform.position.z);
+                Physics.Raycast(rayOrigin, rayDirection, out var hit, RaycastDistance);
 
-                var rayBackDirection = (-Transform.forward).normalized;
-                var origin = new Vector3(Transform.position.x, 1f, Transform.position.z);
-                Physics.Raycast(origin, rayBackDirection, out var hitBack, RaycastDistance);
-
-                if (hitBack.collider)
-                {
-                    hasHitBack = hitBack.collider.CompareTag(Const.Tags.Wall) || hitBack.collider.CompareTag(Const.Tags.Object);
-                    newPosition = CharacterEntity.Rigidbody.position + -knockbackVector;
-                }
-                else hasHitBack = false;
+                if (hit.collider)
+                    newPosition = CharacterEntity.Rigidbody.position - knockbackVector;
 
                 CharacterEntity.Rigidbody.MovePosition(newPosition);
-
-                //Debug.DrawRay(origin, rayRightDirection * RaycastDistance, RaycastColorRight);
-
                 knockbackTimer -= Time.deltaTime;
             }
             else
             {
-                
                 CharacterEntity.CharacterState.SetWalkState();
             }
         }
