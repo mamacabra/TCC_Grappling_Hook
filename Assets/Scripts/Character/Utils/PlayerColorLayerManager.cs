@@ -1,5 +1,6 @@
 using System.Linq;
 using Const;
+using UnityEngine;
 
 namespace Character.Utils
 {
@@ -7,11 +8,11 @@ namespace Character.Utils
     {
         private static readonly PlayerColorLayer[] colorLayers =
         {
-            new (ControlColors.Yellow),
-            new (ControlColors.Green),
-            new (ControlColors.Blue),
-            new (ControlColors.Purple),
-            new (ControlColors.Red),
+            new (ControlColors.Yellow, Color.yellow),
+            new (ControlColors.Green, Color.green),
+            new (ControlColors.Blue, Color.blue),
+            new (ControlColors.Purple, Color.magenta),
+            new (ControlColors.Red, Color.red),
             new (ControlColors.White),
         };
 
@@ -28,6 +29,12 @@ namespace Character.Utils
         {
             var color = colorLayers.FirstOrDefault(c => c.CharacterId == characterId);
             color?.SetCharacterId(PlayerColorLayer.InvalidCharacterId);
+        }
+
+        public static Color GetColorBase(int characterId)
+        {
+            var color = colorLayers.FirstOrDefault(c => c.CharacterId == characterId);
+            return color?.ColorBase ?? Color.white;
         }
     }
 }
