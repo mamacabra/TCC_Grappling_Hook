@@ -1,4 +1,5 @@
 using Character.Utils;
+using Const;
 using UnityEngine;
 
 namespace Character
@@ -74,8 +75,8 @@ namespace Character
             var characterId = CharacterEntity.Character.Id;
             var colorLayer = PlayerColorLayerManager.DefineCharacterColorLayer(characterId);
 
-            CharacterEntity.Character.gameObject.layer = colorLayer;
-            ChangeChildColorLayer(CharacterEntity.Character.transform, colorLayer);
+            CharacterEntity.Character.gameObject.layer = (int) colorLayer;
+            ChangeChildColorLayer(CharacterEntity.Character.transform, (int) colorLayer);
         }
 
         private void ChangeChildColorLayer(Transform parent, int layer = 0) {
@@ -85,39 +86,39 @@ namespace Character
 
                 if (child.name == "CharDirection") {
                     var meshRenderer = child.GetComponent<MeshRenderer>();
-                    meshRenderer.material = GetCircleColorLayerMaterial(layer);
+                    meshRenderer.material = GetCircleColorLayerMaterial((ControlColorsLayer) layer);
                 }
                 if (child.name == "CharDirectionArrow") {
                     var meshRenderer = child.GetComponent<MeshRenderer>();
-                    meshRenderer.material = GetArrowColorLayerMaterial(layer);
+                    meshRenderer.material = GetArrowColorLayerMaterial((ControlColorsLayer) layer);
                 }
             }
         }
 
-        private Material GetCircleColorLayerMaterial(int layer)
+        private Material GetCircleColorLayerMaterial(ControlColorsLayer layer)
         {
             return layer switch
             {
-                Const.ControlColors.Yellow => colorLayer01Material,
-                Const.ControlColors.Green => colorLayer02Material,
-                Const.ControlColors.Blue => colorLayer03Material,
-                Const.ControlColors.Purple => colorLayer04Material,
-                Const.ControlColors.Red => colorLayer05Material,
-                Const.ControlColors.White => colorLayer06Material,
+                ControlColorsLayer.Yellow => colorLayer01Material,
+                ControlColorsLayer.Green => colorLayer02Material,
+                ControlColorsLayer.Blue => colorLayer03Material,
+                ControlColorsLayer.Purple => colorLayer04Material,
+                ControlColorsLayer.Red => colorLayer05Material,
+                ControlColorsLayer.White => colorLayer06Material,
                 _ => colorLayer01Material
             };
         }
 
-        private Material GetArrowColorLayerMaterial(int layer)
+        private Material GetArrowColorLayerMaterial(ControlColorsLayer layer)
         {
             return layer switch
             {
-                Const.ControlColors.Yellow => colorLayerArrow01Material,
-                Const.ControlColors.Green => colorLayerArrow02Material,
-                Const.ControlColors.Blue => colorLayerArrow03Material,
-                Const.ControlColors.Purple => colorLayerArrow04Material,
-                Const.ControlColors.Red => colorLayerArrow05Material,
-                Const.ControlColors.White => colorLayerArrow06Material,
+                ControlColorsLayer.Yellow => colorLayerArrow01Material,
+                ControlColorsLayer.Green => colorLayerArrow02Material,
+                ControlColorsLayer.Blue => colorLayerArrow03Material,
+                ControlColorsLayer.Purple => colorLayerArrow04Material,
+                ControlColorsLayer.Red => colorLayerArrow05Material,
+                ControlColorsLayer.White => colorLayerArrow06Material,
                 _ => colorLayerArrow01Material
             };
         }

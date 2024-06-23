@@ -2,26 +2,6 @@ using UnityEngine;
 
 namespace Const
 {
-    public enum ControlColorsLayer
-    {
-        Yellow = 6,
-        Green = 8,
-        Blue = 9,
-        Purple = 10,
-        Red = 11,
-        White = 1,
-    }
-
-    public static class ControlColors
-    {
-        public const int Yellow = 6;
-        public const int Green = 8;
-        public const int Blue = 9;
-        public const int Purple = 10;
-        public const int Red = 11;
-        public const int White = 12;
-    }
-
     public static class ControlColorsHex
     {
         public static Color Yellow => GetColor("#f9ca24");
