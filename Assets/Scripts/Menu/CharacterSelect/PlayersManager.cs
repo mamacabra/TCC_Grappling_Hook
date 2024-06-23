@@ -38,7 +38,7 @@ public class PlayersManager : MonoBehaviour
     private static PlayersManager instance;// Singleton
     public static PlayersManager Instance => instance ? instance : FindObjectOfType<PlayersManager>();
     private Menus_Input actions;// Input
-   public  bool debug;
+    public  bool debug;
 
     #region PlayerPrefabs
     [Header("Player Prefab Type")]
@@ -154,7 +154,7 @@ public class PlayersManager : MonoBehaviour
     }
     private void OnCancel(InputAction.CallbackContext context) {
         if (context.control == null) return;
-        
+
         if (context.action.WasPerformedThisFrame()) {
             if (playerInputManager.playerCount == 0) characterChoice.GoToScreen(ScreensName.Initial_Screen);
         }
@@ -172,6 +172,7 @@ public class PlayersManager : MonoBehaviour
                 characterBoxUI.playerConfig.id = _playerInput.playerIndex;
                 characterBoxUI.playerConfig.controlScheme = _playerInput.currentControlScheme;
                 characterBoxUI.playerConfig.inputDevices = GetStringFromDevices(_playerInput.devices.ToArray());
+                characterBoxUI.characterImageBackground.color = PlayerColorLayerManager.GetColorBase(_playerInput.playerIndex);
             }
         } else {
             if (!cameraMovement) cameraMovement = FindAnyObjectByType<PrototypeCameraMoviment>();
