@@ -8,6 +8,13 @@ namespace Character.GrapplingHook.States
         private float hookSpeed = 80;
         private float hookMaxDistance = 24;
 
+        private bool hasHitLeft;
+        private Color RaycastColorLeft => hasHitLeft ? Color.red : Color.green;
+        private bool hasHitCenter;
+        private Color RaycastColorCenter => hasHitCenter ? Color.red : Color.green;
+        private bool hasHitRight;
+        private Color RaycastColorRight => hasHitRight ? Color.red : Color.green;
+
         public HookDispatchState(CharacterEntity characterEntity) : base(characterEntity) {}
 
         public override void Enter()
@@ -24,6 +31,20 @@ namespace Character.GrapplingHook.States
             var hookDistance = Vector3.Distance(GrapplingStats.originPosition, transform.localPosition);
             if (hookDistance >= hookMaxDistance)
                 CharacterEntity.CharacterState.SetRollbackHookState();
+
+
+
+            var rayLeftDirection = (Vector3.forward + Vector3.right * -1).normalized;
+            // Physics.Raycast(GrapplingStats.originPosition, rayLeftDirection, out var hitLeft, hookMaxDistance);
+            Debug.DrawRay(GrapplingStats.originPosition, rayLeftDirection * hookMaxDistance, RaycastColorLeft);
+
+            var rayCenterDirection = Vector3.forward;
+            // Physics.Raycast(GrapplingStats.originPosition, rayCenterDirection, out var hitCenter, hookMaxDistance);
+            Debug.DrawRay(GrapplingStats.originPosition, rayCenterDirection * hookMaxDistance, RaycastColorCenter);
+
+            var rayRightDirection = (Vector3.forward + Vector3.right).normalized;
+            // Physics.Raycast(GrapplingStats.originPosition, rayRightDirection, out var hitRight, hookMaxDistance);
+            Debug.DrawRay(GrapplingStats.originPosition, rayRightDirection * hookMaxDistance, RaycastColorRight);
         }
 
         private void SetHookStats()
