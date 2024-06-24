@@ -8,7 +8,7 @@ namespace Character.States
 
         public override void Enter()
         {
-            // TODO: Reproduzir animação de vitoria
+            CharacterEntity.CharacterMesh.animator?.SetBool("isWinner", true);
         }
     }
 }
