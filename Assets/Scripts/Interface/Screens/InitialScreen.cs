@@ -28,7 +28,6 @@ public class InitialScreen : Screens
     {
         base.GoToScreen(screensName);
     }
-
     public void QuitGame()
     {
         InterfaceManager.Instance.QuitGame();

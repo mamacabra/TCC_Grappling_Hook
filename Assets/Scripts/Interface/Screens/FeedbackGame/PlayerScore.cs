@@ -7,11 +7,13 @@ using UnityEngine.UI;
 
 public class PlayerScore : MonoBehaviour
 {
-    PlayersManager.PlayerConfigurationData data;
+   public  PlayersManager.PlayerConfigurationData data;
     [SerializeField] private Image playerImg;
     //[SerializeField] private Slider playeSlideScore;
     [SerializeField]private List<Image> pointsImages;
     [SerializeField] private Sprite caveira, caveiraOp;
+
+    [SerializeField] public GameObject coroa;
     private int scoreValue = 0;
     private void OnEnable()
     {
@@ -23,7 +25,7 @@ public class PlayerScore : MonoBehaviour
         if(!InterfaceManager.Instance)return;
         InterfaceManager.Instance.OnShowScoreInFeedbackScreen -= AtualizeScore;
     }
-
+    
     public void ChangeData(PlayersManager.PlayerConfigurationData d)
     {
         data = d;
