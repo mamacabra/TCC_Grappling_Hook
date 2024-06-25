@@ -22,6 +22,8 @@ public class HudController : MonoBehaviour
       {
          yield return new WaitForSeconds(timeToWaitToStartCount);
 
+         countGameStartText.transform.localScale = Vector3.one;
+         
          countGameObj.SetActive(true);
          for (int i = 3; i > 0; i--)
          {

@@ -1,3 +1,4 @@
+using System;
 using Character.Utils;
 using Const;
 using System.Collections;
@@ -9,6 +10,7 @@ namespace Character
     {
         public int Id;
         public Transform characterBody;
+        public GameObject crown;
         public new CharacterEntity CharacterEntity { get; private set; }
 
         public bool HasDashReady { get; private set; } = true;
@@ -20,6 +22,11 @@ namespace Character
         public new void Setup(CharacterEntity entity)
         {
             CharacterEntity = entity;
+        }
+
+        public void EnableCrown()
+        {
+            //crown.SetActive(PlayersManager.Instance.CheckPlayerWinner(CharacterEntity.Character.Id));
         }
 
         public void UseDash()

@@ -104,7 +104,7 @@ public class InterfaceManager : MonoBehaviour
                yield return new WaitForSeconds(0.25f);
                yield return new WaitUntil(() => CameraManager.Instance.OnEndFeedback); 
                ShowSpecificScreen(ScreensName.FeedbackGame_Screen);
-               
+               HideSpecificScreen(ScreensName.Hud);
                if(!gameOver) yield break;
                OnHideButton?.Invoke();
                StartCoroutine(WaitToCheckWinnerGame());

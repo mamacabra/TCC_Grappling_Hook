@@ -65,6 +65,7 @@ public class PlayersManager : MonoBehaviour
     private bool canInitGame = false;
     public bool CanInitGame => canInitGame;
 
+    private int winnerId = -1;
 
     #endregion
 
@@ -104,6 +105,22 @@ public class PlayersManager : MonoBehaviour
             if (loadScene) {
                 ScenesManager.Instance.LoadRandomScene();
                 ScenesManager.onSceneLoadOperation.completed += delegate { SetPlayersConfigs(); };
+
+                /*int s = 0;
+                for (int i = 0; i < playersConfigs.Count; i++)
+                {
+                    if (playersConfigs[i].score > s)
+                        winnerId = playersConfigs[i].id;
+                }
+
+                foreach (var obj in playersGameObjects)
+                {
+                    if (obj != null)
+                    {
+                        obj.GetComponent<Character.Character>().EnableCrown();
+                    }
+                }*/
+                
             }
             else { // Test scene
                 SetPlayersConfigs();
@@ -246,6 +263,7 @@ public class PlayersManager : MonoBehaviour
         PlayerConfigurationData pS = playersConfigs[GetPlayerById(playerId)];
         pS.ChangeScore(value);
         playersConfigs[GetPlayerById(playerId)] = pS;
+        
     }
     int GetPlayerById(int id){
         for (int i = 0; i < playersConfigs.Count; i++)
@@ -253,6 +271,13 @@ public class PlayersManager : MonoBehaviour
 
         return -1;
     }
+
+    private List<PlayerConfigurationData> playersConfigsAux = new List<PlayerConfigurationData>();
+  /*  public bool CheckPlayerWinner(int id)
+    {
+        if (playersConfigs[id].score == 0) return false;
+        return id == winnerId;
+    }*/
 
     bool CheckIfGameOver()
     {

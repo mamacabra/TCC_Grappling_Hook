@@ -39,6 +39,7 @@ public class FeedbackGame : Screens
         if(!canclick)return;
         canclick = false;
         PlayersManager.Instance.InitGame(true);
+        InterfaceManager.Instance.ShowSpecificScreen(ScreensName.Hud);
         Close();
     }
 
