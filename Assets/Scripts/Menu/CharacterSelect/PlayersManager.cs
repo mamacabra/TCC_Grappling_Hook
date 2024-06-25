@@ -326,6 +326,7 @@ public class PlayersManager : MonoBehaviour
         amountOfPlayersReady = 0;
         if (cameraMovement) cameraMovement.RemoveAllPlayers();
         playersConfigs.Clear();
+        
         if(charactersFromGame){
             for (int i = 0; i < playersGameObjects.Length; i++){
                 if (playersGameObjects[i] && (playersGameObjects[i].layer != LayerMask.NameToLayer("UI")))
@@ -339,6 +340,7 @@ public class PlayersManager : MonoBehaviour
 
     public bool PlayerTypeIsAvailable(ECharacterType _characterType) {
         bool isAvailable = true;
+        if (playersConfigs.Count == 0) return isAvailable;
         for (int i = 0; i < playersConfigs.Count; i++) {
             if (playersConfigs[i].characterModel == _characterType) {
                 isAvailable = false;

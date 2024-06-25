@@ -144,6 +144,7 @@ public class CharacterBoxUI : MonoBehaviour
     private void OnEnable()
     {
         PlayersManager.Instance.OnUpdateText+= UpdateText;
+        UpdateText();
     }
 
     private void OnDisable() {

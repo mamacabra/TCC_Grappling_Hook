@@ -20,6 +20,7 @@ public class InitialScreen : Screens
     public override void Initialize()
     {
         PlayersManager.Instance.ClearPlayersConfig(charactersFromGame: true);
+        PlayersManager.Instance.SavePlayersConfigs();
         EventSystem.current.SetSelectedGameObject(buttons[0].button.gameObject);
     }
 
