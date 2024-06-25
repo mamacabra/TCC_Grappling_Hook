@@ -7,6 +7,7 @@ public class CharacterBoxUI : MonoBehaviour
 {
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private Image characterImage;
+    [SerializeField] private GameObject[] characterModels;
     public Image characterImageBackground;
     [SerializeField] private TextMeshProUGUI characterName;
     [SerializeField] private TextMeshProUGUI characterStatus;
@@ -119,12 +120,14 @@ public class CharacterBoxUI : MonoBehaviour
     public void ChangeModelImage(int dir) {
 
         if (hasConfirmed) return;
-        int value = ((int)playerConfig.characterModel + dir);
+        characterModels[(int)playerConfig.characterModel].SetActive(false);
+        int value = (int)playerConfig.characterModel + dir;
         if (value < 0) value =  (int)ECharacterType.Count - 1;
         if (value > (int)ECharacterType.Count - 1) value = 0;
         playerConfig.characterModel = (ECharacterType)value;
-        Sprite sprite = Resources.Load<ResourcesCharacters>("ResourcesCharacters").GetCharacterData((ECharacterType)value).characterSprite;
-        characterImage.sprite = sprite;
+        characterModels[value].SetActive(true);
+        //Sprite sprite = Resources.Load<ResourcesCharacters>("ResourcesCharacters").GetCharacterData((ECharacterType)value).characterSprite;
+        //characterImage.sprite = sprite;
 
         if (!PlayersManager.Instance.PlayerTypeIsAvailable(playerConfig.characterModel))
         {
@@ -149,7 +152,10 @@ public class CharacterBoxUI : MonoBehaviour
         hasConfirmed = false;
         playerConfig = new PlayersManager.PlayerConfigurationData();
         // ChangeColor((int) playerConfig.characterColor);
-        ChangeModelImage((int) playerConfig.characterModel);
+        for (int i = 0; i < characterModels.Length; i++) {
+            characterModels[i].SetActive(false);
+        }
+        ChangeModelImage((int)ECharacterType.Sushi);
 
         if (PlayersManager.Instance)
             PlayersManager.Instance.OnUpdateText-= UpdateText;

@@ -11,7 +11,7 @@ public enum ECharacterType{
     Pancake = 4,
     Sausage_Roll = 5,
     Count = 6,
-q}
+}
 [Serializable]
 public struct SCharacterData{
     public string characterName;
