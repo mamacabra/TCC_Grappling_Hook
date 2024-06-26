@@ -178,7 +178,7 @@
                 {
                     "name": "",
                     "id": "05f6913d-c316-48b2-a6bb-e225f14c7960",
-                    "path": "<Keyboard>/c",
+                    "path": "<Keyboard>/b",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -189,7 +189,7 @@
                 {
                     "name": "",
                     "id": "2e91cee0-9bbd-47ae-b2c8-b2373471010b",
-                    "path": "<Keyboard>/j",
+                    "path": "<Keyboard>/l",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardP2",
@@ -243,19 +243,8 @@
                 },
                 {
                     "name": "",
-                    "id": "a2791b32-06f2-4505-9828-655655cb7ebf",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Melee",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "f4464216-8e8f-40cc-9fd4-6c7292f6013c",
-                    "path": "<Keyboard>/b",
+                    "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -266,10 +255,21 @@
                 {
                     "name": "",
                     "id": "f8a5fc7f-5f67-4d14-9df9-e1c9c12f4eac",
-                    "path": "<Keyboard>/l",
+                    "path": "<Keyboard>/j",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardP2",
+                    "action": "Melee",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a2791b32-06f2-4505-9828-655655cb7ebf",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "Melee",
                     "isComposite": false,
                     "isPartOfComposite": false
