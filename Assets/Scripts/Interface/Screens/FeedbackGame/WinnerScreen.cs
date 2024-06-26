@@ -61,7 +61,7 @@ public class WinnerScreen : Screens
         characterRawImage.texture = text[(int)id.characterModel];
         cam.targetTexture = text[(int)id.characterModel];
         Animator animator = characterModels[(int)id.characterModel].GetComponentInChildren<Animator>();
-        if (animator) animator.SetTrigger("Intro");
+        if (animator) animator.SetBool("isWinner", true);
         
         playerImg.color = PlayerColorLayerManager.GetColorBase(id.id);
     }

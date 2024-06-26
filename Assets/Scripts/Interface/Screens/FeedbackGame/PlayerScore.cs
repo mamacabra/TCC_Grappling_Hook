@@ -33,13 +33,16 @@ public class PlayerScore : MonoBehaviour
     [SerializeField] public Camera cam;
     public void ChangeModelImage(int id) {
 
+        Animator animator = characterModels[(int)data.characterModel].GetComponentInChildren<Animator>();
+        if (animator) animator.SetBool("isWinner", false);
+        
         foreach (var o in characterModels)
             o.SetActive(false);
        
         characterModels[(int)data.characterModel].SetActive(true);
         characterRawImage.texture = text[(int)data.characterModel];
         cam.targetTexture = text[(int)data.characterModel];
-        Animator animator = characterModels[(int)data.characterModel].GetComponentInChildren<Animator>();
+      
         if (animator) animator.SetTrigger("Intro");
         
         playerImg.color = PlayerColorLayerManager.GetColorBase(id);
