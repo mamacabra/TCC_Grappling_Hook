@@ -55,6 +55,11 @@ public class HudController : MonoBehaviour
        
          
          //Start game
+         List<GameObject> players = PlayersManager.Instance.PlayersGameObjects;
+         for (int i = 0; i < players.Count; i++) {
+            if (players[i].TryGetComponent(out Character.Character _character))
+               _character.CharacterEntity.CharacterState.SetWalkState();
+         }
       }
    }
 }

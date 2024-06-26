@@ -61,7 +61,7 @@ public class PlayersManager : MonoBehaviour
     private bool[] freeId = {true, true, true, true, true, true};
     [SerializeField] private List<PlayerConfigurationData> playersConfigs = new List<PlayerConfigurationData>();
     private string path;
-    [SerializeField] private GameObject[] playersGameObjects;
+    [SerializeField] private List<GameObject> playersGameObjects;
     private bool canInitGame = false;
     public bool CanInitGame => canInitGame;
 
@@ -83,7 +83,7 @@ public class PlayersManager : MonoBehaviour
         actions = new Menus_Input();
         actions.Navigation.Join.performed += OnJoin;
         actions.Navigation.Cancel.performed += OnCancel;
-        playersGameObjects = new GameObject[playerInputManager.maxPlayerCount];
+        playersGameObjects = new();
         path = Application.persistentDataPath + "/playersInputs.json";
     }
     public void InitCharacterSelection() {
@@ -190,6 +190,8 @@ public class PlayersManager : MonoBehaviour
                 characterBoxUI.playerConfig.controlScheme = _playerInput.currentControlScheme;
                 characterBoxUI.playerConfig.inputDevices = GetStringFromDevices(_playerInput.devices.ToArray());
                 characterBoxUI.characterImageBackground.color = PlayerColorLayerManager.GetColorBase(_playerInput.playerIndex);
+                Animator animator = characterBoxUI.GetCurrentCharacterModels.GetComponentInChildren<Animator>();
+                if (animator) animator.SetTrigger("Intro");
             }
         } else {
             if (!cameraMovement) cameraMovement = FindAnyObjectByType<PrototypeCameraMoviment>();
@@ -204,7 +206,8 @@ public class PlayersManager : MonoBehaviour
                 PlayersToSendToCamera(_playerInput.transform);
             }
         }
-        playersGameObjects[_playerInput.playerIndex] = _playerInput.gameObject;
+        if(!playersGameObjects.Contains(_playerInput.gameObject))
+            playersGameObjects.Add(_playerInput.gameObject);
     }
     public void OnPlayerLeftEvent(PlayerInput _playerInput) { // Trigged when player left : set in inspector : PlayerInputManager
         if (_playerInput.currentControlScheme == "Keyboard&Mouse") keyboardP1 = false;
@@ -334,6 +337,9 @@ public class PlayersManager : MonoBehaviour
             canInitGame = false;
         }
     }
+    public void RemovePlayerGameObject(GameObject playerGameObject){
+        playersGameObjects.Remove(playerGameObject);
+    }
     #endregion
 
     #region PlayersConfigs
@@ -351,15 +357,16 @@ public class PlayersManager : MonoBehaviour
         amountOfPlayersReady = 0;
         if (cameraMovement) cameraMovement.RemoveAllPlayers();
         playersConfigs.Clear();
-        
-        if(charactersFromGame){
-            for (int i = 0; i < playersGameObjects.Length; i++){
-                if (playersGameObjects[i] && (playersGameObjects[i].layer != LayerMask.NameToLayer("UI")))
+        if (charactersFromGame) {
+            for (int i = 0; i < playersGameObjects.Count; i++){
+                if (playersGameObjects[i] && (playersGameObjects[i].layer != LayerMask.NameToLayer("UI"))){
                     Destroy(playersGameObjects[i]);
+                }
             }
+            playersGameObjects.Clear();
         } else {
-            playersGameObjects = new GameObject[playerInputManager.maxPlayerCount];
             characterChoice.RemoveAllChildrens();
+            playersGameObjects.Clear();
         }
     }
 
@@ -452,6 +459,8 @@ public class PlayersManager : MonoBehaviour
         }
         return color;
     }
+
+    public List<GameObject> PlayersGameObjects => playersGameObjects;
     #endregion
 }
 

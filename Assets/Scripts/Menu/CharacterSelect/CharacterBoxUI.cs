@@ -19,6 +19,7 @@ public class CharacterBoxUI : MonoBehaviour
     public PlayersManager.PlayerConfigurationData playerConfig;
 
     public float GetPressTime => pressTime;
+    public GameObject GetCurrentCharacterModels => characterModels[(int)playerConfig.characterModel];
 
     public void ChangePlayerInput(PlayerInput p)
     {
@@ -80,6 +81,7 @@ public class CharacterBoxUI : MonoBehaviour
             if (!hasConfirmed) {
                 if(!gameObject.activeSelf) return;
                 gameObject.SetActive(false);
+                PlayersManager.Instance?.RemovePlayerGameObject(gameObject);
                 choiseScreen.CheckGroup(transform, false);
                 return;}
             characterStatus.text = "Escolhendo";
@@ -126,6 +128,8 @@ public class CharacterBoxUI : MonoBehaviour
         if (value > (int)ECharacterType.Count - 1) value = 0;
         playerConfig.characterModel = (ECharacterType)value;
         characterModels[value].SetActive(true);
+        Animator animator = characterModels[value].GetComponentInChildren<Animator>();
+        if (animator) animator.SetTrigger("Intro");
         //Sprite sprite = Resources.Load<ResourcesCharacters>("ResourcesCharacters").GetCharacterData((ECharacterType)value).characterSprite;
         //characterImage.sprite = sprite;
 

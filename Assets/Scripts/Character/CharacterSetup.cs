@@ -77,7 +77,7 @@ namespace Character
             grapplingHookState?.Setup(characterEntity);
 
             SetupRigidbody(characterEntity);
-            characterState.SetWalkState();
+            characterState.SetReadyState();
         }
 
         private static void SetupRigidbody(CharacterEntity entity)
