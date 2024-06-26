@@ -52,5 +52,13 @@ namespace Character
             yield return new WaitForSeconds(MaxCountDownMelee);
             HasAttackReady = true;
         }
+
+        public void LookAt(Vector3 direction)
+        {
+            if (direction == Vector3.zero) return;
+
+            direction.y = 0;
+            CharacterEntity.Character.characterBody.LookAt(direction);
+        }
     }
 }

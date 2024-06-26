@@ -5,7 +5,7 @@ namespace Character.States
 {
     public class DispatchHookState : ACharacterState
     {
-        private const float RaycastDistance = 3f;
+        private new const float RaycastDistance = 3f;
 
         public DispatchHookState(CharacterEntity characterEntity) : base(characterEntity) {}
 
