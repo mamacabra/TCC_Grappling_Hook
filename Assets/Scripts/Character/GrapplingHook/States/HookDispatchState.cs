@@ -1,3 +1,4 @@
+using System.Linq;
 using Character.Utils;
 using UnityEngine;
 
@@ -7,13 +8,7 @@ namespace Character.GrapplingHook.States
     {
         private float hookSpeed = 80;
         private float hookMaxDistance = 24;
-
-        private bool hasHitLeft;
-        private Color RaycastColorLeft => hasHitLeft ? Color.red : Color.green;
-        private bool hasHitCenter;
-        private Color RaycastColorCenter => hasHitCenter ? Color.red : Color.green;
-        private bool hasHitRight;
-        private Color RaycastColorRight => hasHitRight ? Color.red : Color.green;
+        private Vector3 debugRayOriginPosition;
 
         public HookDispatchState(CharacterEntity characterEntity) : base(characterEntity) {}
 
@@ -21,6 +16,9 @@ namespace Character.GrapplingHook.States
         {
             SetHookStats();
             EnableHookCollider();
+            FindAndLookEnemyDirection();
+
+            debugRayOriginPosition = CharacterEntity.GrapplingHookTransform.position;
         }
 
         public override void FixedUpdate()
@@ -32,19 +30,7 @@ namespace Character.GrapplingHook.States
             if (hookDistance >= hookMaxDistance)
                 CharacterEntity.CharacterState.SetRollbackHookState();
 
-
-
-            var rayLeftDirection = (Vector3.forward + Vector3.right * -1).normalized;
-            // Physics.Raycast(GrapplingStats.originPosition, rayLeftDirection, out var hitLeft, hookMaxDistance);
-            Debug.DrawRay(GrapplingStats.originPosition, rayLeftDirection * hookMaxDistance, RaycastColorLeft);
-
-            var rayCenterDirection = Vector3.forward;
-            // Physics.Raycast(GrapplingStats.originPosition, rayCenterDirection, out var hitCenter, hookMaxDistance);
-            Debug.DrawRay(GrapplingStats.originPosition, rayCenterDirection * hookMaxDistance, RaycastColorCenter);
-
-            var rayRightDirection = (Vector3.forward + Vector3.right).normalized;
-            // Physics.Raycast(GrapplingStats.originPosition, rayRightDirection, out var hitRight, hookMaxDistance);
-            Debug.DrawRay(GrapplingStats.originPosition, rayRightDirection * hookMaxDistance, RaycastColorRight);
+            RayCastDebug();
         }
 
         private void SetHookStats()
@@ -64,6 +50,58 @@ namespace Character.GrapplingHook.States
                     hookMaxDistance = GrapplingStats.ForceLv3.distance;
                     break;
             }
+        }
+
+        private void FindAndLookEnemyDirection()
+        {
+            var transform = CharacterEntity.GrapplingHookTransform;
+            Vector3[] directions =
+            {
+                (transform.forward * 16 + transform.right).normalized,
+                (transform.forward * 16 + transform.right * -1).normalized,
+                (transform.forward * 8 + transform.right).normalized,
+                (transform.forward * 8 + transform.right * -1).normalized,
+            };
+
+            var direction = directions.Select(RayCastToEnemy).FirstOrDefault();
+            if (direction != Vector3.zero)
+                CharacterEntity.Character.LookAt(direction);
+        }
+
+        private Vector3 RayCastToEnemy(Vector3 direction)
+        {
+            var transform = CharacterEntity.GrapplingHookTransform;
+            var origin = new Vector3(transform.position.x, 1f, transform.position.z);
+            var hits = Physics.RaycastAll(origin, direction, 100f);
+            if (hits.Length == 0) return Vector3.zero;
+
+            var distance = Mathf.Infinity;
+            foreach (var hit in hits)
+            {
+                var distanceToHit = Vector3.Distance(origin, hit.point);
+                if (!(distanceToHit < distance)) continue;
+
+                distance = distanceToHit;
+                if (hit.collider.gameObject.CompareTag(Const.Tags.Character))
+                    return hit.point;
+            }
+
+            return Vector3.zero;
+        }
+
+        private void RayCastDebug()
+        {
+            var transform = CharacterEntity.GrapplingHookTransform;
+            var origin = new Vector3(debugRayOriginPosition.x, 1f, debugRayOriginPosition.z);
+
+            var dir1 = (transform.forward * 8 + transform.right).normalized;
+            Debug.DrawRay(origin, dir1 * hookMaxDistance, Color.red);
+            var dir2 = (transform.forward * 8 + transform.right * -1).normalized;
+            Debug.DrawRay(origin, dir2 * hookMaxDistance, Color.red);
+            var dir3 = (transform.forward * 16 + transform.right).normalized;
+            Debug.DrawRay(origin, dir3 * hookMaxDistance, Color.red);
+            var dir4 = (transform.forward * 16 + transform.right * -1).normalized;
+            Debug.DrawRay(origin, dir4 * hookMaxDistance, Color.red);
         }
     }
 }
