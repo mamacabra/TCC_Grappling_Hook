@@ -46,7 +46,7 @@ public class InterfaceManager : MonoBehaviour
 
      private void Update()
      {
-          if (Keyboard.current.escapeKey.wasPressedThisFrame)
+          if (Keyboard.current.escapeKey.wasPressedThisFrame || Gamepad.current.startButton.wasPressedThisFrame)
           {
                if (inGame)
                {
