@@ -5,7 +5,7 @@ namespace Character.States
 {
     public class KnockbackState : ACharacterState
     {
-        private const float KnockbackForce = 100.0f;
+        private const float KnockbackForce = 50.0f;
         private const float KnockbackDuration = 0.2f;
 
         private float knockbackTimer;
@@ -24,7 +24,7 @@ namespace Character.States
         {
             if (knockbackTimer > 0)
             {
-                var knockbackStep = KnockbackForce * Time.deltaTime;
+                var knockbackStep = KnockbackForce * Time.fixedDeltaTime;
                 var knockbackVector = (-knockbackDirection * knockbackStep);
                 var newPosition = CharacterEntity.Rigidbody.position + knockbackVector;
 
