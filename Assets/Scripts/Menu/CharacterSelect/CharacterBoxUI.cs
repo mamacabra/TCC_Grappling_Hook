@@ -130,6 +130,8 @@ public class CharacterBoxUI : MonoBehaviour
         characterModels[value].SetActive(true);
         Animator animator = characterModels[value].GetComponentInChildren<Animator>();
         if (animator) animator.SetTrigger("Intro");
+
+        // @TODO: Luan Colocar som quando troca personagem
         //Sprite sprite = Resources.Load<ResourcesCharacters>("ResourcesCharacters").GetCharacterData((ECharacterType)value).characterSprite;
         //characterImage.sprite = sprite;
 
