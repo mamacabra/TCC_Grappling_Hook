@@ -29859,6 +29859,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5165428823875815984}
     m_Modifications:
+    - target: {fileID: -8926855045144228117, guid: fd80a9ae825fed8408a98206dde6bb53,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd80a9ae825fed8408a98206dde6bb53,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -30029,6 +30034,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -151.72758
       objectReference: {fileID: 0}
+    - target: {fileID: -2771860302112999659, guid: fd80a9ae825fed8408a98206dde6bb53,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2499967270008340154, guid: fd80a9ae825fed8408a98206dde6bb53,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -2405866757419353351, guid: fd80a9ae825fed8408a98206dde6bb53,
         type: 3}
       propertyPath: m_Layer
@@ -30063,6 +30078,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -0.00001380216
+      objectReference: {fileID: 0}
+    - target: {fileID: 230550380555784286, guid: fd80a9ae825fed8408a98206dde6bb53,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fd80a9ae825fed8408a98206dde6bb53,
         type: 3}
@@ -30194,6 +30214,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90.00001
       objectReference: {fileID: 0}
+    - target: {fileID: 3940451294673704564, guid: fd80a9ae825fed8408a98206dde6bb53,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4747904234454317671, guid: fd80a9ae825fed8408a98206dde6bb53,
         type: 3}
       propertyPath: m_Layer
@@ -30203,6 +30228,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5531606995756015415, guid: fd80a9ae825fed8408a98206dde6bb53,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5746564759562468899, guid: fd80a9ae825fed8408a98206dde6bb53,
         type: 3}
