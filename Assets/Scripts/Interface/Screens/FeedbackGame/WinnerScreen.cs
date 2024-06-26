@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Character.Utils;
 using SceneSelect;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,7 +11,7 @@ public class WinnerScreen : Screens
 {
    // [SerializeField]private PlayerScore playerScore;
     [SerializeField] private ButtonToScreen initialScreenButton;
-    [SerializeField] private Image winner;
+    //[SerializeField] private Image winner;
     private void Awake()
     {
         initialScreenButton.button.onClick.AddListener(delegate 
@@ -34,7 +35,8 @@ public class WinnerScreen : Screens
         {
             if (w.score >= PlayersManager.Instance.ScoreToWinGame)
             {
-                winner.sprite = Resources.Load<ResourcesCharacters>("ResourcesCharacters").GetCharacterData(w.characterModel).characterSprite;
+                ChangeModelImage(w);
+                //winner.sprite = Resources.Load<ResourcesCharacters>("ResourcesCharacters").GetCharacterData(w.characterModel).characterSprite;
             }
         }
 
@@ -43,4 +45,24 @@ public class WinnerScreen : Screens
         EventSystem.current.SetSelectedGameObject(initialScreenButton.button.gameObject);
     }
     
+    [SerializeField] private Image playerImg;
+    [SerializeField] private GameObject[] characterModels;
+    [SerializeField] private RawImage characterRawImage;
+
+    [SerializeField] private List<RenderTexture> text = new List<RenderTexture>();
+    [SerializeField] public  Camera cam;
+    public void ChangeModelImage(PlayersManager.PlayerConfigurationData id) {
+
+        foreach (var o in characterModels)
+            o.SetActive(false);
+       
+     
+        characterModels[(int)id.characterModel].SetActive(true);
+        characterRawImage.texture = text[(int)id.characterModel];
+        cam.targetTexture = text[(int)id.characterModel];
+        Animator animator = characterModels[(int)id.characterModel].GetComponentInChildren<Animator>();
+        if (animator) animator.SetTrigger("Intro");
+        
+        playerImg.color = PlayerColorLayerManager.GetColorBase(id.id);
+    }
 }

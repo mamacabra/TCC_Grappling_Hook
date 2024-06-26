@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Character.Utils;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,15 +26,34 @@ public class PlayerScore : MonoBehaviour
         if(!InterfaceManager.Instance)return;
         InterfaceManager.Instance.OnShowScoreInFeedbackScreen -= AtualizeScore;
     }
-    
+    [SerializeField] private GameObject[] characterModels;
+    [SerializeField] private RawImage characterRawImage;
+
+    [SerializeField] private List<RenderTexture> text = new List<RenderTexture>();
+    [SerializeField] public Camera cam;
+    public void ChangeModelImage(int id) {
+
+        foreach (var o in characterModels)
+            o.SetActive(false);
+       
+        characterModels[(int)data.characterModel].SetActive(true);
+        characterRawImage.texture = text[(int)data.characterModel];
+        cam.targetTexture = text[(int)data.characterModel];
+        Animator animator = characterModels[(int)data.characterModel].GetComponentInChildren<Animator>();
+        if (animator) animator.SetTrigger("Intro");
+        
+        playerImg.color = PlayerColorLayerManager.GetColorBase(id);
+    }
     public void ChangeData(PlayersManager.PlayerConfigurationData d)
     {
         data = d;
-        playerImg.sprite = Resources.Load<ResourcesCharacters>("ResourcesCharacters").GetCharacterData(data.characterModel).characterSprite;
-        playerImg.color = PlayersManager.GetColor(data.characterColor);
+       //playerImg.sprite = Resources.Load<ResourcesCharacters>("ResourcesCharacters").GetCharacterData(data.characterModel).characterSprite;
+       // playerImg.color = PlayersManager.GetColor(data.characterColor);
         foreach (var p in pointsImages) p.sprite = caveiraOp;
 
         scoreValue = data.score;
+
+        ChangeModelImage(data.id);
     }
 
     public void AtualizeScore()
@@ -43,5 +63,7 @@ public class PlayerScore : MonoBehaviour
             if(scoreValue <= PlayersManager.Instance.ScoreToWinGame)
                 pointsImages[i].sprite = caveira;
         }
+        
+        
     }
 }
