@@ -17,8 +17,10 @@ namespace Character.States
         {
             if (timer > 0.0f){
                 timer -= Time.deltaTime;
-                if (timer <= 0.0f)
+                if (timer <= 0.0f){
+                    AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.PlayerSpawn);
                     CharacterEntity.CharacterMesh.animator?.SetTrigger("Intro");
+                }
             }
         }
     }
