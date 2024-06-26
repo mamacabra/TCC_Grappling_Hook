@@ -92,6 +92,13 @@ public class CharacterBoxUI : MonoBehaviour
         }
     }
 
+    public void OnDeviceLost(PlayerInput playerInput){
+        if(!gameObject.activeSelf) return;
+        gameObject.SetActive(false);
+        PlayersManager.Instance?.RemovePlayerGameObject(gameObject);
+        choiseScreen.CheckGroup(transform, false);
+    }
+
     public void UpdateText()
     {
         if (hasConfirmed) return;
