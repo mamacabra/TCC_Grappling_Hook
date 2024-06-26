@@ -55,6 +55,9 @@ namespace Character
                 skinnedMeshRenderer = _skinnedMeshRenderer;
             }
             animator = instance.GetComponentInChildren<Animator>();
+            var characterItems = instance.GetComponentInChildren<CharacterItemsHandle>();
+            if (characterItems) CharacterEntity.Character.crown = characterItems.crown;
+            CharacterEntity.Character.EnableCrown();
 
             ChangeColorLayer();
         }

@@ -30,8 +30,7 @@ namespace Character
         public void SetAttackMeleeState()
         {
             if (CharacterEntity.Character.HasAttackReady == false) return;
-            if (CharacterEntity.CharacterState.State is HookedToEnemyState) return;
-            if (CharacterEntity.CharacterState.State is AttackMeleeState) return;
+            if (CharacterEntity.CharacterState.State is HookedToEnemyState or AttackMeleeState or ReadyState) return;
 
             var state = new AttackMeleeState(CharacterEntity);
             SetState(state);
@@ -46,7 +45,7 @@ namespace Character
         public void SetDashState()
         {
             if (CharacterEntity.Character.HasDashReady == false) return;
-            if (CharacterEntity.CharacterState.State is HookedToEnemyState or AttackMeleeState) return;
+            if (CharacterEntity.CharacterState.State is HookedToEnemyState or AttackMeleeState or ReadyState) return;
 
             var state = new DashState(CharacterEntity);
             SetState(state);

@@ -26,7 +26,7 @@ namespace Character
 
         public void EnableCrown()
         {
-            //crown.SetActive(PlayersManager.Instance.CheckPlayerWinner(CharacterEntity.Character.Id));
+            crown.SetActive(PlayersManager.Instance.CheckPlayerWinner(CharacterEntity.Character.Id));
         }
 
         public void UseDash()
