@@ -1,8 +1,6 @@
-using System;
 using Character.States;
 using Character.Utils;
 using Const;
-using UnityEditor;
 using UnityEngine;
 
 namespace Character.GrapplingHook
@@ -14,15 +12,6 @@ namespace Character.GrapplingHook
         public int Force { get; private set; }
         private const int MaxGrapplingHookForce = 3;
         private const int DefaultGrapplingHookForce = 1;
-
-        private void Update()
-        {
-            const float raycastDistance = 100f;
-            var origin = new Vector3(transform.position.x, 1f, transform.position.z);
-            var direction = CharacterEntity.Character.transform.forward;
-
-            Debug.DrawRay(origin, direction * raycastDistance, Color.red);
-        }
 
         private void OnTriggerEnter(Collider other)
         {
