@@ -17,6 +17,12 @@ public class HudController : MonoBehaviour
    
    private void OnEnable()
    {
+      List<GameObject> players = PlayersManager.Instance.PlayersGameObjects;
+      for (int i = 0; i < players.Count; i++) {
+         if (players[i].TryGetComponent(out Character.Character _character))
+            _character.CharacterEntity.CharacterState.SetReadyState();
+      }
+
       StartCoroutine(WaitToStartCount());
       IEnumerator WaitToStartCount()
       {

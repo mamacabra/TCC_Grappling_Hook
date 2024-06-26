@@ -302,6 +302,7 @@ public class PlayersManager : MonoBehaviour
             PlayerInput playerInput = playerInputManager.JoinPlayer(item.id, controlScheme: item.controlScheme, pairWithDevices: GetDevicesFromString(item.inputDevices));
             if (playerInput.TryGetComponent(out Character.Character character)){
                 character.Id = item.id;
+                character.transform.LookAt(-character.transform.forward, character.transform.up); // Made character look at camera direction
             }
             if (playerInput.TryGetComponent(out CharacterMesh characterMesh)) {
                 characterMesh.SetMesh(item.characterModel);

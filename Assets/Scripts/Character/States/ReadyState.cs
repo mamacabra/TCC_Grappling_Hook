@@ -10,7 +10,7 @@ namespace Character.States
         public override void Enter()
         {
             timer = 0.75f; // Wait to camera move back to play anims
-            Transform.LookAt(-Transform.forward, Transform.up); // Made character look at camera direction
+            //Transform.LookAt(-Transform.forward, Transform.up); // Made character look at camera direction
         }
 
         public override void Update()
