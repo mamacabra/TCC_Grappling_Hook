@@ -145,8 +145,8 @@ public class CharacterBoxUI : MonoBehaviour
         if (value > (int)ECharacterType.Count - 1) value = 0;
         playerConfig.characterModel = (ECharacterType)value;
         characterModels[value].SetActive(true);
-        Animator animator = characterModels[value].GetComponentInChildren<Animator>();
-        if (animator) animator.SetTrigger("connected");
+        //Animator animator = characterModels[value].GetComponentInChildren<Animator>();
+        //if (animator) animator.SetTrigger("connected");
 
         // @TODO: Luan Colocar som quando troca personagem
         //Sprite sprite = Resources.Load<ResourcesCharacters>("ResourcesCharacters").GetCharacterData((ECharacterType)value).characterSprite;

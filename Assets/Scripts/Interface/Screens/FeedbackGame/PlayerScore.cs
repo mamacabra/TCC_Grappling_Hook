@@ -32,9 +32,15 @@ public class PlayerScore : MonoBehaviour
     [SerializeField] private List<RenderTexture> text = new List<RenderTexture>();
     [SerializeField] public Camera cam;
     public void ChangeModelImage(int id) {
-
-        Animator animator = characterModels[(int)data.characterModel].GetComponentInChildren<Animator>();
-        if (animator) animator.SetBool("isWinner", false);
+        Transform childTransform = characterModels[(int)data.characterModel].transform.GetChild(0);
+        Animator animator = childTransform.GetComponent<Animator>();
+        if (animator) 
+        {
+            if (animator.GetBool("isWinner"))
+            { 
+                animator.SetBool("isWinner", false); 
+            }
+        } 
         
         foreach (var o in characterModels)
             o.SetActive(false);
