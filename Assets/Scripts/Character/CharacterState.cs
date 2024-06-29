@@ -31,6 +31,7 @@ namespace Character
         {
             if (CharacterEntity.Character.HasAttackReady == false) return;
             if (CharacterEntity.CharacterState.State is HookedToEnemyState or AttackMeleeState or ReadyState) return;
+            if (Time.deltaTime == 0) return;
 
             var state = new AttackMeleeState(CharacterEntity);
             SetState(state);
@@ -46,6 +47,7 @@ namespace Character
         {
             if (CharacterEntity.Character.HasDashReady == false) return;
             if (CharacterEntity.CharacterState.State is HookedToEnemyState or AttackMeleeState or ReadyState) return;
+            if (Time.deltaTime == 0) return;
 
             var state = new DashState(CharacterEntity);
             SetState(state);
@@ -60,6 +62,7 @@ namespace Character
         public void SetDispatchHookState()
         {
             if (CharacterEntity.CharacterState.State is not PrepareHookState) return;
+            if (Time.deltaTime == 0) return;
 
             var state = new DispatchHookState(CharacterEntity);
             SetState(state);
@@ -98,6 +101,7 @@ namespace Character
         public void SetPrepareHookState()
         {
             if (CharacterEntity.CharacterState.State is not WalkState) return;
+            if (Time.deltaTime == 0) return;
 
             var state = new PrepareHookState(CharacterEntity);
             SetState(state);
