@@ -112,7 +112,7 @@ public class InterfaceManager : MonoBehaviour
      }
      IEnumerator WaitToCheckWinnerGame()
      {
-          yield return new WaitForSeconds(6);
+          yield return new WaitForSeconds(4);
           ShowSpecificScreen(ScreensName.FinalFeedbackGame);
      }
 

@@ -15,10 +15,10 @@ public class FeedbackGame : Screens
         StartCoroutine(WaitToCanClick());
         IEnumerator WaitToCanClick()
         {
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(2f);
+            nextGameButton.gameObject.SetActive(true);
             canclick = true;
         }
-        nextGameButton.gameObject.SetActive(true);
         InterfaceManager.Instance.OnHideButton += HideButton;
         EventSystem.current.SetSelectedGameObject(nextGameButton.gameObject);
     }

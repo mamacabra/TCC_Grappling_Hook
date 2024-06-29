@@ -12,7 +12,7 @@ public class HudController : MonoBehaviour
    [SerializeField] private float timeToWaitToStartCount = 3;
    [SerializeField] private TextMeshProUGUI countGameStartText;
    [SerializeField] private string textToShowWhenCountOver = "VAI!";
-
+   [SerializeField] private string textToShowWhenCountOverMatchPoint = "MATCH POINT!";
    [SerializeField] private List<Color32> colorsToChangeCountText;
    
    private void OnEnable()
@@ -64,8 +64,23 @@ public class HudController : MonoBehaviour
          yield return null;
 
       }
-      
-      countGameStartText.text = textToShowWhenCountOver;
+
+      List<PlayersManager.PlayerConfigurationData> list = new List<PlayersManager.PlayerConfigurationData>();
+      list = PlayersManager.Instance.ReturnPlayersList();
+
+      List<PlayersManager.PlayerConfigurationData> listAux = new List<PlayersManager.PlayerConfigurationData>();
+      foreach (var l in list)
+      {
+         if (l.score >= PlayersManager.Instance.ScoreToWinGame - 1)
+            listAux.Add(l);
+      }
+
+      string finalText = textToShowWhenCountOver;
+      if (listAux.Count > 1)
+         finalText = textToShowWhenCountOverMatchPoint;
+
+      countGameStartText.text = finalText;
+
       countGameStartText.color = colorsToChangeCountText[0];
 
       countGameStartText.transform.DOScale(1.1f, 0.25f).SetEase(Ease.OutBack).OnComplete(() =>

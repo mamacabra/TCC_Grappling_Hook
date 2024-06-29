@@ -12,10 +12,11 @@ public class WinnerScreen : Screens
    // [SerializeField]private PlayerScore playerScore;
     [SerializeField] private ButtonToScreen initialScreenButton;
     //[SerializeField] private Image winner;
+    private bool canclick;
     private void Awake()
     {
         initialScreenButton.button.onClick.AddListener(delegate 
-        { 
+        {
             GoToScreen(initialScreenButton.goToScreen);
             InterfaceManager.Instance.startNewGame = false;
             InterfaceManager.Instance.inGame = false;
@@ -24,9 +25,11 @@ public class WinnerScreen : Screens
             
         });
     }
-
+    
+   
     public override void Initialize()
     {
+        initialScreenButton.button.gameObject.SetActive(false);
         base.Initialize();
         List<PlayersManager.PlayerConfigurationData> list = new List<PlayersManager.PlayerConfigurationData>();
         list = PlayersManager.Instance.ReturnPlayersList();
@@ -41,6 +44,13 @@ public class WinnerScreen : Screens
         }
 
        
+        StartCoroutine(WaitToCanClick());
+        IEnumerator WaitToCanClick()
+        {
+            yield return new WaitForSeconds(2f);
+            canclick = true;
+            initialScreenButton.button.gameObject.SetActive(true);
+        }
         //playerScore.ChangeData(p);
         EventSystem.current.SetSelectedGameObject(initialScreenButton.button.gameObject);
     }
