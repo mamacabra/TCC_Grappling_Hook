@@ -39,7 +39,7 @@ public class HudController : MonoBehaviour
             _character.CharacterEntity.CharacterMesh.GetMeshParent.SetActive(true);
             _character.CharacterEntity.GrapplingHookTransform.gameObject.SetActive(true);
             _character.CharacterEntity.GrapplingHookRope.SetActive(true);
-            _character.CharacterEntity.CharacterMesh.animator?.SetTrigger("Intro");
+            _character.CharacterEntity.CharacterMesh.animator?.SetTrigger("onSpawn");
          }
       }
    }

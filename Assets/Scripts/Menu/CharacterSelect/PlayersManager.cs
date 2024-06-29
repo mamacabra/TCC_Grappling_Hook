@@ -184,7 +184,7 @@ public class PlayersManager : MonoBehaviour
                 characterBoxUI.playerConfig.inputDevices = GetStringFromDevices(_playerInput.devices.ToArray());
                 characterBoxUI.characterImageBackground.color = PlayerColorLayerManager.GetColorBase(_playerInput.playerIndex);
                 Animator animator = characterBoxUI.GetCurrentCharacterModels.GetComponentInChildren<Animator>();
-                if (animator) animator.SetTrigger("Intro");
+                if (animator) animator.SetTrigger("connected");
             }
         } else {
             if (!cameraMovement) cameraMovement = FindAnyObjectByType<PrototypeCameraMoviment>();
