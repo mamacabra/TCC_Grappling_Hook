@@ -29,6 +29,30 @@ namespace Character
         [SerializeField] private Material colorLayerArrow05Material;
         [SerializeField] private Material colorLayerArrow06Material;
 
+        public void OnEnable()
+        {
+            CameraManager.Instance.CallWinnerDance += OnCallWinnerDance;
+        }
+
+        private void OnDisable()
+        {
+            if (CameraManager.Instance)
+            {
+                CameraManager.Instance.CallWinnerDance -= OnCallWinnerDance;
+            }
+        }
+
+        public void OnCallWinnerDance()
+        {
+            animator.SetBool("isWinner", true);
+            LookAtCamera();
+        }
+
+        protected void LookAtCamera()
+        {
+            var cameraDirection = CameraManager.Instance.transform.position;
+            CharacterEntity.Character.characterBody.LookAt(cameraDirection);
+        }
         public void SetColor(PlayersManager.CharacterColor characterColor) {
             if (meshRenderer)
                 meshRenderer.material.color = PlayersManager.GetColor(characterColor);
