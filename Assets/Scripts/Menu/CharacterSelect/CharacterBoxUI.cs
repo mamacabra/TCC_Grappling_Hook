@@ -93,7 +93,13 @@ public class CharacterBoxUI : MonoBehaviour
     }
 
     public void OnDeviceLost(PlayerInput playerInput){
-        if(!gameObject.activeSelf) return;
+        //if(!gameObject.activeSelf) return;
+        characterStatus.text = "Escolhendo";
+        characterStatus.color = Color.gray;
+        PlayersManager.Instance?.RemovePlayerConfig(playerConfig);
+        PlayersManager.Instance?.SetPlayerStatus(false);
+        hasConfirmed = false;
+
         gameObject.SetActive(false);
         PlayersManager.Instance?.RemovePlayerGameObject(gameObject);
         choiseScreen.CheckGroup(transform, false);
