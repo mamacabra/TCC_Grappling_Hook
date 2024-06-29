@@ -23,6 +23,8 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private Slider slider;
     private bool onEndFeedback;
 
+
+    public event Action CallWinnerDance;
     public bool OnEndFeedback
     {
         get => onEndFeedback;
@@ -63,8 +65,13 @@ public class CameraManager : MonoBehaviour
                 IEnumerator WaitToBoolTrue()
                 {
                     yield return new WaitForSeconds(1.5f);
-                    OnEndFeedback = true;
                     Time.timeScale = 1;
+                    
+                    CallWinnerDance?.Invoke();
+                    
+                    //muda a variavel de baixo para deixar a dancinha por mais tempo
+                    yield return new WaitForSeconds(1.5f);
+                    OnEndFeedback = true;
                 }
                
             }).SetUpdate(true);
