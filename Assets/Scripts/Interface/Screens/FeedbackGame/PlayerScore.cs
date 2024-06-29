@@ -43,7 +43,7 @@ public class PlayerScore : MonoBehaviour
         characterRawImage.texture = text[(int)data.characterModel];
         cam.targetTexture = text[(int)data.characterModel];
       
-        if (animator) animator.SetTrigger("Intro");
+        if (animator) animator.SetTrigger("connected");
         
         playerImg.color = PlayerColorLayerManager.GetColorBase(id);
     }
