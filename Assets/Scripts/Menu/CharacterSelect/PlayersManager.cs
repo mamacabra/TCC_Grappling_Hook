@@ -303,10 +303,14 @@ public class PlayersManager : MonoBehaviour
             if (playerInput.TryGetComponent(out Character.Character character)){
                 character.Id = item.id;
                 character.transform.LookAt(-character.transform.forward, character.transform.up); // Made character look at camera direction
+                //character.CharacterEntity.GrapplingHookTransform.gameObject.SetActive(false);
             }
             if (playerInput.TryGetComponent(out CharacterMesh characterMesh)) {
                 characterMesh.SetMesh(item.characterModel);
                 characterMesh.SetColor(item.characterColor);
+                characterMesh.GetMeshParent.SetActive(false);
+                characterMesh.CharacterEntity.GrapplingHookTransform.gameObject.SetActive(false);
+                characterMesh.CharacterEntity.GrapplingHookRope.SetActive(false);
             }
             if (playersSpawners) {
                 playerInput.transform.position = playersSpawners.GetSpawners[item.id].position;

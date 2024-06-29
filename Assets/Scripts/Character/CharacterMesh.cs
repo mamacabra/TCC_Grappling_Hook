@@ -74,6 +74,8 @@ namespace Character
             meshParent.gameObject.SetActive(true);
         }
 
+        public GameObject GetMeshParent => meshParent.gameObject;
+
         private void ChangeColorLayer() {
             var characterId = CharacterEntity.Character.Id;
             var colorLayer = PlayerColorLayerManager.DefineCharacterColorLayer(characterId);

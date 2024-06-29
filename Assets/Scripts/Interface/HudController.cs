@@ -17,55 +17,74 @@ public class HudController : MonoBehaviour
    
    private void OnEnable()
    {
+      StartCoroutine(InitPlayers());
+      StartCoroutine(WaitToStartCount());
+   }
+
+   IEnumerator InitPlayers(){
       List<GameObject> players = PlayersManager.Instance.PlayersGameObjects;
       for (int i = 0; i < players.Count; i++) {
-         if (players[i].TryGetComponent(out Character.Character _character))
+         if (players[i].TryGetComponent(out Character.Character _character)) {
             _character.CharacterEntity.CharacterState.SetReadyState();
+         }
       }
 
-      StartCoroutine(WaitToStartCount());
-      IEnumerator WaitToStartCount()
-      {
-         yield return new WaitForSeconds(timeToWaitToStartCount);
+      yield return new WaitForSeconds(timeToWaitToStartCount);
 
-         countGameStartText.transform.localScale = Vector3.one;
-         
-         countGameObj.SetActive(true);
-         for (int i = 3; i > 0; i--)
-         {
-            countGameStartText.text = i.ToString();
-            countGameStartText.color = colorsToChangeCountText[i];
-            countGameStartText.transform.DOScale(1.1f, 0.25f).SetEase(Ease.OutBack).OnComplete(() =>
-            {
-               countGameStartText.transform.DOScale(1f, 0.25f).SetEase(Ease.OutBack);
-            });
-            
-            yield return new WaitForSeconds(0.75f);
-            yield return null;
+      for (int i = 0; i < players.Count; i++) {
+         if (players[i].TryGetComponent(out Character.Character _character)) {
+            yield return new WaitForSeconds(2.5f/6f);
 
+             AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.PlayerSpawn);
+            _character.CharacterEntity.CharacterMesh.GetMeshParent.SetActive(true);
+            _character.CharacterEntity.GrapplingHookTransform.gameObject.SetActive(true);
+            _character.CharacterEntity.GrapplingHookRope.SetActive(true);
+            _character.CharacterEntity.CharacterMesh.animator?.SetTrigger("Intro");
          }
-        
-         countGameStartText.text = textToShowWhenCountOver;
-         countGameStartText.color = colorsToChangeCountText[0];
+      }
+   }
 
+   IEnumerator WaitToStartCount()
+   {
+      yield return new WaitForSeconds(timeToWaitToStartCount);
+
+      countGameStartText.transform.localScale = Vector3.one;
+      
+      countGameObj.SetActive(true);
+      for (int i = 3; i > 0; i--)
+      {
+         countGameStartText.text = i.ToString();
+         countGameStartText.color = colorsToChangeCountText[i];
          countGameStartText.transform.DOScale(1.1f, 0.25f).SetEase(Ease.OutBack).OnComplete(() =>
          {
             countGameStartText.transform.DOScale(1f, 0.25f).SetEase(Ease.OutBack);
          });
          
          yield return new WaitForSeconds(0.75f);
-         countGameStartText.transform.DOScale(0f, 0.25f).OnComplete(() =>
-         {
-            countGameObj.SetActive(false);
-         });
-       
-         
-         //Start game
-         List<GameObject> players = PlayersManager.Instance.PlayersGameObjects;
-         for (int i = 0; i < players.Count; i++) {
-            if (players[i].TryGetComponent(out Character.Character _character))
-               _character.CharacterEntity.CharacterState.SetWalkState();
-         }
+         yield return null;
+
+      }
+      
+      countGameStartText.text = textToShowWhenCountOver;
+      countGameStartText.color = colorsToChangeCountText[0];
+
+      countGameStartText.transform.DOScale(1.1f, 0.25f).SetEase(Ease.OutBack).OnComplete(() =>
+      {
+         countGameStartText.transform.DOScale(1f, 0.25f).SetEase(Ease.OutBack);
+      });
+      
+      yield return new WaitForSeconds(0.75f);
+      countGameStartText.transform.DOScale(0f, 0.25f).OnComplete(() =>
+      {
+         countGameObj.SetActive(false);
+      });
+      
+      
+      //Start game
+      List<GameObject> players = PlayersManager.Instance.PlayersGameObjects;
+      for (int i = 0; i < players.Count; i++) {
+         if (players[i].TryGetComponent(out Character.Character _character))
+            _character.CharacterEntity.CharacterState.SetWalkState();
       }
    }
 }
