@@ -7,6 +7,7 @@ namespace Character
     {
         private ParticleSystem dashVfx;
         private ParticleSystem parryVfx;
+        private ParticleSystem slashVfx;
         private ParticleSystem spawnVfx;
 
         private void GetDashVFX()
@@ -17,6 +18,11 @@ namespace Character
         private void GetParryVFX()
         {
             parryVfx = CharacterEntity.CharacterMesh.animator?.transform.Find("vfx.Parry").GetComponent<ParticleSystem>();
+        }
+
+        private void GetSlashVFX()
+        {
+            slashVfx = CharacterEntity.CharacterMesh.animator?.transform.Find("vfx.Slash").GetComponent<ParticleSystem>();
         }
 
         private void GetSpawnVFX()
@@ -34,6 +40,12 @@ namespace Character
         {
             if (parryVfx is null) GetParryVFX();
             parryVfx?.Play();
+        }
+
+        public void PlaySlashVFX()
+        {
+            if (slashVfx is null) GetSlashVFX();
+            slashVfx?.Play();
         }
 
         public void PlaySpawnVFX()
