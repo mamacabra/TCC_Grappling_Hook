@@ -198,11 +198,11 @@ public class GraphicSettings : MonoBehaviour
         optionsScreen.ChangeQualityText(quality[qualityValue]);
         SaveSettings("Quality", qualityValue);
 
-        AudioManager.audioManager.ChangeSfxVolume(sfxVolume);
+        AudioManager.audioManager.SetSFXVolume(sfxVolume);
         optionsScreen.ChangeSFXVolumeText(sfxVolume.ToString());
         SaveSettings("SFX", sfxVolume);
 
-        AudioManager.audioManager.ChangeMusicVolume(musicVolume);
+        AudioManager.audioManager.SetMusicVolume(musicVolume);
         optionsScreen.ChangeMusicVolumeText(musicVolume.ToString());
         SaveSettings("Music", musicVolume);
     }
