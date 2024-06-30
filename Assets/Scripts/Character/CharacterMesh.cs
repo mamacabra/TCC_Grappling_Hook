@@ -1,3 +1,4 @@
+using Character.States;
 using Character.Utils;
 using Const;
 using UnityEngine;
@@ -44,7 +45,11 @@ namespace Character
 
         private void OnCallWinnerDance()
         {
-            CharacterEntity.CharacterState.SetWinnerState();
+            if(CharacterEntity.CharacterState.State is not DeathState)
+            {
+                CharacterEntity.CharacterState.SetWinnerState();
+                Debug.Log(CharacterEntity.Character.name+ "winner");
+            }
         }
 
         public void SetColor(PlayersManager.CharacterColor characterColor) {
