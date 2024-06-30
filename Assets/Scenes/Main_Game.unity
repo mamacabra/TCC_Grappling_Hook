@@ -1316,7 +1316,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2066618237}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.61288106
+  m_Size: 0.5603062
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7267,8 +7267,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 551.5, y: -588.23}
-  m_SizeDelta: {x: 1103, y: 1176.46}
+  m_AnchoredPosition: {x: 551.5, y: -643.425}
+  m_SizeDelta: {x: 1103, y: 1286.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &438278559
 MonoBehaviour:
@@ -7290,11 +7290,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Menu principal, op\xE7\xF5es, cr\xE9ditos e features.\r\n\r\nSele\xE7\xE3o
-    de personagens onde cada jogador pode escolher um personagem.\r\n\nTela de controles,
-    tela de pontua\xE7\xF5es, tela de vencedor.\n\nMenus navegaveis com controle
-    e teclado.\n\nAnima\xE7\xF5es basicas de menu.\n\nAnima\xE7\xF5es de combate
-    e intera\xE7\xE3o.\n\r\nCondi\xE7\xE3o de vit\xF3ria e derrota.\r\n\r\nCombate
+  m_text: "Tela de menu principal, cr\xE9ditos e features.\r\n\nMenu de op\xE7\xF5es
+    com op\xE7\xF5es de qualidade grafica, controle de volume, resolu\xE7\xE3o, tela
+    cheia/janela.\n\r\nSele\xE7\xE3o de personagens onde cada jogador pode escolher
+    um personagem.\r\n\nTela de controles, tela de pontua\xE7\xF5es, tela de vencedor.\n\nMenus
+    navegaveis com controle e teclado.\n\nAnima\xE7\xF5es basicas de menu.\n\nAnima\xE7\xF5es
+    de combate e intera\xE7\xE3o.\n\r\nCondi\xE7\xE3o de vit\xF3ria e derrota.\r\n\r\nCombate
     entre jogadores contendo mec\xE2nicas de: \n\r\nCorpo a corpo para eliminar um
     advers\xE1rio.\r\n\r\nGancho para locomo\xE7\xE3o e combate.\r\n\r\nAvan\xE7o
     r\xE1pido para locomo\xE7\xE3o.\r\n\r\nAtaques corpo a corpo executados ao mesmo
@@ -13363,7 +13364,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.000069049056, y: 0}
-  m_SizeDelta: {x: 0, y: 1176.46}
+  m_SizeDelta: {x: 0, y: 1286.85}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &985400787
 MonoBehaviour:
@@ -29398,7 +29399,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 832787186}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.38711894}
+  m_AnchorMin: {x: 0, y: 0.4396938}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
