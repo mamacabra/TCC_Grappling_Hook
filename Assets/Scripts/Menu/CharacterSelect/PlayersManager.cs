@@ -96,6 +96,7 @@ public class PlayersManager : MonoBehaviour
     }
     public void InitGame(bool loadScene = true) {
         GameOver = false;
+        winnerSupreme = -1;
         InterfaceManager.Instance.inGame = true;
         ClearPlayersConfig(charactersFromGame: true);
         LoadPlayersConfigs(); // Reset playersConfig in characterSelect screen.
@@ -226,6 +227,7 @@ public class PlayersManager : MonoBehaviour
         get => gameOver;
         set { gameOver = value; }
     }
+    public int winnerSupreme = -1;
     public void AddPointsToPlayer(int playerWhoKilled,Transform p1, Transform p2)
     {
         playersCountInScene++;
@@ -239,7 +241,7 @@ public class PlayersManager : MonoBehaviour
             CameraManager.Instance.OnEndFeedback = false;
             AddPoints(playerWhoKilled, scoreToAddToWinner);
             InterfaceManager.Instance.OnCallFeedbackGame(CheckIfGameOver());
-
+            winnerSupreme = CheckIfGameOver()? playerWhoKilled:-1;
             //PlayersToSendToCamera(other.transform, true);
 
             foreach (var p in playersGameObjects)
@@ -277,7 +279,7 @@ public class PlayersManager : MonoBehaviour
         return id == winnerId;
     }
 
-    bool CheckIfGameOver()
+    public bool CheckIfGameOver()
     {
         foreach (var p in playersConfigs)
         {

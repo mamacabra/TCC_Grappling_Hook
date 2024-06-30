@@ -45,10 +45,12 @@ namespace Character
 
         private void OnCallWinnerDance()
         {
-            if(CharacterEntity.CharacterState.State is not DeathState)
+            if (CharacterEntity.CharacterState.State is not DeathState)
             {
                 int id = CharacterEntity.Character.Id;
-                if(PlayersManager.Instance.CheckPlayerWinner(id))
+                if (PlayersManager.Instance.winnerSupreme == id)
+                    CharacterEntity.CharacterState.SetWinnerState();
+                else if (!PlayersManager.Instance.CheckIfGameOver())
                     CharacterEntity.CharacterState.SetWinnerState();
             }
         }

@@ -7065,11 +7065,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -553873226
-      Data2: 1328206511
-      Data3: 2082896541
-      Data4: -1379569914
-    Path: event:/disco teste
+      Data1: 175275191
+      Data2: 1295363881
+      Data3: 97911990
+      Data4: -735725263
+    Path: event:/demo
   Event: 
   PlayEvent: 1
   StopEvent: 0
@@ -7089,12 +7089,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 406648370}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -960.0918, y: -539.99994, z: 0}
+  m_LocalScale: {x: 1.6539049, y: 1.6539049, z: 1.6539049}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1740454391}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &414164044
 GameObject:
@@ -25503,6 +25503,7 @@ RectTransform:
   - {fileID: 942115401}
   - {fileID: 1210836992}
   - {fileID: 1229285776}
+  - {fileID: 406648373}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -30258,7 +30259,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 84.48572}
+  m_AnchoredPosition: {x: 0, y: 84.485596}
   m_SizeDelta: {x: 0, y: 168.9714}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2120207218
@@ -33938,4 +33939,3 @@ SceneRoots:
   - {fileID: 1035827335}
   - {fileID: 439066897}
   - {fileID: 999380626}
-  - {fileID: 406648373}
