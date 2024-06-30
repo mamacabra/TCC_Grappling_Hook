@@ -5431,8 +5431,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 533c6a18046044199284251fee58fd01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashVfx: {fileID: 0}
-  parryVfx: {fileID: 0}
   spawnVfx: {fileID: 598730386847885545}
 --- !u!1 &2952495685984302062
 GameObject:
@@ -15724,7 +15722,7 @@ GameObject:
   - component: {fileID: 598730386847885545}
   - component: {fileID: 6190569027463255346}
   m_Layer: 0
-  m_Name: SFXSpawnHitGroundEffect2
+  m_Name: vfx.Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
