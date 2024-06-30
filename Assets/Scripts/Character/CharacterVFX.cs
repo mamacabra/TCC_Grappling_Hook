@@ -5,8 +5,9 @@ namespace Character
 {
     public class CharacterVFX : ACharacterMonoBehaviour
     {
-        private ParticleSystem dashVfx;
-        private ParticleSystem parryVfx;
+        [SerializeField] private ParticleSystem dashVfx;
+        [SerializeField] private ParticleSystem parryVfx;
+        [SerializeField] private ParticleSystem spawnVfx;
 
         private void GetDashVFX()
         {
@@ -16,6 +17,11 @@ namespace Character
         private void GetParryVFX()
         {
             parryVfx = CharacterEntity.CharacterMesh.animator?.transform.Find("vfx.Parry").GetComponent <ParticleSystem>();
+        }
+
+        private void GetSpawnVFX()
+        {
+            spawnVfx = CharacterEntity.CharacterMesh.animator?.transform.Find("vfx.Spawn").GetComponent<ParticleSystem>();
         }
 
         public void PlayDashVFX()
@@ -28,6 +34,12 @@ namespace Character
         {
             if(parryVfx is null) GetParryVFX();
             parryVfx?.Play();
+        }
+
+        public void PlaySpawnVFX()
+        {
+            if(spawnVfx is null) GetSpawnVFX();
+            spawnVfx?.Play();
         }
 
         public void StopDashVFXWithDelay(float delay = 0.2f)
@@ -47,6 +59,11 @@ namespace Character
         private void StopParryVFX()
         {
             parryVfx.Stop();
+        }
+
+        private void StopSpawnVFX()
+        {
+            spawnVfx.Stop();
         }
     }
 }

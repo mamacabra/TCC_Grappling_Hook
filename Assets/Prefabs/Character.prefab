@@ -5431,6 +5431,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 533c6a18046044199284251fee58fd01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dashVfx: {fileID: 0}
+  parryVfx: {fileID: 0}
+  spawnVfx: {fileID: 598730386847885545}
 --- !u!1 &2952495685984302062
 GameObject:
   m_ObjectHideFlags: 0
@@ -5481,7 +5484,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -15726,7 +15729,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8772610484136064658
 Transform:
   m_ObjectHideFlags: 0
@@ -15759,7 +15762,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
