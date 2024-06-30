@@ -8,12 +8,12 @@ namespace Character.Utils
     {
         private static readonly PlayerColorLayer[] colorLayers =
         {
-            new (ControlColorsLayer.Yellow, ControlColorsHex.Yellow),
-            new (ControlColorsLayer.Green, ControlColorsHex.Green),
-            new (ControlColorsLayer.Blue, ControlColorsHex.Blue),
-            new (ControlColorsLayer.Purple, ControlColorsHex.Purple),
-            new (ControlColorsLayer.Red, ControlColorsHex.Red),
-            new (ControlColorsLayer.White, ControlColorsHex.White),
+            new (ControlColorsLayer.Yellow, ControlColorsHex.YellowLight),
+            new (ControlColorsLayer.Green, ControlColorsHex.GreenLight),
+            new (ControlColorsLayer.Blue, ControlColorsHex.BlueLight),
+            new (ControlColorsLayer.Purple, ControlColorsHex.PurpleLight),
+            new (ControlColorsLayer.Red, ControlColorsHex.RedLight),
+            new (ControlColorsLayer.White, ControlColorsHex.WhiteLight),
         };
 
         public static ControlColorsLayer DefineCharacterColorLayer(int characterId)
