@@ -9,12 +9,14 @@ namespace Character.Utils
 
         public int CharacterId { get; private set; } = InvalidCharacterId;
         public Color ColorBase { get; }
+        public Color ColorBaseLight { get; }
         public ControlColorsLayer ColorsLayer { get; }
 
-        public PlayerColorLayer(ControlColorsLayer colorsLayer, Color colorBase)
+        public PlayerColorLayer(ControlColorsLayer colorsLayer, Color colorBase, Color colorBaseLight)
         {
             ColorsLayer = colorsLayer;
             ColorBase = colorBase;
+            ColorBaseLight = colorBaseLight;
         }
 
         public void SetCharacterId(int characterId)

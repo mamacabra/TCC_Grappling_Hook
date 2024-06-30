@@ -112,7 +112,7 @@ public class PlayersManager : MonoBehaviour
                             winnerId = playersConfigs[i].id;
                         }
                     }
-                    SetPlayersConfigs(); 
+                    SetPlayersConfigs();
                 };
             }
             else { // Test scene
@@ -182,7 +182,7 @@ public class PlayersManager : MonoBehaviour
                 characterBoxUI.playerConfig.id = _playerInput.playerIndex;
                 characterBoxUI.playerConfig.controlScheme = _playerInput.currentControlScheme;
                 characterBoxUI.playerConfig.inputDevices = GetStringFromDevices(_playerInput.devices.ToArray());
-                characterBoxUI.characterImageBackground.color = PlayerColorLayerManager.GetColorBase(_playerInput.playerIndex);
+                characterBoxUI.characterImageBackground.color = PlayerColorLayerManager.GetColorBaseLight(_playerInput.playerIndex);
                 Animator animator = characterBoxUI.GetCurrentCharacterModels.GetComponentInChildren<Animator>();
                 if (animator) animator.SetTrigger("connected");
             }
@@ -259,7 +259,7 @@ public class PlayersManager : MonoBehaviour
         PlayerConfigurationData pS = playersConfigs[GetPlayerById(playerId)];
         pS.ChangeScore(value);
         playersConfigs[GetPlayerById(playerId)] = pS;
-        
+
     }
     int GetPlayerById(int id){
         for (int i = 0; i < playersConfigs.Count; i++)
