@@ -42,17 +42,11 @@ namespace Character
             }
         }
 
-        public void OnCallWinnerDance()
+        private void OnCallWinnerDance()
         {
-            animator.SetBool("isWinner", true);
-            LookAtCamera();
+            CharacterEntity.CharacterState.SetWinnerState();
         }
 
-        protected void LookAtCamera()
-        {
-            var cameraDirection = CameraManager.Instance.transform.position;
-            CharacterEntity.Character.characterBody.LookAt(cameraDirection);
-        }
         public void SetColor(PlayersManager.CharacterColor characterColor) {
             if (meshRenderer)
                 meshRenderer.material.color = PlayersManager.GetColor(characterColor);

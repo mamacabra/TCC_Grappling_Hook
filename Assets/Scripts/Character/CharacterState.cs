@@ -20,7 +20,12 @@ namespace Character
 
         private void SetState(ACharacterState state)
         {
-            if (State is DeathState or WinnerState or LoserState) return;
+            switch (State)
+            {
+                case DeathState or WinnerState:
+                case LoserState when state is not WinnerState:
+                    return;
+            }
 
             State?.Exit();
             State = state;
