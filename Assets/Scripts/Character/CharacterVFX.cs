@@ -39,7 +39,19 @@ namespace Character
         public void PlaySpawnVFX()
         {
             if(spawnVfx is null) GetSpawnVFX();
+            if (!spawnVfx) return;
+
+            var main = spawnVfx.main;
+            var characterColor = PlayerColorLayerManager.GetColorBase(CharacterEntity.Character.Id);
+            var vfxGradienteColor = new ParticleSystem.MinMaxGradient(characterColor, characterColor);
+            main.startColor = vfxGradienteColor;
+
             spawnVfx?.Play();
+        }
+
+        public void PlaySpawnVFXWithDelay(float delay = 0.2f)
+        {
+            Invoke(nameof(PlaySpawnVFX), delay);
         }
 
         public void StopDashVFXWithDelay(float delay = 0.2f)
@@ -47,23 +59,9 @@ namespace Character
             Invoke(nameof(StopDashVFX), delay);
         }
 
-        public void StopParryVFXWithDelay(float delay = 0.2f)
-        {
-            Invoke(nameof(StopParryVFX), delay);
-        }
         private void StopDashVFX()
         {
             dashVfx?.Stop();
-        }
-
-        private void StopParryVFX()
-        {
-            parryVfx.Stop();
-        }
-
-        private void StopSpawnVFX()
-        {
-            spawnVfx.Stop();
         }
     }
 }
