@@ -9,6 +9,7 @@ public class FeedbackGame : Screens
 {
     [SerializeField] private Button nextGameButton;
     private bool canclick = false;
+
     public override void Initialize()
     {
         InterfaceManager.Instance.inGame = false;
@@ -16,9 +17,9 @@ public class FeedbackGame : Screens
         IEnumerator WaitToCanClick()
         {
             yield return new WaitForSeconds(2f);
-            nextGameButton.gameObject.SetActive(true);
             canclick = true;
         }
+        nextGameButton.gameObject.SetActive(true);
         InterfaceManager.Instance.OnHideButton += HideButton;
         EventSystem.current.SetSelectedGameObject(nextGameButton.gameObject);
     }

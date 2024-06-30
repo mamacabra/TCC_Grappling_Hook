@@ -76,7 +76,7 @@ public class HudController : MonoBehaviour
       }
 
       string finalText = textToShowWhenCountOver;
-      if (listAux.Count > 1)
+      if (listAux.Count > 0)
          finalText = textToShowWhenCountOverMatchPoint;
 
       countGameStartText.text = finalText;

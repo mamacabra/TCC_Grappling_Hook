@@ -240,6 +240,8 @@ public class PlayersManager : MonoBehaviour
             AddPoints(playerWhoKilled, scoreToAddToWinner);
             InterfaceManager.Instance.OnCallFeedbackGame(CheckIfGameOver());
 
+            //PlayersToSendToCamera(other.transform, true);
+
             foreach (var p in playersGameObjects)
             {
                 if (p != null)

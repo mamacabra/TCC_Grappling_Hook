@@ -47,8 +47,9 @@ namespace Character
         {
             if(CharacterEntity.CharacterState.State is not DeathState)
             {
-                CharacterEntity.CharacterState.SetWinnerState();
-                Debug.Log(CharacterEntity.Character.name+ "winner");
+                int id = CharacterEntity.Character.Id;
+                if(PlayersManager.Instance.CheckPlayerWinner(id))
+                    CharacterEntity.CharacterState.SetWinnerState();
             }
         }
 
