@@ -1316,7 +1316,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2066618237}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.7544681
+  m_Size: 0.61288106
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7267,8 +7267,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 551.5, y: -477.84}
-  m_SizeDelta: {x: 1103, y: 955.68}
+  m_AnchoredPosition: {x: 551.5, y: -588.23}
+  m_SizeDelta: {x: 1103, y: 1176.46}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &438278559
 MonoBehaviour:
@@ -7290,15 +7290,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Menus, op\xE7\xF5es, cr\xE9ditos e features.\r\n\r\nSele\xE7\xE3o de personagens
-    onde cada jogador pode escolher um personagem.\r\n\r\nCondi\xE7\xE3o de vit\xF3ria
-    e derrota.\r\n\r\nCombate entre jogadores contendo mec\xE2nicas de: \r\n\r\nCorpo
-    a corpo para eliminar um advers\xE1rio.\r\n\r\nGancho para locomo\xE7\xE3o e
-    combate.\r\n\r\nAvan\xE7o r\xE1pido para locomo\xE7\xE3o.\r\n\r\nAtaques corpo
-    a corpo executados ao mesmo tempo ser\xE3o cancelados e os jogadores empurrados.\r\n\r\nAtaques
-    efetuados em ganchos j\xE1 disparados cancelam o gancho imediatamente.\r\n\r\nDestrui\xE7\xE3o
-    de cen\xE1rio.\r\n\r\nTela de pontua\xE7\xE3o quando apenas um jogador ficar
-    vivo.\r"
+  m_text: "Menu principal, op\xE7\xF5es, cr\xE9ditos e features.\r\n\r\nSele\xE7\xE3o
+    de personagens onde cada jogador pode escolher um personagem.\r\n\nTela de controles,
+    tela de pontua\xE7\xF5es, tela de vencedor.\n\nMenus navegaveis com controle
+    e teclado.\n\nAnima\xE7\xF5es basicas de menu.\n\nAnima\xE7\xF5es de combate
+    e intera\xE7\xE3o.\n\r\nCondi\xE7\xE3o de vit\xF3ria e derrota.\r\n\r\nCombate
+    entre jogadores contendo mec\xE2nicas de: \n\r\nCorpo a corpo para eliminar um
+    advers\xE1rio.\r\n\r\nGancho para locomo\xE7\xE3o e combate.\r\n\r\nAvan\xE7o
+    r\xE1pido para locomo\xE7\xE3o.\r\n\r\nAtaques corpo a corpo executados ao mesmo
+    tempo ser\xE3o cancelados e os jogadores empurrados.\r\n\r\nAtaques efetuados
+    em ganchos j\xE1 disparados cancelam o gancho imediatamente.\r\n\nEfeitos visuais
+    de ataque e movimenta\xE7\xE3o.\n\n7 cen\xE1rios de combate com tematica japonesa."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -13361,7 +13363,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.000069049056, y: 0}
-  m_SizeDelta: {x: 0, y: 955.68}
+  m_SizeDelta: {x: 0, y: 1176.46}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &985400787
 MonoBehaviour:
@@ -20386,8 +20388,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -226.65918, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -226.66, y: 0}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1464080928
 MonoBehaviour:
@@ -20439,9 +20441,9 @@ MonoBehaviour:
   m_fontSize: 40
   m_fontSizeBase: 40
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 40
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -25031,7 +25033,7 @@ MonoBehaviour:
   - Tela Cheia
   - Em Janela
   quality:
-  - Melhor Desempenho
+  - Desempenho
   - Balanceada
   - Alta
 --- !u!4 &1694936863
@@ -29395,7 +29397,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 832787186}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.24553192}
+  m_AnchorMin: {x: 0, y: 0.38711894}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}

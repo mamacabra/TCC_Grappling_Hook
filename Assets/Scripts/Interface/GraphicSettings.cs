@@ -33,14 +33,14 @@ public class GraphicSettings : MonoBehaviour
             resolutions.Add(new Vector2(res[i].width, res[i].height));
         
         int r = PlayerPrefs.GetInt("Resolution", Screen.currentResolution.width);
-        int screenMode = PlayerPrefs.GetInt("ScreenMode", 0);
+        int screenMode = PlayerPrefs.GetInt("ScreenEcra", 0);
         int quality = PlayerPrefs.GetInt("Quality", QualitySettings.GetQualityLevel());
         int sfx = PlayerPrefs.GetInt("SFX", 10);
         int music = PlayerPrefs.GetInt("Music", 10);
 
         ApplyResolution(r);
-        ApplyEcra(screenMode);
-        ApplyQuality(quality);// @TODO: fix this.
+        SetEcra(screenMode);
+        SetQuality(quality);// @TODO: fix this.
 
         AudioManager.audioManager.SetSFXVolume(sfx);
         optionsScreen.ChangeSFXVolumeText(sfx.ToString());
@@ -110,6 +110,24 @@ public class GraphicSettings : MonoBehaviour
         SaveSettings("ScreenEcra", ecraValue);
     }
 
+    public void SetEcra(int value){
+        ecraValue = value;
+
+        switch (ecraValue)
+        {
+            case 0:
+                Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+                break;
+            case 1:
+                Screen.fullScreenMode = FullScreenMode.Windowed;
+                break;
+        }
+
+        optionsScreen.ChangeEcraText(ecra[ecraValue]);
+        
+        SaveSettings("ScreenEcra", ecraValue);
+    }
+
     public void ApplyQuality(int value)
     {
         qualityValue += value;
@@ -126,6 +144,16 @@ public class GraphicSettings : MonoBehaviour
         }
        
         
+        QualitySettings.SetQualityLevel(qualityValue);
+        optionsScreen.ChangeQualityText(quality[qualityValue]);
+
+        SaveSettings("Quality", qualityValue);
+    }
+
+    public void SetQuality(int value)
+    {
+        qualityValue = value;
+
         QualitySettings.SetQualityLevel(qualityValue);
         optionsScreen.ChangeQualityText(quality[qualityValue]);
 
