@@ -1,7 +1,7 @@
 namespace PowerUp.Variants
 {
-    public class HookSplitPowerUp
+    public class HookSplitPowerUp : IPowerUp
     {
-        
+
     }
 }

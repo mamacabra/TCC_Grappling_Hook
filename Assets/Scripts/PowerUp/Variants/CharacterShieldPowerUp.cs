@@ -1,7 +1,7 @@
 namespace PowerUp.Variants
 {
-    public class CharacterShieldPowerUp
+    public class CharacterShieldPowerUp : IPowerUp
     {
-        
+
     }
 }

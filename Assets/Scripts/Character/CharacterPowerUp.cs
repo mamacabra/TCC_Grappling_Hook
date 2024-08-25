@@ -1,4 +1,7 @@
+using System.Collections.Generic;
 using Character.Utils;
+using Const;
+using PowerUp;
 using Scene;
 using UnityEngine;
 
@@ -6,28 +9,34 @@ namespace Character
 {
     public class CharacterPowerUp : ACharacterMonoBehaviour
     {
-        [SerializeField] private string[] powerUps = new string[3];
+        private const int MaxPowerUps = 3;
+        private readonly List<PowerUpVariants> PowerUps = new();
 
-        private void AddPowerUp(string powerUp)
+        private void CatchPowerUp()
         {
-            for (var i = 0; i < powerUps.Length; i++)
-            {
-                if (powerUps[i] != "") continue;
+            var newPowerUp = PowerUpManager.Catch(PowerUps);
+            AddPowerUp(newPowerUp);
+        }
 
-                powerUps[i] = powerUp;
-                break;
+        private void AddPowerUp(PowerUpVariants powerUp)
+        {
+            if (PowerUps.Count >= MaxPowerUps)
+            {
+                var randomPowerUp = PowerUps[Random.Range(0, PowerUps.Count)];
+                PowerUps.Remove(randomPowerUp);
             }
+
+            PowerUps.Add(powerUp);
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.CompareTag(Const.Tags.PowerUp)) return;
+            if (other.CompareTag(Const.Tags.PowerUp) == false) return;
 
             var powerUp = other.GetComponent<ScenePowerUpItem>();
             if (powerUp == null) return;
 
-            var powerUpName = powerUp.Get();
-            AddPowerUp(powerUpName);
+            CatchPowerUp();
             Destroy(other.gameObject);
         }
     }

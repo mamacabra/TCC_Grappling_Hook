@@ -1,7 +1,7 @@
 namespace PowerUp.Variants
 {
-    public class CharacterSpeedBoostPowerUp
+    public class CharacterSpeedBoostPowerUp : IPowerUp
     {
-        
+
     }
 }

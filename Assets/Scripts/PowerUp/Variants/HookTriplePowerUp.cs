@@ -1,7 +1,7 @@
 namespace PowerUp.Variants
 {
-    public class HookTriplePowerUp
+    public class HookTriplePowerUp : IPowerUp
     {
-        
+
     }
 }
