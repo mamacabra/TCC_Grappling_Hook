@@ -1,9 +1,9 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace PowerUp
+namespace Scene
 {
-    public class PowerUpItem : MonoBehaviour
+    public class ScenePowerUpItem : MonoBehaviour
     {
         private void Awake()
         {

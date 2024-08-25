@@ -1,5 +1,5 @@
 using Character.Utils;
-using PowerUp;
+using Scene;
 using UnityEngine;
 
 namespace Character
@@ -8,13 +8,12 @@ namespace Character
     {
         [SerializeField] private string[] powerUps = new string[3];
 
-        public void AddPowerUp(string powerUp)
+        private void AddPowerUp(string powerUp)
         {
             for (var i = 0; i < powerUps.Length; i++)
             {
                 if (powerUps[i] != "") continue;
 
-                Debug.Log($"Character {gameObject.name} picked up {powerUp}");
                 powerUps[i] = powerUp;
                 break;
             }
@@ -24,12 +23,11 @@ namespace Character
         {
             if (!other.CompareTag(Const.Tags.PowerUp)) return;
 
-            var powerUp = other.GetComponent<PowerUpItem>();
+            var powerUp = other.GetComponent<ScenePowerUpItem>();
             if (powerUp == null) return;
 
             var powerUpName = powerUp.Get();
             AddPowerUp(powerUpName);
-            // Debug.Log($"Character {gameObject.name} picked up {powerUpName}");
             Destroy(other.gameObject);
         }
     }
