@@ -3,7 +3,12 @@ guid: 970a4aaa6283e0e4baa0d3b3feeceef6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: VertexMat_Temp
+    second: {fileID: 2100000, guid: 6b858154b4949c5458d1decada4aa558, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
