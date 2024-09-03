@@ -1,4 +1,3 @@
-using System;
 using Character.Utils;
 using Const;
 using System.Collections;
@@ -11,18 +10,12 @@ namespace Character
         public int Id;
         public Transform characterBody;
         public GameObject crown;
-        public new CharacterEntity CharacterEntity { get; private set; }
 
         public bool HasDashReady { get; private set; } = true;
         private const float MaxCountDownDash = 0.6f;
 
         public bool HasAttackReady { get; private set; } = true;
         private const float MaxCountDownMelee = Animations.TimePerFrame * 26f; // 13 frames animation
-
-        public new void Setup(CharacterEntity entity)
-        {
-            CharacterEntity = entity;
-        }
 
         public void EnableCrown()
         {

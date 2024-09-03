@@ -10,6 +10,7 @@ namespace Character
         public BoxCollider CharacterCollider;
         public CharacterInput CharacterInput;
         public CharacterMesh CharacterMesh;
+        public CharacterPowerUp CharacterPowerUp;
         public CharacterState CharacterState;
         public CharacterUI CharacterUI;
         public CharacterVFX CharacterVFX;

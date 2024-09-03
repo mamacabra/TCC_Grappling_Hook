@@ -14,16 +14,16 @@ namespace SceneSelect
         private int currentSceneIndex = -1;
 
         public void LoadRandomScene() {
-            
-            if (currentSceneIndex != -1)
-                UnloadCurrentScene();
 
-            currentSceneIndex = scenesData.GetNextScene();
-            onSceneLoadOperation = SceneManager.LoadSceneAsync(currentSceneIndex, LoadSceneMode.Additive);
+            // if (currentSceneIndex != -1)
+            //     UnloadCurrentScene();
+
+            // currentSceneIndex = scenesData.GetNextScene();
+            onSceneLoadOperation = SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
         }
 
         public void UnloadCurrentScene() {
-            
+
             onSceneUnloadOperation = SceneManager.UnloadSceneAsync(currentSceneIndex, UnloadSceneOptions.None);
             currentSceneIndex = -1;
         }

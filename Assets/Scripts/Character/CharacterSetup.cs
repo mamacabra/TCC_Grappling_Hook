@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Character.GrapplingHook;
 using Character.Melee;
-
 using Const;
 
 namespace Character
@@ -11,6 +10,7 @@ namespace Character
     [RequireComponent(typeof(Character))]
     [RequireComponent(typeof(CharacterInput))]
     [RequireComponent(typeof(CharacterMesh))]
+    [RequireComponent(typeof(CharacterPowerUp))]
     [RequireComponent(typeof(CharacterState))]
     [RequireComponent(typeof(CharacterUI))]
     [RequireComponent(typeof(CharacterVFX))]
@@ -34,6 +34,7 @@ namespace Character
             var characterCollider = gameObject.GetComponent<BoxCollider>();
             var characterInput = gameObject.GetComponent<CharacterInput>();
             var characterMesh = gameObject.GetComponent<CharacterMesh>();
+            var characterPowerUp = gameObject.GetComponent<CharacterPowerUp>();
             var characterRigidbody = gameObject.GetComponent<Rigidbody>();
             var characterState = gameObject.GetComponent<CharacterState>();
             var characterUI = gameObject.GetComponent<CharacterUI>();
@@ -47,6 +48,7 @@ namespace Character
                 CharacterCollider = characterCollider,
                 CharacterInput = characterInput,
                 CharacterMesh = characterMesh,
+                CharacterPowerUp = characterPowerUp,
                 CharacterState = characterState,
                 CharacterUI = characterUI,
                 CharacterVFX = characterVFX,
@@ -66,6 +68,7 @@ namespace Character
             character.Setup(characterEntity);
             characterInput.Setup(characterEntity);
             characterMesh.Setup(characterEntity);
+            characterPowerUp.Setup(characterEntity);
             characterState.Setup(characterEntity);
             characterUI.Setup(characterEntity);
             characterVFX.Setup(characterEntity);
