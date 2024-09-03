@@ -27,14 +27,12 @@ namespace Character
             }
 
             PowerUps.Add(powerUp);
+            CharacterEntity.CharacterUI.UpdatePowerUpsUI(PowerUps);
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag(Const.Tags.PowerUp) == false) return;
-
-            var powerUp = other.GetComponent<ScenePowerUpItem>();
-            if (powerUp == null) return;
+            if (other.CompareTag(Tags.PowerUp) == false) return;
 
             CatchPowerUp();
             Destroy(other.gameObject);
