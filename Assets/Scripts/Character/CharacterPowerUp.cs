@@ -36,7 +36,7 @@ namespace Character
         {
             APowerUp instance = null;
             if (powerUpVariant is PowerUpVariants.CharacterShieldPowerUp)
-                instance = new CharacterShieldAPowerUp(CharacterEntity);
+                instance = new CharacterShieldPowerUp(CharacterEntity);
 
             powerUpInstances.Add(instance);
         }
