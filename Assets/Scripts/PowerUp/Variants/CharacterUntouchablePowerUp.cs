@@ -1,7 +1,6 @@
 namespace PowerUp.Variants
 {
-    public class CharacterUntouchablePowerUp : IPowerUp
-    {
-
-    }
+    // public class CharacterUntouchablePowerUp : APowerUp
+    // {
+    // }
 }

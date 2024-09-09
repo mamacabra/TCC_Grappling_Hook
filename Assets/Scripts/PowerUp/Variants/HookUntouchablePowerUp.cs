@@ -1,7 +1,6 @@
 namespace PowerUp.Variants
 {
-    public class HookUntouchablePowerUp : IPowerUp
-    {
-
-    }
+    // public class HookUntouchableAPowerUp : APowerUp
+    // {
+    // }
 }

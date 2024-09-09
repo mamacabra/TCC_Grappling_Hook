@@ -1,7 +1,6 @@
 namespace PowerUp.Variants
 {
-    public class HookPathFirePowerUp : IPowerUp
-    {
-
-    }
+    // public class HookPathFirePowerUp : APowerUp
+    // {
+    // }
 }
