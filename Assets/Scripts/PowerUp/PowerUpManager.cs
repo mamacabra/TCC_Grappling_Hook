@@ -10,19 +10,21 @@ namespace PowerUp
         private static readonly PowerUpVariants[] AvailablePowerUps =
         {
             PowerUpVariants.CharacterShieldPowerUp,
-            PowerUpVariants.CharacterSpeedBoostPowerUp,
-            PowerUpVariants.CharacterUntouchablePowerUp,
-            PowerUpVariants.HookPathFirePowerUp,
-            PowerUpVariants.HookPathIcePowerUp,
-            PowerUpVariants.HookSplitPowerUp,
-            PowerUpVariants.HookTriplePowerUp,
-            PowerUpVariants.HookUntouchablePowerUp,
+            // PowerUpVariants.CharacterSpeedBoostPowerUp,
+            // PowerUpVariants.CharacterUntouchablePowerUp,
+            // PowerUpVariants.HookPathFirePowerUp,
+            // PowerUpVariants.HookPathIcePowerUp,
+            // PowerUpVariants.HookSplitPowerUp,
+            // PowerUpVariants.HookTriplePowerUp,
+            // PowerUpVariants.HookUntouchablePowerUp,
         };
 
-        public static PowerUpVariants Catch(List<PowerUpVariants> characterPowerUps)
+        public static PowerUpVariants? Catch(List<PowerUpVariants> characterPowerUps)
         {
             var filtered = Enumerable.ToList(AvailablePowerUps);
             filtered.RemoveAll(characterPowerUps.Contains);
+
+            if (filtered.Count == 0) return null;
             return filtered[Random.Range(0, filtered.Count)];
         }
     }
