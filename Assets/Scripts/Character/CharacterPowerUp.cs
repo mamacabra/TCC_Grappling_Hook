@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Character.Utils;
 using Const;
 using PowerUp;
+using PowerUp.Variants;
 using UnityEngine;
 
 namespace Character
@@ -10,11 +11,14 @@ namespace Character
     {
         private const int MaxPowerUps = 3;
         private readonly List<PowerUpVariants> powerUps = new();
+        private readonly List<APowerUp> powerUpInstances = new();
 
-        private void CatchPowerUp()
+        private void OnTriggerEnter(Collider other)
         {
-            var newPowerUp = PowerUpManager.Catch(powerUps);
-            if (newPowerUp != null) AddPowerUp((PowerUpVariants) newPowerUp);
+            if (other.CompareTag(Tags.PowerUp) == false) return;
+
+            CatchPowerUp();
+            Destroy(other.gameObject);
         }
 
         private void AddPowerUp(PowerUpVariants powerUp)
@@ -26,15 +30,29 @@ namespace Character
             }
 
             powerUps.Add(powerUp);
-            CharacterEntity.CharacterUI.UpdatePowerUpsUI(powerUps);
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void AddPowerUpInstance(PowerUpVariants powerUpVariant)
         {
-            if (other.CompareTag(Tags.PowerUp) == false) return;
+            APowerUp instance = null;
+            if (powerUpVariant is PowerUpVariants.CharacterShieldPowerUp)
+                instance = new CharacterShieldAPowerUp(CharacterEntity);
 
-            CatchPowerUp();
-            Destroy(other.gameObject);
+            powerUpInstances.Add(instance);
+        }
+
+        private void CatchPowerUp()
+        {
+            var newPowerUp = PowerUpManager.Catch(powerUps);
+
+            if (newPowerUp == null) return;
+
+            AddPowerUp((PowerUpVariants)newPowerUp);
+            AddPowerUpInstance((PowerUpVariants)newPowerUp);
+            CharacterEntity.CharacterUI.UpdatePowerUpsUI(powerUps);
+
+            foreach (var powerUpInstance in powerUpInstances)
+                powerUpInstance.OnCatch();
         }
     }
 }
