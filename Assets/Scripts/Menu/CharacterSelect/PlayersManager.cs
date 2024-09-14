@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using Character;
 using Character.Utils;
+using PowerUp;
 using SceneSelect;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -238,6 +239,7 @@ public class PlayersManager : MonoBehaviour
             GameOver = true;
             playersCountInScene = 0;
             //End Game
+            PowerUpManager.Instance.StopSpawn();
             CameraManager.Instance.OnEndFeedback = false;
             AddPoints(playerWhoKilled, scoreToAddToWinner);
             InterfaceManager.Instance.OnCallFeedbackGame(CheckIfGameOver());
