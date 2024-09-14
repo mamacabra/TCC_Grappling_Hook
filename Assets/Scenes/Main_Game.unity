@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414738, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -18820,6 +18820,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1362971441}
   - component: {fileID: 1362971440}
+  - component: {fileID: 1362971442}
   m_Layer: 0
   m_Name: ScenesManager
   m_TagString: Untagged
@@ -18855,6 +18856,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1362971442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362971439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b3962ee39cd4249bb641810c349741f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpItem: {fileID: 3019833826622679110, guid: f1c07dcd0a25d41a5b40643e89978d5e,
+    type: 3}
+  isSpawnEnable: 0
+  spawnPoints: []
+  spawnCountDown: 0
+  spawnCountDownDefault: 0.5
 --- !u!1 &1381164556
 GameObject:
   m_ObjectHideFlags: 0

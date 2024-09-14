@@ -1,20 +1,20 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using PowerUp;
 using TMPro;
 using UnityEngine;
 
 public class HudController : MonoBehaviour
 {
-   [Header("Count")] 
+   [Header("Count")]
    [SerializeField] private GameObject countGameObj;
    [SerializeField] private float timeToWaitToStartCount = 3;
    [SerializeField] private TextMeshProUGUI countGameStartText;
    [SerializeField] private string textToShowWhenCountOver = "VAI!";
    [SerializeField] private string textToShowWhenCountOverMatchPoint = "MATCH POINT!";
    [SerializeField] private List<Color32> colorsToChangeCountText;
-   
+
    private void OnEnable()
    {
       StartCoroutine(InitPlayers());
@@ -49,7 +49,7 @@ public class HudController : MonoBehaviour
       yield return new WaitForSeconds(timeToWaitToStartCount);
 
       countGameStartText.transform.localScale = Vector3.one;
-      
+
       countGameObj.SetActive(true);
       for (int i = 3; i > 0; i--)
       {
@@ -59,7 +59,7 @@ public class HudController : MonoBehaviour
          {
             countGameStartText.transform.DOScale(1f, 0.25f).SetEase(Ease.OutBack);
          });
-         
+
          yield return new WaitForSeconds(0.75f);
          yield return null;
 
@@ -87,19 +87,21 @@ public class HudController : MonoBehaviour
       {
          countGameStartText.transform.DOScale(1f, 0.25f).SetEase(Ease.OutBack);
       });
-      
+
       yield return new WaitForSeconds(0.75f);
       countGameStartText.transform.DOScale(0f, 0.25f).OnComplete(() =>
       {
          countGameObj.SetActive(false);
       });
-      
-      
+
+
       //Start game
       List<GameObject> players = PlayersManager.Instance.PlayersGameObjects;
       for (int i = 0; i < players.Count; i++) {
          if (players[i].TryGetComponent(out Character.Character _character))
             _character.CharacterEntity.CharacterState.SetWalkState();
       }
+
+      PowerUpManager.Instance.StartSpawn();
    }
 }
