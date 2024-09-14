@@ -11,38 +11,33 @@ namespace Character
     public class CharacterUI : ACharacterMonoBehaviour
     {
         [SerializeField] private Transform characterUI;
+        [SerializeField] private Transform characterCanvas;
+        [SerializeField] private Transform characterCanvasPanel;
 
-        [Header("Character UI")]
+        [Header("CharacterUI Texts")]
         [SerializeField] private Text characterStateText;
-
-        [Header("Grappling Hook UI")]
         [SerializeField] private Text forceText;
-
-        [Header("Power Ups")]
         [SerializeField] private Text powerUpText;
 
         private void Start()
         {
             characterUI = transform.Find("CharacterUI");
-            characterUI.gameObject.SetActive(true);
+            characterCanvas = characterUI?.Find("Canvas");
+            characterCanvasPanel = characterUI?.Find("Canvas/Panel");
 
-            FindTexts();
+            // forceText = characterUI?.Find("Canvas/ForceText").GetComponent<Text>();
+            // characterStateText = characterUI?.Find("Canvas/CharacterStateText").GetComponent<Text>();
+            powerUpText = characterUI?.Find("Canvas/PowerUpsText").GetComponent<Text>();
+
+            HiddenCharacterUI();
         }
 
         private void FixedUpdate()
         {
-            if (characterUI)
-            {
-                var dir = new Vector3(0, 70, -70);
-                characterUI?.LookAt(dir);
-            }
-        }
+            if (!characterUI) return;
 
-        private void FindTexts()
-        {
-            // forceText = characterUI?.Find("Canvas/ForceText").GetComponent<Text>();
-            // characterStateText = characterUI?.Find("Canvas/CharacterStateText").GetComponent<Text>();
-            powerUpText = characterUI?.Find("Canvas/PowerUpsText").GetComponent<Text>();
+            var dir = new Vector3(0, 70, -70);
+            characterUI?.LookAt(dir);
         }
 
         public void UpdateCharacterStateUI(string status)
@@ -58,9 +53,24 @@ namespace Character
         public void UpdatePowerUpsUI(List<PowerUpVariants> powerUps)
         {
             if (!powerUpText) return;
+            if (powerUps.Count > 0) ShowCharacterUI();
 
             var texts = powerUps.Aggregate("", (current, status) => current + "\n" + status);
             powerUpText.text = texts.Replace("PowerUp", "").Trim();
+        }
+
+        private void ShowCharacterUI()
+        {
+            characterUI?.gameObject.SetActive(true);
+            characterCanvas?.gameObject.SetActive(true);
+            characterCanvasPanel?.gameObject.SetActive(true);
+        }
+
+        public void HiddenCharacterUI()
+        {
+            characterUI?.gameObject.SetActive(false);
+            characterCanvas?.gameObject.SetActive(false);
+            characterCanvasPanel?.gameObject.SetActive(false);
         }
     }
 }

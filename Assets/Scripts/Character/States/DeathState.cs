@@ -28,6 +28,7 @@ namespace Character.States
             CharacterEntity.GrapplingHookTransform.gameObject.SetActive(false);
 
             CharacterEntity.Character.transform.Find("Body/MeshParent/Sushi_Model(Clone)/DirectionPointer")?.gameObject.SetActive(false);
+            CharacterEntity.CharacterUI.HiddenCharacterUI();
 
             RemoveColorLayer(CharacterEntity.Character.transform);
         }
