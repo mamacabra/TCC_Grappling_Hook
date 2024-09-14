@@ -9,17 +9,33 @@ namespace Character
     {
         public int Id;
         public Transform characterBody;
-        public GameObject crown;
 
+        public bool HasShield { get; private set; } = false;
         public bool HasDashReady { get; private set; } = true;
         private const float MaxCountDownDash = 0.6f;
 
         public bool HasAttackReady { get; private set; } = true;
         private const float MaxCountDownMelee = Animations.TimePerFrame * 26f; // 13 frames animation
 
+        [Header("3D Models")]
+        public GameObject crown;
+        [SerializeField] private GameObject shield;
+
+        public new void Setup(CharacterEntity entity)
+        {
+            base.Setup(entity);
+            ToggleShield();
+        }
+
         public void EnableCrown()
         {
             crown.SetActive(PlayersManager.Instance.CheckPlayerWinner(CharacterEntity.Character.Id));
+        }
+
+        public void ToggleShield(bool newStatus = false)
+        {
+            HasShield = newStatus;
+            if (shield) shield.SetActive(newStatus);
         }
 
         public void UseDash()
