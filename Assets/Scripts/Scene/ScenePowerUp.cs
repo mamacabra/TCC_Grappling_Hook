@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Scene
 {
-    public class ScenePowerUpItem : MonoBehaviour
+    public class ScenePowerUp : MonoBehaviour
     {
         private void Awake()
         {

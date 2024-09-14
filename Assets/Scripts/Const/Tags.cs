@@ -6,6 +6,7 @@ namespace Const
         public const string Object = "Object";
         public const string Wall = "Wall";
         public const string PowerUp = "PowerUp";
+        public const string PowerUpSpawner = "PowerUpSpawner";
     }
 
     public static class Animations
