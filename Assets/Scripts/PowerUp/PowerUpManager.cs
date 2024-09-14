@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Const;
 using UnityEngine;
 using Enumerable = System.Linq.Enumerable;
@@ -15,10 +16,10 @@ namespace PowerUp
 
         [Header("Spawn")]
         [SerializeField] private bool isSpawnEnable;
-        [SerializeField] private GameObject[] spawnPoints;
+        [SerializeField] private List<GameObject> spawnPoints;
 
-        [SerializeField] private float spawnCountDown;
-        [SerializeField] private float spawnCountDownDefault = 0.5f;
+        private float spawnCountDown;
+        private const float SpawnCountDownDefault = 5f;
 
         private static readonly PowerUpVariants[] AvailablePowerUps =
         {
@@ -44,17 +45,22 @@ namespace PowerUp
 
             spawnCountDown -= Time.fixedDeltaTime;
             if (spawnCountDown <= 0)
+            {
                 SpawnPowerUp();
+                ResetSpawnCountDown();
+            }
         }
 
         private void SpawnPowerUp()
         {
-            ResetSpawnCountDown();
-            if (spawnPoints.Length <= 0) return;
+            if (spawnPoints.Count <= 0) return;
 
-            var index = Random.Range(0, spawnPoints.Length);
-            var spawnTransform = spawnPoints[index].gameObject.transform;
-            Instantiate(powerUpItem, spawnTransform);
+            var index = Random.Range(0, spawnPoints.Count);
+            var spawnPoint = spawnPoints[index];
+            Instantiate(powerUpItem, spawnPoint.transform.position, Quaternion.identity);
+
+            spawnPoints.Remove(spawnPoint);
+            Destroy(spawnPoint);
         }
 
         public void StartSpawn()
@@ -70,26 +76,24 @@ namespace PowerUp
         public void StopSpawn()
         {
             isSpawnEnable = false;
-            ResetSpawnCountDown();
         }
 
         private void ResetSpawnCountDown()
         {
-            spawnCountDown = spawnCountDownDefault;
+            spawnCountDown = SpawnCountDownDefault;
+            if (spawnPoints.Count == 0) StopSpawn();
         }
 
         private static void FindAndDestroyPowerUps()
         {
             var powerUps = GameObject.FindGameObjectsWithTag(Tags.PowerUp);
-            foreach (var powerUp in powerUps)
-                Destroy(powerUp);
+            foreach (var powerUp in powerUps) Destroy(powerUp);
         }
 
         private void FindPowerUpsSpawnPoints()
         {
-            var a = GameObject.FindGameObjectsWithTag(Tags.PowerUpSpawner);
-            spawnPoints = a;
-            if (spawnPoints.Length == 0) StopSpawn();
+            var gameObjects = GameObject.FindGameObjectsWithTag(Tags.PowerUpSpawner);
+            spawnPoints = gameObjects.ToList();
         }
 
         public static PowerUpVariants? Catch(List<PowerUpVariants> characterPowerUps)
