@@ -5,8 +5,13 @@ namespace Character.States
 {
     public class DeathState : ACharacterState
     {
-        public DeathState(CharacterEntity characterEntity, Transform killefBy) : base(characterEntity) { m_killedBy = killefBy; }
         Transform m_killedBy;
+
+        public DeathState(CharacterEntity characterEntity, Transform killefBy) : base(characterEntity)
+        {
+            m_killedBy = killefBy;
+        }
+
         public override void Enter()
         {
             AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.AttackHitPlayer);
