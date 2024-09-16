@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: FoodAtlas_Mat_01
+    second: {fileID: 2100000, guid: d15630311ad6b464d9c7d76cb137e8c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: VertexMat_ShineTemp
     second: {fileID: 2100000, guid: e8710e6885e2c974a86ad5a1af48e890, type: 2}
   - first:
