@@ -1,83 +1,99 @@
+using System.Collections.Generic;
+using Character;
+using UnityEngine;
+using Character.States;
+using Character.Utils;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace TrapSystem_Scripts
 {
     public class LimitTrap : MonoBehaviour
-{
-    public Transform fallingObjectPrefab;  // Prefab of the object that will fall
-    public float minX = -25f;              // Minimum X boundary
-    public float maxX = 25f;               // Maximum X boundary
-    public float minZ = -25f;              // Minimum Z boundary
-    public float maxZ = 25f;               // Maximum Z boundary
-    public float fallHeight = 50f;         // Height from which the object will fall
-    public float timeBeforeDeath = 3f;     // Time before the object falls
-
-    private Transform player;
-    private bool isOutsideArena = false;
-    private float outsideTime = 0f;
-
-    void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;  // Find player by tag
-    }
+        [Header("Configurações do Objeto que Cai")]
+        public GameObject fallingObjectPrefab;  
+        public float fallHeight = 50f;         
 
-    void Update()
-    {
-        // Check if player is outside the square arena
-        if (player.position.x < minX || player.position.x > maxX || 
-            player.position.z < minZ || player.position.z > maxZ)
+        [Header("Limites da Arena")]
+        public float minX = -25f;              
+        public float maxX = 25f;               
+        public float minZ = -25f;              
+        public float maxZ = 25f;               
+
+        [Header("Configurações de Tempo")]
+        public float timeBeforeDeath = 3f;     
+
+        private List<PlayerTrapData> players = new List<PlayerTrapData>();
+
+        void Start()
         {
-            if (!isOutsideArena)
+            GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Character");
+            foreach (GameObject playerObject in playerObjects)
             {
-                isOutsideArena = true;
-                outsideTime = Time.time;
-            }
-            else
-            {
-                // Check if time limit is reached
-                if (Time.time - outsideTime >= timeBeforeDeath)
+                Transform playerTransform = playerObject.transform;
+                players.Add(new PlayerTrapData
                 {
-                    SpawnFallingObject();
-                    isOutsideArena = false;  // Reset
+                    playerTransform = playerTransform,
+                    isOutsideArena = false,
+                    outsideTime = 0f
+                });
+            }
+
+            if (players.Count == 0)
+            {
+                Debug.Log("Nenhum jogador encontrado! Certifique-se de que os jogadores possuem a tag 'Character'.");
+            }
+        }
+
+        void Update()
+        {
+            foreach (var playerData in players)
+            {
+                Transform player = playerData.playerTransform;
+                if (player == null) continue;
+
+                bool isPlayerOutside = player.position.x < minX || player.position.x > maxX || 
+                                       player.position.z < minZ || player.position.z > maxZ;
+
+                if (isPlayerOutside)
+                {
+                    if (!playerData.isOutsideArena)
+                    {
+                        playerData.isOutsideArena = true;
+                        playerData.outsideTime = Time.time;
+                    }
+                    else if (Time.time - playerData.outsideTime >= timeBeforeDeath)
+                    {
+                        SpawnFallingObject(player);
+                        playerData.isOutsideArena = false;
+                    }
+                }
+                else
+                {
+                    playerData.isOutsideArena = false;
                 }
             }
         }
-        else
+
+        void SpawnFallingObject(Transform player)
         {
-            // Reset if player is back inside arena
-            isOutsideArena = false;
+            if (fallingObjectPrefab == null)
+            {
+                Debug.LogError("Prefab do Objeto que Cai não foi atribuído.");
+                return;
+            }
+
+            Vector3 spawnPosition = new Vector3(player.position.x, fallHeight, player.position.z);
+            Instantiate(fallingObjectPrefab, spawnPosition, Quaternion.identity);
         }
     }
 
-    void SpawnFallingObject()
+   
+
+    public class PlayerTrapData
     {
-        Vector3 spawnPosition = new Vector3(player.position.x, fallHeight, player.position.z);
-        Instantiate(fallingObjectPrefab, spawnPosition, Quaternion.identity);
+        public Transform playerTransform;
+        public bool isOutsideArena;
+        public float outsideTime;
     }
 }
-
-public class FallingObject : MonoBehaviour
-{
-    public float fallSpeed = 20f;
-
-    void Update()
-    {
-        transform.Translate(Vector3.down * fallSpeed * Time.deltaTime);
-
-        if (transform.position.y <= 0) // Assuming ground level is at y = 0
-        {
-            Destroy(gameObject);  // Destroy the object if it reaches the ground
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            // Implement player death logic here
-            Destroy(collision.gameObject);  // Example: destroy player on contact
-        }
-    }
-}
-}
-

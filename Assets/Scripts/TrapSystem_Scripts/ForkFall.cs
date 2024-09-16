@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Character.States;
 
 namespace TrapSystem_Scripts
 {
@@ -18,12 +19,14 @@ namespace TrapSystem_Scripts
             }
         }
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnTriggerEnter(Collider other)
         {
-            if (collision.gameObject.CompareTag("Player"))
+            if (other.CompareTag("Character") == false) return;
+            if (other.GetComponent<Character.CharacterState>() is DeathState) return;
+            
+            if (other.CompareTag("Character"))
             {
-                // Implement player death logic here
-                Destroy(collision.gameObject);  // Example: destroy player on contact
+                other.GetComponent<Character.CharacterEntity>().CharacterState.SetDeathState(other.transform);
             }
         }
     }

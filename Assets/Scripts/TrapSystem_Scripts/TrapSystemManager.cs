@@ -1,18 +1,31 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrapSystemManager : MonoBehaviour
+namespace TrapSystem_Scripts
 {
-    // Start is called before the first frame update
-    void Start()
+    public class TrapSystemManager : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private GameObject trapMenuUI;
+        void Start()
+        {
+            
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Home))
+            {
+                ToggleTrapMenu();
+            }
+        }
+
+        private void ToggleTrapMenu()
+        {
+            trapMenuUI.SetActive(!trapMenuUI.activeSelf);
+        }
         
     }
+    
 }
