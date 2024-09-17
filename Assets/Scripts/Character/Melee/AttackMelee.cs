@@ -23,8 +23,14 @@ namespace Character.Melee
 
             var enemy = other.GetComponent<Character>();
             if (enemy == null) return;
-            if (enemy.ShouldReceiveAttack() == false) return;
             if (enemy.CharacterEntity.CharacterState.State is DeathState) return;
+
+            if (enemy.ShouldReceiveAttack() == false)
+            {
+                CharacterEntity.CharacterState.SetKnockbackState();
+                AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.AttackParry);
+                return;
+            }
 
             if (enemy.CharacterEntity.CharacterState.State is AttackMeleeState)
             {

@@ -36,15 +36,29 @@ namespace Character
         {
             if (powerUpVariant is PowerUpVariants.CharacterShieldPowerUp)
             {
-                powerUps.Remove(powerUpVariant);
-                foreach (var powerUp in powerUpInstances)
+                if (powerUps.Count > 0)
                 {
-                    if (powerUp is CharacterShieldPowerUp)
+                    for (var i = 0; i < powerUps.Count; i++)
                     {
-                        powerUp.OnDrop();
-                        powerUpInstances.Remove(powerUp);
+                        if (powerUps[i] == powerUpVariant)
+                        {
+                            powerUps.Remove(powerUps[i]);
+                        }
                     }
                 }
+
+                if (powerUpInstances.Count > 0)
+                {
+                    for (var i = 0; i < powerUpInstances.Count; i++)
+                    {
+                        if (powerUpInstances[i] is CharacterShieldPowerUp)
+                        {
+                            powerUpInstances[i].OnDrop();
+                            powerUpInstances.Remove(powerUpInstances[i]);
+                        }
+                    }
+                }
+
             }
         }
 
