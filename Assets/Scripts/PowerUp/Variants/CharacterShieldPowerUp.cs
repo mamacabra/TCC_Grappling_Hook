@@ -10,5 +10,10 @@ namespace PowerUp.Variants
         {
             CharacterEntity.Character.ToggleShield(true);
         }
+
+        public override void OnDrop()
+        {
+            CharacterEntity.Character.ToggleShield(false);
+        }
     }
 }
