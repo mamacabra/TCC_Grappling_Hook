@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour
     private string musicBusPath;
     FMOD.Studio.Bus musicBus;
     public float musicVolume;
+    FMOD.Studio.EventInstance gameMusic;
 
     [SerializeField]
     private string sfxBusPath;
@@ -32,10 +33,38 @@ public class AudioManager : MonoBehaviour
             audioManager = this;
             musicBus = RuntimeManager.GetBus(musicBusPath);
             sfxBus = RuntimeManager.GetBus(sfxBusPath);
+            ChangeMusic();
         }
         DontDestroyOnLoad(this);
     }
 
+    public void ChangeMusic()
+    {
+        gameMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        string music;
+        int aux = Random.Range(1, 3 + 1);
+        switch (aux)
+        {
+            case 1:
+                music = MusicList.Music1.ToString();
+                break;
+
+            case 2:
+                music = MusicList.Music2.ToString();
+                break;
+
+            case 3:
+                music = MusicList.Music3.ToString();                
+                break;
+
+            default:
+                music = MusicList.Music1.ToString();
+                break;
+
+        }
+        gameMusic = RuntimeManager.CreateInstance("event:/Musics/" + music);
+        gameMusic.start();
+    }
     public void PlayUiSoundEffect(string uiSound)
     {
         RuntimeManager.PlayOneShot("event:/MenuEffects/UiSounds/" + uiSound);
@@ -80,6 +109,10 @@ public class AudioManager : MonoBehaviour
             {
                 PlayPlayerSoundEffect(soundTest);
             }
+            if (Input.GetKeyDown(KeyCode.N))
+            {
+                ChangeMusic();
+            }
         }      
     }
 
@@ -107,3 +140,4 @@ public class AudioManager : MonoBehaviour
 
 public enum UiSoundsList { None, Confirm, Return, Cancel, Select, SelectUpPitch, SelectDownPitch};
 public enum PlayerSoundsList { HookCharge, HookFire, HookHitPlayer, HookHitWall, HookReturn, AttackParry, AttackMiss, AttackHitPlayer, PlayerDash, PlayerSpawn, PlayerWalk};
+public enum MusicList { Music1, Music2, Music3};
