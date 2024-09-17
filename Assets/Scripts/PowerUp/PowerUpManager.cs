@@ -57,10 +57,12 @@ namespace PowerUp
 
             var index = Random.Range(0, spawnPoints.Count);
             var spawnPoint = spawnPoints[index];
-            Instantiate(powerUpItem, spawnPoint.transform.position, Quaternion.identity);
-
-            spawnPoints.Remove(spawnPoint);
-            Destroy(spawnPoint);
+            if (spawnPoint)
+            {
+                Instantiate(powerUpItem, spawnPoint.transform.position, Quaternion.identity);
+                spawnPoints.Remove(spawnPoint);
+                Destroy(spawnPoint);
+            }
         }
 
         public void StartSpawn()
