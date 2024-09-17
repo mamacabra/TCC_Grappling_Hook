@@ -29,6 +29,7 @@ namespace Character.GrapplingHook
             if (character == CharacterEntity.Character) return;
 
             var enemy = other.GetComponent<Character>();
+            if (enemy.ShouldBeCaught() == false) return;
             if (enemy.CharacterEntity.CharacterState.State is HookedToEnemyState) return;
 
             CharacterEntity.CharacterState.SetCaughtEnemyState(enemy.CharacterEntity);

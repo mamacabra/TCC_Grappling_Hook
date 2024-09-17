@@ -1,7 +1,6 @@
 using Character.States;
 using Character.Utils;
 using UnityEngine;
-using Character.GrapplingHook;
 
 namespace Character.Melee
 {
@@ -24,6 +23,7 @@ namespace Character.Melee
 
             var enemy = other.GetComponent<Character>();
             if (enemy == null) return;
+            if (enemy.ShouldReceiveAttack() == false) return;
             if (enemy.CharacterEntity.CharacterState.State is DeathState) return;
 
             if (enemy.CharacterEntity.CharacterState.State is AttackMeleeState)
@@ -57,7 +57,6 @@ namespace Character.Melee
                 }
             }
         }
-
 
         public void DisableHitbox()
         {

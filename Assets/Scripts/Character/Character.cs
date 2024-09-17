@@ -24,7 +24,7 @@ namespace Character
         public new void Setup(CharacterEntity entity)
         {
             base.Setup(entity);
-            ToggleShield();
+            ToggleShield(false);
         }
 
         public void EnableCrown()
@@ -32,7 +32,7 @@ namespace Character
             crown.SetActive(PlayersManager.Instance.CheckPlayerWinner(CharacterEntity.Character.Id));
         }
 
-        public void ToggleShield(bool newStatus = false)
+        public void ToggleShield(bool newStatus)
         {
             HasShield = newStatus;
             if (shield) shield.SetActive(newStatus);
@@ -68,6 +68,28 @@ namespace Character
 
             direction.y = 0;
             CharacterEntity.Character.characterBody.LookAt(direction);
+        }
+
+        public bool ShouldReceiveAttack()
+        {
+            if (HasShield == false) return true;
+
+            DropShield();
+            return false;
+        }
+
+        public bool ShouldBeCaught()
+        {
+            if (HasShield == false) return true;
+
+            DropShield();
+            return false;
+        }
+
+        private void DropShield()
+        {
+            HasShield = false;
+            CharacterEntity.CharacterPowerUp.DropPowerUp(PowerUpVariants.CharacterShieldPowerUp);
         }
     }
 }
