@@ -1,5 +1,7 @@
 using UnityEngine;
 
+using TrapSystem_Scripts.ModifierSystem;
+
 namespace Character.Utils
 {
     public abstract class ACharacterState
@@ -8,6 +10,8 @@ namespace Character.Utils
         protected readonly Transform Transform;
 
         private const float WalkSpeed = 20f;
+
+        private Vector3 currentSpeed;
 
         private bool hasHitLeft;
         private Color RaycastColorLeft => hasHitLeft ? Color.red : Color.green;
@@ -74,7 +78,18 @@ namespace Character.Utils
             else hasHitRight = false;
 
             direction = direction.normalized;
-            Transform.Translate(direction * (speed * Time.deltaTime));
+
+
+            if ((CharacterEntity.Character as IModifyable).TryGetModifier(out AccelerationModifier accelerationModifier)){
+                // Calculate the target speed based on the direction and max speed
+                Vector3 targetSpeed = direction.normalized * accelerationModifier.maxSpeed;
+
+                // Gradually increase the current speed towards the target speed
+                currentSpeed = Vector3.MoveTowards(currentSpeed, targetSpeed, accelerationModifier.acceleration * Time.deltaTime);
+            }
+            else currentSpeed = direction * speed;
+                
+            Transform.Translate(currentSpeed * Time.deltaTime);
         }
 
         protected void LookAt()

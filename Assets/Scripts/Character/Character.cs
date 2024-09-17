@@ -1,11 +1,13 @@
 using Character.Utils;
 using Const;
 using System.Collections;
+using System.Collections.Generic;
+using TrapSystem_Scripts.ModifierSystem;
 using UnityEngine;
 
 namespace Character
 {
-    public class Character : ACharacterMonoBehaviour
+    public class Character : ACharacterMonoBehaviour, IModifyable
     {
         public int Id;
         public Transform characterBody;
@@ -15,6 +17,10 @@ namespace Character
         private const float MaxCountDownDash = 0.6f;
 
         public bool HasAttackReady { get; private set; } = true;
+
+        public List<AModifier> Modifiers => modifiers;
+        [SerializeField] private List<AModifier> modifiers = new();
+
         private const float MaxCountDownMelee = Animations.TimePerFrame * 26f; // 13 frames animation
 
         [Header("3D Models")]
