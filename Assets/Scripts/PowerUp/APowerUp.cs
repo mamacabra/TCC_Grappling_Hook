@@ -12,5 +12,7 @@ namespace PowerUp
         }
 
         public virtual void OnCatch() {}
+
+        public virtual void OnDrop() {}
     }
 }

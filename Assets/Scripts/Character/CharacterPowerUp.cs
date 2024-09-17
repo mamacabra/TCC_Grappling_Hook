@@ -32,6 +32,36 @@ namespace Character
             powerUps.Add(powerUp);
         }
 
+        public void DropPowerUp(PowerUpVariants powerUpVariant)
+        {
+            if (powerUpVariant is PowerUpVariants.CharacterShieldPowerUp)
+            {
+                if (powerUps.Count > 0)
+                {
+                    for (var i = 0; i < powerUps.Count; i++)
+                    {
+                        if (powerUps[i] == powerUpVariant)
+                        {
+                            powerUps.Remove(powerUps[i]);
+                        }
+                    }
+                }
+
+                if (powerUpInstances.Count > 0)
+                {
+                    for (var i = 0; i < powerUpInstances.Count; i++)
+                    {
+                        if (powerUpInstances[i] is CharacterShieldPowerUp)
+                        {
+                            powerUpInstances[i].OnDrop();
+                            powerUpInstances.Remove(powerUpInstances[i]);
+                        }
+                    }
+                }
+
+            }
+        }
+
         private void AddPowerUpInstance(PowerUpVariants powerUpVariant)
         {
             APowerUp instance = null;
