@@ -32,6 +32,22 @@ namespace Character
             powerUps.Add(powerUp);
         }
 
+        public void DropPowerUp(PowerUpVariants powerUpVariant)
+        {
+            if (powerUpVariant is PowerUpVariants.CharacterShieldPowerUp)
+            {
+                powerUps.Remove(powerUpVariant);
+                foreach (var powerUp in powerUpInstances)
+                {
+                    if (powerUp is CharacterShieldPowerUp)
+                    {
+                        powerUp.OnDrop();
+                        powerUpInstances.Remove(powerUp);
+                    }
+                }
+            }
+        }
+
         private void AddPowerUpInstance(PowerUpVariants powerUpVariant)
         {
             APowerUp instance = null;
