@@ -18,6 +18,7 @@ namespace Character
 
         public bool HasAttackReady { get; private set; } = true;
 
+        [HideInInspector] public Vector3 CurrentSpeed;
         public List<AModifier> Modifiers => modifiers;
         [SerializeField] private List<AModifier> modifiers = new();
 

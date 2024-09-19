@@ -855,7 +855,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8733334374224956458}
-  - component: {fileID: 6440661054344410166}
+  - component: {fileID: 807697065089142817}
   - component: {fileID: 3998323511499079317}
   m_Layer: 0
   m_Name: GlueTrap
@@ -880,7 +880,7 @@ Transform:
   - {fileID: 5187662697947616193}
   m_Father: {fileID: 453916438303988573}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6440661054344410166
+--- !u!114 &807697065089142817
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -889,10 +889,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3602342812759737974}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35e6d12d95b2ceed5aa9a4f5cf421623, type: 3}
+  m_Script: {fileID: 11500000, guid: 9640fe8324c5878a28eebc9e71096047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 25
+  acceleration: 30
   maxSpeed: 5
 --- !u!65 &3998323511499079317
 BoxCollider:
@@ -2350,8 +2350,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e6d12d95b2ceed5aa9a4f5cf421623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 10
-  maxSpeed: 40
+  acceleration: 50
+  maxSpeed: 30
 --- !u!65 &445982979980050811
 BoxCollider:
   m_ObjectHideFlags: 0

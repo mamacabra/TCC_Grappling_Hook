@@ -6,24 +6,14 @@ namespace TrapSystem_Scripts.ModifierSystem
     public interface IModifyable {
         List<AModifier> Modifiers { get; }
         void AddModifier(AModifier modifier) {
-            if (!Modifiers.Contains(modifier)) Modifiers.Add(modifier);
+            if (Modifiers.Contains(modifier)) return;
+            Modifiers.Add(modifier);
+            modifier.Enter();
         }
         void RemoveModifier(AModifier modifier){
-            if (Modifiers.Contains(modifier)) Modifiers.Remove(modifier);
-        }
-
-        public bool TryGetModifier<T>(out T result) where T : AModifier
-        {
-            result = null;
-            foreach (AModifier modifier in Modifiers)
-            {
-                if (modifier is T)
-                {
-                    result = modifier as T;
-                    return true;
-                }
-            }
-            return false; // Return a default value if the modifier is not found
+            if (!Modifiers.Contains(modifier)) return;
+            Modifiers.Remove(modifier);
+            modifier.Exit();
         }
     }
 }

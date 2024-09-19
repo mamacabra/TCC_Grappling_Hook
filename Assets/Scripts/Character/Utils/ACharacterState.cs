@@ -10,8 +10,8 @@ namespace Character.Utils
         protected readonly Transform Transform;
 
         private const float WalkSpeed = 20f;
-
-        private Vector3 currentSpeed;
+        Vector3 targetSpeed;
+        float acceleration;
 
         private bool hasHitLeft;
         private Color RaycastColorLeft => hasHitLeft ? Color.red : Color.green;
@@ -41,8 +41,8 @@ namespace Character.Utils
             }
 
             var origin = new Vector3(Transform.position.x, 1f, Transform.position.z);
-            var direction = Vector3.forward * CharacterEntity.CharacterInput.MoveDirection.magnitude;
-            if (isDash) direction = Vector3.forward;
+            var direction = CharacterEntity.CharacterInput.MoveDirection;
+            if (isDash) direction = Transform.forward; // It allows dash when stoped.
 
             var rayLeftDirection = (Transform.forward + Transform.right * -1).normalized;
             Physics.Raycast(origin, rayLeftDirection, out var hitLeft, RaycastDistance);
@@ -78,27 +78,39 @@ namespace Character.Utils
             else hasHitRight = false;
 
             direction = direction.normalized;
+            targetSpeed = direction * speed;
+            acceleration = 500f * Time.deltaTime;
 
+            bool hasSlow = false;
 
-            if ((CharacterEntity.Character as IModifyable).TryGetModifier(out AccelerationModifier accelerationModifier)){
-                // Calculate the target speed based on the direction and max speed
-                Vector3 targetSpeed = direction.normalized * accelerationModifier.maxSpeed;
-
-                // Gradually increase the current speed towards the target speed
-                currentSpeed = Vector3.MoveTowards(currentSpeed, targetSpeed, accelerationModifier.acceleration * Time.deltaTime);
+            foreach (var modifier in CharacterEntity.Character.Modifiers) {
+                if (modifier is MovementModifier) modifier.ApplyModifier(ref targetSpeed, ref acceleration, direction);
+                hasSlow = modifier is GlueModifier;
             }
-            else currentSpeed = direction * speed;
-                
-            Transform.Translate(currentSpeed * Time.deltaTime);
+
+            if (isDash) {
+                CharacterEntity.Character.CurrentSpeed = direction * speed;
+                targetSpeed = direction * speed;
+                acceleration = 500f * Time.deltaTime;
+            }
+
+            if (hasSlow && CharacterEntity.Character.CurrentSpeed.magnitude > WalkSpeed){
+                CharacterEntity.Character.CurrentSpeed *= 0.5f;
+                acceleration = 700f * Time.deltaTime;
+            }
+
+            CharacterEntity.Character.CurrentSpeed = Vector3.MoveTowards(CharacterEntity.Character.CurrentSpeed, targetSpeed, acceleration);
+
+            Transform.Translate(CharacterEntity.Character.CurrentSpeed * Time.deltaTime, Space.World);
         }
 
         protected void LookAt()
         {
-            var direction = CharacterEntity.CharacterInput.MoveDirection;
+            var direction = CharacterEntity.CharacterInput.MoveDirection.normalized;
             if (direction == Vector3.zero) return;
 
-            var lookDirection = CharacterEntity.CharacterInput.LookDirection;
-            CharacterEntity.Character.characterBody.LookAt(lookDirection);
+            var targetRotation = Quaternion.LookRotation(direction);
+            Transform.rotation = Quaternion.Slerp(Transform.rotation , targetRotation, Time.deltaTime * 35f);
         }
     }
 }

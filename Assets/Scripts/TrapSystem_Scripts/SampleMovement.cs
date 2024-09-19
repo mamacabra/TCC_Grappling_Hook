@@ -7,10 +7,10 @@ using UnityEngine.InputSystem;
 
 public class SampleMovement : MonoBehaviour, IModifyable
 {
-    public float acceleration = 2.0f;
-    public float maxSpeed = 10.0f;
-    public float speed = 5.0f;
-    [SerializeField] private Vector3 currentSpeed = Vector3.zero;
+    public float acceleration;
+    public Vector3 targetSpeed;
+    public float speed = 20.0f;
+    public Vector3 currentSpeed = Vector3.zero;
 
     [SerializeField] Vector2 Axes;
 
@@ -26,16 +26,20 @@ public class SampleMovement : MonoBehaviour, IModifyable
     }
 
     void MoveDirection(Vector3 dir) {
-        
-        if (((IModifyable)this).TryGetModifier(out AccelerationModifier modifier)) {
-            // Calculate the target speed based on the direction and max speed
-            Vector3 targetSpeed = dir.normalized * modifier.maxSpeed;
+        targetSpeed = dir.normalized * Mathf.MoveTowards(currentSpeed.magnitude, speed, 50 * Time.deltaTime);
+        acceleration = speed;
 
-            // Gradually increase the current speed towards the target speed
-            currentSpeed = Vector3.MoveTowards(currentSpeed, targetSpeed, modifier.acceleration * Time.deltaTime);
+        foreach (var modifier in Modifiers) {
+            if (modifier is MovementModifier) modifier.ApplyModifier(ref targetSpeed, ref acceleration, dir);
         }
-        else currentSpeed = dir.normalized * speed;
 
-        transform.Translate(currentSpeed * Time.deltaTime);
+        currentSpeed = Vector3.MoveTowards(currentSpeed, targetSpeed, acceleration);
+
+        if (dir != Vector3.zero) {
+            var lookRotation = Quaternion.LookRotation(dir);
+            transform.rotation = Quaternion.SlerpUnclamped(transform.rotation, lookRotation, 15 * Time.deltaTime);
+        }
+
+        transform.Translate(currentSpeed * Time.deltaTime, Space.World);
     }
 }

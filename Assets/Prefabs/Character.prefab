@@ -5202,6 +5202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 0
   characterBody: {fileID: 5115332766215830745}
+  CurrentSpeed: {x: 0, y: 0, z: 0}
   crown: {fileID: 8077595796473120523}
   shield: {fileID: 617459733254561399}
 --- !u!114 &6154435207289440195
