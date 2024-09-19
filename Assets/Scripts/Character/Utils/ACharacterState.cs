@@ -10,6 +10,7 @@ namespace Character.Utils
         protected readonly Transform Transform;
 
         private const float WalkSpeed = 20f;
+        private const float WalkAcceleration = 500f;
         Vector3 targetSpeed;
         float acceleration;
 
@@ -79,7 +80,7 @@ namespace Character.Utils
 
             direction = direction.normalized;
             targetSpeed = direction * speed;
-            acceleration = 500f * Time.deltaTime;
+            acceleration = WalkAcceleration * Time.deltaTime;
 
             bool hasSlow = false;
 
@@ -91,12 +92,12 @@ namespace Character.Utils
             if (isDash) {
                 CharacterEntity.Character.CurrentSpeed = direction * speed;
                 targetSpeed = direction * speed;
-                acceleration = 500f * Time.deltaTime;
+                acceleration = WalkAcceleration * Time.deltaTime;
             }
 
             if (hasSlow && CharacterEntity.Character.CurrentSpeed.magnitude > WalkSpeed){
                 CharacterEntity.Character.CurrentSpeed *= 0.5f;
-                acceleration = 700f * Time.deltaTime;
+                acceleration = (WalkAcceleration + WalkAcceleration * 0.5f) * Time.deltaTime;
             }
 
             CharacterEntity.Character.CurrentSpeed = Vector3.MoveTowards(CharacterEntity.Character.CurrentSpeed, targetSpeed, acceleration);
