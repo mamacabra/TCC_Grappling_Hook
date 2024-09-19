@@ -138,6 +138,6 @@ public class AudioManager : MonoBehaviour
     
 }
 
-public enum UiSoundsList { None, Confirm, Return, Cancel, Select, SelectUpPitch, SelectDownPitch};
-public enum PlayerSoundsList { HookCharge, HookFire, HookHitPlayer, HookHitWall, HookReturn, AttackParry, AttackMiss, AttackHitPlayer, PlayerDash, PlayerSpawn, PlayerWalk};
+public enum UiSoundsList { None, Confirm, Return, Cancel, Select, SelectUpPitch, SelectDownPitch, GainKillPoint, GameCountDown};
+public enum PlayerSoundsList { HookCharge, HookFire, HookHitPlayer, HookHitWall, HookReturn, AttackParry, AttackMiss, AttackHitPlayer, PlayerDash, PlayerSpawn, PlayerWalk, PlayerJellyWalk, PowerUpSpawn, PowerUpPickUp, PowerUpShieldBreak};
 public enum MusicList { Music1, Music2, Music3};
