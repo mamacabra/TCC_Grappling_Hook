@@ -35,11 +35,7 @@ public class HudController : MonoBehaviour
          if (players[i].TryGetComponent(out Character.Character _character)) {
             yield return new WaitForSeconds(2.5f/6f);
 
-             AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.PlayerSpawn);
-            _character.CharacterEntity.CharacterMesh.GetMeshParent.SetActive(true);
-            _character.CharacterEntity.GrapplingHookTransform.gameObject.SetActive(true);
-            _character.CharacterEntity.GrapplingHookRope.SetActive(true);
-            _character.CharacterEntity.CharacterMesh.animator?.SetTrigger("onSpawn");
+            _character.PlaySpawnAnims();
          }
       }
    }

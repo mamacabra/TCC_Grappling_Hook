@@ -1,3 +1,4 @@
+using Character.States;
 using Character.Utils;
 using Const;
 using System.Collections;
@@ -97,6 +98,17 @@ namespace Character
         {
             HasShield = false;
             CharacterEntity.CharacterPowerUp.DropPowerUp(PowerUpVariants.CharacterShieldPowerUp);
+        }
+        
+        public void PlaySpawnAnims()
+        {
+            if (CharacterEntity.CharacterState.State is not ReadyState) return;
+            
+            AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.PlayerSpawn);
+            CharacterEntity.CharacterMesh.GetMeshParent.SetActive(true);
+            CharacterEntity.GrapplingHookTransform.gameObject.SetActive(true);
+            CharacterEntity.GrapplingHookRope.SetActive(true);
+            CharacterEntity.CharacterMesh.animator?.SetTrigger("onSpawn");
         }
     }
 }
