@@ -21,6 +21,7 @@ namespace Character.Utils
         private bool hasHitRight;
         private Color RaycastColorRight => hasHitRight ? Color.red : Color.green;
         protected const float RaycastDistance = 2f;
+        private bool hasHit;
 
         protected ACharacterState(CharacterEntity characterEntity)
         {
@@ -57,24 +58,37 @@ namespace Character.Utils
             Physics.Raycast(origin, rayRightDirection, out var hitRight, RaycastDistance);
             Debug.DrawRay(origin, rayRightDirection * RaycastDistance, RaycastColorRight);
 
+            var boxCenterDirection = Transform.forward;
+            var colliders = new Collider[10];
+            Physics.OverlapBoxNonAlloc(origin, Vector3.one, colliders, Quaternion.identity);
+
+            foreach (var collider in colliders)
+            {
+                if (collider && collider.gameObject != CharacterEntity.Character.gameObject) {
+                    hasHit = collider.CompareTag(Const.Tags.Wall) || collider.CompareTag(Const.Tags.Object) || collider.CompareTag(Const.Tags.Character);
+                    if (hasHit) direction += Transform.forward * -0.5f;
+                }
+                else hasHit = false;
+            }
+
             if (hitLeft.collider)
             {
                 hasHitLeft = hitLeft.collider.CompareTag(Const.Tags.Wall) || hitLeft.collider.CompareTag(Const.Tags.Object) || hitLeft.collider.CompareTag(Const.Tags.Character);
-                if (hasHitLeft) direction += Vector3.right * 0.5f;
+                if (hasHitLeft) direction += Transform.right * 0.5f;
             }
             else hasHitLeft = false;
 
             if (hitCenter.collider)
             {
                 hasHitCenter = hitCenter.collider.CompareTag(Const.Tags.Wall) || hitCenter.collider.CompareTag(Const.Tags.Object) || hitCenter.collider.CompareTag(Const.Tags.Character);
-                if (hasHitCenter) direction = new Vector3(direction.x, direction.y, 0);
+                if (hasHitCenter) direction -= direction;
             }
             else hasHitCenter = false;
 
             if (hitRight.collider)
             {
                 hasHitRight = hitRight.collider.CompareTag(Const.Tags.Wall) || hitRight.collider.CompareTag(Const.Tags.Object) || hitRight.collider.CompareTag(Const.Tags.Character);
-                if (hasHitRight) direction += Vector3.right * -0.5f;
+                if (hasHitRight) direction += Transform.right * -0.5f;
             }
             else hasHitRight = false;
 
