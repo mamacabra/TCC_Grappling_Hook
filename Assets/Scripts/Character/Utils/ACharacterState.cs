@@ -11,6 +11,7 @@ namespace Character.Utils
 
         private const float WalkSpeed = 20f;
         private const float WalkAcceleration = 500f;
+        private const float ColliderBoxSize = 1f;
         Vector3 targetSpeed;
         float acceleration;
 
@@ -21,6 +22,7 @@ namespace Character.Utils
         private bool hasHitRight;
         private Color RaycastColorRight => hasHitRight ? Color.red : Color.green;
         protected const float RaycastDistance = 2f;
+        private bool isOverlap;
         private bool hasHit;
 
         protected ACharacterState(CharacterEntity characterEntity)
@@ -58,17 +60,30 @@ namespace Character.Utils
             Physics.Raycast(origin, rayRightDirection, out var hitRight, RaycastDistance);
             Debug.DrawRay(origin, rayRightDirection * RaycastDistance, RaycastColorRight);
 
-            var boxCenterDirection = Transform.forward;
             var colliders = new Collider[10];
-            Physics.OverlapBoxNonAlloc(origin, Vector3.one, colliders, Quaternion.identity);
+            Physics.OverlapBoxNonAlloc(origin, Vector3.one * ColliderBoxSize, colliders, Quaternion.identity);
+
+            var hits = new RaycastHit[10];
+            Physics.BoxCastNonAlloc(origin, Vector3.one * ColliderBoxSize, rayCenterDirection, hits, Quaternion.identity, RaycastDistance);
+
+            foreach (var hit in hits)
+            {
+                if (hit.collider && hit.collider.gameObject != CharacterEntity.Character.gameObject) {
+                    hasHit = hit.collider.CompareTag(Const.Tags.Wall) || hit.collider.CompareTag(Const.Tags.Object) || hit.collider.CompareTag(Const.Tags.Character);
+                    if (hasHit) direction += Transform.forward * -0.5f;
+                }
+                else hasHit = false;
+            }
 
             foreach (var collider in colliders)
             {
                 if (collider && collider.gameObject != CharacterEntity.Character.gameObject) {
-                    hasHit = collider.CompareTag(Const.Tags.Wall) || collider.CompareTag(Const.Tags.Object) || collider.CompareTag(Const.Tags.Character);
-                    if (hasHit) direction += Transform.forward * -0.5f;
+                    isOverlap = collider.CompareTag(Const.Tags.Wall) || collider.CompareTag(Const.Tags.Object) || collider.CompareTag(Const.Tags.Character);
+                    var oppositeDir = -(collider.transform.position - Transform.position).normalized;
+                    oppositeDir.y = 0.0f;
+                    if (isOverlap) direction += oppositeDir;
                 }
-                else hasHit = false;
+                else isOverlap = false;
             }
 
             if (hitLeft.collider)
@@ -77,13 +92,6 @@ namespace Character.Utils
                 if (hasHitLeft) direction += Transform.right * 0.5f;
             }
             else hasHitLeft = false;
-
-            if (hitCenter.collider)
-            {
-                hasHitCenter = hitCenter.collider.CompareTag(Const.Tags.Wall) || hitCenter.collider.CompareTag(Const.Tags.Object) || hitCenter.collider.CompareTag(Const.Tags.Character);
-                if (hasHitCenter) direction -= direction;
-            }
-            else hasHitCenter = false;
 
             if (hitRight.collider)
             {
