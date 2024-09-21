@@ -53,10 +53,17 @@ namespace Character
         public void UpdatePowerUpsUI(List<PowerUpVariants> powerUps)
         {
             if (!powerUpText) return;
-            if (powerUps.Count > 0) ShowCharacterUI();
-
-            var texts = powerUps.Aggregate("", (current, status) => current + "\n" + status);
-            powerUpText.text = texts.Replace("PowerUp", "").Trim();
+            if (powerUps.Count > 0)
+            {
+                ShowCharacterUI();
+                var texts = powerUps.Aggregate("", (current, status) => current + "\n" + status);
+                powerUpText.text = texts.Replace("PowerUp", "").Trim();
+            }
+            else
+            {
+                HiddenCharacterUI();
+                powerUpText.text = "";
+            }
         }
 
         private void ShowCharacterUI()
