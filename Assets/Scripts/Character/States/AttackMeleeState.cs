@@ -24,8 +24,8 @@ namespace Character.States
         public override void Enter()
         {
             CharacterEntity.Character.UseAttack();
+            CharacterEntity.CharacterMesh.animator?.SetBool("isDash", false);
             CharacterEntity.CharacterMesh.animator?.SetTrigger("Melee");
-            // CharacterEntity.CharacterVFX.PlaySlashVFX();
             CharacterEntity.GrapplingHookState.SetHookReadyState();
         }
 
