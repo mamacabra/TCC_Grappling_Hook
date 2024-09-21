@@ -19,7 +19,7 @@ namespace TrapSystem_Scripts.ModifierSystem
         public override void Exit() { }
         public override void ApplyModifier() { }
         public override void ApplyModifier(ref Vector3 targetSpeed, ref float acceleration, Vector3 dir) {
-            targetSpeed = dir.normalized * maxSpeed;
+            targetSpeed = dir * maxSpeed;
             acceleration = this.acceleration * Time.deltaTime;
         }
     }

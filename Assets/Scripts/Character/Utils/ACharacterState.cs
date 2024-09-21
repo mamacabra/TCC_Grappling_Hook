@@ -10,7 +10,7 @@ namespace Character.Utils
         protected readonly Transform Transform;
 
         private const float WalkSpeed = 20f;
-        private const float WalkAcceleration = 500f;
+        private const float WalkAcceleration = 400f;
         private const float ColliderBoxSize = 1f;
         Vector3 targetSpeed;
         float acceleration;
@@ -43,15 +43,15 @@ namespace Character.Utils
                 speed += 10f;
             }
 
-            if (CharacterEntity.CharacterMesh.animator)
-            {
-                var magnitude = CharacterEntity.CharacterInput.MoveDirection.magnitude;
-                CharacterEntity.CharacterMesh.animator.SetFloat("Speed", magnitude);
-            }
-
             var origin = new Vector3(Transform.position.x, 1f, Transform.position.z);
             var direction = CharacterEntity.CharacterInput.MoveDirection;
             if (isDash) direction = Transform.forward; // It allows dash when stoped.
+
+            if (CharacterEntity.CharacterMesh.animator)
+            {
+                CharacterEntity.CharacterMesh.animator.SetFloat("Speed", direction.magnitude);
+            }
+
 
             var rayLeftDirection = (Transform.forward + Transform.right * -1).normalized;
             Physics.Raycast(origin, rayLeftDirection, out var hitLeft, RaycastDistance);
@@ -105,7 +105,7 @@ namespace Character.Utils
             }
             else hasHitRight = false;
 
-            direction = direction.normalized;
+            // direction = direction.normalized;
             targetSpeed = direction * speed;
             acceleration = WalkAcceleration * Time.deltaTime;
 
@@ -122,7 +122,7 @@ namespace Character.Utils
                 acceleration = WalkAcceleration * Time.deltaTime;
             }
 
-            if (hasSlow && CharacterEntity.Character.CurrentSpeed.magnitude > WalkSpeed){
+            if (hasSlow && CharacterEntity.Character.CurrentSpeed.magnitude > speed){
                 CharacterEntity.Character.CurrentSpeed *= 0.5f;
                 acceleration = (WalkAcceleration + WalkAcceleration * 0.5f) * Time.deltaTime;
             }
@@ -132,13 +132,16 @@ namespace Character.Utils
             Transform.Translate(CharacterEntity.Character.CurrentSpeed * Time.deltaTime, Space.World);
         }
 
-        protected void LookAt()
+        protected void LookAt(float speed = WalkSpeed)
         {
-            var direction = CharacterEntity.CharacterInput.MoveDirection.normalized;
-            if (direction == Vector3.zero) return;
+            var direction = CharacterEntity.CharacterInput.LookDirection;
 
             var targetRotation = Quaternion.LookRotation(direction);
-            Transform.rotation = Quaternion.Slerp(Transform.rotation , targetRotation, Time.deltaTime * 35f);
+            Transform.rotation = Quaternion.Slerp(Transform.rotation , targetRotation, Time.deltaTime * speed);
+            
+            direction = CharacterEntity.CharacterInput.MoveDirection.normalized;
+            if (direction == Vector3.zero) return;
+            CharacterEntity.CharacterInput.LookDirection = direction;
         }
     }
 }

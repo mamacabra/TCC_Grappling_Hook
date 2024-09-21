@@ -19,7 +19,8 @@ namespace Character.States
         public override void Update()
         {
             Walk(WalkSpeed);
-            LookAt();
+            LookAt(WalkSpeed);
+            CharacterEntity.Character.MoveArrowForward(3f,6f);
         }
 
         public override void FixedUpdate() {

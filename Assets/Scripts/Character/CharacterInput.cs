@@ -8,7 +8,7 @@ namespace Character
     {
         public Vector2 Axes { get; private set; } = Vector2.zero;
         public Vector3 MoveDirection => new (Axes.x, 0, Axes.y);
-        public Vector3 LookDirection => transform.position + MoveDirection;
+        public Vector3 LookDirection { get; set;} = new (0,0,-1);
 
         public void OnDash(InputAction.CallbackContext context)
         {

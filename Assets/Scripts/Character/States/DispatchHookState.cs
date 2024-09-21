@@ -21,5 +21,10 @@ namespace Character.States
                 AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.HookFire);
             }
         }
+
+        public override void Update()
+        {
+            CharacterEntity.Character.MoveArrowForward(speed: 10f);
+        }
     }
 }

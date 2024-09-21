@@ -10,5 +10,10 @@ namespace Character.States
         {
             CharacterEntity.GrapplingHookState.SetHookRollbackState();
         }
+
+        public override void Update()
+        {
+            CharacterEntity.Character.MoveArrowForward(speed: 10f);
+        }
     }
 }

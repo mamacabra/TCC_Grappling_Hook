@@ -5,4 +5,5 @@ using UnityEngine;
 public class CharacterItemsHandle : MonoBehaviour
 {
     public GameObject crown;
+    public GameObject directionArrow;
 }

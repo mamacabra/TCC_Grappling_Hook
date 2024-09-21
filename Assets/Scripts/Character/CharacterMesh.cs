@@ -12,6 +12,7 @@ namespace Character
         [SerializeField] private MeshRenderer meshRenderer;
         [SerializeField] private SkinnedMeshRenderer skinnedMeshRenderer;
         private CharacterDeathAvatarHandler characterDeathAvatarHandler;
+        public CharacterItemsHandle characterItemsHandle;
         public Animator animator ;
 
         [Header("Color Layer Materials")]
@@ -81,8 +82,8 @@ namespace Character
                 skinnedMeshRenderer = _skinnedMeshRenderer;
             }
             animator = instance.GetComponentInChildren<Animator>();
-            var characterItems = instance.GetComponentInChildren<CharacterItemsHandle>();
-            if (characterItems) CharacterEntity.Character.crown = characterItems.crown;
+            characterItemsHandle = instance.GetComponentInChildren<CharacterItemsHandle>();
+            if (characterItemsHandle) CharacterEntity.Character.crown = characterItemsHandle.crown;
             CharacterEntity.Character.EnableCrown();
 
             ChangeColorLayer();

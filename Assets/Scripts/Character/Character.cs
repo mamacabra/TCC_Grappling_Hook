@@ -21,7 +21,7 @@ namespace Character
 
         public bool HasAttackReady { get; private set; } = true;
 
-        [HideInInspector] public Vector3 CurrentSpeed;
+        public Vector3 CurrentSpeed;
         public List<AModifier> Modifiers => modifiers;
         [SerializeField] private List<AModifier> modifiers = new();
 
@@ -116,6 +116,12 @@ namespace Character
             CharacterEntity.GrapplingHookTransform.gameObject.SetActive(true);
             CharacterEntity.GrapplingHookRope.SetActive(true);
             CharacterEntity.CharacterMesh.animator?.SetTrigger("onSpawn");
+        }
+
+        public void MoveArrowForward(float To = 0.0f, float speed = 1.0f)
+        {
+            var dirArrowTransform = CharacterEntity.CharacterMesh.characterItemsHandle.directionArrow.transform;
+            dirArrowTransform.localPosition = new Vector3(0.0f, 0.0f, Mathf.MoveTowards(dirArrowTransform.localPosition.z, To, Time.deltaTime * speed));
         }
     }
 }
