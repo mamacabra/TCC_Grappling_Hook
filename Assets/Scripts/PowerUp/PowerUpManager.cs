@@ -23,8 +23,8 @@ namespace PowerUp
 
         private static readonly PowerUpVariants[] AvailablePowerUps =
         {
-            PowerUpVariants.CharacterShieldPowerUp,
-            // PowerUpVariants.CharacterSpeedBoostPowerUp,
+            // PowerUpVariants.CharacterShieldPowerUp,
+            PowerUpVariants.CharacterSpeedBoostPowerUp,
             // PowerUpVariants.CharacterUntouchablePowerUp,
             // PowerUpVariants.HookPathFirePowerUp,
             // PowerUpVariants.HookPathIcePowerUp,

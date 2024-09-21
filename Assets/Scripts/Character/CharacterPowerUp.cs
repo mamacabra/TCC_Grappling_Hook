@@ -64,9 +64,12 @@ namespace Character
 
         private void AddPowerUpInstance(PowerUpVariants powerUpVariant)
         {
-            APowerUp instance = null;
-            if (powerUpVariant is PowerUpVariants.CharacterShieldPowerUp)
-                instance = new CharacterShieldPowerUp(CharacterEntity);
+            APowerUp instance = powerUpVariant switch
+            {
+                PowerUpVariants.CharacterShieldPowerUp => new CharacterShieldPowerUp(CharacterEntity),
+                PowerUpVariants.CharacterSpeedBoostPowerUp => new CharacterSpeedBoostPowerUp(CharacterEntity),
+                _ => null
+            };
 
             powerUpInstances.Add(instance);
         }

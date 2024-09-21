@@ -38,6 +38,11 @@ namespace Character.Utils
 
         protected void Walk(float speed = WalkSpeed, bool isDash = false)
         {
+            if (CharacterEntity.Character.HasSpeedBoost)
+            {
+                speed += 10f;
+            }
+
             if (CharacterEntity.CharacterMesh.animator)
             {
                 var magnitude = CharacterEntity.CharacterInput.MoveDirection.magnitude;

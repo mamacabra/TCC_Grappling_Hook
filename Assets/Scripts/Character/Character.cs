@@ -14,6 +14,8 @@ namespace Character
         public Transform characterBody;
 
         public bool HasShield { get; private set; } = false;
+        public bool HasSpeedBoost { get; private set; } = false;
+
         public bool HasDashReady { get; private set; } = true;
         private const float MaxCountDownDash = 0.6f;
 
@@ -44,6 +46,11 @@ namespace Character
         {
             HasShield = newStatus;
             if (shield) shield.SetActive(newStatus);
+        }
+
+        public void ToggleSpeedBoost(bool newStatus)
+        {
+            HasSpeedBoost = newStatus;
         }
 
         public void UseDash()
@@ -99,11 +106,11 @@ namespace Character
             HasShield = false;
             CharacterEntity.CharacterPowerUp.DropPowerUp(PowerUpVariants.CharacterShieldPowerUp);
         }
-        
+
         public void PlaySpawnAnims()
         {
             if (CharacterEntity.CharacterState.State is not ReadyState) return;
-            
+
             AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.PlayerSpawn);
             CharacterEntity.CharacterMesh.GetMeshParent.SetActive(true);
             CharacterEntity.GrapplingHookTransform.gameObject.SetActive(true);
