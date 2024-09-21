@@ -40,7 +40,7 @@ namespace Character.Utils
         {
             if (CharacterEntity.Character.HasSpeedBoost)
             {
-                speed += 10f;
+                speed += 6f;
             }
 
             var origin = new Vector3(Transform.position.x, 1f, Transform.position.z);
