@@ -118,7 +118,7 @@ namespace Character
             CharacterEntity.CharacterMesh.animator?.SetTrigger("onSpawn");
         }
 
-        public void MoveArrowForward(float To = 0.0f, float speed = 1.0f)
+        public void MoveArrowForward(float To = 0.0f, float speed = 10.0f)
         {
             var dirArrowTransform = CharacterEntity.CharacterMesh.characterItemsHandle.directionArrow.transform;
             dirArrowTransform.localPosition = new Vector3(0.0f, 0.0f, Mathf.MoveTowards(dirArrowTransform.localPosition.z, To, Time.deltaTime * speed));

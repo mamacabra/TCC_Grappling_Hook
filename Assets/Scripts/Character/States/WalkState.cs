@@ -16,7 +16,7 @@ namespace Character.States
         {
             Walk();
             LookAt();
-            CharacterEntity.Character.MoveArrowForward(speed: 10f);
+            CharacterEntity.Character.MoveArrowForward();
         }
     }
 }

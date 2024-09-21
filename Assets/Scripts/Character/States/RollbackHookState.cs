@@ -13,7 +13,7 @@ namespace Character.States
 
         public override void Update()
         {
-            CharacterEntity.Character.MoveArrowForward(speed: 10f);
+            CharacterEntity.Character.MoveArrowForward();
         }
     }
 }

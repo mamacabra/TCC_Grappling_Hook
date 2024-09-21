@@ -37,6 +37,8 @@ namespace Character.States
                 CharacterEntity.CharacterState.SetWalkState();
                 enemy.CharacterState.SetWalkState();
             }
+
+            CharacterEntity.Character.MoveArrowForward();
         }
 
         public override void Exit()

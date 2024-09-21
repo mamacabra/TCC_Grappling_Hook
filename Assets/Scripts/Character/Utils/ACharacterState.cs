@@ -137,8 +137,11 @@ namespace Character.Utils
             var direction = CharacterEntity.CharacterInput.LookDirection;
 
             var targetRotation = Quaternion.LookRotation(direction);
-            Transform.rotation = Quaternion.Slerp(Transform.rotation , targetRotation, Time.deltaTime * speed);
-            
+            if(speed != WalkSpeed)
+                Transform.rotation = Quaternion.Slerp(Transform.rotation , targetRotation, Time.deltaTime * speed);
+            else
+                Transform.rotation = targetRotation;
+
             direction = CharacterEntity.CharacterInput.MoveDirection.normalized;
             if (direction == Vector3.zero) return;
             CharacterEntity.CharacterInput.LookDirection = direction;
