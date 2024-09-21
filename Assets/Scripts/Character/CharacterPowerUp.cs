@@ -4,14 +4,39 @@ using Const;
 using PowerUp;
 using PowerUp.Variants;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Character
 {
     public class CharacterPowerUp : ACharacterMonoBehaviour
     {
         private const int MaxPowerUps = 3;
-        private readonly List<PowerUpVariants> powerUps = new();
-        private readonly List<APowerUp> powerUpInstances = new();
+        public List<PowerUpVariants> PowerUps { get; private set; } = new();
+        public List<APowerUp> PowerUpInstances { get; private set; } = new();
+
+        public void Start()
+        {
+            var backup = PowerUpManager.GetPowerUpBackup(CharacterEntity.Character.Id);
+            if (backup.PowerUps?.Count > 0 && backup.PowerUpInstances?.Count > 0)
+            {
+                PowerUps = backup.PowerUps;
+                PowerUpInstances = backup.PowerUpInstances;
+            }
+
+            CharacterEntity.CharacterUI.UpdatePowerUpsUI(PowerUps);
+            foreach (var powerUp in PowerUps)
+            {
+                switch (powerUp)
+                {
+                    case PowerUpVariants.CharacterShieldPowerUp:
+                        CharacterEntity.Character.ToggleShield(true);
+                        break;
+                    case PowerUpVariants.CharacterSpeedBoostPowerUp:
+                        CharacterEntity.Character.ToggleSpeedBoost(true);
+                        break;
+                }
+            }
+        }
 
         private void OnTriggerEnter(Collider other)
         {
@@ -23,43 +48,13 @@ namespace Character
 
         private void AddPowerUp(PowerUpVariants powerUp)
         {
-            if (powerUps.Count >= MaxPowerUps)
+            if (PowerUps.Count >= MaxPowerUps)
             {
-                var randomPowerUp = powerUps[Random.Range(0, powerUps.Count)];
-                powerUps.Remove(randomPowerUp);
+                var randomPowerUp = PowerUps[Random.Range(0, PowerUps.Count)];
+                PowerUps.Remove(randomPowerUp);
             }
 
-            powerUps.Add(powerUp);
-        }
-
-        public void DropPowerUp(PowerUpVariants powerUpVariant)
-        {
-            if (powerUpVariant is not PowerUpVariants.CharacterShieldPowerUp) return;
-
-            if (powerUps.Count > 0)
-            {
-                for (var i = 0; i < powerUps.Count; i++)
-                {
-                    if (powerUps[i] == powerUpVariant)
-                    {
-                        powerUps.Remove(powerUps[i]);
-                    }
-                }
-            }
-
-            if (powerUpInstances.Count > 0)
-            {
-                for (var i = 0; i < powerUpInstances.Count; i++)
-                {
-                    if (powerUpInstances[i] is CharacterShieldPowerUp)
-                    {
-                        powerUpInstances[i].OnDrop();
-                        powerUpInstances.Remove(powerUpInstances[i]);
-                    }
-                }
-            }
-
-            CharacterEntity.CharacterUI.UpdatePowerUpsUI(powerUps);
+            PowerUps.Add(powerUp);
         }
 
         private void AddPowerUpInstance(PowerUpVariants powerUpVariant)
@@ -71,21 +66,51 @@ namespace Character
                 _ => null
             };
 
-            powerUpInstances.Add(instance);
+            PowerUpInstances.Add(instance);
         }
 
         private void CatchPowerUp()
         {
-            var newPowerUp = PowerUpManager.Catch(powerUps);
+            var newPowerUp = PowerUpManager.Catch(PowerUps);
 
             if (newPowerUp == null) return;
 
             AddPowerUp((PowerUpVariants)newPowerUp);
             AddPowerUpInstance((PowerUpVariants)newPowerUp);
-            CharacterEntity.CharacterUI.UpdatePowerUpsUI(powerUps);
+            CharacterEntity.CharacterUI.UpdatePowerUpsUI(PowerUps);
 
-            foreach (var powerUpInstance in powerUpInstances)
+            foreach (var powerUpInstance in PowerUpInstances)
                 powerUpInstance.OnCatch();
+        }
+
+        public void DropPowerUp(PowerUpVariants powerUpVariant)
+        {
+            if (powerUpVariant is not PowerUpVariants.CharacterShieldPowerUp) return;
+
+            if (PowerUps.Count > 0)
+            {
+                for (var i = 0; i < PowerUps.Count; i++)
+                {
+                    if (PowerUps[i] == powerUpVariant)
+                    {
+                        PowerUps.Remove(PowerUps[i]);
+                    }
+                }
+            }
+
+            if (PowerUpInstances.Count > 0)
+            {
+                for (var i = 0; i < PowerUpInstances.Count; i++)
+                {
+                    if (PowerUpInstances[i] is CharacterShieldPowerUp)
+                    {
+                        PowerUpInstances[i].OnDrop();
+                        PowerUpInstances.Remove(PowerUpInstances[i]);
+                    }
+                }
+            }
+
+            CharacterEntity.CharacterUI.UpdatePowerUpsUI(PowerUps);
         }
     }
 }

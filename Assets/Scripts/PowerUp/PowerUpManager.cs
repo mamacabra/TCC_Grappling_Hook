@@ -10,6 +10,7 @@ namespace PowerUp
     public class PowerUpManager : MonoBehaviour
     {
         public static PowerUpManager Instance;
+        private static List<PowerUpBackup> backups = new();
 
         [Header("Power Up")]
         [SerializeField] private GameObject powerUpItem;
@@ -23,7 +24,7 @@ namespace PowerUp
 
         private static readonly PowerUpVariants[] AvailablePowerUps =
         {
-            // PowerUpVariants.CharacterShieldPowerUp,
+            PowerUpVariants.CharacterShieldPowerUp,
             PowerUpVariants.CharacterSpeedBoostPowerUp,
             // PowerUpVariants.CharacterUntouchablePowerUp,
             // PowerUpVariants.HookPathFirePowerUp,
@@ -105,6 +106,34 @@ namespace PowerUp
 
             if (filtered.Count == 0) return null;
             return filtered[Random.Range(0, filtered.Count)];
+        }
+
+        public static void CreateBackup(List<GameObject> playersGameObjects)
+        {
+            Instance.StopSpawn();
+            backups = new List<PowerUpBackup>();
+
+            foreach (var player in playersGameObjects)
+            {
+                var character = player.GetComponent<Character.Character>();
+                var backup = new PowerUpBackup
+                {
+                    CharacterId = character.Id,
+                    PowerUps = character.CharacterEntity.CharacterPowerUp.PowerUps,
+                    PowerUpInstances = character.CharacterEntity.CharacterPowerUp.PowerUpInstances,
+                };
+                AddPowerUpBackup(backup);
+            }
+        }
+
+        private static void AddPowerUpBackup(PowerUpBackup powerUpBackup)
+        {
+            backups.Add(powerUpBackup);
+        }
+
+        public static PowerUpBackup GetPowerUpBackup(int characterId)
+        {
+            return backups.Find(b => b.CharacterId == characterId);
         }
     }
 }
