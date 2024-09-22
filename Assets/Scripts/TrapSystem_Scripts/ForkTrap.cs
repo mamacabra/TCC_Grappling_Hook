@@ -1,23 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Character.Utils;
+using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ForkTrap: MonoBehaviour
 {
-    public List<Transform> waypoints;  // List of waypoints to move to
-    public float moveSpeed = 5f;        // Speed of movement
-    public float pauseTime = 1f;        // Time to pause at each waypoint
-
+    public List<Transform> waypoints; 
+    public float moveSpeed = 5f;       
+    public float pauseTime = 2f;    
+    
+    [SerializeField]private float cooldown = 0f;
+    [SerializeField]private bool startCooldown = false;
+    [SerializeField]private bool hasBitten = false;
     private Transform targetWaypoint;
     private int currentWaypointIndex = -1;
-    [SerializeField] private float timeUntilBite = 5f; 
-    [SerializeField] private bool startTimer = false;
+    [SerializeField]private bool bittingPause = false;
 
     [SerializeField] private GameObject fork;
+    [SerializeField] private float alturaGarfo = 0f;
 
     void Start()
     {
-        fork.SetActive(false);
         if (waypoints.Count == 0)
         {
             Debug.LogError("No waypoints assigned!");
@@ -26,28 +32,58 @@ public class ForkTrap: MonoBehaviour
         ChooseNextWaypoint();
         
     }
+  
 
-    void Update()
+    private void Update()
     {
-        if (targetWaypoint != null)
+        if (targetWaypoint is not null)
         {
             MoveTowardsTarget();
         }
 
+        if (startCooldown)
+        {
+            
+            cooldown-=Time.deltaTime;
+            if(cooldown<0) cooldown = 0f;
+        }
+
+        if ((cooldown <= 0) && hasBitten)
+        {
+            //startCooldown = false;
+            cooldown = 1f;
+            hasBitten = false;
+        }
+
+        if (bittingPause)
+        {
+            pauseTime-=Time.deltaTime;
+        }
+        
+        if(pauseTime<0) pauseTime = 0f;
+        
+        if (pauseTime <= 0)
+        {
+            bittingPause = false;
+            pauseTime = 2f;
+        }
+
     }
 
-    void MoveTowardsTarget()
+
+    private void MoveTowardsTarget()
     {
-        float step = moveSpeed * Time.deltaTime;
+        var step = moveSpeed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, targetWaypoint.position, step);
 
-        if (Vector3.Distance(transform.position, targetWaypoint.position) < 0.1f)
+        if (!(Vector3.Distance(transform.position, targetWaypoint.position) < 0.1f)) return;
+        if (!bittingPause)
         {
-            StartCoroutine(PauseAndChooseNextWaypoint());
+            ChooseNextWaypoint();
         }
     }
 
-    void ChooseNextWaypoint()
+    private void ChooseNextWaypoint()
     {
         if (waypoints.Count == 0)
             return;
@@ -55,19 +91,37 @@ public class ForkTrap: MonoBehaviour
         currentWaypointIndex = Random.Range(0, waypoints.Count);
         targetWaypoint = waypoints[currentWaypointIndex];
     }
-    private void Bite()
+
+    
+
+    private void Bite(Vector3 playerPosition)
     {
-
-        if(timeUntilBite <= 0)
+            Instantiate(fork, playerPosition + new Vector3(0, alturaGarfo, 0), Quaternion.identity);
+            hasBitten = true;
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        
+        
+        if (other.gameObject.CompareTag("Character"))
         {
-            //fork comes down
-
+            bittingPause = true;
+            startCooldown = true;
+            
+            if (cooldown <= 0)
+            {
+                Bite(other.transform.position);
+                
+            }
         }
     }
 
-    IEnumerator PauseAndChooseNextWaypoint()
+    private void OnTriggerExit(Collider other)
     {
-        yield return new WaitForSeconds(pauseTime);
-        ChooseNextWaypoint();
+        if (other.gameObject.CompareTag("Character"))
+        {
+            bittingPause = false;
+        }
     }
 }

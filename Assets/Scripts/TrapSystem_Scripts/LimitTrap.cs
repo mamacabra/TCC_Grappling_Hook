@@ -47,11 +47,19 @@ namespace TrapSystem_Scripts
 
         void Update()
         {
-            foreach (var playerData in players)
+            
+            for (int i = players.Count - 1; i >= 0; i--)
             {
+                PlayerTrapData playerData = players[i];
                 Transform player = playerData.playerTransform;
-                if (player == null) continue;
-
+        
+                
+                if (player == null)
+                {
+                    players.RemoveAt(i); 
+                    continue;
+                }
+                
                 bool isPlayerOutside = player.position.x < minX || player.position.x > maxX || 
                                        player.position.z < minZ || player.position.z > maxZ;
 
@@ -65,7 +73,8 @@ namespace TrapSystem_Scripts
                     else if (Time.time - playerData.outsideTime >= timeBeforeDeath)
                     {
                         SpawnFallingObject(player);
-                        playerData.isOutsideArena = false;
+                        
+                        players.RemoveAt(i);
                     }
                 }
                 else
@@ -74,6 +83,7 @@ namespace TrapSystem_Scripts
                 }
             }
         }
+
 
         void SpawnFallingObject(Transform player)
         {

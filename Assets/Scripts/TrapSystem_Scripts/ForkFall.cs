@@ -21,12 +21,14 @@ namespace TrapSystem_Scripts
 
         private void OnTriggerEnter(Collider other)
         {
+            var character = other.GetComponent<Character.Character>();
+            Debug.Log("HITTED");
             if (other.CompareTag("Character") == false) return;
-            if (other.GetComponent<Character.CharacterState>() is DeathState) return;
+            if (character.CharacterEntity.CharacterState.State is DeathState) return;
             
             if (other.CompareTag("Character"))
             {
-                other.GetComponent<Character.CharacterEntity>().CharacterState.SetDeathState(other.transform);
+               character.CharacterEntity.CharacterState.SetDeathState(character.CharacterEntity.Character.characterBody);
             }
         }
     }
