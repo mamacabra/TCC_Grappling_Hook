@@ -29,6 +29,8 @@ namespace TrapSystem_Scripts
             if (other.CompareTag("Character"))
             {
                character.CharacterEntity.CharacterState.SetDeathState(character.CharacterEntity.Character.characterBody);
+               PlayersManager.Instance.PlayersToSendToCamera(other.transform, false);
+               PlayersManager.Instance.RemovePointsToPlayer(character.Id);
             }
         }
     }

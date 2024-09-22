@@ -260,12 +260,40 @@ public class PlayersManager : MonoBehaviour
         SavePlayersConfigs();
     }
 
+    public void RemovePointsToPlayer(int playerWhoKilled)
+    {
+        playersCountInScene++;
+        RemovePoints(playerWhoKilled, -scoreToAddToKill);
+
+        if (playersCountInScene >= playersConfigs.Count-1 || CheckIfGameOver())
+        {
+            GameOver = true;
+            playersCountInScene = 0;
+            //End Game
+            PowerUpManager.CreateBackup(playersGameObjects);
+            CameraManager.Instance.OnEndFeedback = false;
+            if(GameOver)
+                CameraManager.Instance.DeathFeedBack();
+            InterfaceManager.Instance.OnCallFeedbackGame(CheckIfGameOver());
+            winnerSupreme = CheckIfGameOver()? playerWhoKilled:-1;
+        }
+
+        SavePlayersConfigs();
+    }
+
     void AddPoints(int playerId, int value)
     {
         PlayerConfigurationData pS = playersConfigs[GetPlayerById(playerId)];
         pS.ChangeScore(value);
         playersConfigs[GetPlayerById(playerId)] = pS;
 
+    }
+    void RemovePoints(int playerId, int value)
+    {
+        PlayerConfigurationData pS = playersConfigs[GetPlayerById(playerId)];
+        if (pS.score <= 0) return;
+        pS.ChangeScore(value);
+        playersConfigs[GetPlayerById(playerId)] = pS;
     }
     int GetPlayerById(int id){
         for (int i = 0; i < playersConfigs.Count; i++)
