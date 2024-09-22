@@ -21,6 +21,7 @@ namespace TrapSystem_Scripts
 
         private void OnTriggerEnter(Collider other)
         {
+            if(PlayersManager.Instance.GameOver) return;
             var character = other.GetComponent<Character.Character>();
             Debug.Log("HITTED");
             if (other.CompareTag("Character") == false) return;
