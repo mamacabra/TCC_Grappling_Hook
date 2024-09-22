@@ -15,6 +15,7 @@ namespace Character
 
         public bool HasShield { get; private set; } = false;
         public bool HasSpeedBoost { get; private set; } = false;
+        private const float MaxCountDownSpeedBoost = 6f; // 6 seconds
 
         public bool HasDashReady { get; private set; } = true;
         private const float MaxCountDownDash = 0.6f;
@@ -34,7 +35,6 @@ namespace Character
         public new void Setup(CharacterEntity entity)
         {
             base.Setup(entity);
-            ToggleShield(false);
         }
 
         public void EnableCrown()
@@ -46,11 +46,22 @@ namespace Character
         {
             HasShield = newStatus;
             if (shield) shield.SetActive(newStatus);
+            else
+            {
+                transform.Find("Shield").gameObject.SetActive(newStatus);
+            }
         }
 
         public void ToggleSpeedBoost(bool newStatus)
         {
             HasSpeedBoost = newStatus;
+            if (newStatus) StartCoroutine(SpeedBoostCountDownCoroutine());
+        }
+
+        private IEnumerator SpeedBoostCountDownCoroutine()
+        {
+            yield return new WaitForSeconds(MaxCountDownSpeedBoost);
+            CharacterEntity.CharacterPowerUp.DropPowerUp(PowerUpVariants.CharacterSpeedBoostPowerUp);
         }
 
         public void UseDash()

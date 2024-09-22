@@ -17,22 +17,25 @@ namespace Character
         public void Start()
         {
             var backup = PowerUpManager.GetPowerUpBackup(CharacterEntity.Character.Id);
-            if (backup.PowerUps?.Count > 0 && backup.PowerUpInstances?.Count > 0)
+            if (backup.PowerUps?.Count > 0)
             {
                 PowerUps = backup.PowerUps;
-                PowerUpInstances = backup.PowerUpInstances;
             }
 
+            CharacterEntity.Character.ToggleShield(false);
             CharacterEntity.CharacterUI.UpdatePowerUpsUI(PowerUps);
-            foreach (var powerUp in PowerUps)
+            for (var index = 0; index < PowerUps.Count; index++)
             {
+                var powerUp = PowerUps[index];
                 switch (powerUp)
                 {
                     case PowerUpVariants.CharacterShieldPowerUp:
                         CharacterEntity.Character.ToggleShield(true);
+                        PowerUpInstances.Add(new CharacterShieldPowerUp(CharacterEntity));
                         break;
                     case PowerUpVariants.CharacterSpeedBoostPowerUp:
                         CharacterEntity.Character.ToggleSpeedBoost(true);
+                        PowerUpInstances.Add(new CharacterSpeedBoostPowerUp(CharacterEntity));
                         break;
                 }
             }
@@ -85,8 +88,6 @@ namespace Character
 
         public void DropPowerUp(PowerUpVariants powerUpVariant)
         {
-            if (powerUpVariant is not PowerUpVariants.CharacterShieldPowerUp) return;
-
             if (PowerUps.Count > 0)
             {
                 for (var i = 0; i < PowerUps.Count; i++)
@@ -94,16 +95,6 @@ namespace Character
                     if (PowerUps[i] == powerUpVariant)
                     {
                         PowerUps.Remove(PowerUps[i]);
-                    }
-                }
-            }
-
-            if (PowerUpInstances.Count > 0)
-            {
-                for (var i = 0; i < PowerUpInstances.Count; i++)
-                {
-                    if (PowerUpInstances[i] is CharacterShieldPowerUp)
-                    {
                         PowerUpInstances[i].OnDrop();
                         PowerUpInstances.Remove(PowerUpInstances[i]);
                     }
