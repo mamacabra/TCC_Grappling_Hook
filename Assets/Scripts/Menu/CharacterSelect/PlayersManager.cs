@@ -265,7 +265,7 @@ public class PlayersManager : MonoBehaviour
         playersCountInScene++;
         RemovePoints(playerWhoKilled, -scoreToAddToKill);
 
-        if (playersCountInScene >= playersConfigs.Count-1 || CheckIfGameOver())
+        if (playersCountInScene >= playersConfigs.Count-1)
         {
             GameOver = true;
             playersCountInScene = 0;
