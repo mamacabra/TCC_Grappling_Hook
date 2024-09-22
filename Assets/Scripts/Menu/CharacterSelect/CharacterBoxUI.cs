@@ -98,7 +98,7 @@ public class CharacterBoxUI : MonoBehaviour
 
     public void OnDeviceLost(PlayerInput playerInput){
         //if(!gameObject.activeSelf) return;
-        characterStatus.text = "Escolhendo";
+        characterStatus.text = "Pressione qualquer botão";
         characterStatus.color = Color.gray;
         PlayersManager.Instance?.RemovePlayerConfig(playerConfig);
         PlayersManager.Instance?.SetPlayerStatus(false);
@@ -171,7 +171,7 @@ public class CharacterBoxUI : MonoBehaviour
     }
 
     private void OnDisable() {
-        characterStatus.text = "Escolhendo";
+        characterStatus.text = "Pressione qualquer botão";
         characterStatus.color = Color.gray;
         hasConfirmed = false;
         playerConfig = new PlayersManager.PlayerConfigurationData();

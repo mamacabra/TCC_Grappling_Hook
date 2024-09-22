@@ -17,8 +17,8 @@ public class GraphicSettings : MonoBehaviour
     [Header("Quality")] [SerializeField] private List<string> quality;
     private int qualityValue = 2;
 
-    private int sfxVolume = 10;
-    private int musicVolume = 10;
+    private int sfxVolume = 5;
+    private int musicVolume = 5;
 
     private void Start()
     {
@@ -35,19 +35,19 @@ public class GraphicSettings : MonoBehaviour
         int r = PlayerPrefs.GetInt("Resolution", Screen.currentResolution.width);
         int screenMode = PlayerPrefs.GetInt("ScreenEcra", 0);
         int quality = PlayerPrefs.GetInt("Quality", QualitySettings.GetQualityLevel());
-        int sfx = PlayerPrefs.GetInt("SFX", 10);
-        int music = PlayerPrefs.GetInt("Music", 10);
+        int sfx = PlayerPrefs.GetInt("SFX", 5);
+        int music = PlayerPrefs.GetInt("Music", 5);
 
         ApplyResolution(r);
         SetEcra(screenMode);
         SetQuality(quality);// @TODO: fix this.
 
         AudioManager.audioManager.SetSFXVolume(sfx);
-        optionsScreen.ChangeSFXVolumeText(sfx.ToString());
+        optionsScreen.ChangeSFXVolumeText(sfx);
         SaveSettings("SFX", sfx);
 
         AudioManager.audioManager.SetMusicVolume(music);
-        optionsScreen.ChangeMusicVolumeText(music.ToString());
+        optionsScreen.ChangeMusicVolumeText(music);
         SaveSettings("Music", music);
     }
     
@@ -164,14 +164,14 @@ public class GraphicSettings : MonoBehaviour
     {
         AudioManager.audioManager.ChangeSfxVolume(value);
         sfxVolume = (int)AudioManager.audioManager.sfxVolume;
-        optionsScreen.ChangeSFXVolumeText(sfxVolume.ToString());
+        optionsScreen.ChangeSFXVolumeText(sfxVolume);
         SaveSettings("SFX", sfxVolume);
     }
     public void ApplyMusicSound(int value)
     {
         AudioManager.audioManager.ChangeMusicVolume(value);
         musicVolume = (int)AudioManager.audioManager.musicVolume;
-        optionsScreen.ChangeMusicVolumeText(musicVolume.ToString());
+        optionsScreen.ChangeMusicVolumeText(musicVolume);
         SaveSettings("Music", musicVolume);
     }
     public void ResetAllSettings()
@@ -179,8 +179,8 @@ public class GraphicSettings : MonoBehaviour
         resolutionValue = resolutions.Count-1;
         ecraValue = 0;
         qualityValue = quality.Count-1;
-        sfxVolume = 10;
-        musicVolume = 10;
+        sfxVolume = 5;
+        musicVolume = 5;
         
         Vector2 selectedResolution = resolutions[resolutionValue];
         Screen.SetResolution((int) selectedResolution.x, (int) selectedResolution.y, Screen.fullScreen);
@@ -199,11 +199,11 @@ public class GraphicSettings : MonoBehaviour
         SaveSettings("Quality", qualityValue);
 
         AudioManager.audioManager.SetSFXVolume(sfxVolume);
-        optionsScreen.ChangeSFXVolumeText(sfxVolume.ToString());
+        optionsScreen.ChangeSFXVolumeText(sfxVolume);
         SaveSettings("SFX", sfxVolume);
 
         AudioManager.audioManager.SetMusicVolume(musicVolume);
-        optionsScreen.ChangeMusicVolumeText(musicVolume.ToString());
+        optionsScreen.ChangeMusicVolumeText(musicVolume);
         SaveSettings("Music", musicVolume);
     }
 }

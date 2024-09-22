@@ -20,9 +20,11 @@ public class OptionsScreen : Screens
     [SerializeField] TextMeshProUGUI qualityValueText;
 
     [Header("Audio")]
-    [SerializeField] TextMeshProUGUI sFXValueText;
-
-    [SerializeField] TextMeshProUGUI musicValueText;
+    /* [SerializeField] TextMeshProUGUI sFXValueText;
+ 
+     [SerializeField] TextMeshProUGUI musicValueText;*/
+    [SerializeField]
+    private Slider sfxSlider, musicSLider;
     
     [Header("Back Button")]
     [SerializeField]
@@ -40,10 +42,16 @@ public class OptionsScreen : Screens
     {
         backButton.button.onClick.AddListener(delegate { GoToScreen(backButton.goToScreen); });
         restoreButton.onClick.AddListener(ResetAllSettings);
+        
+        sfxSlider.onValueChanged.AddListener(delegate { ChangeSFXVolume((int)sfxSlider.value); });
+        musicSLider.onValueChanged.AddListener(delegate { ChangeMusicVolume((int)musicSLider.value); });
     }
 
     void OnEnable()
     {
+        sfxSlider.maxValue = 10;
+        musicSLider.maxValue = 10;
+        
         EventSystem.current.SetSelectedGameObject(resolutionGameObj);
         graphicSettings.LoadSettings();
     }
@@ -79,9 +87,10 @@ public class OptionsScreen : Screens
     {
         graphicSettings.ApplySFXSound(value);
     }
-    public void ChangeSFXVolumeText(string sfx)
+    public void ChangeSFXVolumeText(int sfx)
     {
-        sFXValueText.text = sfx;
+        sfxSlider.value = sfx;
+       // sFXValueText.text = sfx;
     }
 
     public void ChangeMusicVolume(int value)
@@ -89,9 +98,10 @@ public class OptionsScreen : Screens
         graphicSettings.ApplyMusicSound(value);
     }
 
-    public void ChangeMusicVolumeText(string music)
+    public void ChangeMusicVolumeText(int music)
     {
-        musicValueText.text = music;
+        musicSLider.value = music;
+        //musicValueText.text = music;
     }
 
     public override void GoToScreen(ScreensName screensName)

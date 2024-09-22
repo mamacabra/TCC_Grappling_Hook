@@ -82,8 +82,8 @@ public class AudioManager : MonoBehaviour
 
     public void ChangeMusicVolume(int value)
     {
-        musicVolume += value;         
-        if (musicVolume >= 10)
+        musicVolume = value;         
+      /*  if (musicVolume >= 10)
         {
             musicVolume = 10;
             return;
@@ -92,7 +92,7 @@ public class AudioManager : MonoBehaviour
         {
             musicVolume = 0;     
             return;
-        }
+        }*/
         musicBus.setVolume(musicVolume / 10);
     }
 
@@ -118,8 +118,8 @@ public class AudioManager : MonoBehaviour
 
     public void ChangeSfxVolume(int value)
     {
-        sfxVolume += value;
-        if (sfxVolume >= 10)
+        sfxVolume = value;
+       /* if (sfxVolume >= 10)
         {
             sfxVolume = 10;
             return;
@@ -128,7 +128,7 @@ public class AudioManager : MonoBehaviour
         {
             sfxVolume = 0;
             return;
-        }
+        }*/
         sfxBus.setVolume(sfxVolume / 10);
     }
     public void SetSFXVolume(int value) {
