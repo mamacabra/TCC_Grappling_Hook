@@ -1436,7 +1436,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2066618237}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.61863804
+  m_Size: 0.49792898
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6715,8 +6715,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 849.65, y: -618.755}
-  m_SizeDelta: {x: 1699.3, y: 1237.51}
+  m_AnchoredPosition: {x: 849.65, y: -768.755}
+  m_SizeDelta: {x: 1699.3, y: 1537.51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &438278559
 MonoBehaviour:
@@ -6749,7 +6749,10 @@ MonoBehaviour:
     r\xE1pido para locomo\xE7\xE3o.\r\n\r\nAtaques corpo a corpo executados ao mesmo
     tempo ser\xE3o cancelados e os jogadores empurrados.\r\n\r\nAtaques efetuados
     em ganchos j\xE1 disparados cancelam o gancho imediatamente.\r\n\nEfeitos visuais
-    de ataque e movimenta\xE7\xE3o.\n\n7 cen\xE1rios de combate com tematica japonesa."
+    de ataque e movimenta\xE7\xE3o.\n\nEfeitos sonoros de ataque e movimenta\xE7\xE3o.\n\n3
+    m\xFAsicas randomizadas em cada partida.\n\n7 cen\xE1rios de combate com tematica
+    japonesa.\n\nPower ups ja implementados e funcionando.\n\nArmadilhas j\xE1 funcionais,
+    clicar \"Home\" para abrir o Menu de armadilhas."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -12094,7 +12097,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832729101}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
   m_Name: 
@@ -14198,7 +14201,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 1237.51}
+  m_SizeDelta: {x: 0, y: 1537.51}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &985400787
 MonoBehaviour:
@@ -31543,7 +31546,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 832787186}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.38136196}
+  m_AnchorMin: {x: 0, y: 0.502071}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
