@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Character.States;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -35,11 +36,9 @@ public class HudController : MonoBehaviour
          if (players[i].TryGetComponent(out Character.Character _character)) {
             yield return new WaitForSeconds(2.5f/6f);
 
-             AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.PlayerSpawn);
-            _character.CharacterEntity.CharacterMesh.GetMeshParent.SetActive(true);
-            _character.CharacterEntity.GrapplingHookTransform.gameObject.SetActive(true);
-            _character.CharacterEntity.GrapplingHookRope.SetActive(true);
-            _character.CharacterEntity.CharacterMesh.animator?.SetTrigger("onSpawn");
+            if (_character.CharacterEntity.CharacterState.State is DeathState) continue;
+
+            _character.PlaySpawnAnims();
          }
       }
    }

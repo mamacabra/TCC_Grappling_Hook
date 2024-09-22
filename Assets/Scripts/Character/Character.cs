@@ -60,5 +60,14 @@ namespace Character
             direction.y = 0;
             CharacterEntity.Character.characterBody.LookAt(direction);
         }
+
+        public void PlaySpawnAnims()
+        {
+            AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.PlayerSpawn);
+            CharacterEntity.CharacterMesh.GetMeshParent.SetActive(true);
+            CharacterEntity.GrapplingHookTransform.gameObject.SetActive(true);
+            CharacterEntity.GrapplingHookRope.SetActive(true);
+            CharacterEntity.CharacterMesh.animator?.SetTrigger("onSpawn");
+        }
     }
 }
