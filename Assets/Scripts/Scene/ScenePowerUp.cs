@@ -8,5 +8,9 @@ namespace Scene
         {
             gameObject.tag = Const.Tags.PowerUp;
         }
+        public void OnTriggerEnter(Collider other)
+        {
+            AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.PowerUpPickUp);
+        }
     }
 }

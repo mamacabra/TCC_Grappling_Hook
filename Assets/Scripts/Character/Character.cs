@@ -116,6 +116,7 @@ namespace Character
         {
             HasShield = false;
             CharacterEntity.CharacterPowerUp.DropPowerUp(PowerUpVariants.CharacterShieldPowerUp);
+            AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.PowerUpShieldBreak);
         }
 
         public void PlaySpawnAnims()
