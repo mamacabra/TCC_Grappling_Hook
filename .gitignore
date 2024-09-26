@@ -99,3 +99,13 @@ fmod_editor.log
 # FMOD 1.10.x (Legacy)
 /Assets/FMODAssets/*
 /Assets/FMODStudioCache.meta
+
+# Ignore Bakery Assets folder
+/[Aa]ssets/Bakery/
+/[Aa]ssets/Bakery.meta
+
+#Ignore Bakery Editor folder
+/[Aa]ssets/Editor/x64/Bakery/
+/[Aa]ssets/Editor.meta
+/[Aa]ssets/Editor/x64.meta
+/[Aa]ssets/Editor/x64/Bakery.meta
