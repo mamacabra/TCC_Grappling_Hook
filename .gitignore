@@ -101,11 +101,35 @@ fmod_editor.log
 /Assets/FMODStudioCache.meta
 
 # Ignore Bakery Assets folder
-/[Aa]ssets/Bakery/
-/[Aa]ssets/Bakery.meta
+/[Aa]ssets/Bakery/*
+
+# Never ignore these Bakery Asset files
+# Unignore specific files in ignored subdirectory https://stackoverflow.com/a/32504500/2129422
+!/[Aa]ssets/Bakery/ftLightmaps.cs
+!/[Aa]ssets/Bakery/ftLightmaps.cs.meta
+!/[Aa]ssets/Bakery/ftLightmapsStorage.cs
+!/[Aa]ssets/Bakery/ftLightmapsStorage.cs.meta
+!/[Aa]ssets/Bakery/ftLocalStorage.cs
+!/[Aa]ssets/Bakery/ftLocalStorage.cs.meta
+!/[Aa]ssets/Bakery/ftGlobalStorage.cs
+!/[Aa]ssets/Bakery/ftGlobalStorage.cs.meta
+!/[Aa]ssets/Bakery/BakeryProjectSettings.cs
+!/[Aa]ssets/Bakery/BakeryProjectSettings.cs.meta
 
 #Ignore Bakery Editor folder
-/[Aa]ssets/Editor/x64/Bakery/
-/[Aa]ssets/Editor.meta
-/[Aa]ssets/Editor/x64.meta
-/[Aa]ssets/Editor/x64/Bakery.meta
+/[Aa]ssets/Editor/x64/Bakery/*
+
+#Unignore subdirectories only https://stackoverflow.com/a/18930104/2129422
+!/[Aa]ssets/Editor/x64/Bakery/*/
+
+#Re-ignore all *files* in subdirectories
+/[Aa]ssets/Editor/x64/Bakery/hwtestdata/*
+/[Aa]ssets/Editor/x64/Bakery/lightingDataChunks/*
+/[Aa]ssets/Editor/x64/Bakery/shaderSrc/*
+/[Aa]ssets/Editor/x64/Bakery/scripts/*
+
+# Never ignore these Bakery Editor files
+!/**/ftModelPostProcessor.cs
+!/**/ftModelPostProcessor.cs.meta
+!/**/ftSavedPadding2.cs
+!/**/ftSavedPadding2.cs.meta
