@@ -132,15 +132,12 @@ namespace Character.Utils
             Transform.Translate(CharacterEntity.Character.CurrentSpeed * Time.deltaTime, Space.World);
         }
 
-        protected void LookAt(float speed = WalkSpeed)
+        protected void LookAt(float speed = 17.5f)
         {
             var direction = CharacterEntity.CharacterInput.LookDirection;
 
             var targetRotation = Quaternion.LookRotation(direction);
-            if(speed != WalkSpeed)
-                Transform.rotation = Quaternion.Slerp(Transform.rotation , targetRotation, Time.deltaTime * speed);
-            else
-                Transform.rotation = targetRotation;
+            Transform.rotation = Quaternion.Slerp(Transform.rotation , targetRotation, Time.deltaTime * speed);
 
             direction = CharacterEntity.CharacterInput.MoveDirection.normalized;
             if (direction == Vector3.zero) return;

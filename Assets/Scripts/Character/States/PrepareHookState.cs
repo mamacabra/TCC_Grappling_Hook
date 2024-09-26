@@ -8,6 +8,7 @@ namespace Character.States
         private float countDown;
         private const float CountDownStep = 0.2f;
         private const float WalkSpeed = 8f;
+        private const float RotationSpeed = 5f;
 
         public PrepareHookState(CharacterEntity characterEntity) : base(characterEntity) {}
 
@@ -19,7 +20,7 @@ namespace Character.States
         public override void Update()
         {
             Walk(WalkSpeed);
-            LookAt(WalkSpeed);
+            LookAt(RotationSpeed);
             CharacterEntity.Character.MoveArrowForward(3f,6f);
         }
 
