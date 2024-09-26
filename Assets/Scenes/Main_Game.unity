@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731715, g: 0.13414735, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.12107873, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12539,6 +12539,7 @@ GameObject:
   m_Component:
   - component: {fileID: 846183286}
   - component: {fileID: 846183287}
+  - component: {fileID: 846183288}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -12555,7 +12556,7 @@ Transform:
   m_GameObject: {fileID: 846183285}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.26262864, y: -0.3729569, z: 5.2809577}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12579,6 +12580,19 @@ MonoBehaviour:
   musicVolume: 5
   sfxBusPath: bus:/SfxBus
   sfxVolume: 5
+--- !u!114 &846183288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846183285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!1 &858714593
 GameObject:
   m_ObjectHideFlags: 0
@@ -15079,7 +15093,6 @@ GameObject:
   - component: {fileID: 1035827332}
   - component: {fileID: 1035827331}
   - component: {fileID: 1035827336}
-  - component: {fileID: 1035827337}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -15244,19 +15257,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1695655894}
---- !u!114 &1035827337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1035827330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attenuationObject: {fileID: 0}
 --- !u!1 &1044288761
 GameObject:
   m_ObjectHideFlags: 0
