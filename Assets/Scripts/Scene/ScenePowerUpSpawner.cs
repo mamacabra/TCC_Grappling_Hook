@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Scene
+namespace SceneControll
 {
     public class ScenePowerUpSpawner : MonoBehaviour
     {
