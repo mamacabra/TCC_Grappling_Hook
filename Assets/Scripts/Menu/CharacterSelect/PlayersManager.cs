@@ -387,13 +387,21 @@ public class PlayersManager : MonoBehaviour
     public void AddNewPlayerConfigAUX(PlayerConfigurationData playerConfiguration) {
         playersConfigsAUX.Add(playerConfiguration);
     }
+    public void ChangePlayerConfigAUX(PlayerConfigurationData playerConfiguration) {
+
+        for (int i = 0; i < playersConfigsAUX.Count; i++)
+        {
+            if (playersConfigsAUX[i].id == playerConfiguration.id)
+                playersConfigsAUX[i] = playerConfiguration;
+        }
+       
+    }
     public void RemovePlayerConfigAUX(PlayerConfigurationData playerConfiguration)
     {
-        
-        PlayerConfigurationData itemToRemove = playersConfigsAUX.Find(i => i.id == playerConfiguration.id);
-        if (!itemToRemove.Equals(default))
+        for (int i = 0; i < playersConfigsAUX.Count; i++)
         {
-            playersConfigsAUX.Remove(itemToRemove);
+            if (playersConfigsAUX[i].id == playerConfiguration.id)
+                playersConfigsAUX.RemoveAt(i);
         }
     }
     public void RemovePlayerConfig(PlayerConfigurationData playerConfiguration) {

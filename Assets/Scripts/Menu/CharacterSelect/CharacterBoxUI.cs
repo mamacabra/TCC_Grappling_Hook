@@ -183,6 +183,8 @@ public class CharacterBoxUI : MonoBehaviour
         playerConfig.characterModel = (ECharacterType)value;
         characterModels[value].SetActive(true);
         playerConfig.characterIndexCharacterChoice = value;
+        if(gameObject.activeSelf)
+            PlayersManager.Instance.ChangePlayerConfigAUX(playerConfig);
         //Animator animator = characterModels[value].GetComponentInChildren<Animator>();
         //if (animator) animator.SetTrigger("connected");
 
