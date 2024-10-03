@@ -84,10 +84,12 @@ public class CharacterBoxUI : MonoBehaviour
         if (context.action.WasPerformedThisFrame()) {
             if (!hasConfirmed) {
                 if(!gameObject.activeSelf) return;
-                gameObject.SetActive(false);
+                PlayersManager.Instance?.RemovePlayerConfigAUX(playerConfig);
                 PlayersManager.Instance?.RemovePlayerGameObject(gameObject);
                 choiseScreen.CheckGroup(transform, false);
-                return;}
+                gameObject.SetActive(false);
+                return; 
+            }
             characterStatus.text = "Escolhendo";
             characterStatus.color = Color.gray;
             PlayersManager.Instance?.RemovePlayerConfig(playerConfig);
@@ -101,6 +103,7 @@ public class CharacterBoxUI : MonoBehaviour
         characterStatus.text = "Pressione qualquer botão";
         characterStatus.color = Color.gray;
         PlayersManager.Instance?.RemovePlayerConfig(playerConfig);
+        PlayersManager.Instance?.RemovePlayerConfigAUX(playerConfig);
         PlayersManager.Instance?.SetPlayerStatus(false);
         hasConfirmed = false;
 
@@ -121,6 +124,40 @@ public class CharacterBoxUI : MonoBehaviour
         {
             characterStatus.text = "Escolhendo";
             characterStatus.color = Color.gray;
+        }
+    }
+    public void UpdateTextTest()
+    {
+        int v = 0;
+        CheckCharacter(v);
+        
+        characterStatus.text = "Escolhendo";
+        characterStatus.color = Color.gray;
+    }
+
+    void CheckCharacter(int v)
+    {
+        if (v < 0) v =  (int)ECharacterType.Count - 1;
+        if (v > (int)ECharacterType.Count - 1) v = 0;
+
+        int vAux = v;
+       
+        if (!PlayersManager.Instance.PlayerTypeIsAvailable(v))
+        {
+            vAux++;
+            CheckCharacter(vAux);
+        }
+        else
+        {
+
+            foreach (var c in characterModels)
+                c.SetActive(false);
+            
+            characterModels[vAux].SetActive(true);
+            
+            playerConfig.characterIndexCharacterChoice = vAux;
+            playerConfig.characterModel = (ECharacterType)vAux;
+            PlayersManager.Instance?.AddNewPlayerConfigAUX(playerConfig);
         }
     }
 
@@ -145,6 +182,7 @@ public class CharacterBoxUI : MonoBehaviour
         if (value > (int)ECharacterType.Count - 1) value = 0;
         playerConfig.characterModel = (ECharacterType)value;
         characterModels[value].SetActive(true);
+        playerConfig.characterIndexCharacterChoice = value;
         //Animator animator = characterModels[value].GetComponentInChildren<Animator>();
         //if (animator) animator.SetTrigger("connected");
 
@@ -168,6 +206,7 @@ public class CharacterBoxUI : MonoBehaviour
     {
         PlayersManager.Instance.OnUpdateText+= UpdateText;
         UpdateText();
+        //UpdateTextTest();
     }
 
     private void OnDisable() {

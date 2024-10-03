@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.12107873, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4439,7 +4439,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 286.73108, y: -31.778503}
+  m_AnchoredPosition: {x: 286.73108, y: -31.778564}
   m_SizeDelta: {x: -639.835, y: -31.779}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &272776360
@@ -5491,6 +5491,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 18
       objectReference: {fileID: 0}
+    - target: {fileID: 8585576367411717619, guid: 7c1e50ed0bfc0454db85caffd606941d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2745714985438004825, guid: 7c1e50ed0bfc0454db85caffd606941d, type: 3}
     m_RemovedGameObjects: []
@@ -6167,6 +6172,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 7010110407177151051, guid: 7c1e50ed0bfc0454db85caffd606941d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8484100899478227185, guid: 7c1e50ed0bfc0454db85caffd606941d,
         type: 3}
@@ -8923,6 +8933,11 @@ PrefabInstance:
       propertyPath: choiseScreen
       value: 
       objectReference: {fileID: 2112824729}
+    - target: {fileID: 4090019141312242307, guid: 7c1e50ed0bfc0454db85caffd606941d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4874909069000556930, guid: 7c1e50ed0bfc0454db85caffd606941d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -12835,7 +12850,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 8400000, guid: 5119c11bfda9a944f82bc4a016556c13, type: 2}
+      objectReference: {fileID: 8400000, guid: 66a169312eb778b41a1fa511c2547243, type: 2}
     - target: {fileID: 4056017708353489871, guid: 7c1e50ed0bfc0454db85caffd606941d,
         type: 3}
       propertyPath: PlayerInput
@@ -13461,7 +13476,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -75.60364}
+  m_AnchoredPosition: {x: 0, y: -75.603516}
   m_SizeDelta: {x: 100, y: 85.797}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &912521924
@@ -19985,6 +20000,7 @@ MonoBehaviour:
       characterSprite: {fileID: 0}
     score: 0
     id: 0
+    characterIndexCharacterChoice: 0
   playerImg: {fileID: 3975033119811622244}
   pointsImages: []
   caveira: {fileID: 0}
@@ -20062,7 +20078,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.215, y: 0.04077778}
   m_AnchorMax: {x: 0.7937501, y: 0.83800006}
-  m_AnchoredPosition: {x: -6.4000854, y: 0}
+  m_AnchoredPosition: {x: -6.4001465, y: 0}
   m_SizeDelta: {x: 612.8, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1299426340
@@ -22641,6 +22657,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 18
       objectReference: {fileID: 0}
+    - target: {fileID: 8928222717376417857, guid: 7c1e50ed0bfc0454db85caffd606941d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25207,7 +25228,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 286.73108, y: -31.778503}
+  m_AnchoredPosition: {x: 286.73108, y: -31.778564}
   m_SizeDelta: {x: -639.835, y: -31.779}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1609918956
@@ -30305,7 +30326,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 8400000, guid: 5119c11bfda9a944f82bc4a016556c13, type: 2}
+      objectReference: {fileID: 8400000, guid: a2762a3f418eb35438fb8d925c32c2dd, type: 2}
     - target: {fileID: 4056017708353489871, guid: 7c1e50ed0bfc0454db85caffd606941d,
         type: 3}
       propertyPath: PlayerInput
@@ -30335,6 +30356,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 7010110407177151051, guid: 7c1e50ed0bfc0454db85caffd606941d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8484100899478227185, guid: 7c1e50ed0bfc0454db85caffd606941d,
         type: 3}
@@ -30828,6 +30854,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayersManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7770712065242538499, guid: ba8ed31823cf8e6dbbe38228ed066461,
+        type: 3}
+      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8836442027467104043, guid: ba8ed31823cf8e6dbbe38228ed066461,
         type: 3}

@@ -29,7 +29,7 @@ public class PlayersManager : MonoBehaviour
         public SCharacterData sCharacterData;
         public int score;
         public int id;
-
+        public int characterIndexCharacterChoice;
         public void ChangeScore(int s) {
             score += s;
         }
@@ -61,6 +61,7 @@ public class PlayersManager : MonoBehaviour
     private int amountOfPlayersReady = 0;
     private bool[] freeId = {true, true, true, true, true, true};
     [SerializeField] private List<PlayerConfigurationData> playersConfigs = new List<PlayerConfigurationData>();
+    [SerializeField] private List<PlayerConfigurationData> playersConfigsAUX = new List<PlayerConfigurationData>();
     private string path;
     [SerializeField] private List<GameObject> playersGameObjects;
     private bool canInitGame = false;
@@ -127,7 +128,7 @@ public class PlayersManager : MonoBehaviour
     #region PlayerEvents
     private void OnJoin(InputAction.CallbackContext context) {// Join Input Pressed
         // Check if the action was triggered by a control
-        if (context.control != null) {
+        if (context.control != null && context.action.WasPerformedThisFrame()) {
             // Get the input device
             InputDevice device = context.control.device;
 
@@ -173,7 +174,6 @@ public class PlayersManager : MonoBehaviour
     }
     public void OnPlayerJoinedEvent(PlayerInput _playerInput) {
         PlayerColorLayerManager.DefineCharacterColorLayer(_playerInput.playerIndex);
-
         // Trigged when player joined : set in inspector: PlayerInputManager
         bool inGame = InterfaceManager.Instance ? InterfaceManager.Instance.inGame : true;
         if (!inGame) {// Is in character selection screen.
@@ -185,6 +185,9 @@ public class PlayersManager : MonoBehaviour
                 characterBoxUI.playerConfig.controlScheme = _playerInput.currentControlScheme;
                 characterBoxUI.playerConfig.inputDevices = GetStringFromDevices(_playerInput.devices.ToArray());
                 characterBoxUI.characterImageBackground.color = PlayerColorLayerManager.GetColorBaseLight(_playerInput.playerIndex);
+                
+                characterBoxUI.UpdateTextTest();
+                
                 Animator animator = characterBoxUI.GetCurrentCharacterModels.GetComponentInChildren<Animator>();
                 if (animator) animator.SetTrigger("connected");
             }
@@ -380,6 +383,19 @@ public class PlayersManager : MonoBehaviour
         playersConfigs.Add(playerConfiguration);
         OnUpdateText?.Invoke();
     }
+    
+    public void AddNewPlayerConfigAUX(PlayerConfigurationData playerConfiguration) {
+        playersConfigsAUX.Add(playerConfiguration);
+    }
+    public void RemovePlayerConfigAUX(PlayerConfigurationData playerConfiguration)
+    {
+        
+        PlayerConfigurationData itemToRemove = playersConfigsAUX.Find(i => i.id == playerConfiguration.id);
+        if (!itemToRemove.Equals(default))
+        {
+            playersConfigsAUX.Remove(itemToRemove);
+        }
+    }
     public void RemovePlayerConfig(PlayerConfigurationData playerConfiguration) {
         playersConfigs.Remove(playerConfiguration);
         OnUpdateText?.Invoke();
@@ -389,6 +405,7 @@ public class PlayersManager : MonoBehaviour
         amountOfPlayersReady = 0;
         if (cameraMovement) cameraMovement.RemoveAllPlayers();
         playersConfigs.Clear();
+        playersConfigsAUX.Clear();
         if (charactersFromGame) {
             for (int i = 0; i < playersGameObjects.Count; i++){
                 if (playersGameObjects[i] && (playersGameObjects[i].layer != LayerMask.NameToLayer("UI"))){
@@ -408,6 +425,20 @@ public class PlayersManager : MonoBehaviour
         for (int i = 0; i < playersConfigs.Count; i++) {
             if (playersConfigs[i].characterModel == _characterType) {
                 isAvailable = false;
+                break;
+            }
+        }
+        return isAvailable;
+    }
+    
+    public bool PlayerTypeIsAvailable(int c) {
+        bool isAvailable = true;
+        if (playersConfigsAUX.Count == 0) return isAvailable;
+        for (int i = 0; i < playersConfigsAUX.Count; i++) {
+            if (playersConfigsAUX[i].characterIndexCharacterChoice == c) {
+                {
+                    isAvailable = false;
+                }
                 break;
             }
         }
