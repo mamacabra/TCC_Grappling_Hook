@@ -21,6 +21,7 @@ namespace Character
         public GameObject GrapplingHookRope;
         public GameObject GrapplingHookRopeMuzzle;
         public BoxCollider GrapplingHookCollider;
+        public GrapplingHookColliderCheck GrapplingHookColliderCheck;
         public GrapplingHookState GrapplingHookState;
         public Transform GrapplingHookTransform;
 
