@@ -178,6 +178,7 @@ public class PlayersManager : MonoBehaviour
         bool inGame = InterfaceManager.Instance ? InterfaceManager.Instance.inGame : true;
         if (!inGame) {// Is in character selection screen.
             //_playerInput.transform.SetParent(characterChoice.charactersGroup);
+            if (playersGameObjects.Contains(_playerInput.gameObject)) return; // Ensures this will not be executed twice.
             if (String.IsNullOrEmpty(_playerInput.currentControlScheme)) return;
             freeId[_playerInput.playerIndex] = false;
             if (_playerInput.TryGetComponent(out CharacterBoxUI characterBoxUI)) {
@@ -337,6 +338,7 @@ public class PlayersManager : MonoBehaviour
 
             // Set player material
             PlayerInput playerInput = playerInputManager.JoinPlayer(item.id, controlScheme: item.controlScheme, pairWithDevices: GetDevicesFromString(item.inputDevices));
+            OnPlayerJoinedEvent(playerInput);
             if (playerInput.TryGetComponent(out Character.Character character)){
                 character.Id = item.id;
                 character.transform.LookAt(-character.transform.forward, character.transform.up); // Made character look at camera direction

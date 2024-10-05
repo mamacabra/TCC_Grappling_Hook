@@ -51,19 +51,7 @@ MonoBehaviour:
   m_JoinBehavior: 2
   m_PlayerJoinedEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4325472550121591281}
-        m_TargetAssemblyTypeName: PlayersManager, Assembly-CSharp
-        m_MethodName: OnPlayerJoinedEvent
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_PlayerLeftEvent:
     m_PersistentCalls:
       m_Calls:
@@ -115,9 +103,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb8eca6ab0ee98515afee8bed6ebcd8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
   playerPrefab: {fileID: 2160222834551465636, guid: 641da49de6b72a92fa0efc96d9704e70,
     type: 3}
   playerUIPrefab: {fileID: 1189765548623994011, guid: 5ad832e478b5caca1b66b4e75b396578,
     type: 3}
-  characterSelect: {fileID: 0}
+  characterChoice: {fileID: 0}
   cameraMovement: {fileID: 0}
+  playersSpawners: {fileID: 0}
+  playerInputManager: {fileID: 0}
+  playersConfigs: []
+  playersConfigsAUX: []
+  playersGameObjects: []
+  ScoreToWinGame: 10
+  winnerSupreme: -1
