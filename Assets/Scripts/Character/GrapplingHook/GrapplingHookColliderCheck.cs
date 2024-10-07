@@ -1,4 +1,3 @@
-using System;
 using Character.Utils;
 using UnityEngine;
 
@@ -8,6 +7,8 @@ namespace Character.GrapplingHook
     {
         [SerializeField] private MeshCollider mesh;
         [SerializeField] private Mesh level1;
+        [SerializeField] private Mesh level2;
+        [SerializeField] private Mesh level3;
 
         private const float CountdownDefault = 0.1f;
         [SerializeField] private float countdown;
@@ -34,7 +35,6 @@ namespace Character.GrapplingHook
         {
             if (other.gameObject.CompareTag(Const.Tags.Character))
             {
-                isCountdownEnable = false;
                 CharacterEntity.Character.LookAt(other.gameObject.transform.position);
                 CharacterEntity.GrapplingHookState.SetHookDispatchState();
             }
@@ -43,19 +43,24 @@ namespace Character.GrapplingHook
         public void DisableCollider()
         {
             gameObject.SetActive(false);
+            isCountdownEnable = false;
         }
 
-        private void EnableCollider()
+        public void EnableCollider()
         {
             gameObject.SetActive(true);
             isCountdownEnable = true;
             countdown = CountdownDefault;
-        }
 
-        public void EnableColliderLevel1()
-        {
-            EnableCollider();
-            if (mesh) mesh.sharedMesh = level1;
+            if (mesh)
+            {
+                mesh.sharedMesh = CharacterEntity.Hook.Force switch
+                {
+                    1 => level1,
+                    2 => level2,
+                    _ => level3
+                };
+            }
         }
     }
 }

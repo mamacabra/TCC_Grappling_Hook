@@ -15902,7 +15902,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mesh: {fileID: 6955529947854349853}
-  level1: {fileID: -703070690372041258, guid: 2772809cd13317f4e8afa0da179c1681, type: 3}
+  level1: {fileID: 140014227500361965, guid: 63bfd5520e2b2bc4b9f7d0ce1cb9c022, type: 3}
+  level2: {fileID: -3172466374839754923, guid: 759418b530441e14e9ab6b33d141e005, type: 3}
+  level3: {fileID: -8549833537487288322, guid: 8084c4d294bc1274da7251f9a0c35e3d, type: 3}
+  countdown: 0
+  isCountdownEnable: 0
 --- !u!1 &7401714667755324967
 GameObject:
   m_ObjectHideFlags: 0
