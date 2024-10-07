@@ -278,7 +278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fallingObjectPrefab: {fileID: 9146939633919487612, guid: 5cb972bb2b9c21c4e86b89cec66dc2e0,
     type: 3}
-  fallHeight: 25
+  fallHeight: 50
   minX: -60
   maxX: 60
   minZ: -45
@@ -2588,6 +2588,8 @@ MonoBehaviour:
   - {fileID: 1743079875093172414}
   moveSpeed: 10
   pauseTime: 3
+  delayTime: 4
+  stopTime: 1
   cooldown: 0
   startCooldown: 0
   hasBitten: 0

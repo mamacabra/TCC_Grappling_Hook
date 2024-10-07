@@ -47,39 +47,47 @@ namespace TrapSystem_Scripts
 
         void Update()
         {
-            
             for (int i = players.Count - 1; i >= 0; i--)
             {
                 PlayerTrapData playerData = players[i];
                 Transform player = playerData.playerTransform;
-        
-                
+
                 if (player == null)
                 {
                     players.RemoveAt(i); 
                     continue;
                 }
-                
+
                 bool isPlayerOutside = player.position.x < minX || player.position.x > maxX || 
                                        player.position.z < minZ || player.position.z > maxZ;
 
+                // If the player is outside the arena
                 if (isPlayerOutside)
                 {
+                    // If they just went outside, start the timer
                     if (!playerData.isOutsideArena)
                     {
                         playerData.isOutsideArena = true;
                         playerData.outsideTime = Time.time;
                     }
+                    // If they've been outside long enough, trigger the trap
                     else if (Time.time - playerData.outsideTime >= timeBeforeDeath)
                     {
                         SpawnFallingObject(player);
-                        
-                        players.RemoveAt(i);
+                        // Here we do not remove the player, but reset their status so they can trigger the trap again
+                        playerData.isOutsideArena = false; // Reset the state to allow the trap to activate again
+                        playerData.outsideTime = 0f; // Reset the time for next exit event
                     }
                 }
+                // If the player re-enters the arena
                 else
                 {
-                    playerData.isOutsideArena = false;
+                    // Reset their "outside" status and timer to prepare for the next exit
+                    if (playerData.isOutsideArena)
+                    {
+                        playerData.isOutsideArena = false;
+                        playerData.outsideTime = 0f; // Reset the outside timer
+                    }
                 }
             }
         }
