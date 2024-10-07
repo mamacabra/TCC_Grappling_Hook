@@ -8,6 +8,11 @@ namespace Character.GrapplingHook
     {
         public AGrapplingHookState State { get; private set; }
 
+        private void Start()
+        {
+            CharacterEntity.GrapplingHookColliderCheck.DisableCollider();
+        }
+
         private void Update()
         {
             State?.Update();
@@ -23,6 +28,12 @@ namespace Character.GrapplingHook
             State?.Exit();
             State = state;
             State.Enter();
+        }
+
+        public void SetHookCollisionCheckState()
+        {
+            var state = new HookCollisionCheckState(CharacterEntity);
+            SetState(state);
         }
 
         public void SetHookDestroyedState()

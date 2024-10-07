@@ -23,6 +23,7 @@ namespace Character
         [SerializeField] private GameObject grapplingHookRope;
         [SerializeField] private GameObject grapplingHookRopeMuzzle;
         [SerializeField] private BoxCollider grapplingHookCollider;
+        [SerializeField] private GrapplingHookColliderCheck grapplingHookColliderCheck;
         [SerializeField] private GrapplingHookState grapplingHookState;
         [SerializeField] private Transform grapplingHookTransform;
 
@@ -59,6 +60,7 @@ namespace Character
                 GrapplingHookRope = grapplingHookRope,
                 GrapplingHookRopeMuzzle = grapplingHookRopeMuzzle,
                 GrapplingHookCollider = grapplingHookCollider,
+                GrapplingHookColliderCheck = grapplingHookColliderCheck,
                 GrapplingHookState = grapplingHookState,
                 GrapplingHookTransform = grapplingHookTransform,
 
@@ -78,6 +80,7 @@ namespace Character
 
             grapplingHook?.Setup(characterEntity);
             grapplingHookState?.Setup(characterEntity);
+            grapplingHookColliderCheck?.Setup(characterEntity);
 
             SetupRigidbody(characterEntity);
             characterState.SetReadyState();
