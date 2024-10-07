@@ -6,28 +6,56 @@ namespace Character.GrapplingHook
 {
     public class GrapplingHookColliderCheck : ACharacterMonoBehaviour
     {
-        [SerializeField] private MeshCollider Mesh;
-        [SerializeField] private Mesh Level1;
+        [SerializeField] private MeshCollider mesh;
+        [SerializeField] private Mesh level1;
+
+        private const float CountdownDefault = 0.1f;
+        [SerializeField] private float countdown;
+        [SerializeField] private bool isCountdownEnable;
+
+        private void Start()
+        {
+            if (mesh) mesh.sharedMesh = null;
+        }
+
+        private void FixedUpdate()
+        {
+            if (isCountdownEnable == false) return;
+            countdown -= Time.fixedDeltaTime;
+
+            if (countdown <= 0)
+            {
+                isCountdownEnable = false;
+                CharacterEntity.GrapplingHookState.SetHookDispatchState();
+            }
+        }
 
         private void OnTriggerEnter(Collider other)
         {
-            CharacterEntity.GrapplingHookState.SetHookDispatchState();
+            if (other.gameObject.CompareTag(Const.Tags.Character))
+            {
+                isCountdownEnable = false;
+                CharacterEntity.Character.LookAt(other.gameObject.transform.position);
+                CharacterEntity.GrapplingHookState.SetHookDispatchState();
+            }
         }
 
         public void DisableCollider()
         {
-            Mesh.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
 
         private void EnableCollider()
         {
-            Mesh.gameObject.SetActive(true);
+            gameObject.SetActive(true);
+            isCountdownEnable = true;
+            countdown = CountdownDefault;
         }
 
         public void EnableColliderLevel1()
         {
             EnableCollider();
-            Mesh.sharedMesh = Level1;
+            if (mesh) mesh.sharedMesh = level1;
         }
     }
 }

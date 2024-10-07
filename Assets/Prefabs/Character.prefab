@@ -5221,7 +5221,7 @@ MonoBehaviour:
   grapplingHookRope: {fileID: 8232527587555799853}
   grapplingHookRopeMuzzle: {fileID: 4026952589215357908}
   grapplingHookCollider: {fileID: 5671700382720908195}
-  grapplingHookColliderCheck: {fileID: 0}
+  grapplingHookColliderCheck: {fileID: 1226915334752800994}
   grapplingHookState: {fileID: 7447832766166676774}
   grapplingHookTransform: {fileID: 6217346655026089592}
 --- !u!114 &284894761864324782
@@ -15888,7 +15888,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: -703070690372041258, guid: 2772809cd13317f4e8afa0da179c1681, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!114 &1226915334752800994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15901,8 +15901,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e61c67245e864a8a99bd5a0be6d702fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Mesh: {fileID: 0}
-  Level1: {fileID: -703070690372041258, guid: 2772809cd13317f4e8afa0da179c1681, type: 3}
+  mesh: {fileID: 6955529947854349853}
+  level1: {fileID: -703070690372041258, guid: 2772809cd13317f4e8afa0da179c1681, type: 3}
 --- !u!1 &7401714667755324967
 GameObject:
   m_ObjectHideFlags: 0
