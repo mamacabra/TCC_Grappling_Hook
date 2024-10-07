@@ -8,18 +8,7 @@ namespace Character.GrapplingHook.States
 
         public override void Enter()
         {
-            switch (CharacterEntity.Hook.Force)
-            {
-                case 1:
-                    CharacterEntity.GrapplingHookColliderCheck.EnableColliderLevel1();
-                    break;
-                case 2:
-                    CharacterEntity.GrapplingHookColliderCheck.EnableColliderLevel1();
-                    break;
-                default:
-                    CharacterEntity.GrapplingHookColliderCheck.EnableColliderLevel1();
-                    break;
-            }
+            CharacterEntity.GrapplingHookColliderCheck.EnableCollider();
         }
 
         public override void Exit()
