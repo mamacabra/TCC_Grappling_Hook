@@ -243,7 +243,7 @@ public class PlayersManager : MonoBehaviour
             GameOver = true;
             playersCountInScene = 0;
             //End Game
-            PowerUpManager.CreateBackup(playersGameObjects);
+            // PowerUpManager.CreateBackup(playersGameObjects);
             CameraManager.Instance.OnEndFeedback = false;
             AddPoints(playerWhoKilled, scoreToAddToWinner);
             InterfaceManager.Instance.OnCallFeedbackGame(CheckIfGameOver());
@@ -274,7 +274,7 @@ public class PlayersManager : MonoBehaviour
             GameOver = true;
             playersCountInScene = 0;
             //End Game
-            PowerUpManager.CreateBackup(playersGameObjects);
+            // PowerUpManager.CreateBackup(playersGameObjects);
             CameraManager.Instance.OnEndFeedback = false;
             if(GameOver)
                 CameraManager.Instance.DeathFeedBack();

@@ -98,6 +98,6 @@ public class HudController : MonoBehaviour
             _character.CharacterEntity.CharacterState.SetWalkState();
       }
 
-      PowerUpManager.Instance.StartSpawn();
+      // PowerUpManager.Instance.StartSpawn();
    }
 }
