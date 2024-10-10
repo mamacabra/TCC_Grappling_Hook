@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: FoodAtlas_Mat_02
+    second: {fileID: 2100000, guid: ec53a40b4a3aa874c96d6ab5f36d3618, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: VertexColor_EnvRough
     second: {fileID: 2100000, guid: aaaf5651d53b0194283e5d0b4fdb31ab, type: 2}
   materials:
@@ -35,7 +40,8 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    extraUserProperties: []
+    extraUserProperties:
+    - '#BAKERY{"meshName":["Fruit-Pear"],"padding":[36],"unwrapper":[0]}'
     clipAnimations: []
     isReadable: 0
   meshes:

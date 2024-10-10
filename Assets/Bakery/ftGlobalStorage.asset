@@ -36,7 +36,13 @@ MonoBehaviour:
   - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/Cuttlery-ButterKnife.fbx
   - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/Cuttlery-Spoon.fbx
   - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Meat-Lombo-Sliced.fbx
-  modifiedAssetPaddingHash: d6a958ffff27c11595c2a6931b3a8033c04dfff0ff27c1156d67e2a8f627c115a35031ee4adc894bd9398033d9398033e55031ee275031ee9c09ecc0f1f23a06bb09ecc04adc894b8c67e2a8bb09ecc06209ecc07c398033be398033
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Fruit-Pear.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Fruit-Banana.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Fruit-Apple.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Brunch-Bread.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Snack-Wafer_Strawberrie.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Snack-Cookie_Chocolate.fbx
+  modifiedAssetPaddingHash: d6a958ffff27c11595c2a6931b3a8033c04dfff0ff27c1156d67e2a8f627c115a35031ee4adc894bd9398033d9398033e55031ee275031ee9c09ecc0f1f23a06bb09ecc04adc894b8c67e2a8bb09ecc06209ecc07c398033be39803308dc894ba35031eed93980339c09ecc0c04dfff0f827c115
   modifiedMeshList: []
   modifiedMeshPaddingList: 
   modifiedAssets:
@@ -507,10 +513,38 @@ MonoBehaviour:
     - Meat-Lombo-Sliced
     padding: 2d000000
     unwrapper: 00000000
+  - meshName:
+    - Fruit-Pear
+    padding: 24000000
+    unwrapper: 00000000
+  - meshName:
+    - Fruit-Banana
+    padding: 25000000
+    unwrapper: 00000000
+  - meshName:
+    - Fruit-Apple
+    padding: 23000000
+    unwrapper: 00000000
+  - meshName:
+    - Brunch-Bread
+    padding: 20000000
+    unwrapper: 00000000
+  - meshName:
+    - Snack-Wafer_Strawberrie
+    padding: 3a000000
+    unwrapper: 00000000
+  - meshName:
+    - Snack-Cookie_Chocolate
+    padding: 66000000
+    unwrapper: 00000000
   assetList:
   - Assets/Bakery/examples/content/sponza/bush.FBX
   - Assets/Bakery/examples/content/floor_lamp.FBX
-  uvOverlapAssetList: 00000000ffffffff
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Blueberry-Single.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Cake-Berries.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Ingredient-Egg_01.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Ingredient-Egg_02.fbx
+  uvOverlapAssetList: 00000000ffffffff00000000000000000000000000000000
   xatlasWarningShown: 0
   foundCompatibleSetup: 1
   gpuName: NVIDIA GeForce RTX 2060
@@ -602,5 +636,5 @@ MonoBehaviour:
   renderSettingsRTPVWidth: 640
   renderSettingsRTPVHeight: 360
   tagOverrides: []
-  modifiedMeshPaddingArray: 2d000000
+  modifiedMeshPaddingArray: 66000000
   modifiedMeshUnwrapperArray: 00000000
