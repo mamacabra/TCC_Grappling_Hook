@@ -32,7 +32,7 @@ public class HudController : MonoBehaviour
          }
       }
 
-      //yield return new WaitForSeconds(3);
+      yield return new WaitForSeconds(1);
 
       for (int i = 0; i < players.Count; i++) {
          if (players[i].TryGetComponent(out Character.Character _character)) {
