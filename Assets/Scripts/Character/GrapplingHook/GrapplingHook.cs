@@ -49,7 +49,7 @@ namespace Character.GrapplingHook
         {
             var hasHit = false;
             var origin = new Vector3(transform.position.x, 1f, transform.position.z);
-            var direction = CharacterEntity.Character.transform.forward;
+            var direction = (other.transform.position - transform.position).normalized;
 
             var hits = Physics.RaycastAll(origin, direction, 100f);
             foreach (var hit in hits)
@@ -61,7 +61,8 @@ namespace Character.GrapplingHook
                 break;
             }
 
-            if (hasHit == false) CharacterEntity.CharacterState.SetHookedToWallState(other.transform.position);
+            if (hasHit == false)
+                CharacterEntity.CharacterState.SetHookedToWallState(other.transform.position);
         }
 
         public void IncreaseHookForce()
