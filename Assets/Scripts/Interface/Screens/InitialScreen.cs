@@ -21,7 +21,8 @@ public class InitialScreen : Screens
     {
         PlayersManager.Instance.ClearPlayersConfig(charactersFromGame: true);
         PlayersManager.Instance.SavePlayersConfigs();
-        EventSystem.current.SetSelectedGameObject(buttons[0].button.gameObject);
+        buttons[0].buttonHandler.Select();
+        //EventSystem.current.SetSelectedGameObject(buttons[0].button.gameObject);
     }
 
     public override void GoToScreen(ScreensName screensName)

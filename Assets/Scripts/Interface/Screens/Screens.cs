@@ -8,9 +8,11 @@ public struct ButtonToScreen
 {
     public Button button;
     public ScreensName goToScreen;
+    public SelectableButtonHandler buttonHandler;
 }
 public abstract class Screens : MonoBehaviour
 {
+    
     public void OnEnable()
     {
         Initialize();
