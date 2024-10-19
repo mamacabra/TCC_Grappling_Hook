@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class CharacterChoiseScreen : Screens
+public class CharacterChoiceScreen : Screens
 {
     [SerializeField] private ButtonToScreen backToMenu, playGame;
     [SerializeField] private List<Transform> charactersGroup = new List<Transform>();

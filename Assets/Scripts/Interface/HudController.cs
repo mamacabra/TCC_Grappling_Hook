@@ -16,13 +16,31 @@ public class HudController : MonoBehaviour
    [SerializeField] private List<Color32> colorsToChangeCountText;
 
    private List<GameObject> players = new List<GameObject>();
+  
    private void OnEnable()
    {
-      players = PlayersManager.Instance.PlayersGameObjects;
-      timeToWaitToStartCount = players.Count;
-      StartCoroutine(InitPlayers());
-      StartCoroutine(WaitToStartCount());
+      if (!InterfaceManager.Instance.inGame)
+      {
+         InterfaceManager.Instance.isOnCount = true;
+         InterfaceManager.Instance.inGame = true;
+         players = PlayersManager.Instance.PlayersGameObjects;
+         timeToWaitToStartCount = players.Count;
+         StartCoroutine(InitPlayers());
+         StartCoroutine(WaitToStartCount(2));
+      }
+      else
+      {
+         timeToWaitToStartCount = 0;
+         for (int i = 0; i < players.Count; i++) {
+            if (players[i].TryGetComponent(out Character.Character _character)) {
+               _character.CharacterEntity.CharacterState.SetReadyState();
+            }
+         }
+         StartCoroutine(WaitToStartCount(0));
+      }
    }
+   
+   
 
    IEnumerator InitPlayers()
    {
@@ -42,9 +60,9 @@ public class HudController : MonoBehaviour
       }
    }
 
-   IEnumerator WaitToStartCount()
+   IEnumerator WaitToStartCount(float plusTime)
    {
-      yield return new WaitForSeconds(timeToWaitToStartCount+2);
+      yield return new WaitForSeconds(timeToWaitToStartCount+plusTime);
 
       countGameStartText.transform.localScale = Vector3.one;
 
@@ -101,5 +119,7 @@ public class HudController : MonoBehaviour
       }
 
       // PowerUpManager.Instance.StartSpawn();
+      yield return new WaitForSeconds(0.5f);
+      InterfaceManager.Instance.isOnCount = false;
    }
 }

@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.Serialization;
 
 public class CharacterBoxUI : MonoBehaviour
 {
@@ -51,7 +52,7 @@ public class CharacterBoxUI : MonoBehaviour
             }
             if(context.canceled){
                 pressed = false;
-                choiseScreen.SetButtonStartSlider(-(pressTime / 2));
+                choiceScreen.SetButtonStartSlider(-(pressTime / 2));
                 pressTime = 0.0f;
             }
         }
@@ -79,14 +80,14 @@ public class CharacterBoxUI : MonoBehaviour
         }
     }
 
-    [SerializeField] private CharacterChoiseScreen choiseScreen;
+    [FormerlySerializedAs("choiseScreen")] [SerializeField] private CharacterChoiceScreen choiceScreen;
     public void OnCancel(InputAction.CallbackContext context) {
         if (context.action.WasPerformedThisFrame()) {
             if (!hasConfirmed) {
                 if(!gameObject.activeSelf) return;
                 PlayersManager.Instance?.RemovePlayerConfigAUX(playerConfig);
                 PlayersManager.Instance?.RemovePlayerGameObject(gameObject);
-                choiseScreen.CheckGroup(transform, false);
+                choiceScreen.CheckGroup(transform, false);
                 gameObject.SetActive(false);
                 return; 
             }
@@ -109,7 +110,7 @@ public class CharacterBoxUI : MonoBehaviour
 
         gameObject.SetActive(false);
         PlayersManager.Instance?.RemovePlayerGameObject(gameObject);
-        choiseScreen.CheckGroup(transform, false);
+        choiceScreen.CheckGroup(transform, false);
     }
 
     public void UpdateText()
@@ -232,7 +233,7 @@ public class CharacterBoxUI : MonoBehaviour
         if (pressed)
         {
             pressTime += Time.deltaTime;
-            choiseScreen.SetButtonStartSlider(pressTime);
+            choiceScreen.SetButtonStartSlider(pressTime);
         }
     }
 }

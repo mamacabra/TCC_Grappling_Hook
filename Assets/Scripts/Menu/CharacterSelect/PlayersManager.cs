@@ -49,7 +49,7 @@ public class PlayersManager : MonoBehaviour
 
     #region Refferences
     [Header("Refferences")]
-    public CharacterChoiseScreen characterChoice;
+    public CharacterChoiceScreen characterChoice;
     public PrototypeCameraMoviment cameraMovement;
     public PlayersSpawners playersSpawners;
     public PlayerInputManager playerInputManager;
@@ -98,8 +98,10 @@ public class PlayersManager : MonoBehaviour
     }
     public void InitGame(bool loadScene = true) {
         GameOver = false;
+        InterfaceManager.Instance.isOnFeedback = false;
+       
         winnerSupreme = -1;
-        InterfaceManager.Instance.inGame = true;
+       
         ClearPlayersConfig(charactersFromGame: true);
         LoadPlayersConfigs(); // Reset playersConfig in characterSelect screen.
         playerInputManager.playerPrefab = playerPrefab;
@@ -241,6 +243,8 @@ public class PlayersManager : MonoBehaviour
         if (playersCountInScene >= playersConfigs.Count-1 || CheckIfGameOver())
         {
             GameOver = true;
+            InterfaceManager.Instance.isOnFeedback = true;
+            InterfaceManager.Instance.GameOver();
             playersCountInScene = 0;
             //End Game
             // PowerUpManager.CreateBackup(playersGameObjects);

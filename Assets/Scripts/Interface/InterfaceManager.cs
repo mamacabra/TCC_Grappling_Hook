@@ -37,6 +37,8 @@ public class InterfaceManager : MonoBehaviour
      [HideInInspector] public bool inGame = false;
      [HideInInspector] public bool pause = false;
      [HideInInspector] public bool startNewGame = false;
+     [HideInInspector] public bool isOnCount = false;
+     [HideInInspector] public bool isOnFeedback = false;
      public event Action OnHideButton;
      public event Action OnShowScoreInFeedbackScreen; 
      private void Start()
@@ -44,12 +46,23 @@ public class InterfaceManager : MonoBehaviour
           if(gameWithScreens) ShowScreen();
      }
 
+     public void GameOver()
+     {
+          if (pause)
+          {
+               HideSpecificScreen(ScreensName.Pause_InGame_Screen);
+               ShowSpecificScreen(ScreensName.Hud);
+               pause = false;
+               Time.timeScale = 1;
+          }
+     }    
      private void Update()
      {
           if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame || (Gamepad.current != null && Gamepad.current.startButton.wasPressedThisFrame))
           {
                if (inGame)
                {
+                    if(isOnCount || isOnFeedback || PlayersManager.Instance.GameOver)return;
                     if (!pause)
                     {
                          ShowSpecificScreen(ScreensName.Pause_InGame_Screen);
