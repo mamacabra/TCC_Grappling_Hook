@@ -14,6 +14,7 @@ public class CharacterChoiceScreen : Screens
     [SerializeField] private List<PlayerInput> playerInputsGamePad = new List<PlayerInput>();
     [SerializeField] private Transform tutorial;
     [SerializeField] private Slider startGameSlider;
+    public float sliderSpeed;
 
     private int objEnables = 0;
     private void Awake()
@@ -191,10 +192,11 @@ public class CharacterChoiceScreen : Screens
         }
     }
     private void Update() {
-        SetButtonStartSlider(startGameSlider.value - Time.deltaTime);
+        SetButtonStartSlider(-0.5f);
     }
     public void SetButtonStartSlider(float value){
-        startGameSlider.value = value;
+        sliderSpeed = value;
+        startGameSlider.value += Time.deltaTime * sliderSpeed;
         Mathf.Clamp(startGameSlider.value, startGameSlider.minValue, startGameSlider.maxValue);
         if (startGameSlider.value >= startGameSlider.maxValue) {if (PlayersManager.Instance.CanInitGame) { GoToScreen(playGame.goToScreen); } }
     }

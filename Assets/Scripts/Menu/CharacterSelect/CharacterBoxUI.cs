@@ -13,13 +13,10 @@ public class CharacterBoxUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI characterName;
     [SerializeField] private TextMeshProUGUI characterStatus;
     private bool hasConfirmed;
-
     private bool pressed = false;
-    [SerializeField] private float pressTime = 0.0f;
 
     public PlayersManager.PlayerConfigurationData playerConfig;
 
-    public float GetPressTime => pressTime;
     public GameObject GetCurrentCharacterModels => characterModels[(int)playerConfig.characterModel];
 
     public void ChangePlayerInput(PlayerInput p)
@@ -52,8 +49,8 @@ public class CharacterBoxUI : MonoBehaviour
             }
             if(context.canceled){
                 pressed = false;
-                choiceScreen.SetButtonStartSlider(-(pressTime / 2));
-                pressTime = 0.0f;
+                // choiceScreen.SetButtonStartSlider(-(pressTime / 2));
+                // pressTime = 0.0f;
             }
         }
 
@@ -232,8 +229,10 @@ public class CharacterBoxUI : MonoBehaviour
     private void Update() {
         if (pressed)
         {
-            pressTime += Time.deltaTime;
-            choiceScreen.SetButtonStartSlider(pressTime);
+            float currentValue = choiceScreen.sliderSpeed;
+            float valueToAdd = 0.5f;
+            if (currentValue == -0.5f) valueToAdd += 1.0f;
+            choiceScreen.SetButtonStartSlider(choiceScreen.sliderSpeed + valueToAdd);
         }
     }
 }
