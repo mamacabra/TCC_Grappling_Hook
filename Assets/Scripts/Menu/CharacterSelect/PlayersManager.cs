@@ -363,7 +363,8 @@ public class PlayersManager : MonoBehaviour
                 OnPlayerConfigAdd?.Invoke(item);*/
         }
         playerInputManager.DisableJoining();
-        InterfaceManager.Instance.startNewGame = true;
+        
+        InterfaceManager.Instance.StartCount();
     }
     public void SetPlayerStatus(bool isReady) {
         if (isReady) {

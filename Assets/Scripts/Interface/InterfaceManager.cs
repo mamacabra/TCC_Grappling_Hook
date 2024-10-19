@@ -40,7 +40,8 @@ public class InterfaceManager : MonoBehaviour
      [HideInInspector] public bool isOnCount = false;
      [HideInInspector] public bool isOnFeedback = false;
      public event Action OnHideButton;
-     public event Action OnShowScoreInFeedbackScreen; 
+     public event Action OnShowScoreInFeedbackScreen;
+     public event Action OnStartCount;
      private void Start()
      {
           if(gameWithScreens) ShowScreen();
@@ -55,7 +56,13 @@ public class InterfaceManager : MonoBehaviour
                pause = false;
                Time.timeScale = 1;
           }
-     }    
+     }
+
+     public void StartCount()
+     {
+          startNewGame = true;
+          OnStartCount?.Invoke();
+     }
      private void Update()
      {
           if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame || (Gamepad.current != null && Gamepad.current.startButton.wasPressedThisFrame))

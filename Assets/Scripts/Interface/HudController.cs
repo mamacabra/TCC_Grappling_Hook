@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -19,14 +20,13 @@ public class HudController : MonoBehaviour
   
    private void OnEnable()
    {
+      if(InterfaceManager.Instance)
+         InterfaceManager.Instance.OnStartCount += StartCount;
+      
       if (!InterfaceManager.Instance.inGame)
       {
          InterfaceManager.Instance.isOnCount = true;
          InterfaceManager.Instance.inGame = true;
-         players = PlayersManager.Instance.PlayersGameObjects;
-         timeToWaitToStartCount = players.Count;
-         StartCoroutine(InitPlayers());
-         StartCoroutine(WaitToStartCount(2));
       }
       else
       {
@@ -39,8 +39,20 @@ public class HudController : MonoBehaviour
          StartCoroutine(WaitToStartCount(0));
       }
    }
-   
-   
+
+   private void OnDisable()
+   {
+      if(InterfaceManager.Instance)
+         InterfaceManager.Instance.OnStartCount -= StartCount;
+   }
+
+   public void StartCount()
+   {
+      players = PlayersManager.Instance.PlayersGameObjects;
+      timeToWaitToStartCount = players.Count;
+      StartCoroutine(InitPlayers());
+      StartCoroutine(WaitToStartCount(2));
+   }
 
    IEnumerator InitPlayers()
    {
