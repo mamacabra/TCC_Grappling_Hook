@@ -17,9 +17,13 @@ public class HudController : MonoBehaviour
    [SerializeField] private List<Color32> colorsToChangeCountText;
 
    private List<GameObject> players = new List<GameObject>();
+
+   [SerializeField] private GameObject matchPointFeedback;
   
    private void OnEnable()
    {
+      
+      matchPointFeedback.SetActive(false);
       if(InterfaceManager.Instance)
          InterfaceManager.Instance.OnStartCount += StartCount;
       
@@ -105,7 +109,10 @@ public class HudController : MonoBehaviour
 
       string finalText = textToShowWhenCountOver;
       if (listAux.Count > 0)
+      {
          finalText = textToShowWhenCountOverMatchPoint;
+         matchPointFeedback.SetActive(true);
+      }
 
       countGameStartText.text = finalText;
 
