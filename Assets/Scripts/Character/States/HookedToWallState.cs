@@ -30,7 +30,7 @@ namespace Character.States
             var distance = Vector3.Distance(characterPosition, wallPoint);
             if (distance <= MinDistanceToDrop)
                 CharacterEntity.CharacterState.SetWalkState();
-            
+
             CharacterEntity.Character.MoveArrowForward();
         }
     }

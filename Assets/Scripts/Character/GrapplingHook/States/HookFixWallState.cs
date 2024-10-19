@@ -1,4 +1,5 @@
 using Character.Utils;
+using UnityEditor;
 using UnityEngine;
 
 namespace Character.GrapplingHook.States
@@ -9,7 +10,11 @@ namespace Character.GrapplingHook.States
 
         public HookFixWallState(CharacterEntity characterEntity, Vector3 wallPoint) : base(characterEntity)
         {
-            this.wallPoint = wallPoint;
+            var direction = (wallPoint - CharacterEntity.Character.transform.position).normalized;
+            var newWallPoint = wallPoint - direction * 1.6f;
+            newWallPoint.y = GrapplingStats.originPosition.y;
+
+            this.wallPoint = newWallPoint;
         }
 
         public override void Enter()
