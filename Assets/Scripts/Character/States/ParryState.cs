@@ -5,33 +5,21 @@ namespace Character.States
 {
     public class ParryState : ACharacterState
     {
-        private const float ParryDuration = 1.0f;
-        private float parryTimer;
-
-        private Vector3 initialPosition;
+        private float countDown = 0.1f;
 
         public ParryState(CharacterEntity characterEntity) : base(characterEntity) {}
 
         public override void Enter()
         {
-            initialPosition = CharacterEntity.Character.transform.position;
-            parryTimer = ParryDuration;
             CharacterEntity.CharacterVFX.PlayParryVFX();
             AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.AttackParry);
         }
 
-        public override void Update()
+        public override void FixedUpdate()
         {
-            if (parryTimer > 0)
-            {
-                parryTimer -= Time.deltaTime;
-                CharacterEntity.Character.transform.position = initialPosition;
-            }
-            else
-            {
+            countDown -= Time.fixedDeltaTime;
+            if (countDown < 0)
                 CharacterEntity.CharacterState.SetWalkState();
-            }
         }
-
     }
 }
