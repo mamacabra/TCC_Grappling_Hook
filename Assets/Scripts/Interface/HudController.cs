@@ -15,26 +15,28 @@ public class HudController : MonoBehaviour
    [SerializeField] private string textToShowWhenCountOverMatchPoint = "MATCH POINT!";
    [SerializeField] private List<Color32> colorsToChangeCountText;
 
+   private List<GameObject> players = new List<GameObject>();
    private void OnEnable()
    {
+      players = PlayersManager.Instance.PlayersGameObjects;
+      timeToWaitToStartCount = players.Count;
       StartCoroutine(InitPlayers());
       StartCoroutine(WaitToStartCount());
    }
 
-   IEnumerator InitPlayers(){
-      List<GameObject> players = PlayersManager.Instance.PlayersGameObjects;
+   IEnumerator InitPlayers()
+   {
       for (int i = 0; i < players.Count; i++) {
          if (players[i].TryGetComponent(out Character.Character _character)) {
             _character.CharacterEntity.CharacterState.SetReadyState();
          }
       }
 
-      yield return new WaitForSeconds(timeToWaitToStartCount);
+      //yield return new WaitForSeconds(3);
 
       for (int i = 0; i < players.Count; i++) {
          if (players[i].TryGetComponent(out Character.Character _character)) {
-            yield return new WaitForSeconds(2.5f/6f);
-
+            yield return new WaitForSeconds(2f/timeToWaitToStartCount);
             _character.PlaySpawnAnims();
          }
       }
@@ -42,7 +44,7 @@ public class HudController : MonoBehaviour
 
    IEnumerator WaitToStartCount()
    {
-      yield return new WaitForSeconds(timeToWaitToStartCount);
+      yield return new WaitForSeconds(timeToWaitToStartCount+2);
 
       countGameStartText.transform.localScale = Vector3.one;
 

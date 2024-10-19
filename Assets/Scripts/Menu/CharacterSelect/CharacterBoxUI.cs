@@ -196,6 +196,8 @@ public class CharacterBoxUI : MonoBehaviour
         {
             characterStatus.text = "Já escolhido";
             characterStatus.color = Color.red;
+            
+            ChangeModelImage(dir);
         }
         else
         {
@@ -220,7 +222,7 @@ public class CharacterBoxUI : MonoBehaviour
         for (int i = 0; i < characterModels.Length; i++) {
             characterModels[i].SetActive(false);
         }
-        ChangeModelImage((int)ECharacterType.Sushi);
+        //ChangeModelImage((int)ECharacterType.Sushi);
 
         if (PlayersManager.Instance)
             PlayersManager.Instance.OnUpdateText-= UpdateText;
