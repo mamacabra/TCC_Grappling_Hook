@@ -2543,7 +2543,7 @@ MonoBehaviour:
   bakedScaleOffsetTerrain: []
   assetList: []
   uvOverlapAssetList: 
-  idremap: 0000000001000000
+  idremap: 0100000002000000
   usesRealtimeGI: 0
   emptyDirectionTex: {fileID: 0}
   anyVolumes: 0
@@ -10460,12 +10460,27 @@ PrefabInstance:
     - target: {fileID: 4068039527404877713, guid: aa027ad177f8f5a41bc075012a4f8ea3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14
+      value: 13.387227
       objectReference: {fileID: 0}
     - target: {fileID: 4068039527404877713, guid: aa027ad177f8f5a41bc075012a4f8ea3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -30
+      value: -26.975042
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068039527404877713, guid: aa027ad177f8f5a41bc075012a4f8ea3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.00012554227
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068039527404877713, guid: aa027ad177f8f5a41bc075012a4f8ea3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068039527404877713, guid: aa027ad177f8f5a41bc075012a4f8ea3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -179.986
       objectReference: {fileID: 0}
     - target: {fileID: 5351919410260557726, guid: aa027ad177f8f5a41bc075012a4f8ea3,
         type: 3}

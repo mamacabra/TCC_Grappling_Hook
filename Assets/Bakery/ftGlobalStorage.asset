@@ -52,7 +52,30 @@ MonoBehaviour:
   - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Brunch-Cheese-Piece.fbx
   - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Fruit-Banana-bunch.fbx
   - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Brunch-Butter-Sliced.fbx
-  modifiedAssetPaddingHash: d6a958ffff27c11595c2a6931b3a8033c04dfff0ff27c1156d67e2a8f627c115a35031ee4adc894bd9398033d9398033e55031ee275031ee9c09ecc0f1f23a06bb09ecc04adc894b8c67e2a8bb09ecc06209ecc07c398033df4dfff008dc894ba35031eed93980339c09ecc0c04dfff0f827c115e1c4d890e55031eeb4c2a693de09ecc0f8398033e55031ee194efff0d9398033797e93634adc894b
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/GlassJugLargeLiquid.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/GlassJugLarge.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/GlassJugSlim.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Pots.Env.Raw/JellyTop.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Pots.Env.Raw/JellyJam.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Pots.Env.Raw/JellyPot.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Pots.Env.Raw/CookieJarCrinkle_Top.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Pots.Env.Raw/CookieJarCrinkle.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Ingredient-Egg_01.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Ingredient-Egg_02.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/Cuttlery-SantokuKnife.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Blueberry-Single.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Cake-Berries.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/Cup-ThickCup_Liquid.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/Cup-ThinCup_Liquid.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/IceCube.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/Cup-Mug_01_Liquid.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/AmericanCup_Liquid.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/AmericanCup.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/OrangePeel.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/OrangeQuarter.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/OrangeSlice.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Cookie.fbx
+  modifiedAssetPaddingHash: d6a958ffff27c1151c7e93631b3a8033c04dfff0ff27c1156d67e2a8f627c115a35031ee4adc894bd9398033d9398033e55031ee275031ee9c09ecc08c67e2a8bb09ecc04adc894b8c67e2a8bb09ecc06209ecc07c398033be39803308dc894ba35031eed93980339c09ecc09d4dfff0ec37ed04e1c4d890e55031eeb4c2a693de09ecc0f8398033e55031ee194efff0d9398033797e93634adc894bd7c2a693af67e2a8af67e2a85267e2a86d67e2a8d2f23a069c09ecc080c5d8907ac2a6937ac2a693b7f23a069050cf35f83980336d67e2a856f23a06fc5131ee5267e2a895c2a69327dc894bf327c115275031ee717f93637c398033
   modifiedMeshList: []
   modifiedMeshPaddingList: 
   modifiedAssets:
@@ -441,7 +464,7 @@ MonoBehaviour:
     unwrapper: 00000000
   - meshName:
     - Cup-ThinCup
-    padding: 27000000
+    padding: 2b000000
     unwrapper: 00000000
   - meshName:
     - CutBoard-04
@@ -493,7 +516,7 @@ MonoBehaviour:
     unwrapper: 00000000
   - meshName:
     - Cup-ThickCup
-    padding: 14000000
+    padding: 15000000
     unwrapper: 00000000
   - meshName:
     - Cuttlery-Plate_01
@@ -521,7 +544,7 @@ MonoBehaviour:
     unwrapper: 00000000
   - meshName:
     - Meat-Lombo-Sliced
-    padding: 30000000
+    padding: 2d000000
     unwrapper: 00000000
   - meshName:
     - Fruit-Pear
@@ -541,11 +564,11 @@ MonoBehaviour:
     unwrapper: 00000000
   - meshName:
     - Snack-Wafer_Strawberrie
-    padding: 3a000000
+    padding: 44000000
     unwrapper: 00000000
   - meshName:
     - Snack-Cookie_Chocolate
-    padding: 66000000
+    padding: 78000000
     unwrapper: 00000000
   - meshName:
     - Meat-Salami-Sliced
@@ -587,6 +610,98 @@ MonoBehaviour:
     - Brunch-Butter-Sliced
     padding: 10000000
     unwrapper: 00000000
+  - meshName:
+    - GlassJugLargeLiquid
+    padding: 13000000
+    unwrapper: 00000000
+  - meshName:
+    - GlassJugLarge
+    padding: 0b000000
+    unwrapper: 00000000
+  - meshName:
+    - GlassJugSlim
+    padding: 0b000000
+    unwrapper: 00000000
+  - meshName:
+    - JellyTop
+    padding: 29000000
+    unwrapper: 00000000
+  - meshName:
+    - JellyJam
+    padding: 1f000000
+    unwrapper: 00000000
+  - meshName:
+    - JellyPot
+    padding: 1e000000
+    unwrapper: 00000000
+  - meshName:
+    - CookieJarCrinkle_Top
+    padding: 20000000
+    unwrapper: 00000000
+  - meshName:
+    - CookieJarCrinkle
+    padding: 0e000000
+    unwrapper: 00000000
+  - meshName:
+    - Ingredient-Egg_01
+    padding: 31000000
+    unwrapper: 00000000
+  - meshName:
+    - Ingredient-Egg_02
+    padding: 31000000
+    unwrapper: 00000000
+  - meshName:
+    - Cuttlery-SantokuKnife
+    padding: 28000000
+    unwrapper: 00000000
+  - meshName:
+    - Blueberry-Single
+    padding: c3000000
+    unwrapper: 00000000
+  - meshName:
+    - Cake-Berries
+    padding: 19000000
+    unwrapper: 00000000
+  - meshName:
+    - Cup-ThickCup_Liquid
+    padding: 1f000000
+    unwrapper: 00000000
+  - meshName:
+    - Cup-ThinCup_Liquid
+    padding: 46000000
+    unwrapper: 00000000
+  - meshName:
+    - IceCube
+    padding: 57000000
+    unwrapper: 00000000
+  - meshName:
+    - Cup-Mug_01_Liquid
+    padding: 29000000
+    unwrapper: 00000000
+  - meshName:
+    - AmericanCup_Liquid
+    padding: 27000000
+    unwrapper: 00000000
+  - meshName:
+    - AmericanCup
+    padding: 1a000000
+    unwrapper: 00000000
+  - meshName:
+    - OrangePeel
+    padding: 69000000
+    unwrapper: 00000000
+  - meshName:
+    - OrangeQuarter
+    padding: 4d000000
+    unwrapper: 00000000
+  - meshName:
+    - OrangeSlice
+    padding: 5d000000
+    unwrapper: 00000000
+  - meshName:
+    - Cookie
+    padding: 41000000
+    unwrapper: 00000000
   assetList:
   - Assets/Bakery/examples/content/sponza/bush.FBX
   - Assets/Bakery/examples/content/floor_lamp.FBX
@@ -594,7 +709,37 @@ MonoBehaviour:
   - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Cake-Berries.fbx
   - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Ingredient-Egg_01.fbx
   - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Ingredient-Egg_02.fbx
-  uvOverlapAssetList: 00000000ffffffff00000000000000000000000000000000
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/GlassJugSlimLiquid.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/Cup-ThickCup_Liquid.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/NapkinTri.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/Cup-Mug_01_Liquid.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/IceCube.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Pots.Env.Raw/CookieJarSmooth.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/WiskeyCup.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/GlassJugLargeLiquid.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Pots.Env.Raw/JellyPot.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/AmericanCup.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Pots.Env.Raw/CookieJarCrinkle_Top.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/Cuttlery-SantokuKnife.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Pots.Env.Raw/CookieJarCrinkle.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/NapkinSquare.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/NapkinHolderSquare.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/Cup-ThinCup_Liquid.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Pots.Env.Raw/JellyJam.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/NapkinHolderTri.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/WiskeyCup_Liquid.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/AmericanCup_Liquid.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Pots.Env.Raw/CookieJarSmooth_Top.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/GlassJugSlim.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/GlassJugLarge.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Pots.Env.Raw/JellyTop.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Cookie.001.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/OrangeQuarter.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Cookie.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/OrangeSlice.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Biscuit.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/OrangePeel.fbx
+  uvOverlapAssetList: 00000000ffffffff00000000000000000000000000000000000000000000000001010000000000000000000000000000000000000000000000000000000000000000000000000000010100000000000001010000000000000000000001010000000000000000000000000000000000000101000000000000010100000000000001010000000000000000000001010000
   xatlasWarningShown: 0
   foundCompatibleSetup: 1
   gpuName: NVIDIA GeForce RTX 2060
@@ -686,5 +831,5 @@ MonoBehaviour:
   renderSettingsRTPVWidth: 640
   renderSettingsRTPVHeight: 360
   tagOverrides: []
-  modifiedMeshPaddingArray: 23000000
+  modifiedMeshPaddingArray: 0e000000
   modifiedMeshUnwrapperArray: 00000000
