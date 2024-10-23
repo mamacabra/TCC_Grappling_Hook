@@ -75,7 +75,18 @@ MonoBehaviour:
   - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/OrangeQuarter.fbx
   - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/OrangeSlice.fbx
   - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Cookie.fbx
-  modifiedAssetPaddingHash: d6a958ffff27c1151c7e93631b3a8033c04dfff0ff27c1156d67e2a8f627c115a35031ee4adc894bd9398033d9398033e55031ee275031ee9c09ecc08c67e2a8bb09ecc04adc894b8c67e2a8bb09ecc06209ecc07c398033df4dfff008dc894ba35031eed93980339c09ecc0c04dfff0f827c115e1c4d890e55031eeb4c2a693de09ecc0f8398033e55031ee194efff0d9398033797e93634adc894bd7c2a693af67e2a8af67e2a85267e2a86d67e2a8d2f23a069c09ecc080c5d8907ac2a6937ac2a693b7f23a069050cf35f83980336d67e2a856f23a06fc5131ee5267e2a895c2a69327dc894bf327c115275031ee717f93637c398033
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Garlic_Single.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/WholeTomato_Half.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/KitchenKnife_01.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/CutBord.Env.Raw/CuttingBoard_Square.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/WholeTomato_1Quarter.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Garlic_Couple.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/WholeTomato.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/WholeTomato_Butt.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/GarlicWithGloves.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/YellowPepper.fbx
+  - Assets/Models/Traps/PuddleOfWater.fbx
+  modifiedAssetPaddingHash: d6a958ffff27c1151c7e93631b3a8033c04dfff0ff27c1156d67e2a8f627c115a35031ee4adc894bd9398033d9398033e55031ee275031ee9c09ecc08c67e2a8bb09ecc04adc894b8c67e2a8bb09ecc06209ecc07c398033df4dfff008dc894ba35031eed93980339c09ecc09d4dfff0ec37ed04e1c4d890e55031eeb4c2a693de09ecc0f8398033e55031ee194efff0d9398033797e93634adc894bf1f23a06af67e2a8af67e2a85267e2a86d67e2a8d2f23a069c09ecc080c5d8907ac2a6937ac2a693b7f23a069050cf35f83980336d67e2a856f23a06fc5131ee5267e2a895c2a69327dc894bf327c115275031ee717f93637c3980330938ed0475f23a06d939803380c5d8908cdb894b00b309ce885031eedd5131eeeec3a693377e93633e3fd3d9
   modifiedMeshList: []
   modifiedMeshPaddingList: 
   modifiedAssets:
@@ -564,11 +575,11 @@ MonoBehaviour:
     unwrapper: 00000000
   - meshName:
     - Snack-Wafer_Strawberrie
-    padding: 3a000000
+    padding: 44000000
     unwrapper: 00000000
   - meshName:
     - Snack-Cookie_Chocolate
-    padding: 66000000
+    padding: 78000000
     unwrapper: 00000000
   - meshName:
     - Meat-Salami-Sliced
@@ -612,7 +623,7 @@ MonoBehaviour:
     unwrapper: 00000000
   - meshName:
     - GlassJugLargeLiquid
-    padding: 13000000
+    padding: 14000000
     unwrapper: 00000000
   - meshName:
     - GlassJugLarge
@@ -702,6 +713,50 @@ MonoBehaviour:
     - Cookie
     padding: 41000000
     unwrapper: 00000000
+  - meshName:
+    - Garlic_Single
+    padding: e2000000
+    unwrapper: 00000000
+  - meshName:
+    - WholeTomato_Half
+    padding: 3c000000
+    unwrapper: 00000000
+  - meshName:
+    - KitchenKnife_01
+    padding: 23000000
+    unwrapper: 00000000
+  - meshName:
+    - CuttingBoard_Square
+    padding: 0e000000
+    unwrapper: 00000000
+  - meshName:
+    - WholeTomato_1/4
+    padding: 4c000000
+    unwrapper: 00000000
+  - meshName:
+    - Garlic_Couple
+    padding: a0000000
+    unwrapper: 00000000
+  - meshName:
+    - WholeTomato
+    padding: 2f000000
+    unwrapper: 00000000
+  - meshName:
+    - WholeTomato_Butt
+    padding: 61000000
+    unwrapper: 00000000
+  - meshName:
+    - GarlicWithGloves
+    padding: 59000000
+    unwrapper: 00000000
+  - meshName:
+    - YellowPepper
+    padding: 21000000
+    unwrapper: 00000000
+  - meshName:
+    - PuddleOfWater
+    padding: 09000000
+    unwrapper: 00000000
   assetList:
   - Assets/Bakery/examples/content/sponza/bush.FBX
   - Assets/Bakery/examples/content/floor_lamp.FBX
@@ -739,7 +794,17 @@ MonoBehaviour:
   - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/OrangeSlice.fbx
   - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Biscuit.fbx
   - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/OrangePeel.fbx
-  uvOverlapAssetList: 00000000ffffffff00000000000000000000000000000000000000000000000001010000000000000000000000000000000000000000000000000000000000000000000000000000010100000000000001010000000000000000000001010000000000000000000000000000000000000101000000000000010100000000000001010000000000000000000001010000
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/YellowPepper.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/WholeTomato_Half.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/WholeTomato_Butt.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/WholeTomato_1Quarter.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/WholeTomato.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/GarlicWithGloves.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Garlic_Single.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Food.Env.Raw/Garlic_Couple.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/CutBord.Env.Raw/CuttingBoard_Square.fbx
+  - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/KitchenKnife_01.fbx
+  uvOverlapAssetList: 00000000ffffffff0000000000000000000000000000000000000000000000000101000000000000000000000000000000000000000000000000000000000000000000000000000001010000000000000101000000000000000000000101000000000000000000000000000000000000010100000000000001010000000000000101000000000000000000000101000000000000000000000000000000000000000000000101000000000000010100000101000001010000
   xatlasWarningShown: 0
   foundCompatibleSetup: 1
   gpuName: NVIDIA GeForce RTX 2060
@@ -831,5 +896,5 @@ MonoBehaviour:
   renderSettingsRTPVWidth: 640
   renderSettingsRTPVHeight: 360
   tagOverrides: []
-  modifiedMeshPaddingArray: 1d000000
+  modifiedMeshPaddingArray: 23000000
   modifiedMeshUnwrapperArray: 00000000
