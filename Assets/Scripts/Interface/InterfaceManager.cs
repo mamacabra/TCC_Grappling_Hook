@@ -65,7 +65,20 @@ public class InterfaceManager : MonoBehaviour
      }
      private void Update()
      {
-          if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame || (Gamepad.current != null && Gamepad.current.startButton.wasPressedThisFrame))
+          bool startPressed = false;
+          foreach (var gamepad in Gamepad.all) {
+               if (gamepad.startButton.wasPressedThisFrame) {
+                    startPressed = true;
+                    break;
+               }
+          }
+          foreach (var device in InputSystem.devices) {
+               if (device is Keyboard keyboard && keyboard.escapeKey.wasPressedThisFrame) {
+                    startPressed = true;
+                    break;
+               }
+          }
+          if (startPressed)
           {
                if (inGame)
                {
