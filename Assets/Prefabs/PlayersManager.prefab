@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8836442027467104043}
   - component: {fileID: 7770712065242538499}
   - component: {fileID: 4325472550121591281}
+  - component: {fileID: 215477944710493155}
   m_Layer: 0
   m_Name: PlayersManager
   m_TagString: Untagged
@@ -117,3 +118,15 @@ MonoBehaviour:
   playersGameObjects: []
   ScoreToWinGame: 10
   winnerSupreme: -1
+--- !u!114 &215477944710493155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4589496029237601623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ab647c43729f848ad811cd1a3f748f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

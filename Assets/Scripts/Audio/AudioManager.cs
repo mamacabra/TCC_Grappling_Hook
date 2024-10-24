@@ -16,6 +16,9 @@ public class AudioManager : MonoBehaviour
     FMOD.Studio.Bus musicBus;
     public float musicVolume;
     FMOD.Studio.EventInstance gameMusic;
+    FMOD.Studio.EventInstance startSlider;
+    
+    public EventReference fmodevent;
 
     [SerializeField]
     private string sfxBusPath;
@@ -36,6 +39,21 @@ public class AudioManager : MonoBehaviour
             ChangeMusic();
         }
         DontDestroyOnLoad(this);
+    }
+    private void Start()
+    {
+        startSlider = RuntimeManager.CreateInstance(fmodevent);
+        startSlider.start();
+    }
+
+    public void SliderTest(float pitch)
+    {
+        
+            
+
+        //startSlider.release();
+        startSlider.setParameterByName("SliderPitch", pitch);
+        startSlider.setParameterByName("SliderVolume", pitch);
     }
 
     public void ChangeMusic()
@@ -63,7 +81,7 @@ public class AudioManager : MonoBehaviour
 
         }
         gameMusic = RuntimeManager.CreateInstance("event:/Musics/" + music);
-        gameMusic.start();
+        //gameMusic.start();
     }
     public void PlayUiSoundEffect(string uiSound)
     {
@@ -138,6 +156,6 @@ public class AudioManager : MonoBehaviour
     
 }
 
-public enum UiSoundsList { None, Confirm, Return, Cancel, Select, SelectUpPitch, SelectDownPitch, GainKillPoint, GameCountDown};
+public enum UiSoundsList { None, Confirm, Return, Cancel, Select, Hover, SelectUpPitch, SelectDownPitch, GainKillPoint, GameCountDown, StartSlider};
 public enum PlayerSoundsList { HookCharge, HookFire, HookHitPlayer, HookHitWall, HookReturn, AttackParry, AttackMiss, AttackHitPlayer, PlayerDash, PlayerSpawn, PlayerWalk, PlayerJellyWalk, PowerUpSpawn, PowerUpPickUp, PowerUpShieldBreak};
 public enum MusicList { Music1, Music2, Music3};

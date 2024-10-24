@@ -18,7 +18,7 @@ public class SelectableSoundHandler : MonoBehaviour, IPointerEnterHandler, /*IPo
 
 
     public void OnPointerEnter(PointerEventData eventData){
-        if (playHoverSound)
+        if (playHoverSound && PlayerInputHandler.currentControl == PlayerInputHandler.CurrentControl.Mouse)
             AudioManager.audioManager?.PlayUiSoundEffect(hover);
     }
     /*public void OnPointerExit(PointerEventData eventData){
@@ -26,18 +26,18 @@ public class SelectableSoundHandler : MonoBehaviour, IPointerEnterHandler, /*IPo
             AudioManager.audioManager?.PlayUiSoundEffect();
     }*/
     
-    public void OnPointerClick(PointerEventData eventData){
-         if (eventData.button == PointerEventData.InputButton.Left && playClickSound)
+     public void OnPointerClick(PointerEventData eventData){
+        if (eventData.button == PointerEventData.InputButton.Left && playClickSound && PlayerInputHandler.currentControl == PlayerInputHandler.CurrentControl.Mouse)
              AudioManager.audioManager?.PlayUiSoundEffect(click);
      }
 
-    public void OnSubmit(BaseEventData baseEventData){// Only on mouse for now
-        //if (playClickSound)
-        //    AudioManager.audioManager?.PlayUiSoundEffect(clickSound);
+    public void OnSubmit(BaseEventData baseEventData){
+        if (playClickSound && (PlayerInputHandler.currentControl == PlayerInputHandler.CurrentControl.Gamepad || PlayerInputHandler.currentControl == PlayerInputHandler.CurrentControl.Keyboard))
+            AudioManager.audioManager?.PlayUiSoundEffect(click);
     }
-    public void OnSelect(BaseEventData baseEventData){// Only on mouse for now
-        //if (playHoverSound)
-        //    AudioManager.audioManager?.PlayUiSoundEffect(hoverSound);
+    public void OnSelect(BaseEventData baseEventData){
+        if (playHoverSound && (PlayerInputHandler.currentControl == PlayerInputHandler.CurrentControl.Gamepad || PlayerInputHandler.currentControl == PlayerInputHandler.CurrentControl.Keyboard))
+            AudioManager.audioManager?.PlayUiSoundEffect(hover);
     }
     public void OnDeselect(BaseEventData baseEventData){// Only on mouse for now
         //if (playUnhoverSound)
