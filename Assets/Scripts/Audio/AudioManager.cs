@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
     [Header("Press M to play the selected sound")]
     [SerializeField] PlayerSoundsList soundTest;
     [SerializeField] bool debugActivated;
+    int currentSong = 1;
     
     [SerializeField]
     private string musicBusPath;
@@ -36,14 +37,15 @@ public class AudioManager : MonoBehaviour
             audioManager = this;
             musicBus = RuntimeManager.GetBus(musicBusPath);
             sfxBus = RuntimeManager.GetBus(sfxBusPath);
+            startSlider = RuntimeManager.CreateInstance(fmodevent);
+            startSlider.start();
             ChangeMusic();
         }
         DontDestroyOnLoad(this);
     }
     private void Start()
     {
-        startSlider = RuntimeManager.CreateInstance(fmodevent);
-        startSlider.start();
+        
     }
 
     public void SliderTest(float pitch)
@@ -60,8 +62,8 @@ public class AudioManager : MonoBehaviour
     {
         gameMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         string music;
-        int aux = Random.Range(1, 3 + 1);
-        switch (aux)
+        currentSong += 1;
+        switch (currentSong)
         {
             case 1:
                 music = MusicList.Music1.ToString();
@@ -80,8 +82,10 @@ public class AudioManager : MonoBehaviour
                 break;
 
         }
+        if (currentSong > 3)
+            currentSong = 1;
         gameMusic = RuntimeManager.CreateInstance("event:/Musics/" + music);
-        //gameMusic.start();
+        gameMusic.start();
     }
     public void PlayUiSoundEffect(string uiSound)
     {
