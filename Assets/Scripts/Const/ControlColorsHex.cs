@@ -4,18 +4,18 @@ namespace Const
 {
     public static class ControlColorsHex
     {
-        public static Color YellowLight => GetColor("#fee892");
-        public static Color Yellow => GetColor("#fed330");
-        public static Color GreenLight => GetColor("#7bebb2");
-        public static Color Green => GetColor("#26de81");
-        public static Color BlueLight => GetColor("#a1d4f8");
-        public static Color Blue => GetColor("#45aaf2");
-        public static Color PurpleLight => GetColor("#d5b5f5");
-        public static Color Purple => GetColor("#a55eea");
-        public static Color RedLight => GetColor("#f494a5");
-        public static Color Red => GetColor("#eb3b5a");
-        public static Color WhiteLight => GetColor("#f0fcfd");
-        public static Color White => GetColor("#dff9fb");
+        public static Color YellowLight => GetColor("#ffc300");
+        public static Color Yellow => GetColor("#ffc300");
+        public static Color GreenLight => GetColor("#2ecc71");
+        public static Color Green => GetColor("#2ecc71");
+        public static Color BlueLight => GetColor("#5dade2");
+        public static Color Blue => GetColor("#5dade2");
+        public static Color PurpleLight => GetColor("#8e44ad");
+        public static Color Purple => GetColor("#8e44ad");
+        public static Color RedLight => GetColor("#e74c3c");
+        public static Color Red => GetColor("#e74c3c");
+        public static Color WhiteLight => GetColor("#f0f0f0");
+        public static Color White => GetColor("#f0f0f0");
 
         private static Color GetColor(string hex)
         {

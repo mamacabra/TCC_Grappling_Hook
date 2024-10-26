@@ -31,6 +31,7 @@ public class CharacterChoiceScreen : Screens
             PlayersManager.Instance.InitCharacterSelection();
         }
 
+        objEnables = 0;
         EventSystem.current.SetSelectedGameObject(tutorial.gameObject);
         tutorial.SetParent(charactersGroup[0]);
         tutorial.gameObject.SetActive(true);

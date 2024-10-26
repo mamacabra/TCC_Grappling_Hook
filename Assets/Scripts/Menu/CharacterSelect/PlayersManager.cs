@@ -188,7 +188,8 @@ public class PlayersManager : MonoBehaviour
                 characterBoxUI.playerConfig.controlScheme = _playerInput.currentControlScheme;
                 characterBoxUI.playerConfig.inputDevices = GetStringFromDevices(_playerInput.devices.ToArray());
                 characterBoxUI.characterImageBackground.color = PlayerColorLayerManager.GetColorBaseLight(_playerInput.playerIndex);
-                
+                Color32 col = characterBoxUI.characterImageBackground.color;
+                characterBoxUI.characterImageBackground.color = new Color32(col.r, col.g, col.b, 150);
                 characterBoxUI.UpdateTextTest();
                 
                 Animator animator = characterBoxUI.GetCurrentCharacterModels.GetComponentInChildren<Animator>();

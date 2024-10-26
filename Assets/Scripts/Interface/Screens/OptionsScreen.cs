@@ -9,7 +9,8 @@ using UnityEngine.EventSystems;
 
 public class OptionsScreen : Screens
 {
-    [Header("event System GameObjects")] 
+    [Header("event System GameObjects")] [SerializeField]
+    private GameObject options_1GameObject;
     [SerializeField] private GameObject resolutionGameObj;
 
     [Header("Graphics")]
@@ -52,7 +53,7 @@ public class OptionsScreen : Screens
         sfxSlider.maxValue = 10;
         musicSLider.maxValue = 10;
         
-        EventSystem.current.SetSelectedGameObject(resolutionGameObj);
+        EventSystem.current.SetSelectedGameObject(options_1GameObject);
         graphicSettings.LoadSettings();
     }
 

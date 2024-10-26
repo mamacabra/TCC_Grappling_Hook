@@ -70,7 +70,7 @@ public class HudController : MonoBehaviour
 
       for (int i = 0; i < players.Count; i++) {
          if (players[i].TryGetComponent(out Character.Character _character)) {
-            yield return new WaitForSeconds(2f/timeToWaitToStartCount);
+            yield return new WaitForSeconds(2f/6);
             _character.PlaySpawnAnims();
          }
       }
@@ -78,7 +78,7 @@ public class HudController : MonoBehaviour
 
    IEnumerator WaitToStartCount(float plusTime)
    {
-      yield return new WaitForSeconds(timeToWaitToStartCount+plusTime);
+      yield return new WaitForSeconds(timeToWaitToStartCount);
 
       countGameStartText.transform.localScale = Vector3.one;
 
@@ -97,33 +97,37 @@ public class HudController : MonoBehaviour
 
       }
 
-      List<PlayersManager.PlayerConfigurationData> list = new List<PlayersManager.PlayerConfigurationData>();
-      list = PlayersManager.Instance.ReturnPlayersList();
-
-      List<PlayersManager.PlayerConfigurationData> listAux = new List<PlayersManager.PlayerConfigurationData>();
-      foreach (var l in list)
+      if (!InterfaceManager.Instance.inGame)
       {
-         if (l.score >= PlayersManager.Instance.ScoreToWinGame - 1)
-            listAux.Add(l);
+         List<PlayersManager.PlayerConfigurationData> list = new List<PlayersManager.PlayerConfigurationData>();
+         list = PlayersManager.Instance.ReturnPlayersList();
+
+         List<PlayersManager.PlayerConfigurationData> listAux = new List<PlayersManager.PlayerConfigurationData>();
+         foreach (var l in list)
+         {
+            if (l.score >= PlayersManager.Instance.ScoreToWinGame - 1)
+               listAux.Add(l);
+         }
+
+         string finalText = textToShowWhenCountOver;
+         if (listAux.Count > 0)
+         {
+            finalText = textToShowWhenCountOverMatchPoint;
+            matchPointFeedback.SetActive(true);
+         }
+
+         countGameStartText.text = finalText;
+
+         countGameStartText.color = colorsToChangeCountText[0];
+
+         countGameStartText.transform.DOScale(1.1f, 0.25f).SetEase(Ease.OutBack).OnComplete(() =>
+         {
+            countGameStartText.transform.DOScale(1f, 0.25f).SetEase(Ease.OutBack);
+         });
+
+         yield return new WaitForSeconds(0.75f);
       }
 
-      string finalText = textToShowWhenCountOver;
-      if (listAux.Count > 0)
-      {
-         finalText = textToShowWhenCountOverMatchPoint;
-         matchPointFeedback.SetActive(true);
-      }
-
-      countGameStartText.text = finalText;
-
-      countGameStartText.color = colorsToChangeCountText[0];
-
-      countGameStartText.transform.DOScale(1.1f, 0.25f).SetEase(Ease.OutBack).OnComplete(() =>
-      {
-         countGameStartText.transform.DOScale(1f, 0.25f).SetEase(Ease.OutBack);
-      });
-
-      yield return new WaitForSeconds(0.75f);
       countGameStartText.transform.DOScale(0f, 0.25f).OnComplete(() =>
       {
          countGameObj.SetActive(false);
