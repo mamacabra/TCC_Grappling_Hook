@@ -13,8 +13,8 @@ public class WinnerScreen : Screens
     [SerializeField] private ButtonToScreen initialScreenButton;
     //[SerializeField] private Image winner;
     private bool canclick;
-    [SerializeField] private Image bg;
-    [SerializeField] private List<Sprite> bgsList = new List<Sprite>();
+    [SerializeField] private RawImage bg;
+    [SerializeField] private List<Texture> bgsList = new List<Texture>();
     private void Awake()
     
     {
@@ -73,7 +73,7 @@ public class WinnerScreen : Screens
         characterModels[(int)id.characterModel].SetActive(true);
         characterRawImage.texture = text[(int)id.characterModel];
         cam.targetTexture = text[(int)id.characterModel];
-        bg.sprite = bgsList[id.id];
+        bg.texture = bgsList[id.id];
         Animator animator = characterModels[(int)id.characterModel].GetComponentInChildren<Animator>();
         if (animator) animator.SetBool("isWinner", true);
         
