@@ -19,9 +19,9 @@ public class FeedbackGame : Screens
             yield return new WaitForSeconds(3f);
             canclick = true;
         }
+        EventSystem.current.SetSelectedGameObject(nextGameButton.gameObject);
         nextGameButton.gameObject.SetActive(true);
         InterfaceManager.Instance.OnHideButton += HideButton;
-        EventSystem.current.SetSelectedGameObject(nextGameButton.gameObject);
     }
 
     public override void Close()

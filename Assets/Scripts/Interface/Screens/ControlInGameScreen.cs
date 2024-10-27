@@ -16,13 +16,13 @@ public class ControlInGameScreen : Screens
     public override void Initialize()
     {
         startGame.button.gameObject.SetActive(false);
-        EventSystem.current.SetSelectedGameObject(startGame.button.gameObject);
 
         StartCoroutine(WaitToShowButton());
         IEnumerator WaitToShowButton()
         {
             yield return new WaitForSeconds(2);
             startGame.button.gameObject.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(startGame.button.gameObject);
         }
     }
 

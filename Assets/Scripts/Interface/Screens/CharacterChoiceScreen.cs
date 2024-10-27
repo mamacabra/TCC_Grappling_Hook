@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -17,6 +18,8 @@ public class CharacterChoiceScreen : Screens
     public float sliderSpeed;
 
     private int objEnables = 0;
+
+    [SerializeField] private TextMeshProUGUI playText;
     private void Awake()
     {
         backToMenu.button.onClick.AddListener(delegate { GoToScreen(backToMenu.goToScreen); });
@@ -35,6 +38,9 @@ public class CharacterChoiceScreen : Screens
         EventSystem.current.SetSelectedGameObject(tutorial.gameObject);
         tutorial.SetParent(charactersGroup[0]);
         tutorial.gameObject.SetActive(true);
+        
+        if(current != null) StopCoroutine(current);
+        current = StartCoroutine(ChangeText());
     }
     public override void Close()
     {
@@ -47,6 +53,7 @@ public class CharacterChoiceScreen : Screens
     public override void GoToScreen(ScreensName screensName)
     {
         base.GoToScreen(screensName);
+        if(current != null) StopCoroutine(current);
     }
 
     public PlayerInput ReturnPlayerInput(bool isGamePad = false, bool isP1 = false)
@@ -207,5 +214,16 @@ public class CharacterChoiceScreen : Screens
         startGameSlider.value += Time.deltaTime * sliderSpeed;
         Mathf.Clamp(startGameSlider.value, startGameSlider.minValue, startGameSlider.maxValue);
         if (startGameSlider.value >= startGameSlider.maxValue) {if (PlayersManager.Instance.CanInitGame) { GoToScreen(playGame.goToScreen); } }
+    }
+
+    private Coroutine current;
+    IEnumerator ChangeText()
+    {
+        playText.text = "Jogar";
+        yield return new WaitForSeconds(1.5f);
+        playText.text = "Pressiona A/X";
+        yield return new WaitForSeconds(1.5f);
+        if(current != null) StopCoroutine(current);
+        current = StartCoroutine(ChangeText());
     }
 }
