@@ -30,12 +30,13 @@ namespace Character
             State?.Exit();
             State = state;
             State.Enter();
+            CharacterEntity.CharacterUI.UpdateCharacterStateUI(State.ToString());
         }
 
         public void SetAttackMeleeState()
         {
             if (CharacterEntity.Character.HasAttackReady == false) return;
-            if (CharacterEntity.CharacterState.State is AttackMeleeState or DashState or HookedToEnemyState or ReadyState) return;
+            if (CharacterEntity.CharacterState.State is AttackMeleeState or DashState or HookedToEnemyState or PainState or ReadyState) return;
             if (Time.deltaTime == 0) return;
 
             var state = new AttackMeleeState(CharacterEntity);
@@ -51,7 +52,7 @@ namespace Character
         public void SetDashState()
         {
             if (CharacterEntity.Character.HasDashReady == false) return;
-            if (CharacterEntity.CharacterState.State is HookedToEnemyState or AttackMeleeState or ReadyState) return;
+            if (CharacterEntity.CharacterState.State is AttackMeleeState or HookedToEnemyState or PainState or ReadyState) return;
             if (Time.deltaTime == 0) return;
 
             var state = new DashState(CharacterEntity);
@@ -94,6 +95,12 @@ namespace Character
         public void SetLoserState()
         {
             var state = new LoserState(CharacterEntity);
+            SetState(state);
+        }
+
+        public void SetPainState()
+        {
+            var state = new PainState(CharacterEntity);
             SetState(state);
         }
 
