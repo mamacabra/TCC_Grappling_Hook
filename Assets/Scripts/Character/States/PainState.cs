@@ -6,7 +6,7 @@ namespace Character.States
     public class PainState : ACharacterState
     {
         private float countDown;
-        private const float PenaltyDuration = 0.4f;
+        private const float PenaltyDuration = 0.3f;
 
         public PainState(CharacterEntity characterEntity) : base(characterEntity) {}
 

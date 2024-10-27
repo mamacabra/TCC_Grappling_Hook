@@ -26,6 +26,7 @@ namespace Character.States
             CharacterEntity.Character.UseAttack();
             CharacterEntity.CharacterVFX.PlaySlashVFX();
             CharacterEntity.CharacterMesh.animator?.SetBool("isDash", false);
+            CharacterEntity.CharacterMesh.animator?.SetBool("isAttacking", true);
             CharacterEntity.CharacterMesh.animator?.SetTrigger("Melee");
             CharacterEntity.GrapplingHookState.SetHookReadyState();
         }
@@ -52,6 +53,7 @@ namespace Character.States
         public override void Exit()
         {
             CharacterEntity.AttackMelee.DisableHitbox();
+            CharacterEntity.CharacterMesh.animator?.SetBool("isAttacking", false);
 
             if(PlayersManager.Instance.GameOver)
                 CameraManager.Instance.DeathFeedBack();
