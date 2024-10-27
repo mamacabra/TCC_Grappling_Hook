@@ -99,7 +99,7 @@ public class PlayersManager : MonoBehaviour
     public void InitGame(bool loadScene = true) {
         GameOver = false;
         InterfaceManager.Instance.isOnFeedback = false;
-       
+        InterfaceManager.Instance.RestartGame();
         winnerSupreme = -1;
        
         ClearPlayersConfig(charactersFromGame: true);

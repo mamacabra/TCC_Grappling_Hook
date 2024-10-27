@@ -4667,7 +4667,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &275752842
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10806,8 +10806,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4afc908fb7c86dd4a8323fe46d52cae4, type: 2}
-  m_sharedMaterial: {fileID: -4569529734325329283, guid: 4afc908fb7c86dd4a8323fe46d52cae4,
+  m_fontAsset: {fileID: 11400000, guid: 83942a6ef7851414c8b9aa65d2e64c21, type: 2}
+  m_sharedMaterial: {fileID: -287320842649637009, guid: 83942a6ef7851414c8b9aa65d2e64c21,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -19982,13 +19982,13 @@ MonoBehaviour:
   textToShowWhenCountOverMatchPoint: MATCH POINT!
   colorsToChangeCountText:
   - serializedVersion: 2
-    rgba: 4283423105
+    rgba: 4285582381
   - serializedVersion: 2
-    rgba: 4282372841
+    rgba: 4278240255
   - serializedVersion: 2
-    rgba: 4281895375
+    rgba: 4293045597
   - serializedVersion: 2
-    rgba: 4281874639
+    rgba: 4282207464
   matchPointFeedback: {fileID: 1939207103}
 --- !u!1 &1234459566
 GameObject:

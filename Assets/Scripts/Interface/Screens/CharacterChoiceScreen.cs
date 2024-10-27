@@ -20,6 +20,8 @@ public class CharacterChoiceScreen : Screens
     private int objEnables = 0;
 
     [SerializeField] private TextMeshProUGUI playText;
+
+    private bool startGame = false;
     private void Awake()
     {
         backToMenu.button.onClick.AddListener(delegate { GoToScreen(backToMenu.goToScreen); });
@@ -28,6 +30,7 @@ public class CharacterChoiceScreen : Screens
 
     public override void Initialize()
     {
+        startGame =false;
         if (PlayersManager.Instance)
         {
             PlayersManager.Instance.characterChoice = this;
@@ -53,6 +56,7 @@ public class CharacterChoiceScreen : Screens
     public override void GoToScreen(ScreensName screensName)
     {
         base.GoToScreen(screensName);
+        startGame = true;
         if(current != null) StopCoroutine(current);
     }
 
@@ -219,6 +223,7 @@ public class CharacterChoiceScreen : Screens
     private Coroutine current;
     IEnumerator ChangeText()
     {
+        if(startGame) yield break;
         playText.text = "Jogar";
         yield return new WaitForSeconds(1.5f);
         playText.text = "Pressiona A/X";

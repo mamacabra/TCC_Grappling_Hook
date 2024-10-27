@@ -19,18 +19,22 @@ public class HudController : MonoBehaviour
    private List<GameObject> players = new List<GameObject>();
 
    [SerializeField] private GameObject matchPointFeedback;
+   [HideInInspector]public bool gameAlreadyStarted = false;
   
    private void OnEnable()
    {
-      
       matchPointFeedback.SetActive(false);
-      if(InterfaceManager.Instance)
+      if (InterfaceManager.Instance)
+      {
          InterfaceManager.Instance.OnStartCount += StartCount;
+         InterfaceManager.Instance.OnRestartGame += RestarGame;
+      }
       
       if (!InterfaceManager.Instance.inGame)
       {
          InterfaceManager.Instance.isOnCount = true;
          InterfaceManager.Instance.inGame = true;
+        
       }
       else
       {
@@ -46,10 +50,18 @@ public class HudController : MonoBehaviour
 
    private void OnDisable()
    {
-      if(InterfaceManager.Instance)
+      if (InterfaceManager.Instance)
+      {
          InterfaceManager.Instance.OnStartCount -= StartCount;
+         InterfaceManager.Instance.OnRestartGame -= RestarGame;
+      }
    }
 
+   public void RestarGame()
+   {
+      gameAlreadyStarted = false;
+   }
+   
    public void StartCount()
    {
       players = PlayersManager.Instance.PlayersGameObjects;
@@ -97,8 +109,9 @@ public class HudController : MonoBehaviour
 
       }
 
-      if (!InterfaceManager.Instance.inGame)
+      if (!gameAlreadyStarted)
       {
+         gameAlreadyStarted = true;
          List<PlayersManager.PlayerConfigurationData> list = new List<PlayersManager.PlayerConfigurationData>();
          list = PlayersManager.Instance.ReturnPlayersList();
 
@@ -124,7 +137,7 @@ public class HudController : MonoBehaviour
          {
             countGameStartText.transform.DOScale(1f, 0.25f).SetEase(Ease.OutBack);
          });
-
+        
          yield return new WaitForSeconds(0.75f);
       }
 

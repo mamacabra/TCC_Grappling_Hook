@@ -42,6 +42,7 @@ public class InterfaceManager : MonoBehaviour
      public event Action OnHideButton;
      public event Action OnShowScoreInFeedbackScreen;
      public event Action OnStartCount;
+     public event Action OnRestartGame; 
      private void Start()
      {
           if(gameWithScreens) ShowScreen();
@@ -58,6 +59,10 @@ public class InterfaceManager : MonoBehaviour
           }
      }
 
+     public void RestartGame()
+     {
+          OnRestartGame?.Invoke();
+     }
      public void StartCount()
      {
           startNewGame = true;
