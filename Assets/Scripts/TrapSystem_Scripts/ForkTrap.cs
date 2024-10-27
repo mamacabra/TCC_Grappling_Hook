@@ -10,6 +10,7 @@ namespace TrapSystem_Scripts
     {
         public List<Transform> waypoints;
         public float moveSpeed = 5f;
+        public float moveTowardsPlayerSpeed = 1f;
         public float pauseTime = 2f;
         public float delayTime = 3f;  // Adjustable delay before trap starts working
         public float stopTime = 2f;   // Adjustable stop time when colliding with a player
@@ -17,6 +18,7 @@ namespace TrapSystem_Scripts
         [SerializeField] private float cooldown = 0f;
         [SerializeField] private bool startCooldown = false;
         [SerializeField] private bool hasBitten = false;
+        [SerializeField] private bool isChasing = false;
         private Transform targetWaypoint;
         private int currentWaypointIndex = -1;
         [SerializeField] private bool bittingPause = false;
@@ -25,7 +27,7 @@ namespace TrapSystem_Scripts
         [SerializeField] private float alturaGarfo = 0f;
 
         private bool isTrapActive = false; // Control if the trap is currently active
-        private bool isStopped = false;    // Control if the trap is temporarily stopped
+        private bool isStopped = false;    
 
         void Start()
         {
@@ -35,7 +37,7 @@ namespace TrapSystem_Scripts
                 return;
             }
 
-            // Start the coroutine to activate the trap after a delay
+            
             StartCoroutine(ActivateTrapAfterDelay());
 
             ChooseNextWaypoint();
@@ -43,13 +45,18 @@ namespace TrapSystem_Scripts
 
         private IEnumerator ActivateTrapAfterDelay()
         {
-            yield return new WaitForSeconds(delayTime); // Wait for the delay time
-            isTrapActive = true;  // Activate the trap
+            yield return new WaitForSeconds(delayTime); 
+            isTrapActive = true;  
         }
 
         private void Update()
         {
-            if (!isTrapActive || isStopped) return; // Don't move or activate if the trap hasn't started or is stopped
+            if (PlayersManager.Instance.GameOver)
+            {
+                Destroy(gameObject);
+            }
+            if(InterfaceManager.Instance.pause) return;
+            if (!isTrapActive || isStopped) return; 
 
             if (targetWaypoint is not null)
             {
@@ -92,7 +99,8 @@ namespace TrapSystem_Scripts
             {
                 ChooseNextWaypoint();
             }
-        }
+        } 
+        
 
         private void ChooseNextWaypoint()
         {
@@ -110,7 +118,7 @@ namespace TrapSystem_Scripts
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!isTrapActive) return;  // Prevent biting if the trap hasn't activated yet
+            if (!isTrapActive) return;  
 
             if (other.gameObject.CompareTag("Character"))
             {
@@ -118,28 +126,41 @@ namespace TrapSystem_Scripts
                 bittingPause = true;
                 startCooldown = true;
 
-                // Stop the trap and start a coroutine to wait before biting
+                StartCoroutine(MoveTowardsPlayer(other.gameObject.transform.position));
                 if (cooldown <= 0)
                 {
+                    
                     StartCoroutine(StopTrapAndBite(other.transform.position));
                 }
             }
         }
+        
+        private IEnumerator MoveTowardsPlayer(Vector3 playerPosition)
+        {  
+                var timeChasing= 2f;
+                isChasing = true;
+                while (timeChasing > 0)
+                {
+                    transform.position = Vector3.Lerp(transform.position, playerPosition, moveTowardsPlayerSpeed * Time.deltaTime); 
+                    timeChasing -= Time.deltaTime;
+                }
+                isChasing = false;
+                yield return null;
+        }
 
         private IEnumerator StopTrapAndBite(Vector3 playerPosition)
         {
-            isStopped = true;  // Stop the trap
-
-            yield return new WaitForSeconds(stopTime);  // Wait for the stop time
-
-            // Once the stop time has passed, bite the player and resume the trap movement
+            isStopped = true;  
+            
+            yield return new WaitForSeconds(stopTime);  
+            
             Bite(playerPosition);
-            isStopped = false; // Resume the trap movement
+            isStopped = false; 
         }
 
         private void OnTriggerExit(Collider other)
         {
-            if (!isTrapActive) return;  // Ignore trigger exit if the trap isn't active yet
+            if (!isTrapActive) return; 
 
             if (other.gameObject.CompareTag("Character"))
             {
