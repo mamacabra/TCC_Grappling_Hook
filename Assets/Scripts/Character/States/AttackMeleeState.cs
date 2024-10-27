@@ -46,7 +46,7 @@ namespace Character.States
             switch (countDown)
             {
                 case >= AttackDuration:
-                    CharacterEntity.CharacterState.SetPainState();
+                    CharacterEntity.CharacterState.SetWalkState();
                     break;
                 case >= TimeToDisableHitbox:
                     CharacterEntity.AttackMelee.DisableHitbox();

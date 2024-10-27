@@ -18,7 +18,7 @@ namespace Character
         private const float MaxCountDownSpeedBoost = 6f; // 6 seconds
 
         public bool HasDashReady { get; private set; } = true;
-        private const float MaxCountDownDash = 0.6f;
+        private const float MaxCountDownDash = 1f;
 
         public bool HasAttackReady { get; private set; } = true;
 
@@ -26,7 +26,7 @@ namespace Character
         public List<AModifier> Modifiers => modifiers;
         [SerializeField] private List<AModifier> modifiers = new();
 
-        private const float MaxCountDownMelee = Animations.TimePerFrame * 26f; // 13 frames animation
+        private const float MaxCountDownMelee = 1f;
 
         [Header("3D Models")]
         public GameObject crown;

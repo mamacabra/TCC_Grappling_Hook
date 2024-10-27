@@ -46,7 +46,7 @@ namespace Character.States
 
             if (countDown > DashDuration)
             {
-                CharacterEntity.CharacterState.SetPainState();
+                CharacterEntity.CharacterState.SetWalkState();
             }
         }
 
