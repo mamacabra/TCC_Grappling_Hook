@@ -13,7 +13,7 @@ public class PauseInGameScreen : Screens
 
     private void Awake()
     {
-        continueButton.button.onClick.AddListener(Close);
+        continueButton.button.onClick.AddListener(Continue);
         backToMenu.button.onClick.AddListener(QuitGame);
     }
 
@@ -37,6 +37,14 @@ public class PauseInGameScreen : Screens
     }
     
     public override void Close()
+    {
+        //base.Close();
+        //GoToScreen(continueButton.goToScreen);
+        gameObject.SetActive(false);
+        Time.timeScale = 1;
+    }
+    
+    public void Continue()
     {
         //base.Close();
         GoToScreen(continueButton.goToScreen);
