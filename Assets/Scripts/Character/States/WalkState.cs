@@ -17,6 +17,14 @@ namespace Character.States
             Walk();
             LookAt();
             CharacterEntity.Character.MoveArrowForward();
+
+            var directionMagnitude = CharacterEntity.CharacterInput.MoveDirection.magnitude;
+            CharacterEntity.CharacterMesh.animator?.SetBool("isWalking", directionMagnitude > 0.2);
+        }
+
+        public override void Exit()
+        {
+            CharacterEntity.CharacterMesh.animator?.SetBool("isWalking", false);
         }
     }
 }

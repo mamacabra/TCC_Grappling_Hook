@@ -24,6 +24,7 @@ namespace Character.States
         public override void Enter()
         {
             CharacterEntity.Character.UseAttack();
+            CharacterEntity.CharacterVFX.PlaySlashVFX();
             CharacterEntity.CharacterMesh.animator?.SetBool("isDash", false);
             CharacterEntity.CharacterMesh.animator?.SetTrigger("Melee");
             CharacterEntity.GrapplingHookState.SetHookReadyState();
@@ -31,15 +32,15 @@ namespace Character.States
 
         public override void FixedUpdate()
         {
-            if (countDown >= TimeToBeginDash && dashCountDown < TimeToStopDash){
-                dashCountDown += Time.fixedDeltaTime;
-                Walk(AttackDashSpeed, true);
-            }
+            // if (countDown >= TimeToBeginDash && dashCountDown < TimeToStopDash){
+            //     dashCountDown += Time.fixedDeltaTime;
+            //     Walk(AttackDashSpeed, true);
+            // }
 
             countDown += Time.fixedDeltaTime;
 
             if (countDown >= TimeToChangeState)
-                CharacterEntity.CharacterState.SetWalkState();
+                CharacterEntity.CharacterState.SetPainState();
             else if (countDown >= TimeToDisableHitbox)
                 CharacterEntity.AttackMelee.DisableHitbox();
             else if (countDown >= TimeToEnableHitbox && !attacked){
