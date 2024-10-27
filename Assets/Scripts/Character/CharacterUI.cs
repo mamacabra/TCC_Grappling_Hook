@@ -26,7 +26,7 @@ namespace Character
             characterCanvasPanel = characterUI?.Find("Canvas/Panel");
 
             // forceText = characterUI?.Find("Canvas/ForceText").GetComponent<Text>();
-            // characterStateText = characterUI?.Find("Canvas/CharacterStateText").GetComponent<Text>();
+            characterStateText = characterUI?.Find("Canvas/CharacterStateText").GetComponent<Text>();
             powerUpText = characterUI?.Find("Canvas/PowerUpsText").GetComponent<Text>();
 
             HiddenCharacterUI();
