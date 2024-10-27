@@ -5,6 +5,8 @@ namespace Character.States
 {
     public class WalkState : ACharacterState
     {
+        private const float JoystickDeadZone = 0.2f;
+
         public WalkState(CharacterEntity characterEntity) : base(characterEntity) {}
 
         public override void Enter()
@@ -19,7 +21,7 @@ namespace Character.States
             CharacterEntity.Character.MoveArrowForward();
 
             var directionMagnitude = CharacterEntity.CharacterInput.MoveDirection.magnitude;
-            CharacterEntity.CharacterMesh.animator?.SetBool("isWalking", directionMagnitude > 0.2);
+            CharacterEntity.CharacterMesh.animator?.SetBool("isWalking", directionMagnitude > JoystickDeadZone);
         }
 
         public override void Exit()
