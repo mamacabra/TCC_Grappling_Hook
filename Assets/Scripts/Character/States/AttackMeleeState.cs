@@ -10,12 +10,11 @@ namespace Character.States
 
         private float countDown;
         private float dashCountDown;
-        private const float AttackDashSpeed = 35f;
+        private const float AttackDuration = TimeToDisableHitbox + (Animations.TimePerFrame * 6f); // 5 frames
+        private const float AttackWalkSpeed = 20f;
         private const float TimeToEnableHitbox = Animations.TimePerFrame * 2f; // 2 frames
-        private const float TimeToBeginDash = Animations.TimePerFrame * 4f; // 4 frames
-        private const float TimeToStopDash = Animations.TimePerFrame * 4f; // 4 frames
         private const float TimeToDisableHitbox = TimeToEnableHitbox + Animations.TimePerFrame * 5f; // 5 frames
-        private const float TimeToChangeState = TimeToDisableHitbox + (Animations.TimePerFrame * 6f); // 5 frames
+        private const float JoystickDeadZone = 0.2f;
 
         private bool attacked = false;
 
@@ -33,20 +32,29 @@ namespace Character.States
 
         public override void FixedUpdate()
         {
-            // if (countDown >= TimeToBeginDash && dashCountDown < TimeToStopDash){
-            //     dashCountDown += Time.fixedDeltaTime;
-            //     Walk(AttackDashSpeed, true);
-            // }
-
             countDown += Time.fixedDeltaTime;
 
-            if (countDown >= TimeToChangeState)
-                CharacterEntity.CharacterState.SetPainState();
-            else if (countDown >= TimeToDisableHitbox)
-                CharacterEntity.AttackMelee.DisableHitbox();
-            else if (countDown >= TimeToEnableHitbox && !attacked){
-                attacked = true;
-                CharacterEntity.AttackMelee.EnableHitbox();
+            var directionMagnitude = CharacterEntity.CharacterInput.MoveDirection.magnitude;
+            if (directionMagnitude > JoystickDeadZone)
+            {
+                var timePercent = Mathf.Floor((countDown * 100) / AttackDuration);
+                var outSpeed = AttackWalkSpeed - AttackWalkSpeed * (timePercent / 100);
+
+                Walk(outSpeed, true);
+            }
+
+            switch (countDown)
+            {
+                case >= AttackDuration:
+                    CharacterEntity.CharacterState.SetPainState();
+                    break;
+                case >= TimeToDisableHitbox:
+                    CharacterEntity.AttackMelee.DisableHitbox();
+                    break;
+                case >= TimeToEnableHitbox when attacked == false:
+                    attacked = true;
+                    CharacterEntity.AttackMelee.EnableHitbox();
+                    break;
             }
         }
 
