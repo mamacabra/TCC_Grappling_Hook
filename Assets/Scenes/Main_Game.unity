@@ -4082,7 +4082,7 @@ MonoBehaviour:
   scaleDuration: 1
   moveDuration: 1
   rotateDuration: 1
-  waitBeforeDo: 0.75
+  waitBeforeDo: 0.45
   pingPongLoopping: 0
   waitBeforeDoReverse: 0
 --- !u!114 &233652728
@@ -8503,7 +8503,7 @@ MonoBehaviour:
   scaleDuration: 1
   moveDuration: 1
   rotateDuration: 1
-  waitBeforeDo: 0.75
+  waitBeforeDo: 0.35
   pingPongLoopping: 0
   waitBeforeDoReverse: 0
 --- !u!114 &506115834
@@ -15148,7 +15148,7 @@ MonoBehaviour:
   scaleDuration: 1
   moveDuration: 1
   rotateDuration: 1
-  waitBeforeDo: 0.75
+  waitBeforeDo: 0.55
   pingPongLoopping: 0
   waitBeforeDoReverse: 0
 --- !u!114 &990597361
@@ -19990,6 +19990,7 @@ MonoBehaviour:
   - serializedVersion: 2
     rgba: 4282207464
   matchPointFeedback: {fileID: 1939207103}
+  gameAlreadyStarted: 0
 --- !u!1 &1234459566
 GameObject:
   m_ObjectHideFlags: 0
@@ -26889,7 +26890,7 @@ MonoBehaviour:
   scaleDuration: 1
   moveDuration: 1
   rotateDuration: 1
-  waitBeforeDo: 0.75
+  waitBeforeDo: 0.65
   pingPongLoopping: 0
   waitBeforeDoReverse: 0
 --- !u!114 &1596503352
@@ -27892,7 +27893,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1631240598}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 471db6df55a537a46b5474cfba07e546, type: 3}
   m_Name: 
@@ -27912,7 +27913,7 @@ MonoBehaviour:
   scaleDuration: 1
   moveDuration: 1
   rotateDuration: 1
-  waitBeforeDo: 0.75
+  waitBeforeDo: 0.25
   pingPongLoopping: 0
   waitBeforeDoReverse: 0
 --- !u!114 &1631240601
