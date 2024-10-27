@@ -141,7 +141,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3724c3c35b45b4f48a6d98c14eb24109, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6a3d2b4cb936181489ffa1d2c9523629, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -247,7 +247,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3724c3c35b45b4f48a6d98c14eb24109, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6a3d2b4cb936181489ffa1d2c9523629, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -575,7 +575,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3724c3c35b45b4f48a6d98c14eb24109, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6a3d2b4cb936181489ffa1d2c9523629, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -752,7 +752,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 48cf2325899f7d04ca3457841edd9433, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 159aca2f3362a4543b414b6d00fb7ba5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -828,7 +828,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3724c3c35b45b4f48a6d98c14eb24109, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6a3d2b4cb936181489ffa1d2c9523629, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -934,7 +934,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3724c3c35b45b4f48a6d98c14eb24109, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6a3d2b4cb936181489ffa1d2c9523629, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1040,7 +1040,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3724c3c35b45b4f48a6d98c14eb24109, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6a3d2b4cb936181489ffa1d2c9523629, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1146,7 +1146,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3724c3c35b45b4f48a6d98c14eb24109, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6a3d2b4cb936181489ffa1d2c9523629, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1252,7 +1252,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3724c3c35b45b4f48a6d98c14eb24109, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6a3d2b4cb936181489ffa1d2c9523629, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1358,7 +1358,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3724c3c35b45b4f48a6d98c14eb24109, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6a3d2b4cb936181489ffa1d2c9523629, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1464,7 +1464,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3724c3c35b45b4f48a6d98c14eb24109, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6a3d2b4cb936181489ffa1d2c9523629, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1568,6 +1568,7 @@ MonoBehaviour:
       characterSprite: {fileID: 0}
     score: 0
     id: 0
+    characterIndexCharacterChoice: 0
   playerImg: {fileID: 8974533406289271236}
   pointsImages:
   - {fileID: 1465165480325647430}
@@ -1580,9 +1581,10 @@ MonoBehaviour:
   - {fileID: 7810800382276601642}
   - {fileID: 3365743595928439824}
   - {fileID: 1371331846012676888}
-  caveira: {fileID: 21300000, guid: 19f51096d2e41dd438ff41e9de88a248, type: 3}
-  caveiraOp: {fileID: 21300000, guid: 3724c3c35b45b4f48a6d98c14eb24109, type: 3}
+  caveira: {fileID: 21300000, guid: b3abd547707c8c14fa88f9217ce4a48a, type: 3}
+  caveiraOp: {fileID: 21300000, guid: 6a3d2b4cb936181489ffa1d2c9523629, type: 3}
   coroa: {fileID: 518755250115889604}
+  bgImg: {fileID: 5329060159071099665}
   characterModels:
   - {fileID: 7596714243843949999}
   - {fileID: 2057888939945611455}
