@@ -9,18 +9,31 @@ namespace TrapSystem_Scripts
     {
         public float fallSpeed = 20f;
 
-        void Update()
+        private void Start()
         {
-            transform.Translate(Vector3.down * fallSpeed * Time.deltaTime);
+            Debug.Log("set tag wall");
+        }
 
-            if (transform.position.y <= 0) // Assuming ground level is at y = 0
+        private void Update()
+        {
+            transform.Translate(Vector3.down * (fallSpeed * Time.deltaTime));
+
+            if (transform.position.y <= 1f)
             {
-                Destroy(gameObject);  // Destroy the object if it reaches the ground
+                fallSpeed =0;
+            }  
+            
+            // Assuming ground level is at y = 0
+            //Destroy(gameObject);  // Destroy the object if it reaches the ground
+            if (PlayersManager.Instance.GameOver)
+            {
+                Destroy(gameObject);
             }
         }
 
         private void OnTriggerEnter(Collider other)
         {
+            
             if(PlayersManager.Instance.GameOver) return;
             var character = other.GetComponent<Character.Character>();
             Debug.Log("HITTED");
@@ -32,7 +45,17 @@ namespace TrapSystem_Scripts
                character.CharacterEntity.CharacterState.SetDeathState(character.CharacterEntity.Character.characterBody);
                PlayersManager.Instance.PlayersToSendToCamera(other.transform, false);
                PlayersManager.Instance.RemovePointsToPlayer(character.Id);
+               fallSpeed = 0;
             }
+
+            fallSpeed = 0;
+            if (gameObject.CompareTag("Wall")) return;
+            SetTag();
+        }
+
+        private void SetTag()
+        {
+            gameObject.tag = "Wall";
         }
     }
 }

@@ -33,6 +33,7 @@ namespace TrapSystem_Scripts
                 Transform playerTransform = playerObject.transform;
                 players.Add(new PlayerTrapData
                 {
+                    character = playerObject.GetComponent<Character.Character>(),
                     playerTransform = playerTransform,
                     isOutsideArena = false,
                     outsideTime = 0f
@@ -49,6 +50,7 @@ namespace TrapSystem_Scripts
         {
             for (int i = players.Count - 1; i >= 0; i--)
             {
+                Character.Character playerCharacter = players[i].character;
                 PlayerTrapData playerData = players[i];
                 Transform player = playerData.playerTransform;
 
@@ -73,20 +75,20 @@ namespace TrapSystem_Scripts
                     // If they've been outside long enough, trigger the trap
                     else if (Time.time - playerData.outsideTime >= timeBeforeDeath)
                     {
-                        SpawnFallingObject(player);
-                        // Here we do not remove the player, but reset their status so they can trigger the trap again
-                        playerData.isOutsideArena = false; // Reset the state to allow the trap to activate again
-                        playerData.outsideTime = 0f; // Reset the time for next exit event
+                        if (playerCharacter.CharacterEntity.CharacterState.State is not DeathState)
+                        {
+                            SpawnFallingObject(player);
+                            playerData.isOutsideArena = false;
+                            playerData.outsideTime = 0f; 
+                        } 
                     }
                 }
-                // If the player re-enters the arena
                 else
                 {
-                    // Reset their "outside" status and timer to prepare for the next exit
                     if (playerData.isOutsideArena)
                     {
                         playerData.isOutsideArena = false;
-                        playerData.outsideTime = 0f; // Reset the outside timer
+                        playerData.outsideTime = 0f; 
                     }
                 }
             }
@@ -100,7 +102,7 @@ namespace TrapSystem_Scripts
                 Debug.LogError("Prefab do Objeto que Cai não foi atribuído.");
                 return;
             }
-
+            
             Vector3 spawnPosition = new Vector3(player.position.x, fallHeight, player.position.z);
             Instantiate(fallingObjectPrefab, spawnPosition, Quaternion.identity);
         }
@@ -111,6 +113,7 @@ namespace TrapSystem_Scripts
     public class PlayerTrapData
     {
         public Transform playerTransform;
+        public Character.Character character;
         public bool isOutsideArena;
         public float outsideTime;
     }
