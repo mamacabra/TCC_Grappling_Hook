@@ -11,6 +11,7 @@ public class HudController : MonoBehaviour
    [Header("Count")]
    [SerializeField] private GameObject countGameObj;
    [SerializeField] private float timeToWaitToStartCount = 3;
+   private const float timeToSpawnCharacter = 0.75f;
    [SerializeField] private TextMeshProUGUI countGameStartText;
    [SerializeField] private string textToShowWhenCountOver = "VAI!";
    [SerializeField] private string textToShowWhenCountOverMatchPoint = "MATCH POINT!";
@@ -82,7 +83,7 @@ public class HudController : MonoBehaviour
 
       for (int i = 0; i < players.Count; i++) {
          if (players[i].TryGetComponent(out Character.Character _character)) {
-            yield return new WaitForSeconds(2f/6);
+            yield return new WaitForSeconds(timeToSpawnCharacter);
             _character.PlaySpawnAnims();
          }
       }
@@ -90,7 +91,7 @@ public class HudController : MonoBehaviour
 
    IEnumerator WaitToStartCount(float plusTime)
    {
-      yield return new WaitForSeconds(timeToWaitToStartCount);
+      yield return new WaitForSeconds((timeToSpawnCharacter * timeToWaitToStartCount)+1.5f);
 
       countGameStartText.transform.localScale = Vector3.one;
 
