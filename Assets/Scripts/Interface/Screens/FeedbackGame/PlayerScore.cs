@@ -16,9 +16,12 @@ public class PlayerScore : MonoBehaviour
 
     [SerializeField] public GameObject coroa;
     private int scoreValue = 0;
+
+    [SerializeField] private Image bgImg;
     private void OnEnable()
     {
         InterfaceManager.Instance.OnShowScoreInFeedbackScreen += AtualizeScore;
+      
     }
 
     private void OnDisable()
@@ -52,6 +55,7 @@ public class PlayerScore : MonoBehaviour
         if (animator) animator.SetTrigger("connected");
         
         playerImg.color = PlayerColorLayerManager.GetColorBase(id);
+        bgImg.color =  PlayerColorLayerManager.GetColorBase(id);
     }
     public void ChangeData(PlayersManager.PlayerConfigurationData d)
     {

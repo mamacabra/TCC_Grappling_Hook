@@ -16,7 +16,7 @@ public class FeedbackGame : Screens
         StartCoroutine(WaitToCanClick());
         IEnumerator WaitToCanClick()
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(3f);
             canclick = true;
         }
         nextGameButton.gameObject.SetActive(true);
