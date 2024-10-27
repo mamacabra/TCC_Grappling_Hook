@@ -8,10 +8,7 @@ namespace TrapSystem_Scripts
     public class TrapSystemManager : MonoBehaviour
     {
         [SerializeField] private GameObject trapMenuUI;
-        void Start()
-        {
-            
-        }
+
 
         private void Update()
         {

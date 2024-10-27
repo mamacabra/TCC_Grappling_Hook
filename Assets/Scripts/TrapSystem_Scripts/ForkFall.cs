@@ -20,11 +20,11 @@ namespace TrapSystem_Scripts
 
             if (transform.position.y <= 1f)
             {
-                fallSpeed =0;
+                fallSpeed = 0;
+                transform.position = new Vector3(transform.position.x, 13f, transform.position.z);
+                SetTag();
             }  
             
-            // Assuming ground level is at y = 0
-            //Destroy(gameObject);  // Destroy the object if it reaches the ground
             if (PlayersManager.Instance.GameOver)
             {
                 Destroy(gameObject);
@@ -42,15 +42,14 @@ namespace TrapSystem_Scripts
             
             if (other.CompareTag("Character"))
             {
+                if(gameObject.CompareTag("Wall"))return;
                character.CharacterEntity.CharacterState.SetDeathState(character.CharacterEntity.Character.characterBody);
                PlayersManager.Instance.PlayersToSendToCamera(other.transform, false);
                PlayersManager.Instance.RemovePointsToPlayer(character.Id);
                fallSpeed = 0;
+               transform.position = new Vector3(transform.position.x, 13f, transform.position.z);
+               SetTag();
             }
-
-            fallSpeed = 0;
-            if (gameObject.CompareTag("Wall")) return;
-            SetTag();
         }
 
         private void SetTag()
