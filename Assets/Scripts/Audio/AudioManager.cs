@@ -50,9 +50,6 @@ public class AudioManager : MonoBehaviour
 
     public void SliderTest(float pitch)
     {
-        
-            
-
         //startSlider.release();
         startSlider.setParameterByName("SliderPitch", pitch);
         startSlider.setParameterByName("SliderVolume", pitch);

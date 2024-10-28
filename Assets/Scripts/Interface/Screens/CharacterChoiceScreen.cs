@@ -217,7 +217,12 @@ public class CharacterChoiceScreen : Screens
 
         startGameSlider.value += Time.deltaTime * sliderSpeed;
         Mathf.Clamp(startGameSlider.value, startGameSlider.minValue, startGameSlider.maxValue);
-        if (startGameSlider.value >= startGameSlider.maxValue) {if (PlayersManager.Instance.CanInitGame) { GoToScreen(playGame.goToScreen); } }
+        if (startGameSlider.value >= startGameSlider.maxValue) {
+            if (PlayersManager.Instance.CanInitGame) { 
+                GoToScreen(playGame.goToScreen);
+                AudioManager.audioManager.SliderTest(0);
+            } 
+        }
     }
 
     private Coroutine current;
