@@ -62,7 +62,11 @@ public class PlayerScore : MonoBehaviour
         data = d;
        //playerImg.sprite = Resources.Load<ResourcesCharacters>("ResourcesCharacters").GetCharacterData(data.characterModel).characterSprite;
        // playerImg.color = PlayersManager.GetColor(data.characterColor);
-        foreach (var p in pointsImages) p.sprite = caveiraOp;
+       foreach (var p in pointsImages)
+       {
+           p.sprite = caveiraOp;
+           p.color =  PlayerColorLayerManager.GetColorBase(d.id);;
+       }
 
         scoreValue = data.score;
 
@@ -73,8 +77,10 @@ public class PlayerScore : MonoBehaviour
     {
         for (int i = 0; i < scoreValue; i++)
         {
-            if(scoreValue <= PlayersManager.Instance.ScoreToWinGame)
+            if (scoreValue <= PlayersManager.Instance.ScoreToWinGame)
+            {
                 pointsImages[i].sprite = caveira;
+            }
         }
         
         
