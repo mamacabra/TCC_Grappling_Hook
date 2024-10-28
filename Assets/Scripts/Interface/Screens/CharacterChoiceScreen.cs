@@ -204,24 +204,23 @@ public class CharacterChoiceScreen : Screens
         }
     }
     private void Update() {
-        SetButtonStartSlider(-0.5f);
+        if (startGameSlider.value > 0.0f)
+            SetButtonStartSlider(-0.5f);
         
     }
     public void SetButtonStartSlider(float value){
         sliderSpeed = value;
 
-        if (/*Mathf.Floor(startGameSlider.value / 0.03f) > Mathf.Floor((startGameSlider.value - Time.deltaTime) / 0.03f) &&*/ startGameSlider.value != 0)
-        {
-            AudioManager.audioManager.SliderTest(startGameSlider.value);
-        }
+        AudioManager.audioManager.SliderTest(startGameSlider.value);
 
         startGameSlider.value += Time.deltaTime * sliderSpeed;
         Mathf.Clamp(startGameSlider.value, startGameSlider.minValue, startGameSlider.maxValue);
         if (startGameSlider.value >= startGameSlider.maxValue) {
             if (PlayersManager.Instance.CanInitGame) { 
                 GoToScreen(playGame.goToScreen);
+                startGameSlider.value = 0.0f;
                 AudioManager.audioManager.SliderTest(0);
-            } 
+            }
         }
     }
 
