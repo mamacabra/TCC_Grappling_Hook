@@ -24,6 +24,7 @@ public class HudController : MonoBehaviour
   
    private void OnEnable()
    {
+      
       matchPointFeedback.SetActive(false);
       if (InterfaceManager.Instance)
       {
@@ -69,6 +70,7 @@ public class HudController : MonoBehaviour
       timeToWaitToStartCount = players.Count;
       StartCoroutine(InitPlayers());
       StartCoroutine(WaitToStartCount(2));
+      
    }
 
    IEnumerator InitPlayers()
@@ -96,6 +98,7 @@ public class HudController : MonoBehaviour
       countGameStartText.transform.localScale = Vector3.one;
 
       countGameObj.SetActive(true);
+      AudioManager.audioManager.PlayUiSoundEffect(UiSoundsList.GameCountDown);
       for (int i = 3; i > 0; i--)
       {
          countGameStartText.text = i.ToString();
@@ -107,11 +110,12 @@ public class HudController : MonoBehaviour
 
          yield return new WaitForSeconds(0.75f);
          yield return null;
-
+            
       }
 
       if (!gameAlreadyStarted)
       {
+            
          gameAlreadyStarted = true;
          List<PlayersManager.PlayerConfigurationData> list = new List<PlayersManager.PlayerConfigurationData>();
          list = PlayersManager.Instance.ReturnPlayersList();
