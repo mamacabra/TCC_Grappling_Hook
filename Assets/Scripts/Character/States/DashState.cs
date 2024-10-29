@@ -16,6 +16,7 @@ namespace Character.States
         public override void Enter()
         {
             CharacterEntity.Character.UseDash();
+            AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.PlayerDash);
             CharacterEntity.CharacterMesh.animator?.SetFloat("Speed", 0);
             CharacterEntity.CharacterMesh.animator?.SetBool("isDash", true);
             CharacterEntity.CharacterVFX.PlayDashVFX();
