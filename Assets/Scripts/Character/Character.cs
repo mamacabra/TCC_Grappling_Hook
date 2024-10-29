@@ -92,7 +92,7 @@ namespace Character
         {
             if (direction == Vector3.zero) return;
 
-            direction.y = 0;
+            direction.y = 0.5f;
             CharacterEntity.Character.characterBody.LookAt(direction);
         }
 
