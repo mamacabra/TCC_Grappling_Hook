@@ -54,8 +54,6 @@ public class InterfaceManager : MonoBehaviour
           {
                HideSpecificScreen(ScreensName.Pause_InGame_Screen);
                ShowSpecificScreen(ScreensName.Hud);
-               pause = false;
-               Time.timeScale = 1;
           }
      }
 
@@ -96,7 +94,7 @@ public class InterfaceManager : MonoBehaviour
                     else
                     {
                          HideSpecificScreen(ScreensName.Pause_InGame_Screen);
-                         pause = false;// @PAUSEISSUE NOSSO JOGO SÓ MUDA ESSA VARIAVEL AQUI NO FINAL DO 3,2,1
+                         ShowSpecificScreen(ScreensName.Hud);
                     }
                }
           }
