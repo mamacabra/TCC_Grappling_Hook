@@ -12,6 +12,7 @@ namespace TrapSystem_Scripts
         private void Start()
         {
             Debug.Log("set tag wall");
+            AudioManager.audioManager.PlayLevelSoundEffect(LevelSoundsList.LevelForkTrap);
         }
 
         private void Update()

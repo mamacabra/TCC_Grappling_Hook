@@ -94,6 +94,11 @@ public class AudioManager : MonoBehaviour
         RuntimeManager.PlayOneShot("event:/MenuEffects/UiSounds/" + uiSound);
     }
 
+    public void PlayLevelSoundEffect(LevelSoundsList sound)
+    {
+        RuntimeManager.PlayOneShot("event:/LevelEffects/" + sound);
+    }
+
     public void PlayPlayerSoundEffect(PlayerSoundsList sound)
     {
         RuntimeManager.PlayOneShot("event:/PlayerEffects/" + sound);
@@ -159,4 +164,6 @@ public class AudioManager : MonoBehaviour
 
 public enum UiSoundsList { None, Confirm, Return, Cancel, Select, Hover, SelectUpPitch, SelectDownPitch, GainKillPoint, GameCountDown, StartSlider};
 public enum PlayerSoundsList { HookCharge, HookFire, HookHitPlayer, HookHitWall, HookReturn, AttackParry, AttackMiss, AttackHitPlayer, PlayerDash, PlayerSpawn, PlayerWalk, PlayerJellyWalk, PowerUpSpawn, PowerUpPickUp, PowerUpShieldBreak};
+
+public enum LevelSoundsList { LevelForkTrap };
 public enum MusicList { Music1, Music2, Music3};
