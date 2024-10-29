@@ -96,7 +96,7 @@ public class InterfaceManager : MonoBehaviour
                     else
                     {
                          HideSpecificScreen(ScreensName.Pause_InGame_Screen);
-                         pause = false;
+                         pause = false;// @PAUSEISSUE NOSSO JOGO SÓ MUDA ESSA VARIAVEL AQUI NO FINAL DO 3,2,1
                     }
                }
           }

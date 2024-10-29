@@ -56,6 +56,7 @@ namespace TrapSystem_Scripts
                 Destroy(gameObject);
             }
             if(InterfaceManager.Instance.pause) return;
+            if(InterfaceManager.Instance.isOnCount) return;
             if (!isTrapActive || isStopped) return; 
 
             if (targetWaypoint is not null)

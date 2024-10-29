@@ -158,5 +158,7 @@ public class HudController : MonoBehaviour
       // PowerUpManager.Instance.StartSpawn();
       yield return new WaitForSeconds(0.5f);
       InterfaceManager.Instance.isOnCount = false;
+
+      InterfaceManager.Instance.pause = false; ///////////////// @PAUSEISSUE CARALHO SE UM DIA A GENTE TIRAR O 3,2,1 DO PAUSE O NOSSO JOGO NÃO VAI DESPAUSAR
    }
 }
