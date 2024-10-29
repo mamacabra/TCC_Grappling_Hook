@@ -12,6 +12,10 @@ namespace Character.States
         public override void Enter()
         {
             CharacterEntity.GrapplingHookState.SetHookReadyState();
+
+            var newPosition = CharacterEntity.Character.transform.position;
+            newPosition.y = 0.5f;
+            CharacterEntity.Character.transform.position = newPosition;
         }
 
         public override void FixedUpdate()
