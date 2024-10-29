@@ -16,9 +16,12 @@ public class PlayerScore : MonoBehaviour
 
     [SerializeField] public GameObject coroa;
     private int scoreValue = 0;
+
+    [SerializeField] private Image bgImg;
     private void OnEnable()
     {
         InterfaceManager.Instance.OnShowScoreInFeedbackScreen += AtualizeScore;
+      
     }
 
     private void OnDisable()
@@ -52,13 +55,18 @@ public class PlayerScore : MonoBehaviour
         if (animator) animator.SetTrigger("connected");
         
         playerImg.color = PlayerColorLayerManager.GetColorBase(id);
+        bgImg.color =  PlayerColorLayerManager.GetColorBase(id);
     }
     public void ChangeData(PlayersManager.PlayerConfigurationData d)
     {
         data = d;
        //playerImg.sprite = Resources.Load<ResourcesCharacters>("ResourcesCharacters").GetCharacterData(data.characterModel).characterSprite;
        // playerImg.color = PlayersManager.GetColor(data.characterColor);
-        foreach (var p in pointsImages) p.sprite = caveiraOp;
+       foreach (var p in pointsImages)
+       {
+           p.sprite = caveiraOp;
+           p.color =  PlayerColorLayerManager.GetColorBase(d.id);;
+       }
 
         scoreValue = data.score;
 
@@ -69,8 +77,10 @@ public class PlayerScore : MonoBehaviour
     {
         for (int i = 0; i < scoreValue; i++)
         {
-            if(scoreValue <= PlayersManager.Instance.ScoreToWinGame)
+            if (scoreValue <= PlayersManager.Instance.ScoreToWinGame)
+            {
                 pointsImages[i].sprite = caveira;
+            }
         }
         
         

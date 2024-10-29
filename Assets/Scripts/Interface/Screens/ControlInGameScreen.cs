@@ -12,10 +12,18 @@ public class ControlInGameScreen : Screens
     {
         startGame.button.onClick.AddListener(StartGame);
     }
-
+    
     public override void Initialize()
     {
-        EventSystem.current.SetSelectedGameObject(startGame.button.gameObject);
+        startGame.button.gameObject.SetActive(false);
+
+        StartCoroutine(WaitToShowButton());
+        IEnumerator WaitToShowButton()
+        {
+            yield return new WaitForSeconds(2);
+            startGame.button.gameObject.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(startGame.button.gameObject);
+        }
     }
 
     void StartGame()

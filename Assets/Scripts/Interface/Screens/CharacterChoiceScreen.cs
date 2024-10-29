@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -17,6 +18,10 @@ public class CharacterChoiceScreen : Screens
     public float sliderSpeed;
 
     private int objEnables = 0;
+
+    [SerializeField] private TextMeshProUGUI playText;
+
+    private bool startGame = false;
     private void Awake()
     {
         backToMenu.button.onClick.AddListener(delegate { GoToScreen(backToMenu.goToScreen); });
@@ -25,6 +30,7 @@ public class CharacterChoiceScreen : Screens
 
     public override void Initialize()
     {
+        startGame =false;
         if (PlayersManager.Instance)
         {
             PlayersManager.Instance.characterChoice = this;
@@ -35,6 +41,9 @@ public class CharacterChoiceScreen : Screens
         EventSystem.current.SetSelectedGameObject(tutorial.gameObject);
         tutorial.SetParent(charactersGroup[0]);
         tutorial.gameObject.SetActive(true);
+        
+        if(current != null) StopCoroutine(current);
+        current = StartCoroutine(ChangeText());
     }
     public override void Close()
     {
@@ -47,6 +56,8 @@ public class CharacterChoiceScreen : Screens
     public override void GoToScreen(ScreensName screensName)
     {
         base.GoToScreen(screensName);
+        startGame = true;
+        if(current != null) StopCoroutine(current);
     }
 
     public PlayerInput ReturnPlayerInput(bool isGamePad = false, bool isP1 = false)
@@ -193,19 +204,35 @@ public class CharacterChoiceScreen : Screens
         }
     }
     private void Update() {
-        SetButtonStartSlider(-0.5f);
+        if (startGameSlider.value > 0.0f)
+            SetButtonStartSlider(-0.5f);
         
     }
     public void SetButtonStartSlider(float value){
         sliderSpeed = value;
 
-        if (/*Mathf.Floor(startGameSlider.value / 0.03f) > Mathf.Floor((startGameSlider.value - Time.deltaTime) / 0.03f) &&*/ startGameSlider.value != 0)
-        {
-            AudioManager.audioManager.SliderTest(startGameSlider.value);
-        }
+        AudioManager.audioManager.SliderTest(startGameSlider.value);
 
         startGameSlider.value += Time.deltaTime * sliderSpeed;
         Mathf.Clamp(startGameSlider.value, startGameSlider.minValue, startGameSlider.maxValue);
-        if (startGameSlider.value >= startGameSlider.maxValue) {if (PlayersManager.Instance.CanInitGame) { GoToScreen(playGame.goToScreen); } }
+        if (startGameSlider.value >= startGameSlider.maxValue) {
+            if (PlayersManager.Instance.CanInitGame) { 
+                GoToScreen(playGame.goToScreen);
+                startGameSlider.value = 0.0f;
+                AudioManager.audioManager.SliderTest(0);
+            }
+        }
+    }
+
+    private Coroutine current;
+    IEnumerator ChangeText()
+    {
+        if(startGame) yield break;
+        playText.text = "Jogar";
+        yield return new WaitForSeconds(1.5f);
+        playText.text = "Pressiona A/X";
+        yield return new WaitForSeconds(1.5f);
+        if(current != null) StopCoroutine(current);
+        current = StartCoroutine(ChangeText());
     }
 }

@@ -16,12 +16,12 @@ public class FeedbackGame : Screens
         StartCoroutine(WaitToCanClick());
         IEnumerator WaitToCanClick()
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(3f);
             canclick = true;
         }
+        EventSystem.current.SetSelectedGameObject(nextGameButton.gameObject);
         nextGameButton.gameObject.SetActive(true);
         InterfaceManager.Instance.OnHideButton += HideButton;
-        EventSystem.current.SetSelectedGameObject(nextGameButton.gameObject);
     }
 
     public override void Close()
@@ -41,6 +41,7 @@ public class FeedbackGame : Screens
         canclick = false;
         PlayersManager.Instance.InitGame(true);
         InterfaceManager.Instance.ShowSpecificScreen(ScreensName.Hud);
+        InterfaceManager.Instance.RestartGame();
         Close();
     }
 

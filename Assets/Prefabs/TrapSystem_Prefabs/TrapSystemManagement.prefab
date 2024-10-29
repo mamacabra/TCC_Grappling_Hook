@@ -283,7 +283,7 @@ MonoBehaviour:
   maxX: 60
   minZ: -45
   maxZ: 45
-  timeBeforeDeath: 3
+  timeBeforeDeath: 1
 --- !u!1 &711467526513946708
 GameObject:
   m_ObjectHideFlags: 0
@@ -2587,12 +2587,14 @@ MonoBehaviour:
   - {fileID: 5351919410260557726}
   - {fileID: 1743079875093172414}
   moveSpeed: 10
+  moveTowardsPlayerSpeed: 3
   pauseTime: 3
-  delayTime: 4
-  stopTime: 1
+  delayTime: 7
+  stopTime: 0.5
   cooldown: 0
   startCooldown: 0
   hasBitten: 0
+  isChasing: 0
   bittingPause: 0
   fork: {fileID: 9146939633919487612, guid: 5cb972bb2b9c21c4e86b89cec66dc2e0, type: 3}
   alturaGarfo: 50

@@ -11,6 +11,7 @@ public class HudController : MonoBehaviour
    [Header("Count")]
    [SerializeField] private GameObject countGameObj;
    [SerializeField] private float timeToWaitToStartCount = 3;
+   private const float timeToSpawnCharacter = 0.75f;
    [SerializeField] private TextMeshProUGUI countGameStartText;
    [SerializeField] private string textToShowWhenCountOver = "VAI!";
    [SerializeField] private string textToShowWhenCountOverMatchPoint = "MATCH POINT!";
@@ -19,18 +20,22 @@ public class HudController : MonoBehaviour
    private List<GameObject> players = new List<GameObject>();
 
    [SerializeField] private GameObject matchPointFeedback;
+   [HideInInspector]public bool gameAlreadyStarted = false;
   
    private void OnEnable()
    {
-      
       matchPointFeedback.SetActive(false);
-      if(InterfaceManager.Instance)
+      if (InterfaceManager.Instance)
+      {
          InterfaceManager.Instance.OnStartCount += StartCount;
+         InterfaceManager.Instance.OnRestartGame += RestarGame;
+      }
       
       if (!InterfaceManager.Instance.inGame)
       {
          InterfaceManager.Instance.isOnCount = true;
          InterfaceManager.Instance.inGame = true;
+        
       }
       else
       {
@@ -46,10 +51,18 @@ public class HudController : MonoBehaviour
 
    private void OnDisable()
    {
-      if(InterfaceManager.Instance)
+      if (InterfaceManager.Instance)
+      {
          InterfaceManager.Instance.OnStartCount -= StartCount;
+         InterfaceManager.Instance.OnRestartGame -= RestarGame;
+      }
    }
 
+   public void RestarGame()
+   {
+      gameAlreadyStarted = false;
+   }
+   
    public void StartCount()
    {
       players = PlayersManager.Instance.PlayersGameObjects;
@@ -70,7 +83,7 @@ public class HudController : MonoBehaviour
 
       for (int i = 0; i < players.Count; i++) {
          if (players[i].TryGetComponent(out Character.Character _character)) {
-            yield return new WaitForSeconds(2f/6);
+            yield return new WaitForSeconds(timeToSpawnCharacter);
             _character.PlaySpawnAnims();
          }
       }
@@ -78,7 +91,7 @@ public class HudController : MonoBehaviour
 
    IEnumerator WaitToStartCount(float plusTime)
    {
-      yield return new WaitForSeconds(timeToWaitToStartCount);
+      yield return new WaitForSeconds((timeToSpawnCharacter * timeToWaitToStartCount)+1.5f);
 
       countGameStartText.transform.localScale = Vector3.one;
 
@@ -97,8 +110,9 @@ public class HudController : MonoBehaviour
 
       }
 
-      if (!InterfaceManager.Instance.inGame)
+      if (!gameAlreadyStarted)
       {
+         gameAlreadyStarted = true;
          List<PlayersManager.PlayerConfigurationData> list = new List<PlayersManager.PlayerConfigurationData>();
          list = PlayersManager.Instance.ReturnPlayersList();
 
@@ -124,7 +138,7 @@ public class HudController : MonoBehaviour
          {
             countGameStartText.transform.DOScale(1f, 0.25f).SetEase(Ease.OutBack);
          });
-
+        
          yield return new WaitForSeconds(0.75f);
       }
 

@@ -58,7 +58,7 @@ public class CharacterBoxUI : MonoBehaviour
         if (!PlayersManager.Instance.PlayerTypeIsAvailable(playerConfig.characterModel))
         {
             characterStatus.text = "Já escolhido";
-            characterStatus.color = new Color32(231,76,60,255);
+            characterStatus.color = new Color32(52,73,94,255);
 
             return;
         }
@@ -66,7 +66,7 @@ public class CharacterBoxUI : MonoBehaviour
 
         if (context.action.WasPerformedThisFrame()) {
             characterStatus.text = "Pronto";
-            characterStatus.color = new Color32(46,204,113,255);
+            characterStatus.color = new Color32(52,73,94,255);
             hasConfirmed = true;
             PlayersManager.Instance?.AddNewPlayerConfig(playerConfig);
             PlayersManager.Instance?.SetPlayerStatus(true);
@@ -89,7 +89,7 @@ public class CharacterBoxUI : MonoBehaviour
                 return; 
             }
             characterStatus.text = "Escolhendo";
-            characterStatus.color =new Color32(240,240,240,255);
+            characterStatus.color =new Color32(52,73,94,255);
             PlayersManager.Instance?.RemovePlayerConfig(playerConfig);
             PlayersManager.Instance?.SetPlayerStatus(false);
             hasConfirmed = false;
@@ -98,8 +98,8 @@ public class CharacterBoxUI : MonoBehaviour
 
     public void OnDeviceLost(PlayerInput playerInput){
         //if(!gameObject.activeSelf) return;
-        characterStatus.text = "Pressione qualquer botão";
-        characterStatus.color = new Color32(240,240,240,255);
+        characterStatus.text = "Pressione A/X";
+        characterStatus.color = new Color32(52,73,94,255);
         PlayersManager.Instance?.RemovePlayerConfig(playerConfig);
         PlayersManager.Instance?.RemovePlayerConfigAUX(playerConfig);
         PlayersManager.Instance?.SetPlayerStatus(false);
@@ -116,12 +116,12 @@ public class CharacterBoxUI : MonoBehaviour
         if (!PlayersManager.Instance.PlayerTypeIsAvailable(playerConfig.characterModel))
         {
             characterStatus.text = "Já escolhido";
-            characterStatus.color = new Color32(231,76,60,255);
+            characterStatus.color = new Color32(52,73,94,255);
         }
         else
         {
             characterStatus.text = "Escolhendo";
-            characterStatus.color =new Color32(240,240,240,255);
+            characterStatus.color = new Color32(52, 73, 94, 255);
         }
     }
     public void UpdateTextTest()
@@ -130,7 +130,7 @@ public class CharacterBoxUI : MonoBehaviour
         CheckCharacter(v);
         
         characterStatus.text = "Escolhendo";
-        characterStatus.color = new Color32(240,240,240,255);
+        characterStatus.color = new Color32(52,73,94,255);
     }
 
     void CheckCharacter(int v)
@@ -193,14 +193,14 @@ public class CharacterBoxUI : MonoBehaviour
         if (!PlayersManager.Instance.PlayerTypeIsAvailable(playerConfig.characterModel))
         {
             characterStatus.text = "Já escolhido";
-            characterStatus.color = new Color32(231,76,60,255);
+            characterStatus.color = new Color32(52,73,94,255);
             
             ChangeModelImage(dir);
         }
         else
         {
             characterStatus.text = "Escolhendo";
-            characterStatus.color = new Color32(240,240,240,255);
+            characterStatus.color = new Color32(52,73,94,255);
         }
     }
 
@@ -212,8 +212,8 @@ public class CharacterBoxUI : MonoBehaviour
     }
 
     private void OnDisable() {
-        characterStatus.text = "Pressione qualquer botão";
-        characterStatus.color = new Color32(240,240,240,255);
+        characterStatus.text = "Pressione A/X";
+        characterStatus.color = new Color32(52,73,94,255);
         hasConfirmed = false;
         playerConfig = new PlayersManager.PlayerConfigurationData();
         // ChangeColor((int) playerConfig.characterColor);
