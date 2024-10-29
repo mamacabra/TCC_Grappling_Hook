@@ -8,12 +8,12 @@ namespace Character.Utils
     {
         private static readonly PlayerColorLayer[] colorLayers =
         {
-            new (ControlColorsLayer.Yellow, ControlColorsHex.Yellow, ControlColorsHex.YellowLight),
-            new (ControlColorsLayer.Green, ControlColorsHex.Green, ControlColorsHex.GreenLight),
-            new (ControlColorsLayer.Blue, ControlColorsHex.Blue, ControlColorsHex.BlueLight),
-            new (ControlColorsLayer.Purple, ControlColorsHex.Purple, ControlColorsHex.PurpleLight),
-            new (ControlColorsLayer.Red, ControlColorsHex.Red, ControlColorsHex.RedLight),
-            new (ControlColorsLayer.White, ControlColorsHex.White, ControlColorsHex.WhiteLight),
+            new (ControlColorsLayer.Yellow, ControlColorsHex.Yellow, ControlColorsHex.YellowLight, ControlColorsHex.YellowDark),
+            new (ControlColorsLayer.Green, ControlColorsHex.Green, ControlColorsHex.GreenLight, ControlColorsHex.GreenDark),
+            new (ControlColorsLayer.Blue, ControlColorsHex.Blue, ControlColorsHex.BlueLight, ControlColorsHex.BlueDark),
+            new (ControlColorsLayer.Purple, ControlColorsHex.Purple, ControlColorsHex.PurpleLight, ControlColorsHex.PurpleDark),
+            new (ControlColorsLayer.Red, ControlColorsHex.Red, ControlColorsHex.RedLight, ControlColorsHex.RedDark),
+            new (ControlColorsLayer.White, ControlColorsHex.White, ControlColorsHex.WhiteLight, ControlColorsHex.WhiteDark),
         };
 
         public static ControlColorsLayer DefineCharacterColorLayer(int characterId)
@@ -41,6 +41,12 @@ namespace Character.Utils
         {
             var color = colorLayers.FirstOrDefault(c => c.CharacterId == characterId);
             return color?.ColorBaseLight ?? Color.white;
+        }
+
+        public static Color GetColorBaseDark(int characterId)
+        {
+            var color = colorLayers.FirstOrDefault(c => c.CharacterId == characterId);
+            return color?.ColorBaseDark ?? Color.white;
         }
     }
 }

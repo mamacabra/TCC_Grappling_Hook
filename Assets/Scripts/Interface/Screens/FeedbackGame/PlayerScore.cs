@@ -18,6 +18,7 @@ public class PlayerScore : MonoBehaviour
     private int scoreValue = 0;
 
     [SerializeField] private Image bgImg;
+    [SerializeField] private Image bgDarkImg;
     private void OnEnable()
     {
         InterfaceManager.Instance.OnShowScoreInFeedbackScreen += AtualizeScore;
@@ -56,6 +57,7 @@ public class PlayerScore : MonoBehaviour
         
         playerImg.color = PlayerColorLayerManager.GetColorBase(id);
         bgImg.color =  PlayerColorLayerManager.GetColorBase(id);
+        bgDarkImg.color = PlayerColorLayerManager.GetColorBaseDark(id);
     }
     public void ChangeData(PlayersManager.PlayerConfigurationData d)
     {
