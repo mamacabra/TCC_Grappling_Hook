@@ -10,6 +10,7 @@ namespace Character.GrapplingHook.States
         public override void Enter()
         {
             EnableHookCollider();
+            SetHookColliderSize(GrapplingStats.HookColliderRollbackSize);
         }
 
         public override void FixedUpdate()
@@ -20,6 +21,11 @@ namespace Character.GrapplingHook.States
             var hookDistance = Vector3.Distance(GrapplingStats.originPosition, transform.localPosition);
             if (hookDistance <= 0.1f || transform.localPosition.z <= GrapplingStats.originPosition.z)
                 CharacterEntity.CharacterState.SetWalkState();
+        }
+
+        public override void Exit()
+        {
+            SetHookColliderSize(GrapplingStats.HookColliderDispatchSize);
         }
     }
 }

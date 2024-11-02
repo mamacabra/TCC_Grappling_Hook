@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Character.Utils
 {
     public abstract class AGrapplingHookState
@@ -22,6 +24,11 @@ namespace Character.Utils
         protected void EnableHookCollider()
         {
             CharacterEntity.GrapplingHookCollider.enabled = true;
+        }
+
+        protected void SetHookColliderSize(Vector3 size)
+        {
+            CharacterEntity.GrapplingHookCollider.size = size;
         }
     }
 }
