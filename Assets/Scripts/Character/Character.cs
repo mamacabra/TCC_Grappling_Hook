@@ -18,15 +18,15 @@ namespace Character
         private const float MaxCountDownSpeedBoost = 6f; // 6 seconds
 
         public bool HasDashReady { get; private set; } = true;
-        private const float MaxCountDownDash = 1f;
+        private const float MaxCountDownDash = 0.8f;
 
         public bool HasAttackReady { get; private set; } = true;
+        private const float MaxCountDownAttack = 0.8f;
 
         public Vector3 CurrentSpeed;
         public List<AModifier> Modifiers => modifiers;
         [SerializeField] private List<AModifier> modifiers = new();
 
-        private const float MaxCountDownMelee = 1f;
 
         [Header("3D Models")]
         public GameObject crown;
@@ -84,7 +84,7 @@ namespace Character
         private IEnumerator AttackCountDownCoroutine()
         {
             HasAttackReady = false;
-            yield return new WaitForSeconds(MaxCountDownMelee);
+            yield return new WaitForSeconds(MaxCountDownAttack);
             HasAttackReady = true;
         }
 
