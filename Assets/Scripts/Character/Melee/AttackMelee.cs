@@ -32,7 +32,7 @@ namespace Character.Melee
                 return;
             }
 
-            if (enemy.CharacterEntity.CharacterState.State is AttackMeleeState)
+            if (enemy.CharacterEntity.CharacterState.State is AttackState)
             {
                 enemy.CharacterEntity.CharacterState.SetKnockbackState();
                 CharacterEntity.CharacterState.SetKnockbackState();

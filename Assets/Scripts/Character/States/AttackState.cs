@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Character.States
 {
-    public class AttackMeleeState : ACharacterState
+    public class AttackState : ACharacterState
     {
         private GameObject meleeHitbox;
 
@@ -18,7 +18,7 @@ namespace Character.States
 
         private bool attacked = false;
 
-        public AttackMeleeState(CharacterEntity characterEntity) : base(characterEntity) {}
+        public AttackState(CharacterEntity characterEntity) : base(characterEntity) {}
 
         public override void Enter()
         {

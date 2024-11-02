@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace Character.States
 {
-    public class CaughtEnemy : ACharacterState
+    public class CaughtEnemyState : ACharacterState
     {
         private readonly CharacterEntity enemy;
         private const float MinDistanceToDrop = 3.6f;
         private const float MovementSpeed = 50f;
 
-        public CaughtEnemy(CharacterEntity characterEntity, CharacterEntity enemy) : base(characterEntity)
+        public CaughtEnemyState(CharacterEntity characterEntity, CharacterEntity enemy) : base(characterEntity)
         {
             this.enemy = enemy;
         }

@@ -36,23 +36,23 @@ namespace Character
         public void SetAttackMeleeState()
         {
             if (CharacterEntity.Character.HasAttackReady == false) return;
-            if (CharacterEntity.CharacterState.State is AttackMeleeState or DashState or HookedToEnemyState or PainState or ReadyState) return;
+            if (CharacterEntity.CharacterState.State is AttackState or DashState or HookedToEnemyState or PainState or ReadyState) return;
             if (Time.deltaTime == 0) return;
 
-            var state = new AttackMeleeState(CharacterEntity);
+            var state = new AttackState(CharacterEntity);
             SetState(state);
         }
 
         public void SetCaughtEnemyState(CharacterEntity enemy)
         {
-            var state = new CaughtEnemy(CharacterEntity, enemy);
+            var state = new CaughtEnemyState(CharacterEntity, enemy);
             SetState(state);
         }
 
         public void SetDashState()
         {
             if (CharacterEntity.Character.HasDashReady == false) return;
-            if (CharacterEntity.CharacterState.State is AttackMeleeState or HookedToEnemyState or PainState or ReadyState) return;
+            if (CharacterEntity.CharacterState.State is AttackState or HookedToEnemyState or PainState or ReadyState) return;
             if (Time.deltaTime == 0) return;
 
             var state = new DashState(CharacterEntity);
