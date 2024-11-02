@@ -12,6 +12,7 @@ namespace Character.States
         private float dashCountDown;
         private const float AttackDuration = TimeToDisableHitbox + (Animations.TimePerFrame * 6f); // 5 frames
         private const float AttackWalkSpeed = 20f;
+        private const float AttackRotationSpeed = 3f;
         private const float TimeToEnableHitbox = Animations.TimePerFrame * 2f; // 2 frames
         private const float TimeToDisableHitbox = TimeToEnableHitbox + Animations.TimePerFrame * 5f; // 5 frames
         private const float JoystickDeadZone = 0.2f;
@@ -56,6 +57,8 @@ namespace Character.States
                     CharacterEntity.AttackMelee.EnableHitbox();
                     break;
             }
+
+            LookAt(AttackRotationSpeed);
         }
 
         public override void Exit()
