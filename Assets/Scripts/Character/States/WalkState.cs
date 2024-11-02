@@ -20,11 +20,12 @@ namespace Character.States
 
         public override void FixedUpdate()
         {
-            Walk();
-            LookAt();
-            CharacterEntity.Character.MoveArrowForward();
-
             var directionMagnitude = CharacterEntity.CharacterInput.MoveDirection.magnitude;
+
+            Walk();
+            if (directionMagnitude > JoystickDeadZone) LookAt();
+
+            CharacterEntity.Character.MoveArrowForward();
             CharacterEntity.CharacterMesh.animator?.SetBool("isWalking", directionMagnitude > JoystickDeadZone);
         }
 
