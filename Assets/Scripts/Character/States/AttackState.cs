@@ -10,14 +10,18 @@ namespace Character.States
 
         private float countDown;
         private float dashCountDown;
-        private const float AttackDuration = TimeToDisableHitbox + (Animations.TimePerFrame * 6f); // 5 frames
+
+        private const float JoystickDeadZone = 0.2f;
         private const float AttackWalkSpeed = 20f;
+        private const float AttackWalkSpeedExtra = 26f;
         private const float AttackRotationSpeed = 3f;
+        private const float AttackDecelerationTimePercent = 0.6f;
+        private const float AttackDuration = TimeToDisableHitbox + (Animations.TimePerFrame * 6f); // 5 frames
+
         private const float TimeToEnableHitbox = Animations.TimePerFrame * 2f; // 2 frames
         private const float TimeToDisableHitbox = TimeToEnableHitbox + Animations.TimePerFrame * 5f; // 5 frames
-        private const float JoystickDeadZone = 0.2f;
 
-        private bool attacked = false;
+        private bool attacked;
 
         public AttackState(CharacterEntity characterEntity) : base(characterEntity) {}
 
@@ -38,8 +42,23 @@ namespace Character.States
             var directionMagnitude = CharacterEntity.CharacterInput.MoveDirection.magnitude;
             if (directionMagnitude > JoystickDeadZone)
             {
-                var timePercent = Mathf.Floor((countDown * 100) / AttackDuration);
-                var outSpeed = AttackWalkSpeed - AttackWalkSpeed * (timePercent / 100);
+                var outSpeed = AttackWalkSpeed;
+                switch (countDown)
+                {
+                    case < AttackDuration * AttackDecelerationTimePercent:
+                    {
+                        var timePercent = Mathf.Floor((countDown * 100) / AttackDuration) / 100;
+                        outSpeed = AttackWalkSpeed + (AttackWalkSpeedExtra * timePercent) * 2;
+                        break;
+                    }
+                    case > AttackDuration * AttackDecelerationTimePercent:
+                    {
+                        var timePercent = Mathf.Floor((countDown * 100) / AttackDuration) / 100;
+                        outSpeed = AttackWalkSpeed * timePercent;
+                        break;
+                    }
+                }
+
 
                 Walk(outSpeed, true);
             }
