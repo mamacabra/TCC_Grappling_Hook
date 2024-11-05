@@ -16,19 +16,20 @@ namespace Character.States
         private const float AttackWalkSpeedExtra = 26f;
         private const float AttackRotationSpeed = 3f;
         private const float AttackDecelerationTimePercent = 0.6f;
-        private const float AttackDuration = TimeToDisableHitbox + (Animations.TimePerFrame * 6f); // 5 frames
+        private const float AttackDuration = Animations.TimePerFrame * 25f; // 25 frames
 
-        private const float TimeToEnableHitbox = Animations.TimePerFrame * 2f; // 2 frames
-        private const float TimeToDisableHitbox = TimeToEnableHitbox + Animations.TimePerFrame * 5f; // 5 frames
+        private const float TimeToEnableHitbox = Animations.TimePerFrame * 10f; // frame 10
+        private const float TimeToEnableVFX = TimeToEnableHitbox + Animations.TimePerFrame * 4f; // frame 14
+        private const float TimeToDisableHitbox = TimeToEnableHitbox + Animations.TimePerFrame * 7f; // frame 17
 
         private bool attacked;
+        private bool vfxPlayed;
 
         public AttackState(CharacterEntity characterEntity) : base(characterEntity) {}
 
         public override void Enter()
         {
             CharacterEntity.Character.UseAttack();
-            CharacterEntity.CharacterVFX.PlaySlashVFX();
             CharacterEntity.CharacterMesh.animator?.SetBool("isDash", false);
             CharacterEntity.CharacterMesh.animator?.SetBool("isAttacking", true);
             CharacterEntity.CharacterMesh.animator?.SetTrigger("Melee");
@@ -70,6 +71,10 @@ namespace Character.States
                     break;
                 case >= TimeToDisableHitbox:
                     CharacterEntity.AttackMelee.DisableHitbox();
+                    break;
+                case >= TimeToEnableVFX when vfxPlayed == false:
+                    vfxPlayed = true;
+                    CharacterEntity.CharacterVFX.PlaySlashVFX();
                     break;
                 case >= TimeToEnableHitbox when attacked == false:
                     attacked = true;
