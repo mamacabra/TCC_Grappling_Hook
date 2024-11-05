@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using Character.States;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 namespace TrapSystem_Scripts
@@ -27,7 +29,9 @@ namespace TrapSystem_Scripts
         [SerializeField] private float alturaGarfo = 0f;
 
         private bool isTrapActive = false; // Control if the trap is currently active
-        private bool isStopped = false;    
+        private bool isStopped = false;
+        private Vector3 playerPos;
+        private float timeChasing = 2f;
 
         void Start()
         {
@@ -88,7 +92,10 @@ namespace TrapSystem_Scripts
                 bittingPause = false;
                 pauseTime = 2f;
             }
+            
         }
+
+        
 
         private void MoveTowardsTarget()
         {
@@ -113,8 +120,8 @@ namespace TrapSystem_Scripts
 
         private void Bite(Vector3 playerPosition)
         {
-            Instantiate(fork, playerPosition + new Vector3(0, alturaGarfo, 0), Quaternion.identity);
-            hasBitten = true;
+                Instantiate(fork, playerPosition + new Vector3(0, alturaGarfo, 0), Quaternion.identity);
+                hasBitten = true;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -123,11 +130,12 @@ namespace TrapSystem_Scripts
 
             if (other.gameObject.CompareTag("Character"))
             {
+                
                 if(other.gameObject.GetComponent<Character.Character>().CharacterEntity.CharacterState.State is DeathState) return;
                 bittingPause = true;
                 startCooldown = true;
-
-                StartCoroutine(MoveTowardsPlayer(other.gameObject.transform.position));
+                playerPos = other.gameObject.transform.position;
+                isChasing = true;
                 if (cooldown <= 0)
                 {
                     
@@ -135,19 +143,28 @@ namespace TrapSystem_Scripts
                 }
             }
         }
-        
-        private IEnumerator MoveTowardsPlayer(Vector3 playerPosition)
-        {  
-                var timeChasing= 2f;
-                isChasing = true;
-                while (timeChasing > 0)
-                {
-                    transform.position = Vector3.Lerp(transform.position, playerPosition, moveTowardsPlayerSpeed * Time.deltaTime); 
-                    timeChasing -= Time.deltaTime;
-                }
-                isChasing = false;
-                yield return null;
+        private void FixedUpdate()
+        {
+            if (isChasing)
+            {
+                FollowPlayer(playerPos);
+            }
         }
+
+        private void FollowPlayer(Vector3 playerPosition)
+        {
+            if (timeChasing > 0)
+            {
+                transform.position = Vector3.Lerp(transform.position, playerPosition, moveTowardsPlayerSpeed * Time.deltaTime); 
+                timeChasing -= Time.deltaTime;
+            }
+            else
+            {
+                isChasing = false;
+                timeChasing = 2f;
+            }
+        }
+        
 
         private IEnumerator StopTrapAndBite(Vector3 playerPosition)
         {
