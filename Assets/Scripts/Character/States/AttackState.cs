@@ -16,11 +16,11 @@ namespace Character.States
         private const float AttackWalkSpeedExtra = 26f;
         private const float AttackRotationSpeed = 3f;
         private const float AttackDecelerationTimePercent = 0.6f;
-        private const float AttackDuration = Animations.TimePerFrame * 25f; // 25 frames
+        private const float AttackDuration = Animations.TimePerFrame * 15f; // 15 frames
 
-        private const float TimeToEnableHitbox = Animations.TimePerFrame * 10f; // frame 10
-        private const float TimeToEnableVFX = TimeToEnableHitbox + Animations.TimePerFrame * 4f; // frame 14
-        private const float TimeToDisableHitbox = TimeToEnableHitbox + Animations.TimePerFrame * 7f; // frame 17
+        private const float TimeToEnableHitbox = Animations.TimePerFrame * 4f; // frame 4
+        private const float TimeToEnableVFX = TimeToEnableHitbox + Animations.TimePerFrame * 2f; // frame 14
+        private const float TimeToDisableHitbox = TimeToEnableHitbox + Animations.TimePerFrame * 7f; // frame 11
 
         private bool attacked;
         private bool vfxPlayed;
