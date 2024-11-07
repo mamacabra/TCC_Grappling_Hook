@@ -260,7 +260,7 @@ public class PlayersManager : MonoBehaviour
                 if (p != null)
                 {
                     var pC =p.GetComponent<Character.Character>();
-                    pC.CharacterEntity.CharacterState.SetLoserState();
+                    if (pC.Id != playerWhoKilled && winnerSupreme != -1) pC.CharacterEntity.CharacterState.SetLoserState();
                     pC.CharacterEntity.CharacterMesh.animator.SetFloat("Speed", 0);
                 }
             }
