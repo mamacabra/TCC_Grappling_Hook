@@ -25,12 +25,10 @@ namespace TrapSystem_Scripts.ModifierSystem
     }
     public class SlideModifier : MovementModifier {
         public override void Exit() {
-            Debug.Log("Exit Slide");
         }
     }
     public class GlueModifier : MovementModifier {
         public override void Exit() {
-            Debug.Log("Exit Glue");
         }
     }
 }
