@@ -18,9 +18,10 @@ namespace Character.States
             CharacterEntity.CharacterVFX.PlayParryVFX();
             knockbackDirection = CharacterEntity.Character.transform.Find("Body").forward;
             knockbackTimer = KnockbackDuration;
+            CharacterEntity.CharacterMesh.animator?.SetBool("isParry", true);
         }
 
-        public override void Update()
+        public override void FixedUpdate()
         {
             if (knockbackTimer > 0)
             {
@@ -42,6 +43,11 @@ namespace Character.States
             {
                 CharacterEntity.CharacterState.SetWalkState();
             }
+        }
+
+        public override void Exit()
+        {
+            CharacterEntity.CharacterMesh.animator?.SetBool("isParry", false);
         }
     }
 }
