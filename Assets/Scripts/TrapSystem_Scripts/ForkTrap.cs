@@ -123,9 +123,13 @@ namespace TrapSystem_Scripts
 
         private void Bite(Vector3 playerPosition)
         {
-                Instantiate(fork, playerPosition + new Vector3(0, alturaGarfo, 0), Quaternion.identity);
-                hasBitten = true;
+            var randomYRotation = Random.Range(0f, 360f); // Random Y-axis rotation between 0 and 360 degrees
+            var randomRotation = Quaternion.Euler(0, randomYRotation, 0); // Apply random Y-axis rotation
+    
+            Instantiate(fork, playerPosition + new Vector3(0, alturaGarfo, 0), randomRotation);
+            hasBitten = true;
         }
+
 
         private void OnTriggerEnter(Collider other)
         {
