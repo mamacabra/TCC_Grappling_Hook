@@ -102,9 +102,11 @@ namespace TrapSystem_Scripts
                 Debug.LogError("Prefab do Objeto que Cai não foi atribuído.");
                 return;
             }
+            var randomYRotation = Random.Range(0f, 360f); 
+            var randomRotation = Quaternion.Euler(0, randomYRotation, 0);
             
             Vector3 spawnPosition = new Vector3(player.position.x, fallHeight, player.position.z);
-            Instantiate(fallingObjectPrefab, spawnPosition, Quaternion.identity);
+            Instantiate(fallingObjectPrefab, spawnPosition, randomRotation);
         }
     }
 

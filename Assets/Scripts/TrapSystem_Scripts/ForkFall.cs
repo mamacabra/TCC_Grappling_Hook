@@ -8,13 +8,14 @@ namespace TrapSystem_Scripts
     public class ForkFall : MonoBehaviour
     {
         public float fallSpeed = 20f;
-
+        private bool canDestroyFork = false;
         private void Start()
         {
             Debug.Log("set tag wall");
             AudioManager.audioManager.PlayLevelSoundEffect(LevelSoundsList.LevelForkTrap);
+            
         }
-
+        
         private void Update()
         {
             transform.Translate(Vector3.down * (fallSpeed * Time.deltaTime));
@@ -24,12 +25,23 @@ namespace TrapSystem_Scripts
                 fallSpeed = 0;
                 transform.position = new Vector3(transform.position.x, 13f, transform.position.z);
                 SetTag();
-            }  
-            
+            }
+
             if (PlayersManager.Instance.GameOver)
             {
-                Destroy(gameObject);
+                canDestroyFork = true;
             }
+            else
+            {
+                canDestroyFork = false;
+            }
+
+            if (canDestroyFork)
+            {
+                DestroyFork();
+            }
+                
+            
         }
 
         private void OnTriggerEnter(Collider other)
@@ -56,6 +68,11 @@ namespace TrapSystem_Scripts
         private void SetTag()
         {
             gameObject.tag = "Wall";
+        }
+
+        public void DestroyFork()
+        {
+            Destroy(gameObject);
         }
     }
 }
