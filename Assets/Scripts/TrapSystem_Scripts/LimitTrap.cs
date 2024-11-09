@@ -24,6 +24,7 @@ namespace TrapSystem_Scripts
         public float timeBeforeDeath = 3f;     
 
         private List<PlayerTrapData> players = new List<PlayerTrapData>();
+        [SerializeField] private List<GameObject> cutlery;
 
         void Start()
         {
@@ -97,11 +98,17 @@ namespace TrapSystem_Scripts
 
         void SpawnFallingObject(Transform player)
         {
+            if (cutlery.Count != 0)
+            {
+                var index = Random.Range(0, cutlery.Count);
+                fallingObjectPrefab = cutlery[index];
+            }; 
             if (fallingObjectPrefab == null)
             {
                 Debug.LogError("Prefab do Objeto que Cai não foi atribuído.");
                 return;
             }
+            
             var randomYRotation = Random.Range(0f, 360f); 
             var randomRotation = Quaternion.Euler(0, randomYRotation, 0);
             

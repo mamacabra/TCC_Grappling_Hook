@@ -276,14 +276,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b88f042380a8d7c4bab2e082e6b45b07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallingObjectPrefab: {fileID: 9146939633919487612, guid: 5cb972bb2b9c21c4e86b89cec66dc2e0,
-    type: 3}
+  fallingObjectPrefab: {fileID: 0}
   fallHeight: 50
   minX: -60
   maxX: 60
   minZ: -45
   maxZ: 45
   timeBeforeDeath: 1
+  cutlery:
+  - {fileID: 9146939633919487612, guid: 1de638525cdd2f64899d559de3947a5c, type: 3}
+  - {fileID: 9146939633919487612, guid: 5cb972bb2b9c21c4e86b89cec66dc2e0, type: 3}
 --- !u!1 &711467526513946708
 GameObject:
   m_ObjectHideFlags: 0
@@ -2598,8 +2600,11 @@ MonoBehaviour:
   hasBitten: 0
   isChasing: 0
   bittingPause: 0
-  fork: {fileID: 9146939633919487612, guid: 5cb972bb2b9c21c4e86b89cec66dc2e0, type: 3}
+  fork: {fileID: 0}
   alturaGarfo: 50
+  cutlery:
+  - {fileID: 9146939633919487612, guid: 5cb972bb2b9c21c4e86b89cec66dc2e0, type: 3}
+  - {fileID: 9146939633919487612, guid: 1de638525cdd2f64899d559de3947a5c, type: 3}
 --- !u!54 &6292602548471338075
 Rigidbody:
   m_ObjectHideFlags: 0

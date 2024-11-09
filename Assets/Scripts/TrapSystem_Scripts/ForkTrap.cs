@@ -32,6 +32,7 @@ namespace TrapSystem_Scripts
         private bool isStopped = false;
         private Vector3 playerPos;
         private float timeChasing = 1f;
+        [SerializeField] private List<GameObject> cutlery;
 
         void Start()
         {
@@ -102,6 +103,11 @@ namespace TrapSystem_Scripts
 
         private void MoveTowardsTarget()
         {
+            if (cutlery.Count != 0)
+            {
+                var index = Random.Range(0, cutlery.Count);
+                fork = cutlery[index];
+            }; 
             var step = moveSpeed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, targetWaypoint.position, step);
 
@@ -123,8 +129,8 @@ namespace TrapSystem_Scripts
 
         private void Bite(Vector3 playerPosition)
         {
-            var randomYRotation = Random.Range(0f, 360f); // Random Y-axis rotation between 0 and 360 degrees
-            var randomRotation = Quaternion.Euler(0, randomYRotation, 0); // Apply random Y-axis rotation
+            var randomYRotation = Random.Range(0f, 360f); 
+            var randomRotation = Quaternion.Euler(0, randomYRotation, 0); 
     
             Instantiate(fork, playerPosition + new Vector3(0, alturaGarfo, 0), randomRotation);
             hasBitten = true;
