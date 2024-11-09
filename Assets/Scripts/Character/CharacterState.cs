@@ -86,9 +86,9 @@ namespace Character
             SetState(state);
         }
 
-        public void SetKnockbackState()
+        public void SetParryAttackState()
         {
-            var state = new KnockbackState(CharacterEntity);
+            var state = new ParryAttackState(CharacterEntity);
             SetState(state);
         }
 

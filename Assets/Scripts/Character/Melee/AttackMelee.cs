@@ -27,15 +27,15 @@ namespace Character.Melee
 
             if (enemy.ShouldReceiveAttack() == false)
             {
-                CharacterEntity.CharacterState.SetKnockbackState();
+                CharacterEntity.CharacterState.SetParryAttackState();
                 AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.AttackParry);
                 return;
             }
 
             if (enemy.CharacterEntity.CharacterState.State is AttackState)
             {
-                enemy.CharacterEntity.CharacterState.SetKnockbackState();
-                CharacterEntity.CharacterState.SetKnockbackState();
+                enemy.CharacterEntity.CharacterState.SetParryAttackState();
+                CharacterEntity.CharacterState.SetParryAttackState();
                 AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.AttackParry);
             }
             else
