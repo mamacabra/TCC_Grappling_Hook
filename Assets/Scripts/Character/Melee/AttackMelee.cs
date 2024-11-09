@@ -57,7 +57,7 @@ namespace Character.Melee
             {
                 if (hit.collider.CompareTag("GrapplingHook"))
                 {
-                    CharacterEntity.CharacterState.SetParryState();
+                    CharacterEntity.CharacterState.SetParryHookState();
                     var hook = hit.collider.gameObject.GetComponent<GrapplingHook.GrapplingHook>();
                     hook.CharacterEntity.CharacterState.SetRollbackHookState();
                 }

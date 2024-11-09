@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Character.States
 {
-    public class ParryState : ACharacterState
+    public class ParryHookState : ACharacterState
     {
         private float countDown = 0.1f;
 
-        public ParryState(CharacterEntity characterEntity) : base(characterEntity) {}
+        public ParryHookState(CharacterEntity characterEntity) : base(characterEntity) {}
 
         public override void Enter()
         {
