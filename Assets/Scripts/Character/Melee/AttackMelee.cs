@@ -1,6 +1,7 @@
 using Character.States;
 using Character.Utils;
 using UnityEngine;
+using VFX;
 
 namespace Character.Melee
 {
@@ -27,21 +28,21 @@ namespace Character.Melee
 
             if (enemy.ShouldReceiveAttack() == false)
             {
-                CharacterEntity.CharacterState.SetKnockbackState();
+                CharacterEntity.CharacterState.SetParryAttackState();
                 AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.AttackParry);
                 return;
             }
 
             if (enemy.CharacterEntity.CharacterState.State is AttackState)
             {
-                enemy.CharacterEntity.CharacterState.SetKnockbackState();
-                CharacterEntity.CharacterState.SetKnockbackState();
+                VFXManager.Instance.PlayParryVFX(CharacterEntity.Character.transform.position, enemy.CharacterEntity.Character.transform.position);
+                enemy.CharacterEntity.CharacterState.SetParryAttackState();
+                CharacterEntity.CharacterState.SetParryAttackState();
                 AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.AttackParry);
             }
             else
             {
                 enemy.CharacterEntity.CharacterState.SetDeathState(CharacterEntity.Character.characterBody);
-
                 PlayersManager.Instance.AddPointsToPlayer(CharacterEntity.Character.Id,this.transform,other.transform);
                 PlayersManager.Instance.PlayersToSendToCamera(other.transform, false);
             }
@@ -57,7 +58,7 @@ namespace Character.Melee
             {
                 if (hit.collider.CompareTag("GrapplingHook"))
                 {
-                    CharacterEntity.CharacterState.SetParryState();
+                    CharacterEntity.CharacterState.SetParryHookState();
                     var hook = hit.collider.gameObject.GetComponent<GrapplingHook.GrapplingHook>();
                     hook.CharacterEntity.CharacterState.SetRollbackHookState();
                 }

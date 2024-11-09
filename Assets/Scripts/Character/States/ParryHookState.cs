@@ -1,17 +1,20 @@
 using Character.Utils;
 using UnityEngine;
+using VFX;
 
 namespace Character.States
 {
-    public class ParryState : ACharacterState
+    public class ParryHookState : ACharacterState
     {
         private float countDown = 0.1f;
 
-        public ParryState(CharacterEntity characterEntity) : base(characterEntity) {}
+        public ParryHookState(CharacterEntity characterEntity) : base(characterEntity) {}
 
         public override void Enter()
         {
-            CharacterEntity.CharacterVFX.PlayParryVFX();
+            var characterTransform = CharacterEntity.Character.transform;
+            var vfxPosition = characterTransform.position + characterTransform.forward * 2;
+            VFXManager.Instance.PlayParryVFX(vfxPosition);
             AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.AttackParry);
         }
 

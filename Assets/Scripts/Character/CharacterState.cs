@@ -86,12 +86,6 @@ namespace Character
             SetState(state);
         }
 
-        public void SetKnockbackState()
-        {
-            var state = new KnockbackState(CharacterEntity);
-            SetState(state);
-        }
-
         public void SetLoserState()
         {
             var state = new LoserState(CharacterEntity);
@@ -104,9 +98,15 @@ namespace Character
             SetState(state);
         }
 
-        public void SetParryState()
+        public void SetParryAttackState()
         {
-            var state = new ParryState(CharacterEntity);
+            var state = new ParryAttackState(CharacterEntity);
+            SetState(state);
+        }
+
+        public void SetParryHookState()
+        {
+            var state = new ParryHookState(CharacterEntity);
             SetState(state);
         }
 

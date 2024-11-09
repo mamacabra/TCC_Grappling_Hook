@@ -3,30 +3,29 @@ using UnityEngine;
 
 namespace Character.States
 {
-    public class KnockbackState : ACharacterState
+    public class ParryAttackState : ACharacterState
     {
-        private const float KnockbackForce = 50.0f;
-        private const float KnockbackDuration = 0.2f;
+        private const float ParryForce = 50.0f;
+        private const float ParryDuration = 0.2f;
 
-        private float knockbackTimer;
-        private Vector3 knockbackDirection;
+        private float parryTimer;
+        private Vector3 parryDirection;
 
-        public KnockbackState(CharacterEntity characterEntity) : base(characterEntity) {}
+        public ParryAttackState(CharacterEntity characterEntity) : base(characterEntity) {}
 
         public override void Enter()
         {
-            CharacterEntity.CharacterVFX.PlayParryVFX();
-            knockbackDirection = CharacterEntity.Character.transform.Find("Body").forward;
-            knockbackTimer = KnockbackDuration;
+            parryDirection = CharacterEntity.Character.transform.Find("Body").forward;
+            parryTimer = ParryDuration;
             CharacterEntity.CharacterMesh.animator?.SetBool("isParry", true);
         }
 
         public override void FixedUpdate()
         {
-            if (knockbackTimer > 0)
+            if (parryTimer > 0)
             {
-                var knockbackStep = KnockbackForce * Time.fixedDeltaTime;
-                var knockbackVector = (-knockbackDirection * knockbackStep);
+                var knockbackStep = ParryForce * Time.fixedDeltaTime;
+                var knockbackVector = (-parryDirection * knockbackStep);
                 var newPosition = CharacterEntity.Rigidbody.position + knockbackVector;
 
                 var rayDirection = (-Transform.forward).normalized;
@@ -37,7 +36,7 @@ namespace Character.States
                     newPosition = CharacterEntity.Rigidbody.position - knockbackVector;
 
                 CharacterEntity.Rigidbody.MovePosition(newPosition);
-                knockbackTimer -= Time.deltaTime;
+                parryTimer -= Time.deltaTime;
             }
             else
             {
