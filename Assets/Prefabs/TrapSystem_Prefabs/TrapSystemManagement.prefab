@@ -1350,6 +1350,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trapMenuUI: {fileID: 1412212113796290830}
+  timeToActivateTrap: 10
+  shadowTrap: {fileID: 8995387307739662653}
 --- !u!1 &5985417218147244343
 GameObject:
   m_ObjectHideFlags: 0
@@ -2551,7 +2553,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7025821712109459797
 Transform:
   m_ObjectHideFlags: 0
@@ -2589,7 +2591,7 @@ MonoBehaviour:
   moveSpeed: 10
   moveTowardsPlayerSpeed: 3
   pauseTime: 5
-  delayTime: 7
+  delayTime: 1
   stopTime: 0
   cooldown: 0
   startCooldown: 0

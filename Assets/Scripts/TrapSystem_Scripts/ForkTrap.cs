@@ -15,7 +15,7 @@ namespace TrapSystem_Scripts
         public float moveTowardsPlayerSpeed = 1f;
         public float pauseTime = 2f;
         public float delayTime = 3f;  // Adjustable delay before trap starts working
-        public float stopTime = 2f;   // Adjustable stop time when colliding with a player
+        public float stopTime = 0f;   // Adjustable stop time when colliding with a player
 
         [SerializeField] private float cooldown = 0f;
         [SerializeField] private bool startCooldown = false;
@@ -31,7 +31,7 @@ namespace TrapSystem_Scripts
         private bool isTrapActive = false; // Control if the trap is currently active
         private bool isStopped = false;
         private Vector3 playerPos;
-        private float timeChasing = 2f;
+        private float timeChasing = 1f;
 
         void Start()
         {
@@ -65,7 +65,10 @@ namespace TrapSystem_Scripts
 
             if (targetWaypoint is not null)
             {
-                MoveTowardsTarget();
+                if (!isChasing)
+                {
+                    MoveTowardsTarget();
+                }
             }
 
             if (startCooldown)
@@ -161,7 +164,7 @@ namespace TrapSystem_Scripts
             else
             {
                 isChasing = false;
-                timeChasing = 2f;
+                timeChasing = 1f;
             }
         }
         
