@@ -1,5 +1,6 @@
 using Character.Utils;
 using UnityEngine;
+using VFX;
 
 namespace Character.States
 {
@@ -11,7 +12,9 @@ namespace Character.States
 
         public override void Enter()
         {
-            CharacterEntity.CharacterVFX.PlayParryVFX();
+            var characterTransform = CharacterEntity.Character.transform;
+            var vfxPosition = characterTransform.position + characterTransform.forward * 2;
+            VFXManager.Instance.PlayParryVFX(vfxPosition);
             AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.AttackParry);
         }
 

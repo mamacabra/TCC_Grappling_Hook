@@ -14,6 +14,12 @@ namespace VFX
             else Instance = this;
         }
 
+        public void PlayParryVFX(Vector3 position)
+        {
+            Instantiate(parryVfx, position, Quaternion.identity);
+            parryVfx.Play();
+        }
+
         public void PlayParryVFX(Vector3 position, Vector3 enemyPosition)
         {
             var middlePoint = (position + enemyPosition) / 2;
