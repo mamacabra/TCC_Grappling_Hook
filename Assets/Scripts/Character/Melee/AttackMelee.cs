@@ -1,6 +1,7 @@
 using Character.States;
 using Character.Utils;
 using UnityEngine;
+using VFX;
 
 namespace Character.Melee
 {
@@ -34,6 +35,7 @@ namespace Character.Melee
 
             if (enemy.CharacterEntity.CharacterState.State is AttackState)
             {
+                VFXManager.Instance.PlayParryVFX(CharacterEntity.Character.transform.position, enemy.CharacterEntity.Character.transform.position);
                 enemy.CharacterEntity.CharacterState.SetParryAttackState();
                 CharacterEntity.CharacterState.SetParryAttackState();
                 AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.AttackParry);
@@ -41,7 +43,6 @@ namespace Character.Melee
             else
             {
                 enemy.CharacterEntity.CharacterState.SetDeathState(CharacterEntity.Character.characterBody);
-
                 PlayersManager.Instance.AddPointsToPlayer(CharacterEntity.Character.Id,this.transform,other.transform);
                 PlayersManager.Instance.PlayersToSendToCamera(other.transform, false);
             }

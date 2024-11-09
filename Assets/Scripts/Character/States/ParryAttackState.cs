@@ -15,7 +15,6 @@ namespace Character.States
 
         public override void Enter()
         {
-            CharacterEntity.CharacterVFX.PlayParryVFX();
             parryDirection = CharacterEntity.Character.transform.Find("Body").forward;
             parryTimer = ParryDuration;
             CharacterEntity.CharacterMesh.animator?.SetBool("isParry", true);
