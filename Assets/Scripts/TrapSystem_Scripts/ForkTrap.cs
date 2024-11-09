@@ -103,11 +103,7 @@ namespace TrapSystem_Scripts
 
         private void MoveTowardsTarget()
         {
-            if (cutlery.Count != 0)
-            {
-                var index = Random.Range(0, cutlery.Count);
-                fork = cutlery[index];
-            }; 
+           
             var step = moveSpeed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, targetWaypoint.position, step);
 
@@ -129,6 +125,11 @@ namespace TrapSystem_Scripts
 
         private void Bite(Vector3 playerPosition)
         {
+            if (cutlery.Count != 0)
+            {
+                var index = Random.Range(0, cutlery.Count);
+                fork = cutlery[index];
+            }; 
             var randomYRotation = Random.Range(0f, 360f); 
             var randomRotation = Quaternion.Euler(0, randomYRotation, 0); 
     
