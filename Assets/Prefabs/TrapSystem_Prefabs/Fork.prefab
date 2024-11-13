@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 9146939633919487612}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 15.2, z: 0}
-  m_LocalScale: {x: 8.288896, y: 18.560497, z: 8.288896}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3554226484011861172}
@@ -66,8 +66,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.36371857, y: 0.2722997, z: 0.14652741}
-  m_Center: {x: 0.0015785183, y: -0.49893978, z: 0.04417683}
+  m_Size: {x: 3.4795249, y: 5.8921175, z: 2.849984}
+  m_Center: {x: 0.00000011920929, y: -9.38941, z: 0.90637934}
 --- !u!1001 &3952365359179064159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -79,17 +79,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 1c417ed701129c34c806560ff9fc5998,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2699274
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1c417ed701129c34c806560ff9fc5998,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.12054634
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1c417ed701129c34c806560ff9fc5998,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2699274
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1c417ed701129c34c806560ff9fc5998,
         type: 3}
@@ -99,7 +99,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 1c417ed701129c34c806560ff9fc5998,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.05
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1c417ed701129c34c806560ff9fc5998,
         type: 3}
@@ -151,7 +151,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3451118302482216456, guid: 1c417ed701129c34c806560ff9fc5998, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
