@@ -12,7 +12,7 @@ namespace Character.GrapplingHook.States
         {
             var direction = (wallPoint - CharacterEntity.Character.transform.position).normalized;
             var newWallPoint = wallPoint - direction * 1.6f;
-            newWallPoint.y = GrapplingStats.originPosition.y;
+            newWallPoint.y = GrapplingStats.OriginPosition.y;
 
             this.wallPoint = newWallPoint;
         }

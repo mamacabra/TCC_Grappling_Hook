@@ -18,8 +18,8 @@ namespace Character.GrapplingHook.States
             var transform = CharacterEntity.GrapplingHookTransform;
             transform.Translate(Vector3.forward * (-1f * (Time.fixedDeltaTime * GrapplingStats.RollbackSpeed)));
 
-            var hookDistance = Vector3.Distance(GrapplingStats.originPosition, transform.localPosition);
-            if (hookDistance <= 0.1f || transform.localPosition.z <= GrapplingStats.originPosition.z)
+            var hookDistance = Vector3.Distance(GrapplingStats.OriginPosition, transform.localPosition);
+            if (hookDistance <= 0.1f || transform.localPosition.z <= GrapplingStats.OriginPosition.z)
                 CharacterEntity.CharacterState.SetWalkState();
         }
 

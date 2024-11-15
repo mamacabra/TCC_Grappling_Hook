@@ -9,7 +9,7 @@ namespace Character.GrapplingHook.States
         public override void Enter()
         {
             DisableHookCollider();
-            CharacterEntity.GrapplingHookTransform.localPosition = GrapplingStats.originPosition;
+            CharacterEntity.GrapplingHookTransform.localPosition = GrapplingStats.OriginPosition;
         }
     }
 }

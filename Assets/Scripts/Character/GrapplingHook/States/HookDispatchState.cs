@@ -22,7 +22,7 @@ namespace Character.GrapplingHook.States
             var transform = CharacterEntity.GrapplingHookTransform;
             transform.Translate(Vector3.forward * (Time.fixedDeltaTime * hookSpeed));
 
-            var hookDistance = Vector3.Distance(GrapplingStats.originPosition, transform.localPosition);
+            var hookDistance = Vector3.Distance(GrapplingStats.OriginPosition, transform.localPosition);
             if (hookDistance >= hookMaxDistance)
                 CharacterEntity.CharacterState.SetRollbackHookState();
         }
