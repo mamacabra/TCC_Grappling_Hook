@@ -379,7 +379,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Parry
-  m_Speed: 1
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 7524292032447162229}
@@ -1013,28 +1013,28 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 162790319115075966}
-    m_Position: {x: -390, y: 430, z: 0}
+    m_Position: {x: -1270, y: 460, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1609520234057738993}
     m_Position: {x: -190, y: 140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4937825036963114165}
-    m_Position: {x: -690, y: 410, z: 0}
+    m_Position: {x: -1570, y: 440, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1471419148486359021}
-    m_Position: {x: -690, y: 330, z: 0}
+    m_Position: {x: -1570, y: 360, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7824309936063793512}
-    m_Position: {x: -160, y: 320, z: 0}
+    m_Position: {x: -1040, y: 350, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1490018721914537848}
-    m_Position: {x: -390, y: 590, z: 0}
+    m_Position: {x: -1270, y: 620, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5166112730302095839}
-    m_Position: {x: -600, y: 590, z: 0}
+    m_Position: {x: -1480, y: 620, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -917237845523106035}
-    m_Position: {x: -180, y: 590, z: 0}
+    m_Position: {x: -1060, y: 620, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6414522829470027566}
     m_Position: {x: 500, y: 300, z: 0}
@@ -1061,7 +1061,7 @@ AnimatorStateMachine:
     m_Position: {x: 500, y: 100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2211192385047598680}
-    m_Position: {x: 250, y: 600, z: 0}
+    m_Position: {x: 100, y: 300, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions:
@@ -1430,8 +1430,8 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.08461267
-  m_TransitionOffset: 0.28078425
+  m_TransitionDuration: 0.03512159
+  m_TransitionOffset: 0.28078428
   m_ExitTime: 0.8935564
   m_HasExitTime: 0
   m_HasFixedDuration: 1
