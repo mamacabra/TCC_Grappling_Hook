@@ -1,5 +1,6 @@
 using Character.Utils;
 using UnityEngine;
+using VFX;
 
 namespace Character.GrapplingHook.States
 {
@@ -7,6 +8,7 @@ namespace Character.GrapplingHook.States
     {
         private float hookSpeed = 80;
         private float hookMaxDistance = 24;
+        private const float VFXPositionOffset = 2f;
 
         public HookDispatchState(CharacterEntity characterEntity) : base(characterEntity) {}
 
@@ -15,6 +17,10 @@ namespace Character.GrapplingHook.States
             SetHookStats();
             EnableHookCollider();
             SetHookColliderSize(GrapplingStats.HookColliderDispatchSize);
+
+            var characterTransform = CharacterEntity.Character.transform;
+            var vfxPosition = characterTransform.position + characterTransform.forward * VFXPositionOffset;
+            VFXManager.Instance.PlayHookDispatchVFX(vfxPosition);
         }
 
         public override void FixedUpdate()
