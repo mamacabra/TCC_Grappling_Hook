@@ -15,11 +15,11 @@ namespace Character.GrapplingHook.States
         {
             var direction = (wallPoint - CharacterEntity.Character.transform.position).normalized;
 
-            var newWallPoint = wallPoint - direction;
-            newWallPoint.y = GrapplingStats.OriginPosition.y;
+            vfxPoint = wallPoint - direction * VFXPointRecoil;
 
-            hookPoint = newWallPoint * HookPointRecoil;
-            vfxPoint = newWallPoint * VFXPointRecoil;
+            var newWallPoint = wallPoint - direction * HookPointRecoil;
+            newWallPoint.y = GrapplingStats.OriginPosition.y;
+            hookPoint = newWallPoint;
         }
 
         public override void Enter()
