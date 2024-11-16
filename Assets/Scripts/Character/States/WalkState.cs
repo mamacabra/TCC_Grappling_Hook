@@ -5,8 +5,6 @@ namespace Character.States
 {
     public class WalkState : ACharacterState
     {
-        private const float JoystickDeadZone = 0.2f;
-
         public WalkState(CharacterEntity characterEntity) : base(characterEntity) {}
 
         public override void Enter()

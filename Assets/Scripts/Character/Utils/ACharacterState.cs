@@ -8,6 +8,7 @@ namespace Character.Utils
     {
         protected readonly CharacterEntity CharacterEntity;
         protected readonly Transform Transform;
+        protected const float JoystickDeadZone = 0.2f;
 
         private const float WalkSpeed = 20f;
         private const float WalkAcceleration = 400f;

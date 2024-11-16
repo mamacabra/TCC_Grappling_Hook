@@ -9,5 +9,10 @@ namespace Character.States
         public override void Enter() {
             CharacterEntity.CharacterVFX.PlaySpawnVFXWithDelay(1.4f);
         }
+
+        public override void FixedUpdate()
+        {
+            LookAt();
+        }
     }
 }
