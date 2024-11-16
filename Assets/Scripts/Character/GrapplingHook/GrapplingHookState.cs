@@ -48,9 +48,9 @@ namespace Character.GrapplingHook
             SetState(state);
         }
 
-        public void SetHookFixEnemyState()
+        public void SetHookFixEnemyState(Vector3 enemyPosition)
         {
-            var state = new HookFixEnemy(CharacterEntity);
+            var state = new HookFixEnemy(CharacterEntity, enemyPosition);
             SetState(state);
         }
 

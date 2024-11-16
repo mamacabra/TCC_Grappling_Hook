@@ -16,7 +16,7 @@ namespace Character.States
 
         public override void Enter()
         {
-            CharacterEntity.GrapplingHookState.SetHookFixEnemyState();
+            CharacterEntity.GrapplingHookState.SetHookFixEnemyState(enemy.Character.transform.position);
             enemy.CharacterState.SetHookedToEnemyState(CharacterEntity.CharacterState.transform.position);
             AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.HookHitPlayer);
         }
