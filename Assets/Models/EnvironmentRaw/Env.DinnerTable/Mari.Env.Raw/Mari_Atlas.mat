@@ -132,12 +132,14 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
+    - _Metallic_Map_Influence: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _RoughnessPower: 0
+    - _Roughness_Map_Influence: 1
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -151,7 +153,7 @@ Material:
     - _UseMetallicMap: 0
     - _UseNormalMap: 1
     - _UseRoughnessMap: 1
-    - _Use_Metallic_Map: 0
+    - _Use_Metallic_Map: 1
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
