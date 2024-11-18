@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 551331237995353438}
   - component: {fileID: 3337096139650336259}
   - component: {fileID: 4176005639372202296}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Sprinkles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4906,7 +4906,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7897584765295951062}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: vfx.Death
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4941,7 +4941,7 @@ GameObject:
   - component: {fileID: 7669008079980352324}
   - component: {fileID: 3483708886298928892}
   - component: {fileID: 7100387568224518404}
-  m_Layer: 6
+  m_Layer: 1
   m_Name: Skull
   m_TagString: Untagged
   m_Icon: {fileID: 0}

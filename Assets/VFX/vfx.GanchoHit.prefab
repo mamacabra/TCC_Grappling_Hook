@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2760053305223781717}
   - component: {fileID: 4741969418061365299}
   - component: {fileID: 51808951927099776}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: vfx.GanchoHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4843,7 +4843,7 @@ GameObject:
   - component: {fileID: 4809842964868373619}
   - component: {fileID: 2735964121600320609}
   - component: {fileID: 5747814546869931247}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: vfx.Sprinkles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4859,7 +4859,7 @@ Transform:
   m_GameObject: {fileID: 6161569924926655717}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4948,7 +4948,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.2
+      scalar: 0.25
       minScalar: 0.15
       maxCurve:
         serializedVersion: 2
@@ -5119,7 +5119,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.4
+      scalar: 0.3
       minScalar: 0.1
       maxCurve:
         serializedVersion: 2
@@ -6214,7 +6214,7 @@ ParticleSystem:
         ctime5: 0
         ctime6: 0
         ctime7: 0
-        atime0: 0
+        atime0: 37201
         atime1: 65535
         atime2: 0
         atime3: 0
@@ -9731,7 +9731,7 @@ GameObject:
   - component: {fileID: 7835638781429192888}
   - component: {fileID: 6278378111424741344}
   - component: {fileID: 5408756435600870355}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: vfx.GanchoDust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9747,7 +9747,7 @@ Transform:
   m_GameObject: {fileID: 7555495844093620838}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9889,8 +9889,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 30
-      minScalar: 5
+      scalar: 15
+      minScalar: 3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -10007,8 +10007,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 6
-      minScalar: 3
+      scalar: 4
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -11086,7 +11086,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 0.09803922}
+        key0: {r: 1, g: 1, b: 1, a: 0.11764706}
         key1: {r: 1, g: 1, b: 1, a: 0}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
