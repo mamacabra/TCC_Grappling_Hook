@@ -5,10 +5,12 @@ using Character.Utils;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+using LocalMultiplayer;
+using LocalMultiplayer.Data;
 
 public class PlayerScore : MonoBehaviour
 {
-   public  PlayersManager.PlayerConfigurationData data;
+    public  PlayerConfigurationData data;
     [SerializeField] private Image playerImg;
     //[SerializeField] private Slider playeSlideScore;
     [SerializeField]private List<Image> pointsImages;
@@ -59,7 +61,7 @@ public class PlayerScore : MonoBehaviour
         bgImg.color =  PlayerColorLayerManager.GetColorBase(id);
         bgDarkImg.color = PlayerColorLayerManager.GetColorBaseDark(id);
     }
-    public void ChangeData(PlayersManager.PlayerConfigurationData d)
+    public void ChangeData(PlayerConfigurationData d)
     {
         data = d;
        //playerImg.sprite = Resources.Load<ResourcesCharacters>("ResourcesCharacters").GetCharacterData(data.characterModel).characterSprite;

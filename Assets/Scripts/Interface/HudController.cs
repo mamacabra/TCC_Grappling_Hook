@@ -5,6 +5,8 @@ using DG.Tweening;
 using PowerUp;
 using TMPro;
 using UnityEngine;
+using LocalMultiplayer;
+using LocalMultiplayer.Data;
 
 public class HudController : MonoBehaviour
 {
@@ -117,10 +119,10 @@ public class HudController : MonoBehaviour
       {
             
          gameAlreadyStarted = true;
-         List<PlayersManager.PlayerConfigurationData> list = new List<PlayersManager.PlayerConfigurationData>();
+         List<PlayerConfigurationData> list = new List<PlayerConfigurationData>();
          list = PlayersManager.Instance.ReturnPlayersList();
 
-         List<PlayersManager.PlayerConfigurationData> listAux = new List<PlayersManager.PlayerConfigurationData>();
+         List<PlayerConfigurationData> listAux = new List<PlayerConfigurationData>();
          foreach (var l in list)
          {
             if (l.score >= PlayersManager.Instance.ScoreToWinGame - 1)

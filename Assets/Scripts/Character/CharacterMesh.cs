@@ -2,6 +2,8 @@ using Character.States;
 using Character.Utils;
 using Const;
 using UnityEngine;
+using LocalMultiplayer;
+using LocalMultiplayer.Data;
 
 namespace Character
 {
@@ -56,7 +58,7 @@ namespace Character
             }
         }
 
-        public void SetColor(PlayersManager.CharacterColor characterColor) {
+        public void SetColor(CharacterColor characterColor) {
             if (meshRenderer)
                 meshRenderer.material.color = PlayersManager.GetColor(characterColor);
             if (skinnedMeshRenderer)

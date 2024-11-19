@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using TMPro;
 using UnityEngine.Serialization;
+using LocalMultiplayer;
+using LocalMultiplayer.Data;
 
 public class CharacterBoxUI : MonoBehaviour
 {
@@ -15,7 +17,7 @@ public class CharacterBoxUI : MonoBehaviour
     private bool hasConfirmed;
     private bool pressed = false;
 
-    public PlayersManager.PlayerConfigurationData playerConfig;
+    public PlayerConfigurationData playerConfig;
 
     public GameObject GetCurrentCharacterModels => characterModels[(int)playerConfig.characterModel];
 
@@ -222,7 +224,7 @@ public class CharacterBoxUI : MonoBehaviour
         characterStatus.text = "Pressione A/X";
         characterStatus.color = new Color32(52,73,94,255);
         hasConfirmed = false;
-        playerConfig = new PlayersManager.PlayerConfigurationData();
+        playerConfig = new PlayerConfigurationData();
         // ChangeColor((int) playerConfig.characterColor);
         for (int i = 0; i < characterModels.Length; i++) {
             characterModels[i].SetActive(false);

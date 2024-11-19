@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Input = UnityEngine.Windows.Input;
+using LocalMultiplayer;
 
 public enum ScreensName
 {

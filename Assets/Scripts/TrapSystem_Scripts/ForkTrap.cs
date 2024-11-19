@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
+using LocalMultiplayer;
 
 namespace TrapSystem_Scripts
 {

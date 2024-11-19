@@ -1,4 +1,5 @@
 using UnityEngine;
+using LocalMultiplayer;
 
 public class PlayersSpawners : MonoBehaviour
 {

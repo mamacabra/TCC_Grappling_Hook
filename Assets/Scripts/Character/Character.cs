@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TrapSystem_Scripts.ModifierSystem;
 using UnityEngine;
+using LocalMultiplayer;
 
 namespace Character
 {

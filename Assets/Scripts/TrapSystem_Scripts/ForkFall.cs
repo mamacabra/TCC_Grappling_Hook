@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Character.States;
+using LocalMultiplayer;
 
 namespace TrapSystem_Scripts
 {

@@ -6,6 +6,8 @@ using SceneSelect;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using LocalMultiplayer;
+using LocalMultiplayer.Data;
 
 public class WinnerScreen : Screens
 {
@@ -34,7 +36,7 @@ public class WinnerScreen : Screens
     {
         initialScreenButton.button.gameObject.SetActive(false);
         base.Initialize();
-        List<PlayersManager.PlayerConfigurationData> list = new List<PlayersManager.PlayerConfigurationData>();
+        List<PlayerConfigurationData> list = new List<PlayerConfigurationData>();
         list = PlayersManager.Instance.ReturnPlayersList();
         
         foreach (var w in list)
@@ -64,7 +66,7 @@ public class WinnerScreen : Screens
 
     [SerializeField] private List<RenderTexture> text = new List<RenderTexture>();
     [SerializeField] public  Camera cam;
-    public void ChangeModelImage(PlayersManager.PlayerConfigurationData id) {
+    public void ChangeModelImage(PlayerConfigurationData id) {
 
         foreach (var o in characterModels)
             o.SetActive(false);

@@ -1,6 +1,7 @@
 using Character.Utils;
 using Const;
 using UnityEngine;
+using LocalMultiplayer;
 
 namespace Character.States
 {

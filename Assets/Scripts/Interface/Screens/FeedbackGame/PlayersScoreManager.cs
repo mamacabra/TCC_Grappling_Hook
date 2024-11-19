@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using LocalMultiplayer;
+using LocalMultiplayer.Data;
 
 public class PlayersScoreManager : MonoBehaviour
 {
@@ -23,7 +25,7 @@ public class PlayersScoreManager : MonoBehaviour
       }
 
       childsScore.Clear();
-      List<PlayersManager.PlayerConfigurationData> list = new List<PlayersManager.PlayerConfigurationData>();
+      List<PlayerConfigurationData> list = new List<PlayerConfigurationData>();
       list = PlayersManager.Instance.ReturnPlayersList();
 
       StartCoroutine(PutPlayers());
