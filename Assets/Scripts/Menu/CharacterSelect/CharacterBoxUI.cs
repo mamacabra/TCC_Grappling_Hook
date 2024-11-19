@@ -36,6 +36,7 @@ public class CharacterBoxUI : MonoBehaviour
         if (dir_x != 0)
         {
             ChangeModelImage(dir_x);
+            
         }
         // else
         //     ChangeColor(dir_y);
@@ -53,19 +54,20 @@ public class CharacterBoxUI : MonoBehaviour
                 // pressTime = 0.0f;
             }
         }
-
-        if(hasConfirmed) return;
+        
+        if (hasConfirmed) return;
         if (!PlayersManager.Instance.PlayerTypeIsAvailable(playerConfig.characterModel))
         {
             characterStatus.text = "Já escolhido";
             characterStatus.color = new Color32(52,73,94,255);
-
+            
             return;
         }
 
 
         if (context.action.WasPerformedThisFrame()) {
             characterStatus.text = "Pronto";
+            AudioManager.audioManager.PlayUiSoundEffect(UiSoundsList.CharSelectConfirm);
             characterStatus.color = new Color32(52,73,94,255);
             hasConfirmed = true;
             PlayersManager.Instance?.AddNewPlayerConfig(playerConfig);
@@ -93,6 +95,7 @@ public class CharacterBoxUI : MonoBehaviour
             PlayersManager.Instance?.RemovePlayerConfig(playerConfig);
             PlayersManager.Instance?.SetPlayerStatus(false);
             hasConfirmed = false;
+            AudioManager.audioManager.PlayUiSoundEffect(UiSoundsList.CharSelectDeselect);
         }
     }
 
@@ -122,6 +125,7 @@ public class CharacterBoxUI : MonoBehaviour
         {
             characterStatus.text = "Escolhendo";
             characterStatus.color = new Color32(52, 73, 94, 255);
+            
         }
     }
     public void UpdateTextTest()
@@ -174,6 +178,7 @@ public class CharacterBoxUI : MonoBehaviour
     public void ChangeModelImage(int dir) {
 
         if (hasConfirmed) return;
+        AudioManager.audioManager.PlayUiSoundEffect(UiSoundsList.CharSelectNavigate);
         characterModels[(int)playerConfig.characterModel].SetActive(false);
         int value = (int)playerConfig.characterModel + dir;
         if (value < 0) value =  (int)ECharacterType.Count - 1;
@@ -208,10 +213,12 @@ public class CharacterBoxUI : MonoBehaviour
     {
         PlayersManager.Instance.OnUpdateText+= UpdateText;
         UpdateText();
+        AudioManager.audioManager.PlayUiSoundEffect(UiSoundsList.CharSelectEnter);
         //UpdateTextTest();
     }
 
     private void OnDisable() {
+        AudioManager.audioManager.PlayUiSoundEffect(UiSoundsList.CharSelectLeave);
         characterStatus.text = "Pressione A/X";
         characterStatus.color = new Color32(52,73,94,255);
         hasConfirmed = false;

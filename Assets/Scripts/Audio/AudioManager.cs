@@ -162,7 +162,7 @@ public class AudioManager : MonoBehaviour
     
 }
 
-public enum UiSoundsList { None, Confirm, Return, Cancel, Select, Hover, SelectUpPitch, SelectDownPitch, GainKillPoint, GameCountDown, StartSlider};
+public enum UiSoundsList { None, Confirm, Return, Cancel, Select, Hover, SelectUpPitch, SelectDownPitch, GainKillPoint, GameCountDown, StartSlider, CharSelectConfirm, CharSelectEnter, CharSelectLeave, CharSelectNavigate, CharSelectDeselect };
 public enum PlayerSoundsList { HookCharge, HookFire, HookHitPlayer, HookHitWall, HookReturn, AttackParry, AttackMiss, AttackHitPlayer, PlayerDash, PlayerSpawn, PlayerWalk, PlayerJellyWalk, PowerUpSpawn, PowerUpPickUp, PowerUpShieldBreak};
 
 public enum LevelSoundsList { LevelForkTrap };
