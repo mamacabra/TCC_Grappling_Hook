@@ -5,10 +5,12 @@ using TMPro;
 using UnityEngine.Serialization;
 using LocalMultiplayer;
 using LocalMultiplayer.Data;
+using System;
+using Unity.VisualScripting;
 
 public class CharacterBoxUI : MonoBehaviour
 {
-    [SerializeField] private PlayerInput playerInput;
+    private PlayerInput playerInput;
     [SerializeField] private Image characterImage;
     [SerializeField] private GameObject[] characterModels;
     public Image characterImageBackground;
@@ -21,12 +23,31 @@ public class CharacterBoxUI : MonoBehaviour
 
     public GameObject GetCurrentCharacterModels => characterModels[(int)playerConfig.characterModel];
 
+    private void Awake() {
+        playerInput = GetComponent<PlayerInput>();
+        playerInput.onActionTriggered += OnActionTrigged;
+        playerInput.onDeviceLost += OnDeviceLost;
+        playerInput.onDeviceRegained += OnDeviceRegained;
+    }
+
+    private void OnDeviceRegained(PlayerInput input) {
+        Debug.Log(input.devices[0].shortDisplayName + " Reconectado!");
+    }
+
+    private void OnActionTrigged(InputAction.CallbackContext context) {
+        switch (context.action.name) {
+            case "Move":    OnMove(context);    break;
+            case "Confirm": OnConfirm(context); break;
+            case "Cancel":  OnCancel(context);  break;
+            default: break;
+        }
+    }
+
     public void ChangePlayerInput(PlayerInput p)
     {
         playerInput = p;
     }
     public void OnMove(InputAction.CallbackContext context) {
-
         int dir_x = 0;
         int dir_y = 0;
         if (context.action.WasPerformedThisFrame()) {
@@ -45,19 +66,19 @@ public class CharacterBoxUI : MonoBehaviour
     }
 
     public void OnConfirm(InputAction.CallbackContext context) {
-        if(PlayersManager.Instance.debug) return;
+        if(PlayersManager.Instance.isDebug) return;
+        
         if (hasConfirmed) {
             if(context.performed){
                 pressed = true;
             }
             if(context.canceled){
                 pressed = false;
-                // choiceScreen.SetButtonStartSlider(-(pressTime / 2));
-                // pressTime = 0.0f;
             }
+
+            return;
         }
-        
-        if (hasConfirmed) return;
+
         if (!PlayersManager.Instance.PlayerTypeIsAvailable(playerConfig.characterModel))
         {
             characterStatus.text = "Já escolhido";
@@ -68,16 +89,16 @@ public class CharacterBoxUI : MonoBehaviour
 
 
         if (context.action.WasPerformedThisFrame()) {
-            characterStatus.text = "Pronto";
-            AudioManager.audioManager.PlayUiSoundEffect(UiSoundsList.CharSelectConfirm);
-            characterStatus.color = new Color32(52,73,94,255);
             hasConfirmed = true;
+            characterStatus.text = "Pronto";
+            characterStatus.color = new Color32(52,73,94,255);
+            AudioManager.audioManager.PlayUiSoundEffect(UiSoundsList.CharSelectConfirm);
+            
             PlayersManager.Instance?.AddNewPlayerConfig(playerConfig);
             PlayersManager.Instance?.SetPlayerStatus(true);
 
             Animator animator = GetCurrentCharacterModels.GetComponentInChildren<Animator>();
             if (animator) animator.SetTrigger("selected");
-            
         }
     }
 
@@ -197,15 +218,13 @@ public class CharacterBoxUI : MonoBehaviour
         //Sprite sprite = Resources.Load<ResourcesCharacters>("ResourcesCharacters").GetCharacterData((ECharacterType)value).characterSprite;
         //characterImage.sprite = sprite;
 
-        if (!PlayersManager.Instance.PlayerTypeIsAvailable(playerConfig.characterModel))
-        {
+        if (!PlayersManager.Instance.PlayerTypeIsAvailable(playerConfig.characterModel)) {
             characterStatus.text = "Já escolhido";
             characterStatus.color = new Color32(52,73,94,255);
             
             ChangeModelImage(dir);
         }
-        else
-        {
+        else {
             characterStatus.text = "Escolhendo";
             characterStatus.color = new Color32(52,73,94,255);
         }
@@ -224,20 +243,18 @@ public class CharacterBoxUI : MonoBehaviour
         characterStatus.text = "Pressione A/X";
         characterStatus.color = new Color32(52,73,94,255);
         hasConfirmed = false;
+        pressed = false;
         playerConfig = new PlayerConfigurationData();
-        // ChangeColor((int) playerConfig.characterColor);
         for (int i = 0; i < characterModels.Length; i++) {
             characterModels[i].SetActive(false);
         }
-        //ChangeModelImage((int)ECharacterType.Sushi);
 
         if (PlayersManager.Instance)
             PlayersManager.Instance.OnUpdateText-= UpdateText;
     }
 
     private void Update() {
-        if (pressed)
-        {
+        if (pressed) {
             float currentValue = choiceScreen.sliderSpeed;
             float valueToAdd = 0.5f;
             if (currentValue == -0.5f) valueToAdd += 1.0f;

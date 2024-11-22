@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7770712065242538499}
   - component: {fileID: 4325472550121591281}
   - component: {fileID: 215477944710493155}
+  - component: {fileID: 7496404230206838477}
   m_Layer: 0
   m_Name: PlayersManager
   m_TagString: Untagged
@@ -104,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb8eca6ab0ee98515afee8bed6ebcd8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 0
+  isDebug: 0
   playerPrefab: {fileID: 2160222834551465636, guid: 641da49de6b72a92fa0efc96d9704e70,
     type: 3}
   playerUIPrefab: {fileID: 1189765548623994011, guid: 5ad832e478b5caca1b66b4e75b396578,
@@ -112,7 +113,10 @@ MonoBehaviour:
   characterChoice: {fileID: 0}
   cameraMovement: {fileID: 0}
   playersSpawners: {fileID: 0}
-  playerInputManager: {fileID: 0}
+  playerInputManager: {fileID: 7770712065242538499}
+  playersUIInputs: {fileID: 7496404230206838477}
+  keyboardP1: 0
+  keyboardP2: 0
   playersConfigs: []
   playersConfigsAUX: []
   playersGameObjects: []
@@ -128,5 +132,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90ab647c43729f848ad811cd1a3f748f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7496404230206838477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4589496029237601623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f20568b34c25d32628ea96bcf899785c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

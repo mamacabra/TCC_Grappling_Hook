@@ -48,10 +48,10 @@ public class CharacterChoiceScreen : Screens
     }
     public override void Close()
     {
-        if (PlayersManager.Instance)
-        {
-            PlayersManager.Instance.DisableInputActions();
-        }
+        startGameSlider.value = 0.0f;
+        AudioManager.audioManager.SliderTest(0);
+
+        PlayersManager.Instance?.playersUIInputs?.DisableInputActions();
     }
 
     public override void GoToScreen(ScreensName screensName)

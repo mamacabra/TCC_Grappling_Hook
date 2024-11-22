@@ -63,7 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: c2378c8eee2fe30848e690910c31a630,
     type: 3}
-  m_NotificationBehavior: 2
+  m_NotificationBehavior: 3
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -196,7 +196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1164ecbd6df97fced96d16549ab97472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInput: {fileID: 504668425962539936}
   characterImage: {fileID: 5040185680029532273}
   characterModels:
   - {fileID: 6161472849289651069}
@@ -208,7 +207,6 @@ MonoBehaviour:
   characterImageBackground: {fileID: 336363019132492483}
   characterName: {fileID: 2469044275776995719}
   characterStatus: {fileID: 1658244193340514051}
-  pressTime: 0
   playerConfig:
     controlScheme: 
     inputDevices: 
@@ -222,7 +220,8 @@ MonoBehaviour:
       characterSprite: {fileID: 0}
     score: 0
     id: 0
-  choiseScreen: {fileID: 0}
+    characterIndexCharacterChoice: 0
+  choiceScreen: {fileID: 0}
 --- !u!1 &688997781383751383
 GameObject:
   m_ObjectHideFlags: 0

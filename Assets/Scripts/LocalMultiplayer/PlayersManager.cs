@@ -15,8 +15,7 @@ namespace LocalMultiplayer
     {
         private static PlayersManager instance;// Singleton
         public static PlayersManager Instance => instance ? instance : FindObjectOfType<PlayersManager>();
-        private Menus_Input actions;// Input
-        public  bool debug;
+        public  bool isDebug;
 
         #region PlayerPrefabs
         [Header("Player Prefab Type")]
@@ -30,11 +29,12 @@ namespace LocalMultiplayer
         public PrototypeCameraMoviment cameraMovement;
         public PlayersSpawners playersSpawners;
         public PlayerInputManager playerInputManager;
+        public PlayersUIInputs playersUIInputs;
         #endregion
 
         #region Data
-        private bool keyboardP1 = false;
-        private bool keyboardP2 = false;
+        [HideInInspector] public bool keyboardP1 = false;
+        [HideInInspector] public bool keyboardP2 = false;
         private int amountOfPlayersReady = 0;
         private bool[] freeId = {true, true, true, true, true, true};
         [SerializeField] private List<PlayerConfigurationData> playersConfigs = new List<PlayerConfigurationData>();
@@ -49,9 +49,6 @@ namespace LocalMultiplayer
         #endregion
 
         #region Actions
-        // public event Action<PlayerConfigurationData> OnPlayerConfigAdd;
-        // public event Action<PlayerConfigurationData> OnPlayerConfigRemove;
-        // public event Action<int> OnPlayerDeath;
         public event Action OnUpdateText;
 
         #endregion
@@ -59,9 +56,6 @@ namespace LocalMultiplayer
         #region Initializers
         private void Awake() {
             playerInputManager = GetComponent<PlayerInputManager>();
-            actions = new Menus_Input();
-            actions.Navigation.Join.performed += OnJoin;
-            actions.Navigation.Cancel.performed += OnCancel;
             playersGameObjects = new();
             path = Application.persistentDataPath + "/playersInputs.json";
         }
@@ -71,7 +65,7 @@ namespace LocalMultiplayer
             canInitGame = false;
             playerInputManager.playerPrefab = playerUIPrefab;
             playerInputManager.EnableJoining();
-            EnableInputActions();
+            playersUIInputs.EnableInputActions();
         }
         public void InitGame(bool loadScene = true) {
             GameOver = false;
@@ -82,7 +76,7 @@ namespace LocalMultiplayer
             ClearPlayersConfig(charactersFromGame: true);
             LoadPlayersConfigs(); // Reset playersConfig in characterSelect screen.
             playerInputManager.playerPrefab = playerPrefab;
-            DisableInputActions();
+            playersUIInputs.DisableInputActions();
             if (playersConfigs.Count > 0) {
                 if (loadScene) {
                     ScenesManager.Instance.LoadRandomScene();
@@ -105,52 +99,6 @@ namespace LocalMultiplayer
         #endregion
 
         #region PlayerEvents
-        private void OnJoin(InputAction.CallbackContext context) {// Join Input Pressed
-            // Check if the action was triggered by a control
-            if (context.control != null && context.action.WasPerformedThisFrame()) {
-                // Get the input device
-                InputDevice device = context.control.device;
-
-                // Get the control scheme
-                int bindingIndex = context.action.GetBindingIndexForControl(context.control);
-                string controlScheme = context.action.bindings[bindingIndex].groups;
-
-                // Get free id
-                int id = GetFreeId();
-                if (id == -1) return; // not has free id return
-
-                PlayerInput player;
-
-                if (debug) { // For add ilimitted players pressing J
-                    player = characterChoice.ReturnPlayerInput(true,false);
-                    player.SwitchCurrentControlScheme(controlScheme: controlScheme, device);
-                    return;
-                }
-
-                // Join a new player
-                if (controlScheme == "Keyboard&Mouse") { // Keyboard P1
-                    if (keyboardP1) return;
-                    else keyboardP1 = true;
-                    player = characterChoice.ReturnPlayerInput(false, true);
-                } else if (controlScheme == "KeyboardP2") { // Keyboard P2
-                    if (keyboardP2) return;
-                    else keyboardP2 = true;
-                    player = characterChoice.ReturnPlayerInput(false,false);
-                } else { // Gamepad
-                    if (PlayerInput.FindFirstPairedToDevice(device) != null) return;
-                    player = characterChoice.ReturnPlayerInput(true, false);
-                }
-                player.SwitchCurrentControlScheme(controlScheme: controlScheme, device);
-                OnPlayerJoinedEvent(player);
-            }
-        }
-        private void OnCancel(InputAction.CallbackContext context) {
-            if (context.control == null) return;
-
-            if (context.action.WasPerformedThisFrame()) {
-                if (playerInputManager.playerCount == 0) characterChoice.GoToScreen(ScreensName.Initial_Screen);
-            }
-        }
         public void OnPlayerJoinedEvent(PlayerInput _playerInput) {
             PlayerColorLayerManager.DefineCharacterColorLayer(_playerInput.playerIndex);
             // Trigged when player joined : set in inspector: PlayerInputManager
@@ -439,15 +387,6 @@ namespace LocalMultiplayer
         }
         #endregion
 
-        #region ActiveInputActions
-        public void EnableInputActions() {
-            actions.Navigation.Enable();
-        }
-        public void DisableInputActions() {
-            actions.Navigation.Disable();
-        }
-        #endregion
-
         #region SaveAndLoad
         public void SavePlayersConfigs() {
             PlayersInputData playersInputData = new PlayersInputData();
@@ -491,7 +430,7 @@ namespace LocalMultiplayer
             }
             return result;
         }
-        private int GetFreeId() {
+        public int GetFreeId() {
             int result = -1;
             for (int i = 0; i < freeId.Length; i++) {
                 if(freeId[i]) {

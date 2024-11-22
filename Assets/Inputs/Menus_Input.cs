@@ -37,7 +37,7 @@ public partial class @Menus_Input: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Confim"",
+                    ""name"": ""Confirm"",
                     ""type"": ""Button"",
                     ""id"": ""46a4754b-becb-4e95-abe0-cb4b938680c4"",
                     ""expectedControlType"": ""Button"",
@@ -105,7 +105,7 @@ public partial class @Menus_Input: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Confim"",
+                    ""action"": ""Confirm"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -116,7 +116,7 @@ public partial class @Menus_Input: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Confim"",
+                    ""action"": ""Confirm"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -127,7 +127,7 @@ public partial class @Menus_Input: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Confim"",
+                    ""action"": ""Confirm"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -138,7 +138,7 @@ public partial class @Menus_Input: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Confim"",
+                    ""action"": ""Confirm"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -149,7 +149,7 @@ public partial class @Menus_Input: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardP2"",
-                    ""action"": ""Confim"",
+                    ""action"": ""Confirm"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -160,7 +160,7 @@ public partial class @Menus_Input: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardP2"",
-                    ""action"": ""Confim"",
+                    ""action"": ""Confirm"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -947,7 +947,7 @@ public partial class @Menus_Input: IInputActionCollection2, IDisposable
         // Navigation
         m_Navigation = asset.FindActionMap("Navigation", throwIfNotFound: true);
         m_Navigation_Join = m_Navigation.FindAction("Join", throwIfNotFound: true);
-        m_Navigation_Confim = m_Navigation.FindAction("Confim", throwIfNotFound: true);
+        m_Navigation_Confirm = m_Navigation.FindAction("Confirm", throwIfNotFound: true);
         m_Navigation_Cancel = m_Navigation.FindAction("Cancel", throwIfNotFound: true);
         m_Navigation_Move = m_Navigation.FindAction("Move", throwIfNotFound: true);
         // UI
@@ -1024,7 +1024,7 @@ public partial class @Menus_Input: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Navigation;
     private List<INavigationActions> m_NavigationActionsCallbackInterfaces = new List<INavigationActions>();
     private readonly InputAction m_Navigation_Join;
-    private readonly InputAction m_Navigation_Confim;
+    private readonly InputAction m_Navigation_Confirm;
     private readonly InputAction m_Navigation_Cancel;
     private readonly InputAction m_Navigation_Move;
     public struct NavigationActions
@@ -1032,7 +1032,7 @@ public partial class @Menus_Input: IInputActionCollection2, IDisposable
         private @Menus_Input m_Wrapper;
         public NavigationActions(@Menus_Input wrapper) { m_Wrapper = wrapper; }
         public InputAction @Join => m_Wrapper.m_Navigation_Join;
-        public InputAction @Confim => m_Wrapper.m_Navigation_Confim;
+        public InputAction @Confirm => m_Wrapper.m_Navigation_Confirm;
         public InputAction @Cancel => m_Wrapper.m_Navigation_Cancel;
         public InputAction @Move => m_Wrapper.m_Navigation_Move;
         public InputActionMap Get() { return m_Wrapper.m_Navigation; }
@@ -1047,9 +1047,9 @@ public partial class @Menus_Input: IInputActionCollection2, IDisposable
             @Join.started += instance.OnJoin;
             @Join.performed += instance.OnJoin;
             @Join.canceled += instance.OnJoin;
-            @Confim.started += instance.OnConfim;
-            @Confim.performed += instance.OnConfim;
-            @Confim.canceled += instance.OnConfim;
+            @Confirm.started += instance.OnConfirm;
+            @Confirm.performed += instance.OnConfirm;
+            @Confirm.canceled += instance.OnConfirm;
             @Cancel.started += instance.OnCancel;
             @Cancel.performed += instance.OnCancel;
             @Cancel.canceled += instance.OnCancel;
@@ -1063,9 +1063,9 @@ public partial class @Menus_Input: IInputActionCollection2, IDisposable
             @Join.started -= instance.OnJoin;
             @Join.performed -= instance.OnJoin;
             @Join.canceled -= instance.OnJoin;
-            @Confim.started -= instance.OnConfim;
-            @Confim.performed -= instance.OnConfim;
-            @Confim.canceled -= instance.OnConfim;
+            @Confirm.started -= instance.OnConfirm;
+            @Confirm.performed -= instance.OnConfirm;
+            @Confirm.canceled -= instance.OnConfirm;
             @Cancel.started -= instance.OnCancel;
             @Cancel.performed -= instance.OnCancel;
             @Cancel.canceled -= instance.OnCancel;
@@ -1255,7 +1255,7 @@ public partial class @Menus_Input: IInputActionCollection2, IDisposable
     public interface INavigationActions
     {
         void OnJoin(InputAction.CallbackContext context);
-        void OnConfim(InputAction.CallbackContext context);
+        void OnConfirm(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
     }
