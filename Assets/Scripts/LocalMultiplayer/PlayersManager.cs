@@ -65,7 +65,6 @@ namespace LocalMultiplayer
             canInitGame = false;
             playerInputManager.playerPrefab = playerUIPrefab;
             playerInputManager.EnableJoining();
-            playersUIInputs.EnableInputActions();
         }
         public void InitGame(bool loadScene = true) {
             GameOver = false;
@@ -76,7 +75,7 @@ namespace LocalMultiplayer
             ClearPlayersConfig(charactersFromGame: true);
             LoadPlayersConfigs(); // Reset playersConfig in characterSelect screen.
             playerInputManager.playerPrefab = playerPrefab;
-            playersUIInputs.DisableInputActions();
+            // playersUIInputs.DisableInputActions();
             if (playersConfigs.Count > 0) {
                 if (loadScene) {
                     ScenesManager.Instance.LoadRandomScene();

@@ -153,9 +153,34 @@ public class InterfaceManager : MonoBehaviour
           ShowSpecificScreen(ScreensName.FinalFeedbackGame);
      }
 
+     public void ReturnCurrentScreen() {
+          var currentScreen = (ScreensName)screensIndex;
+
+          switch ((ScreensName)screensIndex)
+          {
+               case ScreensName.Initial_Screen:break;
+               case ScreensName.Options_Screen:break;
+               case ScreensName.Credits_Screen:break;
+               case ScreensName.CharacterChoice_Screen:
+                    if (PlayersManager.Instance.playerInputManager.playerCount == 0)
+                         PlayersManager.Instance.characterChoice.GoToScreen(ScreensName.Initial_Screen);
+                    break;
+               case ScreensName.Controls_InGame_Screen: break;
+               case ScreensName.Pause_InGame_Screen: break;
+               case ScreensName.FeedbackGame_Screen: break;
+               case ScreensName.FinalFeedbackGame: break;
+               case ScreensName.Features_Screen: break;
+               default:
+                    //GoToScreen(ScreensName.Initial_Screen);
+                    break;
+          }
+     }
+
      public void ShowScoreInFeedbackScreen()
      {
           OnShowScoreInFeedbackScreen?.Invoke();
      }
+
+     public int GetCurrentScreenIndex => screensIndex;
      
 }

@@ -50,8 +50,6 @@ public class CharacterChoiceScreen : Screens
     {
         startGameSlider.value = 0.0f;
         AudioManager.audioManager.SliderTest(0);
-
-        PlayersManager.Instance?.playersUIInputs?.DisableInputActions();
     }
 
     public override void GoToScreen(ScreensName screensName)

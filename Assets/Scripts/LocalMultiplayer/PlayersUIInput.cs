@@ -15,6 +15,7 @@ namespace LocalMultiplayer
             if (actions == null) actions = new Menus_Input();
             actions.Navigation.Join.performed += OnJoin;
             actions.Navigation.Cancel.performed += OnCancel;
+            EnableInputActions();
         }
 
         private void OnDisable() {
@@ -27,6 +28,7 @@ namespace LocalMultiplayer
         }
 
         private void OnJoin(InputAction.CallbackContext context) {// Join Input Pressed
+            if (InterfaceManager.Instance.GetCurrentScreenIndex != (int)ScreensName.CharacterChoice_Screen) return;
             // Check if the action was triggered by a control
             if (context.control != null && context.action.WasPerformedThisFrame()) {
                 // Get the input device
@@ -75,9 +77,7 @@ namespace LocalMultiplayer
             if (context.control == null) return;
 
             if (context.action.WasPerformedThisFrame()) {
-                if (PlayersManager.Instance.playerInputManager.playerCount == 0) {
-                    PlayersManager.Instance.characterChoice.GoToScreen(ScreensName.Initial_Screen);
-                }
+                InterfaceManager.Instance.ReturnCurrentScreen();
             }
         }
 
