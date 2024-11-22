@@ -387,6 +387,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ResetOptions",
+                    "type": "Button",
+                    "id": "05aca83b-35ca-404b-9cd3-8d8790d0c2a0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -882,6 +891,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Esq",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c04a5a9a-2ca9-414f-b3c6-3449449c6fea",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "ResetOptions",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

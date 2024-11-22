@@ -50,6 +50,7 @@ public class OptionsScreen : Screens
 
     void OnEnable()
     {
+        if (InterfaceManager.Instance) InterfaceManager.Instance.OnResetAllSettings += ResetAllSettings;
         sfxSlider.maxValue = 10;
         musicSLider.maxValue = 10;
         
@@ -57,6 +58,10 @@ public class OptionsScreen : Screens
         graphicSettings.LoadSettings();
     }
 
+    void OnDisable()
+    {
+        if (InterfaceManager.Instance) InterfaceManager.Instance.OnResetAllSettings -= ResetAllSettings;
+    }
     public void ChangeResolution(int value)
     {
         graphicSettings.ApplyResolution(value);
@@ -110,7 +115,8 @@ public class OptionsScreen : Screens
         base.GoToScreen(screensName);
     }
 
-    void ResetAllSettings()
+    
+    public void ResetAllSettings()
     {
         graphicSettings.ResetAllSettings();
     }

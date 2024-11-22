@@ -62,6 +62,15 @@ public partial class @Menus_Input: IInputActionCollection2, IDisposable
                     ""processors"": ""NormalizeVector2"",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Reset"",
+                    ""type"": ""Button"",
+                    ""id"": ""c87820c2-e3f6-4bf9-8640-1d7afd8b68e3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -326,6 +335,17 @@ public partial class @Menus_Input: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8d53b18c-1eda-4de6-9d8c-e33c82e60ec4"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Reset"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -950,6 +970,7 @@ public partial class @Menus_Input: IInputActionCollection2, IDisposable
         m_Navigation_Confirm = m_Navigation.FindAction("Confirm", throwIfNotFound: true);
         m_Navigation_Cancel = m_Navigation.FindAction("Cancel", throwIfNotFound: true);
         m_Navigation_Move = m_Navigation.FindAction("Move", throwIfNotFound: true);
+        m_Navigation_Reset = m_Navigation.FindAction("Reset", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1027,6 +1048,7 @@ public partial class @Menus_Input: IInputActionCollection2, IDisposable
     private readonly InputAction m_Navigation_Confirm;
     private readonly InputAction m_Navigation_Cancel;
     private readonly InputAction m_Navigation_Move;
+    private readonly InputAction m_Navigation_Reset;
     public struct NavigationActions
     {
         private @Menus_Input m_Wrapper;
@@ -1035,6 +1057,7 @@ public partial class @Menus_Input: IInputActionCollection2, IDisposable
         public InputAction @Confirm => m_Wrapper.m_Navigation_Confirm;
         public InputAction @Cancel => m_Wrapper.m_Navigation_Cancel;
         public InputAction @Move => m_Wrapper.m_Navigation_Move;
+        public InputAction @Reset => m_Wrapper.m_Navigation_Reset;
         public InputActionMap Get() { return m_Wrapper.m_Navigation; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1056,6 +1079,9 @@ public partial class @Menus_Input: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @Reset.started += instance.OnReset;
+            @Reset.performed += instance.OnReset;
+            @Reset.canceled += instance.OnReset;
         }
 
         private void UnregisterCallbacks(INavigationActions instance)
@@ -1072,6 +1098,9 @@ public partial class @Menus_Input: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @Reset.started -= instance.OnReset;
+            @Reset.performed -= instance.OnReset;
+            @Reset.canceled -= instance.OnReset;
         }
 
         public void RemoveCallbacks(INavigationActions instance)
@@ -1258,6 +1287,7 @@ public partial class @Menus_Input: IInputActionCollection2, IDisposable
         void OnConfirm(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
+        void OnReset(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

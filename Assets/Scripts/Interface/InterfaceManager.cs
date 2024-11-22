@@ -32,6 +32,9 @@ public class InterfaceManager : MonoBehaviour
      [Header("Screens")]
      [SerializeField] private List<GameObject> screensObj;
 
+    /* [SerializeField] private List<Screens> screensList;
+     private Screens currentScreen;*/
+
      private int screensIndex = 0;
 
      public bool gameWithScreens;
@@ -43,7 +46,8 @@ public class InterfaceManager : MonoBehaviour
      public event Action OnHideButton;
      public event Action OnShowScoreInFeedbackScreen;
      public event Action OnStartCount;
-     public event Action OnRestartGame; 
+     public event Action OnRestartGame;
+     public event Action OnResetAllSettings;
      private void Start()
      {
           if(gameWithScreens) ShowScreen();
@@ -159,23 +163,33 @@ public class InterfaceManager : MonoBehaviour
           switch ((ScreensName)screensIndex)
           {
                case ScreensName.Initial_Screen:break;
-               case ScreensName.Options_Screen:break;
-               case ScreensName.Credits_Screen:break;
+               case ScreensName.Options_Screen or ScreensName.Credits_Screen or ScreensName.Features_Screen:
+                    ShowSpecificScreen(ScreensName.Initial_Screen);
+                break;
+                    
                case ScreensName.CharacterChoice_Screen:
                     if (PlayersManager.Instance.playerInputManager.playerCount == 0)
                          PlayersManager.Instance.characterChoice.GoToScreen(ScreensName.Initial_Screen);
                     break;
+               
                case ScreensName.Controls_InGame_Screen: break;
                case ScreensName.Pause_InGame_Screen: break;
                case ScreensName.FeedbackGame_Screen: break;
                case ScreensName.FinalFeedbackGame: break;
-               case ScreensName.Features_Screen: break;
+
                default:
                     //GoToScreen(ScreensName.Initial_Screen);
                     break;
           }
      }
 
+     public void ResetOptions()
+     {
+          if (GetCurrentScreenIndex == (int)ScreensName.Options_Screen)
+          {
+               OnResetAllSettings?.Invoke();
+          }
+     }
      public void ShowScoreInFeedbackScreen()
      {
           OnShowScoreInFeedbackScreen?.Invoke();

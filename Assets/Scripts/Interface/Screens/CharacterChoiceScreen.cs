@@ -20,8 +20,6 @@ public class CharacterChoiceScreen : Screens
 
     private int objEnables = 0;
 
-    [SerializeField] private TextMeshProUGUI playText;
-
     private bool startGame = false;
     private void Awake()
     {
@@ -43,8 +41,6 @@ public class CharacterChoiceScreen : Screens
         tutorial.SetParent(charactersGroup[0]);
         tutorial.gameObject.SetActive(true);
         
-        if(current != null) StopCoroutine(current);
-        current = StartCoroutine(ChangeText());
     }
     public override void Close()
     {
@@ -56,7 +52,6 @@ public class CharacterChoiceScreen : Screens
     {
         base.GoToScreen(screensName);
         startGame = true;
-        if(current != null) StopCoroutine(current);
     }
 
     public PlayerInput ReturnPlayerInput(bool isGamePad = false, bool isP1 = false)
@@ -221,17 +216,5 @@ public class CharacterChoiceScreen : Screens
                 AudioManager.audioManager.SliderTest(0);
             }
         }
-    }
-
-    private Coroutine current;
-    IEnumerator ChangeText()
-    {
-        if(startGame) yield break;
-        playText.text = "Jogar";
-        yield return new WaitForSeconds(1.5f);
-        playText.text = "Pressiona A/X";
-        yield return new WaitForSeconds(1.5f);
-        if(current != null) StopCoroutine(current);
-        current = StartCoroutine(ChangeText());
     }
 }

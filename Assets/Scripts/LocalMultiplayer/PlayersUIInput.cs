@@ -15,7 +15,13 @@ namespace LocalMultiplayer
             if (actions == null) actions = new Menus_Input();
             actions.Navigation.Join.performed += OnJoin;
             actions.Navigation.Cancel.performed += OnCancel;
+            actions.Navigation.Reset.performed += OnReset;
             EnableInputActions();
+        }
+
+        private void OnReset(InputAction.CallbackContext obj)
+        {
+            InterfaceManager.Instance.ResetOptions();
         }
 
         private void OnDisable() {
@@ -80,6 +86,7 @@ namespace LocalMultiplayer
                 InterfaceManager.Instance.ReturnCurrentScreen();
             }
         }
+        
 
         #region ActiveInputActions
         public void EnableInputActions() {
