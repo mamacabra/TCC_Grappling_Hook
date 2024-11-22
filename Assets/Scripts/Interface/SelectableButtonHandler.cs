@@ -20,7 +20,6 @@ public class SelectableButtonHandler : MonoBehaviour, IPointerEnterHandler
 
     [Header("Color Change")]
     [SerializeField] private Image outlineImage;
-    [SerializeField] private Color32 outlineColor = new Color32(255,255,255,255);
 
     [SerializeField] private TextMeshProUGUI buttonText;
 
@@ -46,7 +45,7 @@ public class SelectableButtonHandler : MonoBehaviour, IPointerEnterHandler
     {
         Select();
         
-        outlineImage.color = outlineColor;
+        outlineImage.color = buttonTextHighAndSelectedColor;
         buttonText.color = buttonTextHighAndSelectedColor;
 
         if (hasToChangeTextImage)
