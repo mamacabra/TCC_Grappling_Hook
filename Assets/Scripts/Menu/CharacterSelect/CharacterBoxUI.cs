@@ -21,6 +21,7 @@ public class CharacterBoxUI : MonoBehaviour
 
     public PlayerConfigurationData playerConfig;
 
+    public Image arrowL, arrowR;
     public GameObject GetCurrentCharacterModels => characterModels[(int)playerConfig.characterModel];
 
     private void Awake() {
@@ -94,6 +95,8 @@ public class CharacterBoxUI : MonoBehaviour
             characterStatus.color = new Color32(52,73,94,255);
             AudioManager.audioManager.PlayUiSoundEffect(UiSoundsList.CharSelectConfirm);
             
+            arrowL.gameObject.SetActive(false);
+            arrowR.gameObject.SetActive(false);
             PlayersManager.Instance?.AddNewPlayerConfig(playerConfig);
             PlayersManager.Instance?.SetPlayerStatus(true);
 
@@ -113,6 +116,9 @@ public class CharacterBoxUI : MonoBehaviour
                 gameObject.SetActive(false);
                 return; 
             }
+            
+            arrowL.gameObject.SetActive(true);
+            arrowR.gameObject.SetActive(true);
             characterStatus.text = "Escolhendo";
             characterStatus.color =new Color32(52,73,94,255);
             PlayersManager.Instance?.RemovePlayerConfig(playerConfig);
@@ -124,7 +130,7 @@ public class CharacterBoxUI : MonoBehaviour
 
     public void OnDeviceLost(PlayerInput playerInput){
         //if(!gameObject.activeSelf) return;
-        characterStatus.text = "Pressione A/X";
+        //characterStatus.text = "Pressione A/X";
         characterStatus.color = new Color32(52,73,94,255);
         PlayersManager.Instance?.RemovePlayerConfig(playerConfig);
         PlayersManager.Instance?.RemovePlayerConfigAUX(playerConfig);
@@ -148,7 +154,6 @@ public class CharacterBoxUI : MonoBehaviour
         {
             characterStatus.text = "Escolhendo";
             characterStatus.color = new Color32(52, 73, 94, 255);
-            
         }
     }
     public void UpdateTextTest()
@@ -240,7 +245,7 @@ public class CharacterBoxUI : MonoBehaviour
 
     private void OnDisable() {
         AudioManager.audioManager.PlayUiSoundEffect(UiSoundsList.CharSelectLeave);
-        characterStatus.text = "Pressione A/X";
+        //characterStatus.text = "Pressione A/X";
         characterStatus.color = new Color32(52,73,94,255);
         hasConfirmed = false;
         pressed = false;

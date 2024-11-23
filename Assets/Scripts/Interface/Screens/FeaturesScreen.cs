@@ -19,7 +19,7 @@ public class FeaturesScreen : Screens
     public override void Initialize()
     {
         EventSystem.current.SetSelectedGameObject(handler);
-        PlayersManager.Instance.ClearPlayersConfig();
+        PlayersManager.Instance.ClearPlayers();
     }
 
     public override void GoToScreen(ScreensName screensName)
