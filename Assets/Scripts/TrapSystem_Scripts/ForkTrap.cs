@@ -22,6 +22,7 @@ namespace TrapSystem_Scripts
         [SerializeField] private bool startCooldown = false;
         [SerializeField] private bool hasBitten = false;
         [SerializeField] private bool isChasing = false;
+        private bool triggerOn = false;
         private Transform targetWaypoint;
         private int currentWaypointIndex = -1;
         [SerializeField] private bool bittingPause = false;
@@ -39,9 +40,16 @@ namespace TrapSystem_Scripts
         public GameObject shadow;
         public Vector3 growthRate = new Vector3(0.1f, 0f, 0.1f); // Growth per second for X and Z
         public Vector3 maxScale = new Vector3(5f, 1f, 5f); // Maximum scale limits
+        private List<GameObject> playerObjects = new List<GameObject>();
 
         void Start()
         {
+            List<GameObject> playerObjects = new List<GameObject>(GameObject.FindGameObjectsWithTag("Character"));
+            foreach (GameObject playerObject in playerObjects)
+            {
+                Transform playerTransform = playerObject.transform;
+            }
+
             if (waypoints.Count == 0)
             {
                 Debug.LogError("No waypoints assigned!");
@@ -81,13 +89,19 @@ namespace TrapSystem_Scripts
             if (startCooldown)
             {
                 cooldown -= Time.deltaTime;
-                if (cooldown < 0) cooldown = 0f;
+                if (cooldown <= 0)
+                {
+                    cooldown = 0f;
+                }
             }
 
             if ((cooldown <= 0) && hasBitten)
             {
                 cooldown = 1f;
-                hasBitten = false;
+                if (!triggerOn)
+                {
+                    hasBitten = false;
+                }
             }
 
             if (bittingPause)
@@ -103,17 +117,22 @@ namespace TrapSystem_Scripts
                 pauseTime = 2f;
             }
 
-            Vector3 currentScale = transform.localScale;
+            if (triggerOn && hasBitten)
+            {
+                foreach (var player in playerObjects)
+                {
+                    
+                }
+            }
 
-            // Increase the scale incrementally
+            var currentScale = transform.localScale;
+            
             currentScale.x += growthRate.x * Time.deltaTime;
             currentScale.z += growthRate.z * Time.deltaTime;
-
-            // Clamp the scale to the maximum limits
+            
             currentScale.x = Mathf.Min(currentScale.x, maxScale.x);
             currentScale.z = Mathf.Min(currentScale.z, maxScale.z);
-
-            // Apply the updated scale
+            
             transform.localScale = currentScale;
         }
 
@@ -156,13 +175,15 @@ namespace TrapSystem_Scripts
         }
 
 
+
         private void OnTriggerEnter(Collider other)
         {
+            
             if (!isTrapActive) return;  
 
             if (other.gameObject.CompareTag("Character"))
             {
-                
+                triggerOn = true;
                 if(other.gameObject.GetComponent<Character.Character>().CharacterEntity.CharacterState.State is DeathState) return;
                 bittingPause = true;
                 startCooldown = true;
@@ -170,8 +191,9 @@ namespace TrapSystem_Scripts
                 isChasing = true;
                 if (cooldown <= 0)
                 {
-                    StartCoroutine(StopTrapAndBite(other.transform.position));
+                        StartCoroutine(StopTrapAndBite(playerPos));
                 }
+                
             }
         }
         private void FixedUpdate()
@@ -180,31 +202,27 @@ namespace TrapSystem_Scripts
             {
                 FollowPlayer(playerPos);
             }
+            
         }
 
         private void FollowPlayer(Vector3 playerPosition)
         {
-            if (timeChasing > 0)
-            {
-                transform.position = Vector3.Lerp(transform.position, playerPosition, moveTowardsPlayerSpeed * Time.deltaTime); 
-                timeChasing -= Time.deltaTime;
-            }
-            else
-            {
-                isChasing = false;
-                timeChasing = 1f;
-            }
+            if (!(timeChasing > 0)) return;
+            transform.position = Vector3.Lerp(transform.position, playerPosition, moveTowardsPlayerSpeed * Time.deltaTime); 
+            timeChasing -= Time.deltaTime;
+            if (!(timeChasing <= 0)) return;
+            isChasing  = false;
+            timeChasing = 2f;
         }
-        
 
         private IEnumerator StopTrapAndBite(Vector3 playerPosition)
         {
             isStopped = true;  
             
             yield return new WaitForSeconds(stopTime);  
-            
             Bite(playerPosition);
-            isStopped = false; 
+            yield return new WaitForSeconds(0.5f);
+            isStopped = false;
         }
 
         private void OnTriggerExit(Collider other)
@@ -214,6 +232,7 @@ namespace TrapSystem_Scripts
             if (other.gameObject.CompareTag("Character"))
             {
                 bittingPause = false;
+                triggerOn = false;
             }
         }
     }
