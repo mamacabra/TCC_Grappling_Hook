@@ -19,14 +19,10 @@ namespace LocalMultiplayer
             EnableInputActions();
         }
 
-        private void OnReset(InputAction.CallbackContext obj)
-        {
-            InterfaceManager.Instance.ResetOptions();
-        }
-
         private void OnDisable() {
             actions.Navigation.Join.performed -= OnJoin;
             actions.Navigation.Cancel.performed -= OnCancel;
+            actions.Navigation.Reset.performed -= OnReset;
         }
 
         private void Awake() {
@@ -34,49 +30,22 @@ namespace LocalMultiplayer
         }
 
         private void OnJoin(InputAction.CallbackContext context) {// Join Input Pressed
-            if (InterfaceManager.Instance.GetCurrentScreenIndex != (int)ScreensName.CharacterChoice_Screen) return;
+            if (context.control == null) return;
+
             // Check if the action was triggered by a control
-            if (context.control != null && context.action.WasPerformedThisFrame()) {
-                // Get the input device
-                InputDevice device = context.control.device;
+            if (context.action.WasPerformedThisFrame()) {
 
-                // Get the control scheme
-                int bindingIndex = context.action.GetBindingIndexForControl(context.control);
-                string controlScheme = context.action.bindings[bindingIndex].groups;
-                var acitonMap = context.action.actionMap;
+                //Enable a new player on character selection
+                if (InterfaceManager.Instance.GetCurrentScreenIndex == (int)ScreensName.CharacterChoice_Screen) {
+                    // Get the input device
+                    InputDevice device = context.control.device;
 
-                // Get free id
-                int id = PlayersManager.Instance.GetFreeId();
-                if (id == -1) return; // not has free id return
+                    // Get the control scheme
+                    int bindingIndex = context.action.GetBindingIndexForControl(context.control);
+                    string controlScheme = context.action.bindings[bindingIndex].groups;
 
-                PlayerInput player;
-                // player.gameObject.SetActive(true);
-
-                if (PlayersManager.Instance.isDebug) { // For add ilimitted players pressing J
-                    player = PlayersManager.Instance.characterChoice.ReturnPlayerInput(true,false);
-                    // player = PlayersManager.Instance.characterChoice.ReturnPlayerInput(id);
-                    player.SwitchCurrentControlScheme(controlScheme: controlScheme, device);
-                    return;
+                    PlayersManager.Instance.JoinPlayer(device, controlScheme);
                 }
-
-                // Join a new player
-                if (controlScheme == "Keyboard&Mouse") { // Keyboard P1
-                    if (PlayersManager.Instance.keyboardP1) return;
-                    PlayersManager.Instance.keyboardP1 = true;
-                    // player = PlayersManager.Instance.characterChoice.ReturnPlayerInput(id);
-                    player = PlayersManager.Instance.characterChoice.ReturnPlayerInput(false, true);
-                } else if (controlScheme == "KeyboardP2") { // Keyboard P2
-                    if (PlayersManager.Instance.keyboardP2) return;
-                    PlayersManager.Instance.keyboardP2 = true;
-                    // player = PlayersManager.Instance.characterChoice.ReturnPlayerInput(id);
-                    player = PlayersManager.Instance.characterChoice.ReturnPlayerInput(false,false);
-                } else { // Gamepad
-                    if (PlayerInput.FindFirstPairedToDevice(device) != null) return;
-                    // player = PlayersManager.Instance.characterChoice.ReturnPlayerInput(id);
-                    player = PlayersManager.Instance.characterChoice.ReturnPlayerInput(true, false);
-                }
-                player.SwitchCurrentControlScheme(controlScheme: controlScheme, device);
-                PlayersManager.Instance.OnPlayerJoinedEvent(player);
             }
         }
         private void OnCancel(InputAction.CallbackContext context) {
@@ -87,6 +56,13 @@ namespace LocalMultiplayer
             }
         }
         
+        private void OnReset(InputAction.CallbackContext context) {
+            if (context.control == null) return;
+
+            if (context.action.WasPerformedThisFrame()) {
+                InterfaceManager.Instance.ResetOptions();
+            }
+        }
 
         #region ActiveInputActions
         public void EnableInputActions() {

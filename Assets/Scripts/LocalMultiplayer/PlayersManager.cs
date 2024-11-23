@@ -40,7 +40,7 @@ namespace LocalMultiplayer
         [SerializeField] private List<PlayerConfigurationData> playersConfigs = new List<PlayerConfigurationData>();
         [SerializeField] private List<PlayerConfigurationData> playersConfigsAUX = new List<PlayerConfigurationData>();
         private string path;
-        [SerializeField] private List<GameObject> playersGameObjects;
+        [SerializeField] private List<GameObject> playersGameObjects = new List<GameObject>();
         private bool canInitGame = false;
         public bool CanInitGame => canInitGame;
 
@@ -56,11 +56,10 @@ namespace LocalMultiplayer
         #region Initializers
         private void Awake() {
             playerInputManager = GetComponent<PlayerInputManager>();
-            playersGameObjects = new();
             path = Application.persistentDataPath + "/playersInputs.json";
         }
         public void InitCharacterSelection() {
-            ClearPlayersConfig();
+            ClearPlayers();
 
             canInitGame = false;
             playerInputManager.playerPrefab = playerUIPrefab;
@@ -72,10 +71,9 @@ namespace LocalMultiplayer
             InterfaceManager.Instance.RestartGame();
             winnerSupreme = -1;
         
-            ClearPlayersConfig(charactersFromGame: true);
-            LoadPlayersConfigs(); // Reset playersConfig in characterSelect screen.
+            ClearPlayers(charactersFromGame: true);
+            // LoadPlayersConfigs(); // Reset playersConfig in characterSelect screen.
             playerInputManager.playerPrefab = playerPrefab;
-            // playersUIInputs.DisableInputActions();
             if (playersConfigs.Count > 0) {
                 if (loadScene) {
                     ScenesManager.Instance.LoadRandomScene();
@@ -98,6 +96,37 @@ namespace LocalMultiplayer
         #endregion
 
         #region PlayerEvents
+
+        public void JoinPlayer(InputDevice device, string controlScheme){
+            // Get free id
+            int id = GetFreeId();
+            if (id == -1) return; // not has free id return
+
+            PlayerInput player;
+
+            if (isDebug) { // For add ilimitted players pressing J
+                player = characterChoice.ReturnPlayerInput(true,false);
+                player.SwitchCurrentControlScheme(controlScheme: controlScheme, device);
+                return;
+            }
+
+            // Join a new player
+            if (controlScheme == "Keyboard&Mouse") { // Keyboard P1
+                if (keyboardP1) return;
+                keyboardP1 = true;
+                player = characterChoice.ReturnPlayerInput(false, true);
+            } else if (controlScheme == "KeyboardP2") { // Keyboard P2
+                if (keyboardP2) return;
+                keyboardP2 = true;
+                player = characterChoice.ReturnPlayerInput(false,false);
+            } else { // Gamepad
+                if (PlayerInput.FindFirstPairedToDevice(device) != null) return;
+                player = characterChoice.ReturnPlayerInput(true, false);
+            }
+            player.SwitchCurrentControlScheme(controlScheme: controlScheme, device);
+            OnPlayerJoinedEvent(player);
+        }
+
         public void OnPlayerJoinedEvent(PlayerInput _playerInput) {
             PlayerColorLayerManager.DefineCharacterColorLayer(_playerInput.playerIndex);
             // Trigged when player joined : set in inspector: PlayerInputManager
@@ -190,7 +219,7 @@ namespace LocalMultiplayer
                 }
             }
 
-            SavePlayersConfigs();
+            // SavePlayersConfigs();
         }
 
         public void RemovePointsToPlayer(int playerWhoKilled)
@@ -211,7 +240,7 @@ namespace LocalMultiplayer
                 winnerSupreme = CheckIfGameOver()? playerWhoKilled:-1;
             }
 
-            SavePlayersConfigs();
+            // SavePlayersConfigs();
         }
 
         void AddPoints(int playerId, int value)
@@ -235,7 +264,6 @@ namespace LocalMultiplayer
             return -1;
         }
 
-        private List<PlayerConfigurationData> playersConfigsAux = new List<PlayerConfigurationData>();
         public bool CheckPlayerWinner(int id)
         {
             if (playersConfigs[GetPlayerById(id)].score == 0) return false;
@@ -264,7 +292,6 @@ namespace LocalMultiplayer
 
         void SetPlayersConfigs(){
             foreach (var item in playersConfigs) {
-
                 // Set player material
                 PlayerInput playerInput = playerInputManager.JoinPlayer(item.id, controlScheme: item.controlScheme, pairWithDevices: GetDevicesFromString(item.inputDevices));
                 OnPlayerJoinedEvent(playerInput);
@@ -298,7 +325,7 @@ namespace LocalMultiplayer
                 amountOfPlayersReady--;
             }
             if (amountOfPlayersReady == playerInputManager.playerCount) {
-                SavePlayersConfigs();
+                // SavePlayersConfigs();
                 canInitGame = playerInputManager.playerCount > 1;
             } else {
                 canInitGame = false;
@@ -341,11 +368,9 @@ namespace LocalMultiplayer
             OnUpdateText?.Invoke();
             //OnPlayerConfigRemove?.Invoke(playerConfiguration);
         }
-        public void ClearPlayersConfig(bool charactersFromGame = false) {
+        public void ClearPlayers(bool charactersFromGame = false) {
             amountOfPlayersReady = 0;
             if (cameraMovement) cameraMovement.RemoveAllPlayers();
-            playersConfigs.Clear();
-            playersConfigsAUX.Clear();
             if (charactersFromGame) {
                 for (int i = 0; i < playersGameObjects.Count; i++){
                     if (playersGameObjects[i] && (playersGameObjects[i].layer != LayerMask.NameToLayer("UI"))){
@@ -354,6 +379,8 @@ namespace LocalMultiplayer
                 }
                 playersGameObjects.Clear();
             } else {
+                playersConfigs.Clear();
+                playersConfigsAUX.Clear();
                 characterChoice.RemoveAllChildrens();
                 playersGameObjects.Clear();
             }
