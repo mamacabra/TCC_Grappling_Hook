@@ -35,6 +35,8 @@ public class InterfaceManager : MonoBehaviour
     /* [SerializeField] private List<Screens> screensList;
      private Screens currentScreen;*/
 
+     public NotificationManager notificationManager;
+
      private int screensIndex = 0;
 
      public bool gameWithScreens;

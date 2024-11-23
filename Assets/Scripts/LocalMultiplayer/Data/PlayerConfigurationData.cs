@@ -4,6 +4,7 @@ namespace LocalMultiplayer.Data {
     public struct PlayerConfigurationData {
         public string controlScheme;
         public int[] inputDevices;
+        public string[] inputDevicesNames;
         public CharacterColor characterColor;
         public ECharacterType characterModel;
         public int score;

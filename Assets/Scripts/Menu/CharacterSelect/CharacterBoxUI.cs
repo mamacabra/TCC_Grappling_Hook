@@ -131,6 +131,10 @@ public class CharacterBoxUI : MonoBehaviour
     public void OnDeviceLost(PlayerInput playerInput){
         //if(!gameObject.activeSelf) return;
         //characterStatus.text = "Pressione A/X";
+
+        var devices = playerConfig.inputDevicesNames;
+        InterfaceManager.Instance.notificationManager.PlayNotification($"O dispositivo {devices[0]} foi desconectado!!!");
+
         characterStatus.color = new Color32(52,73,94,255);
         PlayersManager.Instance?.RemovePlayerConfig(playerConfig);
         PlayersManager.Instance?.RemovePlayerConfigAUX(playerConfig);

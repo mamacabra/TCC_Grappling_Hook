@@ -139,7 +139,8 @@ namespace LocalMultiplayer
                 if (_playerInput.TryGetComponent(out CharacterBoxUI characterBoxUI)) {
                     characterBoxUI.playerConfig.id = _playerInput.playerIndex;
                     characterBoxUI.playerConfig.controlScheme = _playerInput.currentControlScheme;
-                    characterBoxUI.playerConfig.inputDevices = GetStringFromDevices(_playerInput.devices.ToArray());
+                    characterBoxUI.playerConfig.inputDevices = GetIDsFromDevices(_playerInput.devices.ToArray());
+                    characterBoxUI.playerConfig.inputDevicesNames = GetNamesFromDevices(_playerInput.devices.ToArray());
                     characterBoxUI.characterImageBackground.color = PlayerColorLayerManager.GetColorBaseLight(_playerInput.playerIndex);
                     Color32 col = characterBoxUI.characterImageBackground.color;
                     characterBoxUI.characterImageBackground.color = new Color32(col.r, col.g, col.b, 150);
@@ -298,7 +299,7 @@ namespace LocalMultiplayer
         void SetPlayersConfigs(){
             foreach (var item in playersConfigs) {
                 // Set player material
-                PlayerInput playerInput = playerInputManager.JoinPlayer(item.id, controlScheme: item.controlScheme, pairWithDevices: GetDevicesFromString(item.inputDevices));
+                PlayerInput playerInput = playerInputManager.JoinPlayer(item.id, controlScheme: item.controlScheme, pairWithDevices: GetDevicesFromIDs(item.inputDevices));
                 OnPlayerJoinedEvent(playerInput);
                 if (playerInput.TryGetComponent(out Character.Character character)){
                     character.Id = item.id;
@@ -442,7 +443,7 @@ namespace LocalMultiplayer
         #endregion
 
         #region Getters
-        private InputDevice[] GetDevicesFromString(int[] devices) {
+        public InputDevice[] GetDevicesFromIDs(int[] devices) {
             List<InputDevice> result = new List<InputDevice>();
             InputDevice[] allDevices = InputSystem.devices.ToArray();
             for (int i = 0; i < allDevices.Length; i++) {
@@ -454,10 +455,17 @@ namespace LocalMultiplayer
             }
             return result.ToArray();
         }
-        private int[] GetStringFromDevices(InputDevice[] devices) {
+        private int[] GetIDsFromDevices(InputDevice[] devices) {
             int[] result = new int[devices.Length];
             for (int i = 0, j = 0; i < devices.Length; i++, j++) {
                 result[i] = devices[j].deviceId;
+            }
+            return result;
+        }
+        private string[] GetNamesFromDevices(InputDevice[] devices) {
+            string[] result = new string[devices.Length];
+            for (int i = 0, j = 0; i < devices.Length; i++, j++) {
+                result[i] = devices[j].displayName;
             }
             return result;
         }
