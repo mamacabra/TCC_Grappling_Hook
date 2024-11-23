@@ -35,6 +35,11 @@ namespace TrapSystem_Scripts
         private float timeChasing = 1f;
         [SerializeField] private List<GameObject> cutlery;
 
+        //Shadow settings
+        public GameObject shadow;
+        public Vector3 growthRate = new Vector3(0.1f, 0f, 0.1f); // Growth per second for X and Z
+        public Vector3 maxScale = new Vector3(5f, 1f, 5f); // Maximum scale limits
+
         void Start()
         {
             if (waypoints.Count == 0)
@@ -97,7 +102,19 @@ namespace TrapSystem_Scripts
                 bittingPause = false;
                 pauseTime = 2f;
             }
-            
+
+            Vector3 currentScale = transform.localScale;
+
+            // Increase the scale incrementally
+            currentScale.x += growthRate.x * Time.deltaTime;
+            currentScale.z += growthRate.z * Time.deltaTime;
+
+            // Clamp the scale to the maximum limits
+            currentScale.x = Mathf.Min(currentScale.x, maxScale.x);
+            currentScale.z = Mathf.Min(currentScale.z, maxScale.z);
+
+            // Apply the updated scale
+            transform.localScale = currentScale;
         }
 
         
@@ -153,7 +170,6 @@ namespace TrapSystem_Scripts
                 isChasing = true;
                 if (cooldown <= 0)
                 {
-                    
                     StartCoroutine(StopTrapAndBite(other.transform.position));
                 }
             }

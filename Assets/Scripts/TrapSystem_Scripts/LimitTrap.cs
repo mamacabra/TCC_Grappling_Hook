@@ -11,17 +11,20 @@ namespace TrapSystem_Scripts
     public class LimitTrap : MonoBehaviour
     {
         [Header("Configurações do Objeto que Cai")]
-        public GameObject fallingObjectPrefab;  
+        public GameObject fallingObjectPrefab;
+        public GameObject instaKillPrefab;
         public float fallHeight = 50f;         
 
         [Header("Limites da Arena")]
         public float minX = -25f;              
         public float maxX = 25f;               
         public float minZ = -25f;              
-        public float maxZ = 25f;               
+        public float maxZ = 25f;
+        private readonly float overLimits = 10f;
 
         [Header("Configurações de Tempo")]
         public float timeBeforeDeath = 3f;     
+        public float timeBeforeInstaKill = 2f;
 
         private List<PlayerTrapData> players = new List<PlayerTrapData>();
         [SerializeField] private List<GameObject> cutlery;
@@ -48,54 +51,65 @@ namespace TrapSystem_Scripts
         }
 
         void Update()
+{
+    for (int i = players.Count - 1; i >= 0; i--)
+    {
+        Character.Character playerCharacter = players[i].character;
+        PlayerTrapData playerData = players[i];
+        Transform player = playerData.playerTransform;
+
+        if (player == null)
         {
-            for (int i = players.Count - 1; i >= 0; i--)
-            {
-                Character.Character playerCharacter = players[i].character;
-                PlayerTrapData playerData = players[i];
-                Transform player = playerData.playerTransform;
-
-                if (player == null)
-                {
-                    players.RemoveAt(i); 
-                    continue;
-                }
-
-                bool isPlayerOutside = player.position.x < minX || player.position.x > maxX || 
-                                       player.position.z < minZ || player.position.z > maxZ;
-
-                // If the player is outside the arena
-                if (isPlayerOutside)
-                {
-                    // If they just went outside, start the timer
-                    if (!playerData.isOutsideArena)
-                    {
-                        playerData.isOutsideArena = true;
-                        playerData.outsideTime = Time.time;
-                    }
-                    // If they've been outside long enough, trigger the trap
-                    else if (Time.time - playerData.outsideTime >= timeBeforeDeath)
-                    {
-                        if (playerCharacter.CharacterEntity.CharacterState.State is not DeathState)
-                        {
-                            SpawnFallingObject(player);
-                            playerData.isOutsideArena = false;
-                            playerData.outsideTime = 0f; 
-                        } 
-                    }
-                }
-                else
-                {
-                    if (playerData.isOutsideArena)
-                    {
-                        playerData.isOutsideArena = false;
-                        playerData.outsideTime = 0f; 
-                    }
-                }
-            }
+            players.RemoveAt(i);
+            continue;
         }
 
+        var isPlayerOutside = player.position.x < minX || player.position.x > maxX || 
+                              player.position.z < minZ || player.position.z > maxZ;
+        
+        var isPlayerOverLimits = player.position.x < minX - overLimits || player.position.x > maxX + overLimits || 
+                                 player.position.z < minZ - overLimits || player.position.z > maxZ + overLimits;
+        
+        
+        
+        if (isPlayerOutside)
+        {
+            if (!playerData.isOutsideArena)
+            {
+                playerData.isOutsideArena = true;
+                playerData.outsideTime = Time.time;
+            }
+            else if (Time.time - playerData.outsideTime >= timeBeforeDeath)
+            {
+                if (playerCharacter.CharacterEntity.CharacterState.State is not DeathState)
+                {
+                    SpawnFallingObject(player);
+                    playerData.isOutsideArena = false;
+                    playerData.outsideTime = 0f;
+                }
+            }
+            else if (Time.time - playerData.outsideTime >= timeBeforeInstaKill)
+            {
+                if (!isPlayerOverLimits) continue;
+                if (playerCharacter.CharacterEntity.CharacterState.State is DeathState) continue;
+                SpawnInstaKillObject(player);
+                playerData.isOutsideArena = false;
+                playerData.outsideTime = 0f;
 
+            }
+        }
+        else
+        {
+            if (playerData.isOutsideArena)
+            {
+                playerData.isOutsideArena = false;
+                playerData.outsideTime = 0f;
+            }
+        }
+    }
+}
+
+        
         void SpawnFallingObject(Transform player)
         {
             if (cutlery.Count != 0)
@@ -114,6 +128,15 @@ namespace TrapSystem_Scripts
             
             Vector3 spawnPosition = new Vector3(player.position.x, fallHeight, player.position.z);
             Instantiate(fallingObjectPrefab, spawnPosition, randomRotation);
+        }
+        void SpawnInstaKillObject(Transform player)
+        {
+            
+            var randomYRotation = Random.Range(0f, 360f); 
+            var randomRotation = Quaternion.Euler(0, randomYRotation, 0);
+            
+            Vector3 spawnPosition = new Vector3(player.position.x, fallHeight, player.position.z);
+            Instantiate(instaKillPrefab, spawnPosition, randomRotation);
         }
     }
 

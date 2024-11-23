@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -3589337865551304076}
   - component: {fileID: -3706887323321040178}
   m_Layer: 0
-  m_Name: Fork
+  m_Name: InstaKillFork
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf8f519ef00a55428483e826c660c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallSpeed: 180
+  fallSpeed: 400
 --- !u!65 &-3706887323321040178
 BoxCollider:
   m_ObjectHideFlags: 0
