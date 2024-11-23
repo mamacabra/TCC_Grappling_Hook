@@ -212,15 +212,11 @@ MonoBehaviour:
     inputDevices: 
     characterColor: 0
     characterModel: 0
-    sCharacterData:
-      characterName: 
-      characterType: 0
-      characterPrefab: {fileID: 0}
-      deathCharacterPrefab: {fileID: 0}
-      characterSprite: {fileID: 0}
     score: 0
     id: 0
     characterIndexCharacterChoice: 0
+  arrowL: {fileID: 4108322953816236510}
+  arrowR: {fileID: 7266203067444154178}
   choiceScreen: {fileID: 0}
 --- !u!1 &688997781383751383
 GameObject:
