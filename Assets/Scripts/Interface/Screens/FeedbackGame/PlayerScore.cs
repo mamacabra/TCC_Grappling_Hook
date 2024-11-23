@@ -14,13 +14,19 @@ public class PlayerScore : MonoBehaviour
     [SerializeField] private Image playerImg;
     //[SerializeField] private Slider playeSlideScore;
     [SerializeField]private List<Image> pointsImages;
-    [SerializeField] private Sprite caveira, caveiraOp;
+    //[SerializeField] private Sprite caveira, caveiraOp;
 
     [SerializeField] public GameObject coroa;
     private int scoreValue = 0;
+    
+    //[SerializeField] private Image bgDarkImg;
 
-    [SerializeField] private Image bgImg;
-    [SerializeField] private Image bgDarkImg;
+    private void Start()
+    {
+        foreach (var p in pointsImages)
+            p.gameObject.SetActive(false);
+    }
+
     private void OnEnable()
     {
         InterfaceManager.Instance.OnShowScoreInFeedbackScreen += AtualizeScore;
@@ -58,8 +64,8 @@ public class PlayerScore : MonoBehaviour
         if (animator) animator.SetTrigger("connected");
         
         playerImg.color = PlayerColorLayerManager.GetColorBase(id);
-        bgImg.color =  PlayerColorLayerManager.GetColorBase(id);
-        bgDarkImg.color = PlayerColorLayerManager.GetColorBaseDark(id);
+       // bgImg.color =  PlayerColorLayerManager.GetColorBase(id);
+        //bgDarkImg.color = PlayerColorLayerManager.GetColorBaseDark(id);
     }
     public void ChangeData(PlayerConfigurationData d)
     {
@@ -68,7 +74,7 @@ public class PlayerScore : MonoBehaviour
        // playerImg.color = PlayersManager.GetColor(data.characterColor);
        foreach (var p in pointsImages)
        {
-           p.sprite = caveiraOp;
+          // p.sprite = caveiraOp;
            p.color =  PlayerColorLayerManager.GetColorBase(d.id);;
        }
 
@@ -83,7 +89,7 @@ public class PlayerScore : MonoBehaviour
         {
             if (scoreValue <= PlayersManager.Instance.ScoreToWinGame)
             {
-                pointsImages[i].sprite = caveira;
+                pointsImages[i].gameObject.SetActive(true);
             }
         }
         
