@@ -277,12 +277,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallingObjectPrefab: {fileID: 0}
+  instaKillPrefab: {fileID: 9146939633919487612, guid: 75b98bee87765e54f9b22ef97f048051,
+    type: 3}
   fallHeight: 50
   minX: -60
   maxX: 60
   minZ: -45
   maxZ: 45
   timeBeforeDeath: 1
+  timeBeforeInstaKill: 2
   cutlery:
   - {fileID: 9146939633919487612, guid: 1de638525cdd2f64899d559de3947a5c, type: 3}
   - {fileID: 9146939633919487612, guid: 5cb972bb2b9c21c4e86b89cec66dc2e0, type: 3}
@@ -2270,7 +2273,7 @@ Transform:
   m_GameObject: {fileID: 8348723887802645102}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.000000052136, y: 0, z: -0.000000078204}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2555,7 +2558,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7025821712109459797
 Transform:
   m_ObjectHideFlags: 0
@@ -2565,8 +2568,8 @@ Transform:
   m_GameObject: {fileID: 8995387307739662653}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 15, y: 0.5, z: 15}
+  m_LocalPosition: {x: 0.00000068278, y: 1, z: -0.00000079657}
+  m_LocalScale: {x: 1, y: 0.26135, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3878755907338906079}
@@ -2605,6 +2608,9 @@ MonoBehaviour:
   cutlery:
   - {fileID: 9146939633919487612, guid: 5cb972bb2b9c21c4e86b89cec66dc2e0, type: 3}
   - {fileID: 9146939633919487612, guid: 1de638525cdd2f64899d559de3947a5c, type: 3}
+  shadow: {fileID: 8995387307739662653}
+  growthRate: {x: 0.5, y: 0, z: 0.5}
+  maxScale: {x: 45, y: 1, z: 45}
 --- !u!54 &6292602548471338075
 Rigidbody:
   m_ObjectHideFlags: 0

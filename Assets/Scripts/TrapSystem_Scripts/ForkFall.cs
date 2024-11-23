@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,6 @@ namespace TrapSystem_Scripts
         {
             Debug.Log("set tag wall");
             AudioManager.audioManager.PlayLevelSoundEffect(LevelSoundsList.LevelForkTrap);
-            
         }
         
         private void Update()
@@ -39,11 +39,13 @@ namespace TrapSystem_Scripts
 
             if (canDestroyFork)
             {
-                DestroyFork();
+                StartCoroutine( WaitToDestroyFork());
             }
                 
             
         }
+
+
 
         private void OnTriggerEnter(Collider other)
         {
@@ -74,6 +76,12 @@ namespace TrapSystem_Scripts
         public void DestroyFork()
         {
             Destroy(gameObject);
+        }
+        
+        private IEnumerator WaitToDestroyFork()
+        {
+            yield return new WaitForSeconds(5f);
+            DestroyFork();
         }
     }
 }
