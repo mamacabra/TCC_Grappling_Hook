@@ -86,9 +86,9 @@ namespace Character
             SetState(state);
         }
 
-        public void SetLoserState()
+        public void SetLoserState(Transform killedBy)
         {
-            var state = new LoserState(CharacterEntity);
+            var state = new LoserState(CharacterEntity, killedBy);
             SetState(state);
         }
 
