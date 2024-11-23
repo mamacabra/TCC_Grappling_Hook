@@ -143,6 +143,8 @@ namespace LocalMultiplayer
                     characterBoxUI.characterImageBackground.color = PlayerColorLayerManager.GetColorBaseLight(_playerInput.playerIndex);
                     Color32 col = characterBoxUI.characterImageBackground.color;
                     characterBoxUI.characterImageBackground.color = new Color32(col.r, col.g, col.b, 150);
+                    characterBoxUI.arrowL.color = new Color32(col.r, col.g, col.b, 150);
+                    characterBoxUI.arrowR.color = new Color32(col.r, col.g, col.b, 150);
                     characterBoxUI.UpdateTextTest();
                     
                     Animator animator = characterBoxUI.GetCurrentCharacterModels.GetComponentInChildren<Animator>();
@@ -213,7 +215,10 @@ namespace LocalMultiplayer
                     if (p != null)
                     {
                         var pC =p.GetComponent<Character.Character>();
-                        if (pC.Id != playerWhoKilled && winnerSupreme != -1) pC.CharacterEntity.CharacterState.SetLoserState();
+                        if (pC.Id != playerWhoKilled && winnerSupreme != -1)
+                        {
+                            pC.CharacterEntity.CharacterState.SetLoserState(p1);
+                        }
                         pC.CharacterEntity.CharacterMesh.animator.SetFloat("Speed", 0);
                     }
                 }
