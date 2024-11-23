@@ -44,11 +44,6 @@ namespace TrapSystem_Scripts
 
         void Start()
         {
-            List<GameObject> playerObjects = new List<GameObject>(GameObject.FindGameObjectsWithTag("Character"));
-            foreach (GameObject playerObject in playerObjects)
-            {
-                Transform playerTransform = playerObject.transform;
-            }
 
             if (waypoints.Count == 0)
             {
@@ -116,14 +111,24 @@ namespace TrapSystem_Scripts
                 bittingPause = false;
                 pauseTime = 2f;
             }
-
-            if (triggerOn && hasBitten)
+            if (isChasing)
             {
-                foreach (var player in playerObjects)
-                {
-                    
-                }
+                playerPos = playerObjects[0].transform.position;
+                FollowPlayer(playerPos);
             }
+            if (playerObjects.Count > 0)
+            {
+                    if (cooldown <= 0)
+                    {
+                        if (!isChasing)
+                        {
+                            playerPos = playerObjects[0].transform.position;
+                            StartCoroutine(StopTrapAndBite(playerPos));
+                            startCooldown = true;
+                        }
+                    }
+            }
+            
 
             var currentScale = transform.localScale;
             
@@ -178,32 +183,15 @@ namespace TrapSystem_Scripts
 
         private void OnTriggerEnter(Collider other)
         {
-            
             if (!isTrapActive) return;  
-
             if (other.gameObject.CompareTag("Character"))
             {
-                triggerOn = true;
-                if(other.gameObject.GetComponent<Character.Character>().CharacterEntity.CharacterState.State is DeathState) return;
-                bittingPause = true;
-                startCooldown = true;
-                playerPos = other.gameObject.transform.position;
                 isChasing = true;
-                if (cooldown <= 0)
-                {
-                        StartCoroutine(StopTrapAndBite(playerPos));
-                }
-                
+                if(other.gameObject.GetComponent<Character.Character>().CharacterEntity.CharacterState.State is DeathState) return;
+                playerObjects.Add(other.gameObject);
             }
         }
-        private void FixedUpdate()
-        {
-            if (isChasing)
-            {
-                FollowPlayer(playerPos);
-            }
-            
-        }
+
 
         private void FollowPlayer(Vector3 playerPosition)
         {
@@ -212,7 +200,7 @@ namespace TrapSystem_Scripts
             timeChasing -= Time.deltaTime;
             if (!(timeChasing <= 0)) return;
             isChasing  = false;
-            timeChasing = 2f;
+            timeChasing = 1f;
         }
 
         private IEnumerator StopTrapAndBite(Vector3 playerPosition)
@@ -223,6 +211,7 @@ namespace TrapSystem_Scripts
             Bite(playerPosition);
             yield return new WaitForSeconds(0.5f);
             isStopped = false;
+            
         }
 
         private void OnTriggerExit(Collider other)
@@ -231,6 +220,7 @@ namespace TrapSystem_Scripts
 
             if (other.gameObject.CompareTag("Character"))
             {
+                playerObjects.Remove(other.gameObject);
                 bittingPause = false;
                 triggerOn = false;
             }
