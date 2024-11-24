@@ -15,6 +15,7 @@ namespace Character.States
         public override void Enter()
         {
             CharacterEntity.Hook.ResetHookForce();
+            CharacterEntity.CharacterMesh.animator?.SetBool("isHook", true);
         }
 
         public override void Update()

@@ -5205,6 +5205,7 @@ MonoBehaviour:
   CurrentSpeed: {x: 0, y: 0, z: 0}
   crown: {fileID: 8077595796473120523}
   shield: {fileID: 617459733254561399}
+  hookMesh: {fileID: 2513314069125767984}
 --- !u!114 &6154435207289440195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21561,6 +21562,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c8c24a694535ea4c970ff90f754e298, type: 3}
+--- !u!1 &2513314069125767984 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8868177150133313302, guid: 0c8c24a694535ea4c970ff90f754e298,
+    type: 3}
+  m_PrefabInstance: {fileID: 6481539637013986342}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3002429224835086730 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8095722315177706924, guid: 0c8c24a694535ea4c970ff90f754e298,

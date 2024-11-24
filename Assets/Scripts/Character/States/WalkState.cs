@@ -10,6 +10,8 @@ namespace Character.States
         public override void Enter()
         {
             CharacterEntity.GrapplingHookState.SetHookReadyState();
+            CharacterEntity.Character.EnableHook(true);
+            CharacterEntity.CharacterMesh.animator?.SetBool("isHook", false);
 
             var newPosition = CharacterEntity.Character.transform.position;
             newPosition.y = 0.5f;

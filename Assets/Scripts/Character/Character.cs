@@ -32,6 +32,7 @@ namespace Character
         [Header("3D Models")]
         public GameObject crown;
         [SerializeField] private GameObject shield;
+        public GameObject hookMesh;
 
         public new void Setup(CharacterEntity entity)
         {
@@ -41,6 +42,12 @@ namespace Character
         public void EnableCrown()
         {
             crown.SetActive(PlayersManager.Instance.CheckPlayerWinner(CharacterEntity.Character.Id));
+        }
+
+        public void EnableHook(bool active)
+        {
+            CharacterEntity.CharacterMesh.characterItemsHandle.hookMesh.SetActive(active);
+            hookMesh.SetActive(!active);
         }
 
         public void ToggleShield(bool newStatus)
