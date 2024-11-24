@@ -43451,7 +43451,6 @@ GameObject:
   - component: {fileID: 2078538360}
   - component: {fileID: 2078538359}
   - component: {fileID: 2078538358}
-  - component: {fileID: 2078538357}
   - component: {fileID: 2078538356}
   - component: {fileID: 2078538355}
   m_Layer: 5
@@ -43538,23 +43537,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2078538357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2078538353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dafff6945b8cbe404b0de6189a4e7926, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playHoverSound: 0
-  playUnhoverSound: 0
-  playClickSound: 1
-  click: 1
-  hover: 0
 --- !u!114 &2078538358
 MonoBehaviour:
   m_ObjectHideFlags: 0

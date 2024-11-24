@@ -39,6 +39,7 @@ public class FeedbackGame : Screens
     void NextGame()
     {
         if(!canclick)return;
+        AudioManager.audioManager.PlayUiSoundEffect(UiSoundsList.Confirm);
         canclick = false;
         PlayersManager.Instance.InitGame(true);
         InterfaceManager.Instance.ShowSpecificScreen(ScreensName.Hud);
