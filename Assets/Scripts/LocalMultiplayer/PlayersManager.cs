@@ -7,6 +7,7 @@ using SceneSelect;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using LocalMultiplayer.Data;
+using System.Linq;
 
 namespace LocalMultiplayer
 {
@@ -478,6 +479,10 @@ namespace LocalMultiplayer
                 }
             }
             return result;
+        }
+
+        public PlayerConfigurationData GetPlayerConfig(int id){
+            return playersConfigs.Find(p => p.id == id);
         }
 
         public static Color GetColor(CharacterColor characterColor) {

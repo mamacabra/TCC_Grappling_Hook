@@ -1,4 +1,6 @@
 using Character.Utils;
+using LocalMultiplayer;
+using LocalMultiplayer.Data;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -33,6 +35,24 @@ namespace Character
                 CharacterEntity.CharacterState.SetPrepareHookState();
             else if (context.canceled)
                 CharacterEntity.CharacterState.SetDispatchHookState();
+        }
+
+        public void OnDeviceLost(PlayerInput playerInput) {
+            var interfaceManager = InterfaceManager.Instance;
+            var playersManager = PlayersManager.Instance;
+            if (!interfaceManager || !playersManager) return;
+            bool canPause = (!interfaceManager.isOnCount && !interfaceManager.isOnFeedback && !playersManager.GameOver);
+            if (!interfaceManager.pause && canPause) {
+                interfaceManager.ShowSpecificScreen(ScreensName.Pause_InGame_Screen);
+                interfaceManager.pause = true;
+            }
+            var playerConfig = playersManager.GetPlayerConfig(CharacterEntity.Character.Id);
+            interfaceManager.notificationManager.PlayNotification($"Dispositivo {playerConfig.inputDevicesNames[0]} desconectado!");
+        }
+
+        public void OnDeviceRegained(PlayerInput playerInput) {
+            var playerConfig = PlayersManager.Instance.GetPlayerConfig(CharacterEntity.Character.Id);
+            InterfaceManager.Instance.notificationManager.PlayNotification($"Dispositivo {playerConfig.inputDevicesNames[0]} reconectado!");
         }
     }
 }

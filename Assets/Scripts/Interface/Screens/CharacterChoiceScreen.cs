@@ -24,7 +24,10 @@ public class CharacterChoiceScreen : Screens
     private void Awake()
     {
         backToMenu.button.onClick.AddListener(delegate { GoToScreen(backToMenu.goToScreen); });
-        playGame.button.onClick.AddListener(delegate { if (PlayersManager.Instance.CanInitGame) GoToScreen(playGame.goToScreen); });
+        playGame.button.onClick.AddListener(delegate { 
+            if (PlayersManager.Instance.CanInitGame) 
+                GoToScreen(playGame.goToScreen);
+            });
     }
 
     public override void Initialize()

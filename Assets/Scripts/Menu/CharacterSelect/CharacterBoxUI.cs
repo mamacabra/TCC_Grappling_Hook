@@ -133,7 +133,7 @@ public class CharacterBoxUI : MonoBehaviour
         //characterStatus.text = "Pressione A/X";
 
         var devices = playerConfig.inputDevicesNames;
-        InterfaceManager.Instance.notificationManager.PlayNotification($"O dispositivo {devices[0]} foi desconectado!!!");
+        InterfaceManager.Instance.notificationManager.PlayNotification($"Dispositivo {devices[0]} desconectado!");
 
         characterStatus.color = new Color32(52,73,94,255);
         PlayersManager.Instance?.RemovePlayerConfig(playerConfig);

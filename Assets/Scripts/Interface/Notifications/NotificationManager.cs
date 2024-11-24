@@ -20,16 +20,18 @@ public class NotificationManager : MonoBehaviour
     public void PlayNotification(string text){
         notificationHandler.gameObject.SetActive(true);
         notificationHandler.SetText(text);
-        maxT = notificationHandler.TextLenght * 0.1f;
+        maxT = notificationHandler.TextLenght * 0.05f;
         playing = true;
         show = true;
+        hide = false;
+        notificationT = 0.0f;
         showT = 0.0f;
         hideT = 0.0f;
     }
 
     private void Update() {
         if (playing) {
-            float dt = Time.deltaTime;
+            float dt = Time.unscaledDeltaTime;
             if (show) {
                 showT += dt;
                 float time = Mathf.Clamp01(showT / ShowHideTime);
