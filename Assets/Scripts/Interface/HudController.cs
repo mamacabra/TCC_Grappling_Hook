@@ -106,9 +106,9 @@ public class HudController : MonoBehaviour
       {
          countGameStartText.text = i.ToString();
          countGameStartText.color = colorsToChangeCountText[i];
-         countGameStartText.transform.DOScale(1.1f, 0.25f).SetEase(Ease.OutBack).OnComplete(() =>
+         countGameStartText.transform.DOScale(1.1f, 0.25f).SetEase(Ease.OutBack).SetUpdate(true).OnComplete(() =>
          {
-            countGameStartText.transform.DOScale(1f, 0.25f).SetEase(Ease.OutBack);
+            countGameStartText.transform.DOScale(1f, 0.25f).SetEase(Ease.OutBack).SetUpdate(true);
          });
 
          yield return new WaitForSecondsRealtime(0.75f);
@@ -141,15 +141,15 @@ public class HudController : MonoBehaviour
 
          countGameStartText.color = colorsToChangeCountText[0];
 
-         countGameStartText.transform.DOScale(1.1f, 0.25f).SetEase(Ease.OutBack).OnComplete(() =>
+         countGameStartText.transform.DOScale(1.1f, 0.25f).SetEase(Ease.OutBack).SetUpdate(true).OnComplete(() =>
          {
-            countGameStartText.transform.DOScale(1f, 0.25f).SetEase(Ease.OutBack);
+            countGameStartText.transform.DOScale(1f, 0.25f).SetEase(Ease.OutBack).SetUpdate(true);
          });
         
          yield return new WaitForSecondsRealtime(0.75f);
       }
 
-      countGameStartText.transform.DOScale(0f, 0.25f).OnComplete(() =>
+      countGameStartText.transform.DOScale(0f, 0.25f).SetUpdate(true).OnComplete(() =>
       {
          countGameObj.SetActive(false);
       });
