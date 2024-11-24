@@ -18,8 +18,8 @@ public class WinnerScreen : Screens
     //[SerializeField] private RawImage bg;
     //[SerializeField] private List<Texture> bgsList = new List<Texture>();
     private void Awake()
-    
     {
+        
         initialScreenButton.button.onClick.AddListener(delegate 
         {
             GoToScreen(initialScreenButton.goToScreen);
@@ -68,6 +68,7 @@ public class WinnerScreen : Screens
     [SerializeField] public  Camera cam;
     public void ChangeModelImage(PlayerConfigurationData id) {
 
+        AudioManager.audioManager.ChangeMusic();
         foreach (var o in characterModels)
             o.SetActive(false);
        
