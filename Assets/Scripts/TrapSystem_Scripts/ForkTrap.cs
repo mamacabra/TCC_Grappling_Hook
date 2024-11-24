@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Character.States;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -41,6 +42,7 @@ namespace TrapSystem_Scripts
         public Vector3 growthRate = new Vector3(0.1f, 0f, 0.1f); // Growth per second for X and Z
         public Vector3 maxScale = new Vector3(5f, 1f, 5f); // Maximum scale limits
         private List<GameObject> playerObjects = new List<GameObject>();
+        
 
         void Start()
         {
@@ -113,8 +115,11 @@ namespace TrapSystem_Scripts
             }
             if (isChasing)
             {
-                playerPos = playerObjects[0].transform.position;
-                FollowPlayer(playerPos);
+                if (playerObjects.Count != 0)
+                {
+                    playerPos = playerObjects[0].transform.position;
+                    FollowPlayer(playerPos);
+                }
             }
             if (playerObjects.Count > 0)
             {
@@ -189,6 +194,9 @@ namespace TrapSystem_Scripts
                 isChasing = true;
                 if(other.gameObject.GetComponent<Character.Character>().CharacterEntity.CharacterState.State is DeathState) return;
                 playerObjects.Add(other.gameObject);
+                
+                if(other.gameObject.GetComponent<Character.Character>().CharacterEntity.CharacterState.State is DeathState) playerObjects.Remove(other.gameObject);
+                
             }
         }
 
@@ -220,9 +228,18 @@ namespace TrapSystem_Scripts
 
             if (other.gameObject.CompareTag("Character"))
             {
+                
                 playerObjects.Remove(other.gameObject);
+                Debug.Log("Removed player");
+                Debug.Log(playerObjects.Count() + " players left");
                 bittingPause = false;
                 triggerOn = false;
+                if (other.gameObject.GetComponent<Character.Character>().CharacterEntity.CharacterState
+                        .State is DeathState)
+                {
+                    playerObjects.Remove(other.gameObject);
+                    Debug.Log("Removed player");
+                }
             }
         }
     }
