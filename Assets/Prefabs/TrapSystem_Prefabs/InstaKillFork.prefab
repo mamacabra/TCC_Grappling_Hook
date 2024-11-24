@@ -46,7 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf8f519ef00a55428483e826c660c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallSpeed: 400
+  OnPlayerKilled:
+    m_PersistentCalls:
+      m_Calls: []
+  playerKilled: 0
+  fallSpeed: 800
 --- !u!65 &-3706887323321040178
 BoxCollider:
   m_ObjectHideFlags: 0
