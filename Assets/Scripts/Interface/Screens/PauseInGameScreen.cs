@@ -34,6 +34,7 @@ public class PauseInGameScreen : Screens
         ScenesManager.Instance.UnloadCurrentScene();
         InterfaceManager.Instance.inGame = false;
         GoToScreen(backToMenu.goToScreen);
+        Time.timeScale = 1;
     }
     
     public override void Close()
@@ -41,7 +42,7 @@ public class PauseInGameScreen : Screens
         //base.Close();
         //GoToScreen(continueButton.goToScreen);
         gameObject.SetActive(false);
-        Time.timeScale = 1;
+        // Time.timeScale = 1;
     }
     
     public void Continue()
@@ -49,6 +50,6 @@ public class PauseInGameScreen : Screens
         //base.Close();
         GoToScreen(continueButton.goToScreen);
         gameObject.SetActive(false);
-        Time.timeScale = 1;
+        // Time.timeScale = 1;
     }
 }

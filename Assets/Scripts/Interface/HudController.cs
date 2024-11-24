@@ -45,7 +45,8 @@ public class HudController : MonoBehaviour
          timeToWaitToStartCount = 0;
          for (int i = 0; i < players.Count; i++) {
             if (players[i].TryGetComponent(out Character.Character _character)) {
-               _character.CharacterEntity.CharacterState.SetReadyState();
+               if (_character.CharacterEntity.CharacterState.State is Character.States.WalkState)
+                  _character.CharacterEntity.CharacterState.SetReadyState();
             }
          }
          StartCoroutine(WaitToStartCount(0));
@@ -83,11 +84,11 @@ public class HudController : MonoBehaviour
          }
       }
 
-      yield return new WaitForSeconds(1);
+      yield return new WaitForSecondsRealtime(1);
 
       for (int i = 0; i < players.Count; i++) {
          if (players[i].TryGetComponent(out Character.Character _character)) {
-            yield return new WaitForSeconds(timeToSpawnCharacter);
+            yield return new WaitForSecondsRealtime(timeToSpawnCharacter);
             _character.PlaySpawnAnims();
          }
       }
@@ -95,7 +96,7 @@ public class HudController : MonoBehaviour
 
    IEnumerator WaitToStartCount(float plusTime)
    {
-      yield return new WaitForSeconds((timeToSpawnCharacter * timeToWaitToStartCount)+1.5f);
+      yield return new WaitForSecondsRealtime((timeToSpawnCharacter * timeToWaitToStartCount)+1.5f);
 
       countGameStartText.transform.localScale = Vector3.one;
 
@@ -110,7 +111,7 @@ public class HudController : MonoBehaviour
             countGameStartText.transform.DOScale(1f, 0.25f).SetEase(Ease.OutBack);
          });
 
-         yield return new WaitForSeconds(0.75f);
+         yield return new WaitForSecondsRealtime(0.75f);
          yield return null;
             
       }
@@ -145,7 +146,7 @@ public class HudController : MonoBehaviour
             countGameStartText.transform.DOScale(1f, 0.25f).SetEase(Ease.OutBack);
          });
         
-         yield return new WaitForSeconds(0.75f);
+         yield return new WaitForSecondsRealtime(0.75f);
       }
 
       countGameStartText.transform.DOScale(0f, 0.25f).OnComplete(() =>
@@ -158,13 +159,15 @@ public class HudController : MonoBehaviour
       List<GameObject> players = PlayersManager.Instance.PlayersGameObjects;
       for (int i = 0; i < players.Count; i++) {
          if (players[i].TryGetComponent(out Character.Character _character))
-            _character.CharacterEntity.CharacterState.SetWalkState();
+            if (_character.CharacterEntity.CharacterState.State is Character.States.ReadyState)
+               _character.CharacterEntity.CharacterState.SetWalkState();
       }
 
       // PowerUpManager.Instance.StartSpawn();
-      yield return new WaitForSeconds(0.5f);
+      yield return new WaitForSecondsRealtime(0.5f);
       InterfaceManager.Instance.isOnCount = false;
-
+      
+      Time.timeScale = 1;
       InterfaceManager.Instance.pause = false; ///////////////// @PAUSEISSUE CARALHO SE UM DIA A GENTE TIRAR O 3,2,1 DO PAUSE O NOSSO JOGO NÃO VAI DESPAUSAR
    }
 }
