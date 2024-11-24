@@ -18,12 +18,12 @@ public class SelectableSoundHandler : MonoBehaviour, IPointerEnterHandler, /*IPo
     [SerializeField] UiSoundsList click;
     [SerializeField] UiSoundsList hover;
     
-    private void Start() {
+    private void Awake() {
         m_Selectable = GetComponent<Selectable>();
     }
 
     public void OnPointerEnter(PointerEventData eventData){
-        if (!m_Selectable.interactable) return;
+        if (m_Selectable && !m_Selectable.interactable) return;
         if (playHoverSound && PlayerInputHandler.currentControl == PlayerInputHandler.CurrentControl.Mouse)
             AudioManager.audioManager?.PlayUiSoundEffect(hover);
     }
@@ -33,23 +33,23 @@ public class SelectableSoundHandler : MonoBehaviour, IPointerEnterHandler, /*IPo
     }*/
     
      public void OnPointerClick(PointerEventData eventData){
-        if (!m_Selectable.interactable) return;
+        if (m_Selectable && !m_Selectable.interactable) return;
         if (eventData.button == PointerEventData.InputButton.Left && playClickSound && PlayerInputHandler.currentControl == PlayerInputHandler.CurrentControl.Mouse)
              AudioManager.audioManager?.PlayUiSoundEffect(click);
      }
 
     public void OnSubmit(BaseEventData baseEventData){
-        if (!m_Selectable.interactable) return;
+        if (m_Selectable && !m_Selectable.interactable) return;
         if (playClickSound && (PlayerInputHandler.currentControl == PlayerInputHandler.CurrentControl.Gamepad || PlayerInputHandler.currentControl == PlayerInputHandler.CurrentControl.Keyboard))
             AudioManager.audioManager?.PlayUiSoundEffect(click);
     }
     public void OnSelect(BaseEventData baseEventData){
-        if (!m_Selectable.interactable) return;
+        if (m_Selectable && !m_Selectable.interactable) return;
         if (playHoverSound && (PlayerInputHandler.currentControl == PlayerInputHandler.CurrentControl.Gamepad || PlayerInputHandler.currentControl == PlayerInputHandler.CurrentControl.Keyboard))
             AudioManager.audioManager?.PlayUiSoundEffect(hover);
     }
     public void OnDeselect(BaseEventData baseEventData){// Only on mouse for now
-        if (!m_Selectable.interactable) return;
+        if (m_Selectable && !m_Selectable.interactable) return;
         //if (playUnhoverSound)
         //    AudioManager.audioManager?.PlayUiSoundEffect(unhoverSound);
     }
