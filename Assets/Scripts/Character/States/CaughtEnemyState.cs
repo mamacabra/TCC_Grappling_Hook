@@ -43,6 +43,7 @@ namespace Character.States
 
         public override void Exit()
         {
+            base.Exit();
             if (enemy.CharacterState.State is HookedToEnemyState)
                 enemy.CharacterState.SetWalkState();
         }

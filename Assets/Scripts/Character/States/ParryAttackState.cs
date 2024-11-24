@@ -46,6 +46,7 @@ namespace Character.States
 
         public override void Exit()
         {
+            base.Exit();
             CharacterEntity.CharacterMesh.animator?.SetBool("isParry", false);
         }
     }

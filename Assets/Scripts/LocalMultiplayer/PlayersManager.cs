@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using LocalMultiplayer.Data;
 using System.Linq;
+using System.Collections;
 
 namespace LocalMultiplayer
 {
@@ -221,12 +222,22 @@ namespace LocalMultiplayer
                         {
                             pC.CharacterEntity.CharacterState.SetLoserState(p1);
                         }
+                        if (pC.Id == playerWhoKilled)
+                            StartCoroutine(SetLastPlayerStandState(pC));
                         pC.CharacterEntity.CharacterMesh.animator.SetFloat("Speed", 0);
                     }
                 }
             }
 
             // SavePlayersConfigs();
+        }
+
+        IEnumerator SetLastPlayerStandState(Character.Character character){
+            bool actionEnded = false;
+            character.CharacterEntity.CharacterState.State.onExitState.AddListener(() => actionEnded = true);
+            // Wait Until last state exit to not cut any animation.
+            yield return new WaitUntil(() => actionEnded);
+            character.CharacterEntity.CharacterState.SetLastPlayerStandState();
         }
 
         public void RemovePointsToPlayer(int playerWhoKilled)

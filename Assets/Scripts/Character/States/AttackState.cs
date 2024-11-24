@@ -88,6 +88,7 @@ namespace Character.States
 
         public override void Exit()
         {
+            base.Exit();
             CharacterEntity.AttackMelee.DisableHitbox();
             CharacterEntity.CharacterMesh.animator?.SetBool("isAttacking", false);
 

@@ -23,6 +23,7 @@ namespace Character
             switch (State)
             {
                 case DeathState or WinnerState:
+                case WaitingState when state is AttackState or DashState or PrepareHookState:
                 case LoserState when state is not WinnerState:
                     return;
             }
@@ -140,6 +141,12 @@ namespace Character
         public void SetWinnerState()
         {
             var state = new WinnerState(CharacterEntity);
+            SetState(state);
+        }
+
+        public void SetLastPlayerStandState()
+        {
+            var state = new WaitingState(CharacterEntity);
             SetState(state);
         }
     }

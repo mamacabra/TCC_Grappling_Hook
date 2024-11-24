@@ -1,6 +1,8 @@
 using UnityEngine;
 
 using TrapSystem_Scripts.ModifierSystem;
+using System;
+using UnityEngine.Events;
 
 namespace Character.Utils
 {
@@ -26,6 +28,8 @@ namespace Character.Utils
         private bool isOverlap;
         private bool hasHit;
 
+        public UnityEvent onExitState = new UnityEvent();
+
         protected ACharacterState(CharacterEntity characterEntity)
         {
             CharacterEntity = characterEntity;
@@ -35,7 +39,7 @@ namespace Character.Utils
         public virtual void Enter() {}
         public virtual void Update() {}
         public virtual void FixedUpdate() {}
-        public virtual void Exit() {}
+        public virtual void Exit() { onExitState.Invoke(); }
 
         protected void Walk(float speed = WalkSpeed, bool isDash = false)
         {
