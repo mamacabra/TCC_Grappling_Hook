@@ -4,15 +4,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using Character.States;
 using LocalMultiplayer;
+using UnityEngine.Events;
 
 namespace TrapSystem_Scripts
 {
     public class ForkFall : MonoBehaviour
     {
+        public UnityEvent<GameObject> OnPlayerKilled;
+        
+        public bool playerKilled = false;
         public float fallSpeed = 20f;
         private bool canDestroyFork = false;
         private void Start()
         {
+            if (OnPlayerKilled == null)
+            {
+                OnPlayerKilled = new UnityEvent<GameObject>();
+                
+            }
             Debug.Log("set tag wall");
             AudioManager.audioManager.PlayLevelSoundEffect(LevelSoundsList.LevelForkTrap);
         }
@@ -65,6 +74,8 @@ namespace TrapSystem_Scripts
                fallSpeed = 0;
                transform.position = new Vector3(transform.position.x, 13f, transform.position.z);
                SetTag();
+               
+               OnPlayerKilled?.Invoke(other.gameObject);
             }
         }
 

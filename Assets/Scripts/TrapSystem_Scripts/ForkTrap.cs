@@ -42,6 +42,8 @@ namespace TrapSystem_Scripts
         public Vector3 growthRate = new Vector3(0.1f, 0f, 0.1f); // Growth per second for X and Z
         public Vector3 maxScale = new Vector3(5f, 1f, 5f); // Maximum scale limits
         private List<GameObject> playerObjects = new List<GameObject>();
+        private bool deadPlayer = false;
+        private List<GameObject> forks = new List<GameObject>();
         
 
         void Start()
@@ -52,7 +54,8 @@ namespace TrapSystem_Scripts
                 Debug.LogError("No waypoints assigned!");
                 return;
             }
-
+            
+            
             
             StartCoroutine(ActivateTrapAfterDelay());
 
@@ -146,6 +149,11 @@ namespace TrapSystem_Scripts
             transform.localScale = currentScale;
         }
 
+        private void PlayerGotKilled(GameObject playerKilled)
+        {
+            playerObjects.Remove(playerKilled);
+        }
+
         
 
         private void MoveTowardsTarget()
@@ -179,8 +187,8 @@ namespace TrapSystem_Scripts
             }; 
             var randomYRotation = Random.Range(0f, 360f); 
             var randomRotation = Quaternion.Euler(0, randomYRotation, 0); 
-    
-            Instantiate(fork, playerPosition + new Vector3(0, alturaGarfo, 0), randomRotation);
+            var forkfall = Instantiate(fork, playerPosition + new Vector3(0, alturaGarfo, 0), randomRotation).GetComponent<ForkFall>();
+            forkfall.OnPlayerKilled.AddListener(PlayerGotKilled);
             hasBitten = true;
         }
 
@@ -241,6 +249,7 @@ namespace TrapSystem_Scripts
                     Debug.Log("Removed player");
                 }
             }
+            ChooseNextWaypoint();
         }
     }
 }
