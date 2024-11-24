@@ -21,13 +21,15 @@ public class CharacterChoiceScreen : Screens
     private int objEnables = 0;
 
     private bool startGame = false;
+
+    private bool pressing = false;
     private void Awake()
     {
         backToMenu.button.onClick.AddListener(delegate { GoToScreen(backToMenu.goToScreen); });
-        playGame.button.onClick.AddListener(delegate { 
-            if (PlayersManager.Instance.CanInitGame) 
-                GoToScreen(playGame.goToScreen);
-            });
+        // playGame.button.onClick.AddListener(delegate { 
+        //     if (PlayersManager.Instance.CanInitGame) 
+        //         GoToScreen(playGame.goToScreen);
+        //     });
     }
 
     public override void Initialize()
@@ -203,9 +205,11 @@ public class CharacterChoiceScreen : Screens
     private void Update() {
         if (startGameSlider.value > 0.0f)
             SetButtonStartSlider(-0.5f);
+        if (pressing)
+            AddValueOnSlider();
         
     }
-    public void SetButtonStartSlider(float value){
+    public void SetButtonStartSlider(float value) {
         sliderSpeed = value;
 
         AudioManager.audioManager.SliderTest(startGameSlider.value);
@@ -219,5 +223,16 @@ public class CharacterChoiceScreen : Screens
                 AudioManager.audioManager.SliderTest(0);
             }
         }
+    }
+
+    public void AddValueOnSlider() {
+        float currentValue = sliderSpeed;
+        float valueToAdd = 0.5f;
+        if (currentValue == -0.5f) valueToAdd += 1.0f;
+        SetButtonStartSlider(sliderSpeed + valueToAdd);
+    }
+
+    public void SetPressing(bool value) {
+        pressing = value;
     }
 }

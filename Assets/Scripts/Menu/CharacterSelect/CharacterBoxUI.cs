@@ -264,10 +264,11 @@ public class CharacterBoxUI : MonoBehaviour
 
     private void Update() {
         if (pressed) {
-            float currentValue = choiceScreen.sliderSpeed;
-            float valueToAdd = 0.5f;
-            if (currentValue == -0.5f) valueToAdd += 1.0f;
-            choiceScreen.SetButtonStartSlider(choiceScreen.sliderSpeed + valueToAdd);
+            // float currentValue = choiceScreen.sliderSpeed;
+            // float valueToAdd = 0.5f;
+            // if (currentValue == -0.5f) valueToAdd += 1.0f;
+            // choiceScreen.SetButtonStartSlider(choiceScreen.sliderSpeed + valueToAdd);
+            choiceScreen.AddValueOnSlider();
         }
     }
 }
