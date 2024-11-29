@@ -13,7 +13,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: GlassGeneric
-    second: {fileID: 2100000, guid: 7f8325cd398ad2e489b9234d93375e50, type: 2}
+    second: {fileID: 2100000, guid: 4bdd87653896f7643927cc28a86cb44d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -40,7 +40,8 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    extraUserProperties: []
+    extraUserProperties:
+    - '#BAKERY{"meshName":["BottleWhisky"],"padding":[16],"unwrapper":[0]}'
     clipAnimations: []
     isReadable: 0
   meshes:
@@ -58,7 +59,7 @@ ModelImporter:
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
