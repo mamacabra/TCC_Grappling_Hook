@@ -11111,7 +11111,7 @@ MonoBehaviour:
   renderSettingsRTPVHDR: 0
   renderSettingsRTPVWidth: 640
   renderSettingsRTPVHeight: 360
-  lastBakeTime: 306
+  lastBakeTime: 316
   enlightenWarningShown: 0
   enlightenWarningShown2: 0
   uniqueLights:
@@ -12323,7 +12323,9 @@ MonoBehaviour:
     - GlassJugLarge
     padding: 0b000000
     unwrapper: 00000000
-  maps: []
+  maps:
+  - {fileID: 2800000, guid: 7358f40f800e80c4fb8e30bf0baa920d, type: 3}
+  - {fileID: 2800000, guid: 24ae077789b4411459d3018db7e64d4d, type: 3}
   masks: []
   dirMaps: []
   rnmMaps0: []
