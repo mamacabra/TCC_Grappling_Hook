@@ -24,24 +24,20 @@ namespace TrapSystem_Scripts.ModifierSystem
 
     public class SlideModifier : MovementModifier {
         public override void Enter(CharacterEntity characterEntity) {
-            Debug.Log("SlideModifier Enter: " + characterEntity.Character?.transform.name);
             characterEntity.CharacterVFX?.PlaySlideModifierVFX();
         }
 
         public override void Exit(CharacterEntity characterEntity) {
-            Debug.Log("SlideModifier Exit: " + characterEntity.Character?.transform.name);
             characterEntity.CharacterVFX?.StopSlideModifierVFX();
         }
     }
 
     public class GlueModifier : MovementModifier {
         public override void Enter(CharacterEntity characterEntity) {
-            Debug.Log("GlueModifier Enter: " + characterEntity.Character?.transform.name);
             characterEntity.CharacterVFX?.PlayGlueModifierVFX();
         }
 
         public override void Exit(CharacterEntity characterEntity) {
-            Debug.Log("GlueModifier Exit: " + characterEntity.Character?.transform.name);
             characterEntity.CharacterVFX?.StopGlueModifierVFX();
         }
     }
