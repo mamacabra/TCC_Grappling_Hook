@@ -22,14 +22,16 @@ namespace TrapSystem_Scripts
         private void OnTriggerEnter(Collider other) {
             if (!other.CompareTag("Character")) return;
             if (other.attachedRigidbody.TryGetComponent(out IModifyable modifyable)){
-                modifyable.AddModifier(slideModifier);
+                var characterEntity = other.attachedRigidbody.GetComponent<Character.Character>().CharacterEntity;
+                modifyable.AddModifier(characterEntity, slideModifier);
             }
         }
 
         private void OnTriggerExit(Collider other) {
             if (!other.CompareTag("Character")) return;
             if (other.attachedRigidbody.TryGetComponent(out IModifyable modifyable)){
-                modifyable.RemoveModifier(slideModifier);
+                var characterEntity = other.attachedRigidbody.GetComponent<Character.Character>().CharacterEntity;
+                modifyable.RemoveModifier(characterEntity, slideModifier);
                 // if (modifyable is SampleMovement) StartCoroutine(RemoveSpeed(modifyable as SampleMovement));
             }
         }

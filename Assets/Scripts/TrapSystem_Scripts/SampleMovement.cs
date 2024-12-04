@@ -29,9 +29,9 @@ public class SampleMovement : MonoBehaviour, IModifyable
         targetSpeed = dir.normalized * Mathf.MoveTowards(currentSpeed.magnitude, speed, 50 * Time.deltaTime);
         acceleration = speed;
 
-        foreach (var modifier in Modifiers) {
-            if (modifier is MovementModifier) modifier.ApplyModifier(ref targetSpeed, ref acceleration, dir);
-        }
+        // foreach (var modifier in Modifiers) {
+        //     if (modifier is MovementModifier) modifier.ApplyModifier(ref targetSpeed, ref acceleration, dir);
+        // }
 
         currentSpeed = Vector3.MoveTowards(currentSpeed, targetSpeed, acceleration);
 

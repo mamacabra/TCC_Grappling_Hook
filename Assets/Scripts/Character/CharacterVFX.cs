@@ -6,28 +6,15 @@ namespace Character
     public class CharacterVFX : ACharacterMonoBehaviour
     {
         private ParticleSystem dashVfx;
+        [SerializeField] private ParticleSystem glueModifierVfx;
         private ParticleSystem parryVfx;
         private ParticleSystem slashVfx;
-        private ParticleSystem spawnVfx;
+        [SerializeField] private ParticleSystem slideModifierVfx;
+        [SerializeField] private ParticleSystem spawnVfx;
 
         private void GetDashVFX()
         {
             dashVfx = CharacterEntity.CharacterMesh.animator?.transform.Find("vfx.Dash").GetComponent<ParticleSystem>();
-        }
-
-        private void GetParryVFX()
-        {
-            parryVfx = CharacterEntity.CharacterMesh.animator?.transform.Find("vfx.Parry").GetComponent<ParticleSystem>();
-        }
-
-        private void GetSlashVFX()
-        {
-            slashVfx = CharacterEntity.CharacterMesh.animator?.transform.Find("vfx.Slash").GetComponent<ParticleSystem>();
-        }
-
-        private void GetSpawnVFX()
-        {
-            spawnVfx = CharacterEntity.Character.transform.Find("vfx.Spawn").GetComponent<ParticleSystem>();
         }
 
         public void PlayDashVFX()
@@ -36,16 +23,62 @@ namespace Character
             dashVfx?.Play();
         }
 
-        public void PlayParryVFX()
+        private void StopDashVFX()
         {
-            if (parryVfx is null) GetParryVFX();
-            parryVfx?.Play();
+            dashVfx?.Stop();
+        }
+
+        public void StopDashVFXWithDelay(float delay = 0.2f)
+        {
+            Invoke(nameof(StopDashVFX), delay);
+        }
+
+        private void GetGlueModifierVFX()
+        {
+            glueModifierVfx = CharacterEntity.Character.transform.Find("vfx.GlueModifier").GetComponent<ParticleSystem>();
+        }
+
+        public void PlayGlueModifierVFX()
+        {
+            if (glueModifierVfx is null) GetGlueModifierVFX();
+            glueModifierVfx?.Play();
+        }
+
+        public void StopGlueModifierVFX()
+        {
+            glueModifierVfx?.Stop();
+        }
+
+        private void GetSlashVFX()
+        {
+            slashVfx = CharacterEntity.CharacterMesh.animator?.transform.Find("vfx.Slash").GetComponent<ParticleSystem>();
         }
 
         public void PlaySlashVFX()
         {
             if (slashVfx is null) GetSlashVFX();
             slashVfx?.Play();
+        }
+
+        private void GetSlideModifierVFX()
+        {
+            slideModifierVfx = CharacterEntity.Character.transform.Find("vfx.SlideModifier").GetComponent<ParticleSystem>();
+        }
+
+        public void PlaySlideModifierVFX()
+        {
+            if (slideModifierVfx is null) GetSlideModifierVFX();
+            slideModifierVfx?.Play();
+        }
+
+        public void StopSlideModifierVFX()
+        {
+            slideModifierVfx?.Stop();
+        }
+
+        private void GetSpawnVFX()
+        {
+            spawnVfx = CharacterEntity.Character.transform.Find("vfx.Spawn").GetComponent<ParticleSystem>();
         }
 
         public void PlaySpawnVFX()
@@ -66,14 +99,15 @@ namespace Character
             Invoke(nameof(PlaySpawnVFX), delay);
         }
 
-        public void StopDashVFXWithDelay(float delay = 0.2f)
+        private void GetParryVFX()
         {
-            Invoke(nameof(StopDashVFX), delay);
+            parryVfx = CharacterEntity.CharacterMesh.animator?.transform.Find("vfx.Parry").GetComponent<ParticleSystem>();
         }
 
-        private void StopDashVFX()
+        public void PlayParryVFX()
         {
-            dashVfx?.Stop();
+            if (parryVfx is null) GetParryVFX();
+            parryVfx?.Play();
         }
     }
 }

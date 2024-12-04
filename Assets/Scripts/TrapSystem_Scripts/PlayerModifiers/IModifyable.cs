@@ -1,19 +1,20 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Character;
 
 namespace TrapSystem_Scripts.ModifierSystem
 {
     public interface IModifyable {
         List<AModifier> Modifiers { get; }
-        void AddModifier(AModifier modifier) {
+        void AddModifier(CharacterEntity characterEntity, AModifier modifier) {
             if (Modifiers.Contains(modifier)) return;
             Modifiers.Add(modifier);
-            modifier.Enter();
+            modifier.Enter(characterEntity);
         }
-        void RemoveModifier(AModifier modifier){
+        void RemoveModifier(CharacterEntity characterEntity, AModifier modifier){
             if (!Modifiers.Contains(modifier)) return;
             Modifiers.Remove(modifier);
-            modifier.Exit();
+            modifier.Exit(characterEntity);
         }
     }
 }
