@@ -34,20 +34,24 @@ namespace Character.Melee
                 return;
             }
 
-            if (enemy.CharacterEntity.CharacterState.State is AttackState)
+            var characterForward = CharacterEntity.Character.transform.forward;
+            var enemyForward = enemy.CharacterEntity.Character.transform.forward;
+
+            if (Vector3.Dot(characterForward, enemyForward) < 0 && enemy.CharacterEntity.CharacterState.State is AttackState)
             {
                 VFXManager.Instance.PlayParryVFX(CharacterEntity.Character.transform.position, enemy.CharacterEntity.Character.transform.position);
                 enemy.CharacterEntity.CharacterState.SetParryAttackState();
                 CharacterEntity.CharacterState.SetParryAttackState();
                 AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.AttackParry);
+                CinemachineShake.Instance.ShakeCamera(2.0f, 0.4f);
             }
             else
             {
                 enemy.CharacterEntity.CharacterState.SetDeathState(CharacterEntity.Character.characterBody);
                 PlayersManager.Instance.AddPointsToPlayer(CharacterEntity.Character.Id,this.transform,other.transform);
                 PlayersManager.Instance.PlayersToSendToCamera(other.transform, false);
+                CinemachineShake.Instance.ShakeCamera(1.0f, 0.2f);
             }
-
         }
 
         private void Parrynator()
