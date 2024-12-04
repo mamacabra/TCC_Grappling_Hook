@@ -34,7 +34,10 @@ namespace Character.Melee
                 return;
             }
 
-            if (enemy.CharacterEntity.CharacterState.State is AttackState)
+            var characterForward = CharacterEntity.Character.transform.forward;
+            var enemyForward = enemy.CharacterEntity.Character.transform.forward;
+
+            if (Vector3.Dot(characterForward, enemyForward) < 0 && enemy.CharacterEntity.CharacterState.State is AttackState)
             {
                 VFXManager.Instance.PlayParryVFX(CharacterEntity.Character.transform.position, enemy.CharacterEntity.Character.transform.position);
                 enemy.CharacterEntity.CharacterState.SetParryAttackState();
@@ -47,7 +50,6 @@ namespace Character.Melee
                 PlayersManager.Instance.AddPointsToPlayer(CharacterEntity.Character.Id,this.transform,other.transform);
                 PlayersManager.Instance.PlayersToSendToCamera(other.transform, false);
             }
-
         }
 
         private void Parrynator()
