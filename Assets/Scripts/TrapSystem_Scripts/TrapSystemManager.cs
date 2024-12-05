@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 namespace TrapSystem_Scripts
 {
@@ -10,9 +12,10 @@ namespace TrapSystem_Scripts
         [SerializeField] private GameObject trapMenuUI;
         [SerializeField] private float timeToActivateTrap = 5.0f;
         [SerializeField] private GameObject shadowTrap;
+        public Toggle shadowTrapToggle;
 
         private void Start()
-        {
+        { 
             StartCoroutine(ActivateTrapAfterTime());
         }
 
@@ -32,7 +35,10 @@ namespace TrapSystem_Scripts
         private IEnumerator ActivateTrapAfterTime()
         {
             yield return new WaitForSeconds(timeToActivateTrap); 
-            shadowTrap.SetActive(true);
+            if (shadowTrapToggle.isOn)
+            {
+                shadowTrap.SetActive(true);
+            }
         }
         
     }

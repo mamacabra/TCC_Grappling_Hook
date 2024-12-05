@@ -23,7 +23,7 @@ namespace TrapSystem_Scripts
         private readonly float overLimits = 10f;
 
         [Header("Configurações de Tempo")]
-        public float timeBeforeDeath = 3f;     
+        public float timeBeforeDeath = 0.5f;     
         public float timeBeforeInstaKill = 2f;
 
         private List<PlayerTrapData> players = new List<PlayerTrapData>();

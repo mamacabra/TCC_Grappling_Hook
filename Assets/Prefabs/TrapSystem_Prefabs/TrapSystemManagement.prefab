@@ -284,11 +284,11 @@ MonoBehaviour:
   maxX: 60
   minZ: -32
   maxZ: 32
-  timeBeforeDeath: 1
+  timeBeforeDeath: 0.5
   timeBeforeInstaKill: 2
   cutlery:
-  - {fileID: 9146939633919487612, guid: 1de638525cdd2f64899d559de3947a5c, type: 3}
-  - {fileID: 9146939633919487612, guid: 5cb972bb2b9c21c4e86b89cec66dc2e0, type: 3}
+  - {fileID: 9146939633919487612, guid: 75b98bee87765e54f9b22ef97f048051, type: 3}
+  - {fileID: 9146939633919487612, guid: 799feb4aa708ecb4f9a9b65a07ca846f, type: 3}
 --- !u!1 &711467526513946708
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,8 +1411,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trapMenuUI: {fileID: 1412212113796290830}
-  timeToActivateTrap: 10
+  timeToActivateTrap: 1
   shadowTrap: {fileID: 8995387307739662653}
+  shadowTrapToggle: {fileID: 6190951149533595584}
 --- !u!1 &5985417218147244343
 GameObject:
   m_ObjectHideFlags: 0
@@ -2624,7 +2625,7 @@ Transform:
   m_GameObject: {fileID: 8995387307739662653}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.00000068278, y: 1, z: -20.8}
+  m_LocalPosition: {x: 193.1, y: 1, z: -20.8}
   m_LocalScale: {x: 13, y: 0.26135, z: 13}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2650,10 +2651,10 @@ MonoBehaviour:
   - {fileID: 1307197535398045178}
   - {fileID: 5351919410260557726}
   - {fileID: 1743079875093172414}
-  moveSpeed: 10
+  moveSpeed: 20
   moveTowardsPlayerSpeed: 5
   pauseTime: 5
-  delayTime: 1
+  delayTime: 5
   stopTime: 0
   cooldown: 0
   startCooldown: 0
@@ -2666,8 +2667,9 @@ MonoBehaviour:
   - {fileID: 9146939633919487612, guid: 5cb972bb2b9c21c4e86b89cec66dc2e0, type: 3}
   - {fileID: 9146939633919487612, guid: 1de638525cdd2f64899d559de3947a5c, type: 3}
   shadow: {fileID: 8995387307739662653}
-  growthRate: {x: 0.5, y: 0, z: 0.5}
-  maxScale: {x: 45, y: 1, z: 45}
+  growthRate: {x: 1, y: 0, z: 1}
+  maxScale: {x: 90, y: 1, z: 90}
+  trapSystemManager: {fileID: 2783291446542639114}
 --- !u!54 &6292602548471338075
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ namespace TrapSystem_Scripts
         public float moveSpeed = 5f;
         public float moveTowardsPlayerSpeed = 1f;
         public float pauseTime = 2f;
-        public float delayTime = 3f;  // Adjustable delay before trap starts working
+        public float delayTime = 10f;  // Adjustable delay before trap starts working
         public float stopTime = 0f;   // Adjustable stop time when colliding with a player
 
         [SerializeField] private float cooldown = 0f;
@@ -45,6 +45,8 @@ namespace TrapSystem_Scripts
         private bool deadPlayer = false;
         private List<GameObject> forks = new List<GameObject>();
         
+        public TrapSystemManager trapSystemManager;
+        
 
         void Start()
         {
@@ -54,8 +56,6 @@ namespace TrapSystem_Scripts
                 Debug.LogError("No waypoints assigned!");
                 return;
             }
-            
-            
             
             StartCoroutine(ActivateTrapAfterDelay());
 
