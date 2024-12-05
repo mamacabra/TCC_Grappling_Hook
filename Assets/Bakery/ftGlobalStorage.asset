@@ -809,7 +809,8 @@ MonoBehaviour:
   - Assets/Models/EnvironmentRaw/Env.DinnerTable/Jonathan.Env.Raw/whiskey.fbx
   - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/NapkinTri.fbx
   - Assets/Models/EnvironmentRaw/Env.DinnerTable/Crockery.Env.Raw/NapkinHolderTri.fbx
-  uvOverlapAssetList: 00000000ffffffff00000000000000000000000000000000
+  - Assets/VFX/vfx.Mesh/vfxMBall_Pack.fbx
+  uvOverlapAssetList: 00000000ffffffff0000000000000000000000000000000000000000
   xatlasWarningShown: 0
   foundCompatibleSetup: 1
   gpuName: NVIDIA GeForce RTX 2060
