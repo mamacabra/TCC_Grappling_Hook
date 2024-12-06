@@ -31,7 +31,7 @@ public class PauseInGameScreen : Screens
 
     public void QuitGame()
     {
-        ScenesManager.Instance.UnloadCurrentScene();
+        ScenesManager.Instance.ReloadMainScene();
         InterfaceManager.Instance.inGame = false;
         GoToScreen(backToMenu.goToScreen);
         Time.timeScale = 1;

@@ -27,5 +27,9 @@ namespace SceneSelect
             onSceneUnloadOperation = SceneManager.UnloadSceneAsync(currentSceneIndex, UnloadSceneOptions.None);
             currentSceneIndex = -1;
         }
+
+        public void ReloadMainScene() {
+            SceneManager.LoadSceneAsync(scenesData.mainSceneData.SceneIndex, LoadSceneMode.Single);
+        }
     }
 }

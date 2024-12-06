@@ -14,6 +14,7 @@ namespace SceneSelect
     [CreateAssetMenu(fileName = "ScenesData", menuName = "ScenesData", order = 0)]
     public class ScenesData : ScriptableObject {
         public SceneData[] scenesData = new SceneData[0];
+        public SceneData mainSceneData;
         private SceneData[] sortedScenes = new SceneData[0];
         private int currentRandomScene = 0;
 
