@@ -279,13 +279,12 @@ MonoBehaviour:
   fallingObjectPrefab: {fileID: 0}
   instaKillPrefab: {fileID: 9146939633919487612, guid: 75b98bee87765e54f9b22ef97f048051,
     type: 3}
-  fallHeight: 50
+  fallHeight: 20
   minX: -60
   maxX: 60
   minZ: -32
   maxZ: 32
-  timeBeforeDeath: 0.5
-  timeBeforeInstaKill: 2
+  timeBeforeDeath: 2
   cutlery:
   - {fileID: 9146939633919487612, guid: 75b98bee87765e54f9b22ef97f048051, type: 3}
   - {fileID: 9146939633919487612, guid: 799feb4aa708ecb4f9a9b65a07ca846f, type: 3}

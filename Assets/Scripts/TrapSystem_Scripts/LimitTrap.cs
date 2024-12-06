@@ -24,7 +24,6 @@ namespace TrapSystem_Scripts
 
         [Header("Configurações de Tempo")]
         public float timeBeforeDeath = 0.5f;     
-        public float timeBeforeInstaKill = 2f;
 
         private List<PlayerTrapData> players = new List<PlayerTrapData>();
         [SerializeField] private List<GameObject> cutlery;
@@ -67,13 +66,11 @@ namespace TrapSystem_Scripts
         var isPlayerOutside = player.position.x < minX || player.position.x > maxX || 
                               player.position.z < minZ || player.position.z > maxZ;
         
-        var isPlayerOverLimits = player.position.x < minX - overLimits || player.position.x > maxX + overLimits || 
-                                 player.position.z < minZ - overLimits || player.position.z > maxZ + overLimits;
-        
-        
+
         
         if (isPlayerOutside)
         {
+            if (playerCharacter.CharacterEntity.CharacterState.State is DeathState or WinnerState)return;
             if (!playerData.isOutsideArena)
             {
                 playerData.isOutsideArena = true;
@@ -81,21 +78,10 @@ namespace TrapSystem_Scripts
             }
             else if (Time.time - playerData.outsideTime >= timeBeforeDeath)
             {
-                if (playerCharacter.CharacterEntity.CharacterState.State is not DeathState)
-                {
-                    SpawnFallingObject(player);
-                    playerData.isOutsideArena = false;
-                    playerData.outsideTime = 0f;
-                }
-            }
-            else if (Time.time - playerData.outsideTime >= timeBeforeInstaKill)
-            {
-                if (!isPlayerOverLimits) continue;
-                if (playerCharacter.CharacterEntity.CharacterState.State is DeathState) continue;
-                SpawnInstaKillObject(player);
+                if (playerCharacter.CharacterEntity.CharacterState.State is DeathState or WinnerState)return;
+                SpawnFallingObject(player);
                 playerData.isOutsideArena = false;
                 playerData.outsideTime = 0f;
-
             }
         }
         else
@@ -116,27 +102,47 @@ namespace TrapSystem_Scripts
             {
                 var index = Random.Range(0, cutlery.Count);
                 fallingObjectPrefab = cutlery[index];
-            }; 
+            };
             if (fallingObjectPrefab == null)
             {
                 Debug.LogError("Prefab do Objeto que Cai não foi atribuído.");
                 return;
             }
-            
+    
             var randomYRotation = Random.Range(0f, 360f); 
             var randomRotation = Quaternion.Euler(0, randomYRotation, 0);
-            
-            Vector3 spawnPosition = new Vector3(player.position.x, fallHeight, player.position.z);
+    
+            // Time for the object to fall
+            float fallTime = Mathf.Sqrt(2 * fallHeight / Physics.gravity.magnitude);
+
+            // Predict future position
+            Vector3 playerVelocity = GetPlayerVelocity(player);
+            Vector3 predictedPosition = player.position + (playerVelocity * fallTime);
+
+            // Spawn the object at the predicted position
+            Vector3 spawnPosition = new Vector3(predictedPosition.x, fallHeight, predictedPosition.z);
             Instantiate(fallingObjectPrefab, spawnPosition, randomRotation);
         }
-        void SpawnInstaKillObject(Transform player)
+        Vector3 GetPlayerVelocity(Transform player)
         {
-            
-            var randomYRotation = Random.Range(0f, 360f); 
-            var randomRotation = Quaternion.Euler(0, randomYRotation, 0);
-            
-            Vector3 spawnPosition = new Vector3(player.position.x, fallHeight, player.position.z);
-            Instantiate(instaKillPrefab, spawnPosition, randomRotation);
+            // Example velocity calculation if Rigidbody is not available
+            Rigidbody playerRb = player.GetComponent<Rigidbody>();
+            if (playerRb != null)
+            {
+                return playerRb.velocity;
+            }
+
+            // If Rigidbody is not available, calculate velocity manually
+            PlayerTrapData playerData = FindPlayerData(player); // Implement this method to get PlayerTrapData
+            Vector3 lastPosition = playerData.playerTransform.position;
+            playerData.playerTransform.position = player.position;
+
+            return (player.position - lastPosition) / Time.deltaTime;
+        }
+        
+        PlayerTrapData FindPlayerData(Transform player)
+        {
+            return players.Find(p => p.playerTransform == player);
         }
     }
 

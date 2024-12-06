@@ -50,7 +50,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   playerKilled: 0
-  fallSpeed: 1000
+  fallSpeed: 800
 --- !u!65 &-3706887323321040178
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -70,7 +70,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.673151, y: 6.0214577, z: 4.314435}
+  m_Size: {x: 15, y: 6.0214577, z: 15}
   m_Center: {x: -0.044538498, y: -8.378038, z: 0.047758102}
 --- !u!1001 &4803532589862081694
 PrefabInstance:
