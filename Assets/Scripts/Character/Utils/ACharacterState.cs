@@ -123,8 +123,6 @@ namespace Character.Utils
 
             if (isDash) {
                 CharacterEntity.Character.CurrentSpeed = direction * speed;
-                targetSpeed = direction * speed;
-                acceleration = WalkAcceleration * Time.deltaTime;
             }
 
             if (hasSlow && CharacterEntity.Character.CurrentSpeed.magnitude > speed){
