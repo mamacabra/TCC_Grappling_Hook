@@ -20,22 +20,22 @@ namespace VFX
         public void PlayHookDispatchVFX(Vector3 position)
         {
             if (hookDispatchVfx is null) return;
-            Instantiate(hookDispatchVfx, position, Quaternion.identity);
-            hookDispatchVfx.Play();
+            var vfx = Instantiate(hookDispatchVfx, position, Quaternion.identity);
+            ScheduleDestroy(vfx);
         }
 
         public void PlayHookHitVFX(Vector3 position)
         {
             if (hookHitVfx is null) return;
-            Instantiate(hookHitVfx, position, Quaternion.identity);
-            hookHitVfx.Play();
+            var vfx = Instantiate(hookHitVfx, position, Quaternion.identity);
+            ScheduleDestroy(vfx);
         }
 
         public void PlayParryVFX(Vector3 position)
         {
             if (parryVfx is null) return;
-            Instantiate(parryVfx, position, Quaternion.identity);
-            parryVfx.Play();
+            var vfx = Instantiate(parryVfx, position, Quaternion.identity);
+            ScheduleDestroy(vfx);
         }
 
         public void PlayParryVFX(Vector3 position, Vector3 enemyPosition)
@@ -43,15 +43,21 @@ namespace VFX
             if (parryVfx is null) return;
             var middlePoint = (position + enemyPosition) / 2;
 
-            Instantiate(parryVfx, middlePoint, Quaternion.identity);
-            parryVfx.Play();
+            var vfx = Instantiate(parryVfx, middlePoint, Quaternion.identity);
+            ScheduleDestroy(vfx);
         }
 
         public void PlayVictoryVFX(Vector3 position)
         {
             if (victoryVfx is null) return;
-            Instantiate(victoryVfx, position, Quaternion.identity);
-            victoryVfx.Play();
+            var vfx = Instantiate(victoryVfx, position, Quaternion.identity);
+            ScheduleDestroy(vfx);
+        }
+
+        private static void ScheduleDestroy(ParticleSystem vfx)
+        {
+            var delay = vfx.main.duration + vfx.main.startLifetime.constant;
+            Destroy(vfx.gameObject, delay);
         }
     }
 }
