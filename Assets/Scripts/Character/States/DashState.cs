@@ -27,7 +27,7 @@ namespace Character.States
         {
             countDown += Time.fixedDeltaTime;
 
-            if (countDown > DashDuration * DashDecelerationTimePercent)
+            if (countDown > DashDuration * DashDecelerationTimePercent && CharacterEntity.Character.Modifiers.Count == 0)
             {
                 var timePercent = Mathf.Floor((countDown * 100) / DashDuration);
                 var outSpeed = DashSpeed - DashSpeed * (timePercent / 100);
