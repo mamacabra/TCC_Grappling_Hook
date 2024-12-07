@@ -44,6 +44,7 @@ namespace Character.Melee
                 CharacterEntity.CharacterState.SetParryAttackState();
                 AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.AttackParry);
                 CinemachineShake.Instance.ShakeCamera(1.0f, 0.4f);
+                CharacterEntity.GamepadVibrate.RumblePulse(0.1f, 0.2f, 0.4f);
             }
             else
             {
@@ -51,6 +52,7 @@ namespace Character.Melee
                 PlayersManager.Instance.AddPointsToPlayer(CharacterEntity.Character.Id,this.transform,other.transform);
                 PlayersManager.Instance.PlayersToSendToCamera(other.transform, false);
                 CinemachineShake.Instance.ShakeCamera(0.5f, 0.2f);
+                CharacterEntity.GamepadVibrate.RumblePulse(0.1f, 0.2f, 0.4f);
             }
         }
 

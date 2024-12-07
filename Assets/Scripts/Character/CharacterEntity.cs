@@ -14,6 +14,7 @@ namespace Character
         public CharacterState CharacterState;
         public CharacterUI CharacterUI;
         public CharacterVFX CharacterVFX;
+        public GamepadVibrate GamepadVibrate;
 
         public AttackMelee AttackMelee;
 

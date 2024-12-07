@@ -40,6 +40,7 @@ namespace Character
             var characterState = gameObject.GetComponent<CharacterState>();
             var characterUI = gameObject.GetComponent<CharacterUI>();
             var characterVFX = gameObject.GetComponent<CharacterVFX>();
+            var gamepadVibrate = gameObject.GetComponent<GamepadVibrate>();
 
             var attackMelee = gameObject.transform.Find("Body/AttackMelee").GetComponent<AttackMelee>();
 
@@ -53,6 +54,7 @@ namespace Character
                 CharacterState = characterState,
                 CharacterUI = characterUI,
                 CharacterVFX = characterVFX,
+                GamepadVibrate = gamepadVibrate,
 
                 AttackMelee = attackMelee,
 
