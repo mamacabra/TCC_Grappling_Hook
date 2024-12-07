@@ -26,7 +26,6 @@ public class HudController : MonoBehaviour
 
    private void OnEnable()
    {
-
       matchPointFeedback.SetActive(false);
       if (InterfaceManager.Instance)
       {
@@ -34,11 +33,10 @@ public class HudController : MonoBehaviour
          InterfaceManager.Instance.OnRestartGame += RestarGame;
       }
 
+      InterfaceManager.Instance.isOnCount = true;
       if (!InterfaceManager.Instance.inGame)
       {
-         InterfaceManager.Instance.isOnCount = true;
          InterfaceManager.Instance.inGame = true;
-
       }
       else
       {

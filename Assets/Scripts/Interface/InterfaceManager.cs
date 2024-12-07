@@ -73,17 +73,25 @@ public class InterfaceManager : MonoBehaviour
           startNewGame = true;
           OnStartCount?.Invoke();
      }
+
+     public InputDevice idGamepad;
      private void Update()
      {
           bool startPressed = false;
           foreach (var gamepad in Gamepad.all) {
-               if (gamepad.startButton.wasPressedThisFrame) {
+               if (gamepad.startButton.wasPressedThisFrame)
+               {
+                    if(!pause) idGamepad = gamepad;
+                    else { if (gamepad != idGamepad) return; }
                     startPressed = true;
                     break;
                }
           }
           foreach (var device in InputSystem.devices) {
-               if (device is Keyboard keyboard && keyboard.escapeKey.wasPressedThisFrame) {
+               if (device is Keyboard keyboard && keyboard.escapeKey.wasPressedThisFrame)
+               {
+                    if(!pause) idGamepad = null;
+                    else { if (idGamepad != null)return; }
                     startPressed = true;
                     break;
                }
@@ -95,8 +103,14 @@ public class InterfaceManager : MonoBehaviour
                     if(isOnCount || isOnFeedback || PlayersManager.Instance.GameOver)return;
                     if (!pause)
                     {
-                         ShowSpecificScreen(ScreensName.Pause_InGame_Screen);
                          pause = true;
+
+                         /*foreach (var p in PlayersManager.Instance.PlayersGameObjects)
+                         {
+                              p.GetComponent<PlayerInput>().
+                         }*/
+                         
+                         ShowSpecificScreen(ScreensName.Pause_InGame_Screen);
                     }
                     else
                     {
