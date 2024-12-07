@@ -23,22 +23,22 @@ public class HudController : MonoBehaviour
 
    [SerializeField] private GameObject matchPointFeedback;
    [HideInInspector]public bool gameAlreadyStarted = false;
-  
+
    private void OnEnable()
    {
-      
+
       matchPointFeedback.SetActive(false);
       if (InterfaceManager.Instance)
       {
          InterfaceManager.Instance.OnStartCount += StartCount;
          InterfaceManager.Instance.OnRestartGame += RestarGame;
       }
-      
+
       if (!InterfaceManager.Instance.inGame)
       {
          InterfaceManager.Instance.isOnCount = true;
          InterfaceManager.Instance.inGame = true;
-        
+
       }
       else
       {
@@ -66,14 +66,14 @@ public class HudController : MonoBehaviour
    {
       gameAlreadyStarted = false;
    }
-   
+
    public void StartCount()
    {
       players = PlayersManager.Instance.PlayersGameObjects;
       timeToWaitToStartCount = players.Count;
       StartCoroutine(InitPlayers());
       StartCoroutine(WaitToStartCount(2));
-      
+
    }
 
    IEnumerator InitPlayers()
@@ -113,12 +113,12 @@ public class HudController : MonoBehaviour
 
          yield return new WaitForSecondsRealtime(0.75f);
          yield return null;
-            
+
       }
 
       if (!gameAlreadyStarted)
       {
-            
+
          gameAlreadyStarted = true;
          List<PlayerConfigurationData> list = new List<PlayerConfigurationData>();
          list = PlayersManager.Instance.ReturnPlayersList();
@@ -145,7 +145,7 @@ public class HudController : MonoBehaviour
          {
             countGameStartText.transform.DOScale(1f, 0.25f).SetEase(Ease.OutBack).SetUpdate(true);
          });
-        
+
          yield return new WaitForSecondsRealtime(0.75f);
       }
 
@@ -166,7 +166,8 @@ public class HudController : MonoBehaviour
       // PowerUpManager.Instance.StartSpawn();
       yield return new WaitForSecondsRealtime(0.5f);
       InterfaceManager.Instance.isOnCount = false;
-      
+      Cursor.visible = false;
+
       Time.timeScale = 1;
       InterfaceManager.Instance.pause = false; ///////////////// @PAUSEISSUE CARALHO SE UM DIA A GENTE TIRAR O 3,2,1 DO PAUSE O NOSSO JOGO NÃO VAI DESPAUSAR
    }

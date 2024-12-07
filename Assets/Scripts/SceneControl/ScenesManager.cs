@@ -18,6 +18,7 @@ namespace SceneSelect
             if (currentSceneIndex != -1)
                 UnloadCurrentScene();
 
+            Cursor.visible = false;
             currentSceneIndex = scenesData.GetNextScene();
             onSceneLoadOperation = SceneManager.LoadSceneAsync(currentSceneIndex, LoadSceneMode.Additive);
         }

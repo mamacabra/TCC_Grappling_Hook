@@ -72,7 +72,7 @@ namespace LocalMultiplayer
             InterfaceManager.Instance.isOnFeedback = false;
             InterfaceManager.Instance.RestartGame();
             winnerSupreme = -1;
-        
+
             ClearPlayers(charactersFromGame: true);
             // LoadPlayersConfigs(); // Reset playersConfig in characterSelect screen.
             playerInputManager.playerPrefab = playerPrefab;
@@ -149,7 +149,7 @@ namespace LocalMultiplayer
                     characterBoxUI.arrowL.color = new Color32(col.r, col.g, col.b, 150);
                     characterBoxUI.arrowR.color = new Color32(col.r, col.g, col.b, 150);
                     characterBoxUI.UpdateTextTest();
-                    
+
                     Animator animator = characterBoxUI.GetCurrentCharacterModels.GetComponentInChildren<Animator>();
                     if (animator) animator.SetTrigger("connected");
                 }
@@ -211,6 +211,7 @@ namespace LocalMultiplayer
                 AddPoints(playerWhoKilled, scoreToAddToWinner);
                 InterfaceManager.Instance.OnCallFeedbackGame(CheckIfGameOver());
                 winnerSupreme = CheckIfGameOver()? playerWhoKilled:-1;
+                Cursor.visible = true;
                 //PlayersToSendToCamera(other.transform, true);
 
                 foreach (var p in playersGameObjects)
@@ -333,7 +334,7 @@ namespace LocalMultiplayer
                     OnPlayerConfigAdd?.Invoke(item);*/
             }
             playerInputManager.DisableJoining();
-            
+
             InterfaceManager.Instance.StartCount();
         }
         public void SetPlayerStatus(bool isReady) {
@@ -360,7 +361,7 @@ namespace LocalMultiplayer
             playersConfigs.Add(playerConfiguration);
             OnUpdateText?.Invoke();
         }
-        
+
         public void AddNewPlayerConfigAUX(PlayerConfigurationData playerConfiguration) {
             playersConfigsAUX.Add(playerConfiguration);
         }
@@ -371,7 +372,7 @@ namespace LocalMultiplayer
                 if (playersConfigsAUX[i].id == playerConfiguration.id)
                     playersConfigsAUX[i] = playerConfiguration;
             }
-        
+
         }
         public void RemovePlayerConfigAUX(PlayerConfigurationData playerConfiguration)
         {
@@ -415,7 +416,7 @@ namespace LocalMultiplayer
             }
             return isAvailable;
         }
-        
+
         public bool PlayerTypeIsAvailable(int c) {
             bool isAvailable = true;
             if (playersConfigsAUX.Count == 0) return isAvailable;
@@ -519,4 +520,3 @@ namespace LocalMultiplayer
         public PlayerConfigurationData[] playersConfigs;
     }
 }
-
