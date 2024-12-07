@@ -52,6 +52,10 @@ public class InterfaceManager : MonoBehaviour
      public event Action OnResetAllSettings;
      private void Start()
      {
+          foreach (var p in InputSystem.devices)
+          {
+               InputSystem.EnableDevice(p);
+          }
           if(gameWithScreens) ShowScreen();
      }
 
@@ -105,15 +109,20 @@ public class InterfaceManager : MonoBehaviour
                     {
                          pause = true;
 
-                         /*foreach (var p in PlayersManager.Instance.PlayersGameObjects)
+                         foreach (var p in PlayersManager.Instance.ReturnPlayersList())
                          {
-                              p.GetComponent<PlayerInput>().
-                         }*/
+                              if(p.inputDevices[0] != idGamepad)
+                                   InputSystem.DisableDevice(p.inputDevices[0]);
+                         }
                          
                          ShowSpecificScreen(ScreensName.Pause_InGame_Screen);
                     }
                     else
                     {
+                         foreach (var p in InputSystem.devices)
+                         {
+                              InputSystem.EnableDevice(p);
+                         }
                          HideSpecificScreen(ScreensName.Pause_InGame_Screen);
                          ShowSpecificScreen(ScreensName.Hud);
                     }
