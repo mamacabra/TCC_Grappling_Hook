@@ -1,9 +1,10 @@
 using System;
+using UnityEngine.InputSystem;
 namespace LocalMultiplayer.Data {
     [Serializable]
     public struct PlayerConfigurationData {
         public string controlScheme;
-        public int[] inputDevices;
+        public InputDevice[] inputDevices;
         public string[] inputDevicesNames;
         public CharacterColor characterColor;
         public ECharacterType characterModel;

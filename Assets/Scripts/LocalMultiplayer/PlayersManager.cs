@@ -141,7 +141,8 @@ namespace LocalMultiplayer
                 if (_playerInput.TryGetComponent(out CharacterBoxUI characterBoxUI)) {
                     characterBoxUI.playerConfig.id = _playerInput.playerIndex;
                     characterBoxUI.playerConfig.controlScheme = _playerInput.currentControlScheme;
-                    characterBoxUI.playerConfig.inputDevices = GetIDsFromDevices(_playerInput.devices.ToArray());
+                    // characterBoxUI.playerConfig.inputDevices = GetIDsFromDevices(_playerInput.devices.ToArray());
+                    characterBoxUI.playerConfig.inputDevices = _playerInput.devices.ToArray();
                     characterBoxUI.playerConfig.inputDevicesNames = GetNamesFromDevices(_playerInput.devices.ToArray());
                     characterBoxUI.characterImageBackground.color = PlayerColorLayerManager.GetColorBaseLight(_playerInput.playerIndex);
                     Color32 col = characterBoxUI.characterImageBackground.color;
@@ -312,7 +313,8 @@ namespace LocalMultiplayer
         void SetPlayersConfigs(){
             foreach (var item in playersConfigs) {
                 // Set player material
-                PlayerInput playerInput = playerInputManager.JoinPlayer(item.id, controlScheme: item.controlScheme, pairWithDevices: GetDevicesFromIDs(item.inputDevices));
+                // PlayerInput playerInput = playerInputManager.JoinPlayer(item.id, controlScheme: item.controlScheme, pairWithDevices: GetDevicesFromIDs(item.inputDevices));
+                PlayerInput playerInput = playerInputManager.JoinPlayer(item.id, controlScheme: item.controlScheme, pairWithDevices: item.inputDevices);
                 OnPlayerJoinedEvent(playerInput);
                 if (playerInput.TryGetComponent(out Character.Character character)){
                     character.Id = item.id;
@@ -443,9 +445,9 @@ namespace LocalMultiplayer
             string json = File.ReadAllText(path);
             if (string.IsNullOrEmpty(json)) {
                 Debug.LogWarning("USING DEFAULT PLAYER INPUTS!!!, probaly not started the game from menu");
-                var devices = new int[] {Keyboard.current.deviceId, Mouse.current.deviceId };
+                var devices = new InputDevice[] {Keyboard.current};
                 var p1Config = new PlayerConfigurationData {id = 0, characterColor = CharacterColor.White, controlScheme = "Keyboard&Mouse", inputDevices = devices};
-                var p2Config = new PlayerConfigurationData {id = 1, characterColor = CharacterColor.Blue, controlScheme = "KeyboardP2", inputDevices = new int[] {devices[0]} };
+                var p2Config = new PlayerConfigurationData {id = 1, characterColor = CharacterColor.Blue, controlScheme = "KeyboardP2", inputDevices = devices };
                 playersConfigs = new List<PlayerConfigurationData> {p1Config, p2Config};
             }
             PlayersInputData playersInputData = JsonUtility.FromJson<PlayersInputData>(json);
