@@ -7,6 +7,7 @@ using TMPro;
 using UnityEngine;
 using LocalMultiplayer;
 using LocalMultiplayer.Data;
+using UnityEngine.InputSystem;
 
 public class HudController : MonoBehaviour
 {
@@ -166,6 +167,11 @@ public class HudController : MonoBehaviour
       InterfaceManager.Instance.isOnCount = false;
       Cursor.visible = false;
 
+      foreach (var p in InputSystem.devices)
+      {
+         InputSystem.EnableDevice(p);
+      }
+      InterfaceManager.Instance.currentDevice = null;
       Time.timeScale = 1;
       InterfaceManager.Instance.pause = false; ///////////////// @PAUSEISSUE CARALHO SE UM DIA A GENTE TIRAR O 3,2,1 DO PAUSE O NOSSO JOGO NÃO VAI DESPAUSAR
    }

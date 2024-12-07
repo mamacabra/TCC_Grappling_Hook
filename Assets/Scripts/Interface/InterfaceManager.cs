@@ -78,15 +78,15 @@ public class InterfaceManager : MonoBehaviour
           OnStartCount?.Invoke();
      }
 
-     public InputDevice idGamepad;
+     public InputDevice currentDevice;
      private void Update()
      {
           bool startPressed = false;
           foreach (var gamepad in Gamepad.all) {
                if (gamepad.startButton.wasPressedThisFrame)
                {
-                    if(!pause) idGamepad = gamepad;
-                    else { if (gamepad != idGamepad) return; }
+                    if(!pause) currentDevice = gamepad;
+                    else { if (gamepad != currentDevice) return; }
                     startPressed = true;
                     break;
                }
@@ -94,12 +94,21 @@ public class InterfaceManager : MonoBehaviour
           foreach (var device in InputSystem.devices) {
                if (device is Keyboard keyboard && keyboard.escapeKey.wasPressedThisFrame)
                {
-                    if(!pause) idGamepad = null;
-                    else { if (idGamepad != null)return; }
+                    if(!pause) currentDevice = keyboard;
+                    else { if (currentDevice != null) return; }
                     startPressed = true;
                     break;
                }
           }
+          // Impede input de pause de dispositivo que não está em jogo
+          bool deviceIsAPlayer = false;
+          foreach (var p in PlayersManager.Instance.ReturnPlayersList()){
+               if (currentDevice == p.inputDevices[0]){
+                    deviceIsAPlayer = true;
+                    break;
+               }
+          }
+          if(!deviceIsAPlayer) return;
           if (startPressed)
           {
                if (inGame)
@@ -109,20 +118,16 @@ public class InterfaceManager : MonoBehaviour
                     {
                          pause = true;
 
-                         foreach (var p in PlayersManager.Instance.ReturnPlayersList())
+                         foreach (var p in InputSystem.devices)
                          {
-                              if(p.inputDevices[0] != idGamepad)
-                                   InputSystem.DisableDevice(p.inputDevices[0]);
+                              if(p != currentDevice)
+                                   InputSystem.DisableDevice(p);
                          }
                          
                          ShowSpecificScreen(ScreensName.Pause_InGame_Screen);
                     }
                     else
                     {
-                         foreach (var p in InputSystem.devices)
-                         {
-                              InputSystem.EnableDevice(p);
-                         }
                          HideSpecificScreen(ScreensName.Pause_InGame_Screen);
                          ShowSpecificScreen(ScreensName.Hud);
                     }

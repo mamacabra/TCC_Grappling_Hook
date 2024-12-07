@@ -28,23 +28,26 @@ public class PauseInGameScreen : Screens
 
     public override void Initialize()
     { 
-       base.Initialize();
-       EventSystem.current.SetSelectedGameObject(continueButton.button.gameObject);
-       Time.timeScale = 0;
-       List<PlayerConfigurationData> list = new List<PlayerConfigurationData>();
-       list = PlayersManager.Instance.ReturnPlayersList();
+        base.Initialize();
+        EventSystem.current.SetSelectedGameObject(continueButton.button.gameObject);
+        Time.timeScale = 0;
+        List<PlayerConfigurationData> list = new List<PlayerConfigurationData>();
+        list = PlayersManager.Instance.ReturnPlayersList();
 
-       pauseText.color = new Color32(240, 240, 240, 255);
-       line.color = new Color32(240, 240, 240, 255);
-       if (InterfaceManager.Instance.idGamepad != null)
-       {
-           PlayerConfigurationData a = list.Find(d => d.inputDevices[0] == InterfaceManager.Instance.idGamepad);
-           
-           var col = PlayerColorLayerManager.GetColorBaseLight(a.id);
-           pauseText.color = col;
-           line.color = col;
-       }
-       
+        pauseText.color = new Color32(240, 240, 240, 255);
+        line.color = new Color32(240, 240, 240, 255);
+        if (InterfaceManager.Instance.currentDevice != null)
+        {
+            PlayerConfigurationData a = list.Find(d => d.inputDevices[0] == InterfaceManager.Instance.currentDevice);
+            
+            var col = PlayerColorLayerManager.GetColorBaseLight(a.id);
+            pauseText.color = col;
+            line.color = col;
+        }
+        else {
+            pauseText.color = Color.white;
+            line.color = Color.white;
+        }
     }
     
     public override void GoToScreen(ScreensName screensName)
