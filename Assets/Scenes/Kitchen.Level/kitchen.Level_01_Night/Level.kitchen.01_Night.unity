@@ -10717,6 +10717,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3f381d31937283942b8a07c793f69ac6,
         type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3f381d31937283942b8a07c793f69ac6,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -10814,6 +10819,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cup-Mug_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3f381d31937283942b8a07c793f69ac6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3f381d31937283942b8a07c793f69ac6,
         type: 3}
