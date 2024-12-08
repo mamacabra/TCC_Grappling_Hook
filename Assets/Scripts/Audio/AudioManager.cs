@@ -40,6 +40,7 @@ public class AudioManager : MonoBehaviour
             sfxBus = RuntimeManager.GetBus(sfxBusPath);
             startSlider = RuntimeManager.CreateInstance(fmodevent);
             startSlider.start();
+            currentSong = Random.Range(1, 3);
             ChangeMusic();
         }
         DontDestroyOnLoad(this);
