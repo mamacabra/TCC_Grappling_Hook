@@ -30,7 +30,7 @@ namespace Character.States
             CharacterEntity.Character.transform.Find("Body/MeshParent/Sushi_Model(Clone)/DirectionPointer")?.gameObject.SetActive(false);
             CharacterEntity.CharacterUI.HiddenCharacterUI();
 
-            CharacterEntity.GamepadVibrate.RumblePulse(0.4f, 0.6f, 0.8f);
+            CharacterEntity.GamepadVibrate.RumblePulse(0.4f, 0.6f, 0.4f);
 
             RemoveColorLayer(CharacterEntity.Character.transform);
         }
