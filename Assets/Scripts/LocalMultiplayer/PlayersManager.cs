@@ -9,6 +9,7 @@ using UnityEngine.InputSystem;
 using LocalMultiplayer.Data;
 using System.Linq;
 using System.Collections;
+using UnityEngine.UI;
 
 namespace LocalMultiplayer
 {
@@ -67,7 +68,11 @@ namespace LocalMultiplayer
             playerInputManager.playerPrefab = playerUIPrefab;
             playerInputManager.EnableJoining();
         }
+
+        [SerializeField] public Animator loadingAnim;
+        [SerializeField] public Image loadingImage;
         public void InitGame(bool loadScene = true) {
+            loadingAnim.gameObject.SetActive(true);
             GameOver = false;
             InterfaceManager.Instance.isOnFeedback = false;
             InterfaceManager.Instance.RestartGame();
@@ -79,14 +84,20 @@ namespace LocalMultiplayer
             if (playersConfigs.Count > 0) {
                 if (loadScene) {
                     ScenesManager.Instance.LoadRandomScene();
-                    ScenesManager.onSceneLoadOperation.completed += delegate {
+                    ScenesManager.onSceneLoadOperation.completed += delegate
+                    {
+                        loadingAnim.Play("LoadingAnim");
+                        
                         int s = 0;
-                        for (int i = 0; i < playersConfigs.Count; i++) {
-                            if (playersConfigs[i].score > s){
+                        for (int i = 0; i < playersConfigs.Count; i++)
+                        {
+                            if (playersConfigs[i].score > s)
+                            {
                                 s = playersConfigs[i].score;
                                 winnerId = playersConfigs[i].id;
                             }
                         }
+
                         SetPlayersConfigs();
                     };
                 }
@@ -222,6 +233,7 @@ namespace LocalMultiplayer
                         var pC =p.GetComponent<Character.Character>();
                         if (pC.Id != playerWhoKilled && winnerSupreme != -1)
                         {
+                            cameraMovement.RemovePlayers(pC.transform);
                             pC.CharacterEntity.CharacterState.SetLoserState(p1);
                         }
                         if (pC.Id == playerWhoKilled)
