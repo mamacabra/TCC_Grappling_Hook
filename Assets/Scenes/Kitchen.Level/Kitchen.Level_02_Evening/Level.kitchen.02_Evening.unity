@@ -3408,6 +3408,50 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 272627119}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &280033144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 280033146}
+  - component: {fileID: 280033145}
+  m_Layer: 0
+  m_Name: PowerUpSpawner_6
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &280033145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280033144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d4ab62203364c07b06a1346d1a342f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &280033146
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280033144}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.16, y: 0, z: 5.34}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &283985056
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8862,12 +8906,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawners:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 5258713147033976159}
+  - {fileID: 5258713146073406482}
+  - {fileID: 5258713146947967846}
+  - {fileID: 5258713145913403439}
+  - {fileID: 5258713146923535378}
+  - {fileID: 280033146}
   sortedSpawners: []
 --- !u!4 &522557742
 Transform:
@@ -40748,7 +40792,7 @@ GameObject:
   m_Layer: 0
   m_Name: PowerUpSpawner_2
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -40765,7 +40809,7 @@ GameObject:
   m_Layer: 0
   m_Name: PowerUpSpawner_4
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -40782,7 +40826,7 @@ GameObject:
   m_Layer: 0
   m_Name: PowerUpSpawner_1
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -40799,7 +40843,7 @@ GameObject:
   m_Layer: 0
   m_Name: PowerUpSpawner_5
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -40816,7 +40860,7 @@ GameObject:
   m_Layer: 0
   m_Name: PowerUpSpawner_3
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -40970,6 +41014,7 @@ SceneRoots:
   - {fileID: 5258713146947967846}
   - {fileID: 5258713145913403439}
   - {fileID: 5258713146923535378}
+  - {fileID: 280033146}
   - {fileID: 957577359}
   - {fileID: 338277872}
   - {fileID: 155591878}
