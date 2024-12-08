@@ -16,6 +16,8 @@ namespace Character.States
             var newPosition = CharacterEntity.Character.transform.position;
             newPosition.y = 0.5f;
             CharacterEntity.Character.transform.position = newPosition;
+
+            CharacterEntity.GrapplingHookRope.SetActive(false);
         }
 
         public override void FixedUpdate()

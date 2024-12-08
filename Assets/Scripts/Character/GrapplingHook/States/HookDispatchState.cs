@@ -21,6 +21,7 @@ namespace Character.GrapplingHook.States
             var characterTransform = CharacterEntity.Character.transform;
             var vfxPosition = characterTransform.position + characterTransform.forward * VFXPositionOffset;
             VFXManager.Instance.PlayHookDispatchVFX(vfxPosition);
+            CharacterEntity.GrapplingHookRope.SetActive(true);
         }
 
         public override void FixedUpdate()
