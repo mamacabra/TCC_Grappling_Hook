@@ -33,7 +33,11 @@ public class ControlInGameScreen : Screens
         GoToScreen(startGame.goToScreen);
         gameObject.SetActive(false);
         Time.timeScale = 1;
-        
-        if (PlayersManager.Instance) PlayersManager.Instance.InitGame();
+
+        if (PlayersManager.Instance)
+        {
+            PlayersManager.Instance.loadingImage.color = new Color32(235, 60, 90, 255);
+            PlayersManager.Instance.InitGame();
+        }
     }
 }

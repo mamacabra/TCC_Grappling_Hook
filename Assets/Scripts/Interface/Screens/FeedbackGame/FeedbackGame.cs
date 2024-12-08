@@ -36,15 +36,19 @@ public class FeedbackGame : Screens
     {
         nextGameButton.onClick.AddListener(NextGame);
     }
+
     void NextGame()
     {
-        if(!canclick)return;
+        if (!canclick) return;
         AudioManager.audioManager.PlayUiSoundEffect(UiSoundsList.Confirm);
         canclick = false;
+        PlayersManager.Instance.loadingAnim.gameObject.SetActive(true);
+
         PlayersManager.Instance.InitGame(true);
         InterfaceManager.Instance.ShowSpecificScreen(ScreensName.Hud);
         InterfaceManager.Instance.RestartGame();
         Close();
+
     }
 
     public override void HideButton()
