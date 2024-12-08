@@ -8,7 +8,7 @@ namespace Character.GrapplingHook.States
     {
         private float hookSpeed = 80;
         private float hookMaxDistance = 24;
-        private const float VFXPositionOffset = 2f;
+        private const float VFXPositionOffset = 3.5f;
 
         public HookDispatchState(CharacterEntity characterEntity) : base(characterEntity) {}
 
@@ -20,7 +20,8 @@ namespace Character.GrapplingHook.States
 
             var characterTransform = CharacterEntity.Character.transform;
             var vfxPosition = characterTransform.position + characterTransform.forward * VFXPositionOffset;
-            VFXManager.Instance.PlayHookDispatchVFX(vfxPosition);
+            vfxPosition.y = CharacterEntity.GrapplingHookTransform.position.y;
+            VFXManager.Instance.PlayHookDispatchVFX(vfxPosition, CharacterEntity.Character.transform.forward);
             CharacterEntity.GrapplingHookRope.SetActive(true);
         }
 
