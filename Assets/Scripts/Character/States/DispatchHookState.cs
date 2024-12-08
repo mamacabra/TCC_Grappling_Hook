@@ -21,6 +21,7 @@ namespace Character.States
             else {
                 CharacterEntity.GrapplingHookState.SetHookCollisionCheckState();
                 AudioManager.audioManager.PlayPlayerSoundEffect(PlayerSoundsList.HookFire);
+                AudioManager.audioManager.HookStop();
             }
         }
 

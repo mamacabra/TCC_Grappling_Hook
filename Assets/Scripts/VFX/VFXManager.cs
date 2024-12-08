@@ -52,6 +52,7 @@ namespace VFX
             if (victoryVfx is null) return;
             var vfx = Instantiate(victoryVfx, position, Quaternion.identity);
             ScheduleDestroy(vfx);
+            AudioManager.audioManager.PlayLevelSoundEffect(LevelSoundsList.LevelConfetti);
         }
 
         private static void ScheduleDestroy(ParticleSystem vfx)

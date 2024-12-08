@@ -18,7 +18,8 @@ public class AudioManager : MonoBehaviour
     public float musicVolume;
     FMOD.Studio.EventInstance gameMusic;
     FMOD.Studio.EventInstance startSlider;
-    
+    FMOD.Studio.EventInstance charge;
+
     public EventReference fmodevent;
 
     [SerializeField]
@@ -125,17 +126,30 @@ public class AudioManager : MonoBehaviour
         musicBus.setVolume(musicVolume / 10);
     }
 
+    public void HookCharge()
+    {
+        charge = RuntimeManager.CreateInstance("event:/PlayerEffects/" + soundTest);
+        charge.start();
+    }
+    public void HookStop()
+    {
+        charge.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    }
+
     private void Update()
     {
         if (debugActivated)
         {
             if (Input.GetKeyDown(KeyCode.M))
             {
-                PlayPlayerSoundEffect(soundTest);
+
+               
+                
             }
             if (Input.GetKeyDown(KeyCode.N))
             {
-                ChangeMusic();
+                
+                
             }
         }      
     }
@@ -165,5 +179,5 @@ public class AudioManager : MonoBehaviour
 public enum UiSoundsList { None, Confirm, Return, Cancel, Select, Hover, SelectUpPitch, SelectDownPitch, GainKillPoint, GameCountDown, StartSlider, CharSelectConfirm, CharSelectEnter, CharSelectLeave, CharSelectNavigate, CharSelectDeselect };
 public enum PlayerSoundsList { HookCharge, HookFire, HookHitPlayer, HookHitWall, HookReturn, AttackParry, AttackMiss, AttackHitPlayer, PlayerDash, PlayerSpawn, PlayerWalk, PlayerJellyWalk, PowerUpSpawn, PowerUpPickUp, PowerUpShieldBreak};
 
-public enum LevelSoundsList { LevelForkTrap };
+public enum LevelSoundsList { LevelForkTrap, LevelConfetti };
 public enum MusicList { Music1, Music2, Music3};

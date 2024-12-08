@@ -114,6 +114,7 @@ public class CharacterBoxUI : MonoBehaviour
                 PlayersManager.Instance?.RemovePlayerGameObject(gameObject);
                 choiceScreen.CheckGroup(transform, false);
                 gameObject.SetActive(false);
+                AudioManager.audioManager.PlayUiSoundEffect(UiSoundsList.CharSelectLeave);
                 return; 
             }
             
@@ -248,7 +249,6 @@ public class CharacterBoxUI : MonoBehaviour
     }
 
     private void OnDisable() {
-        AudioManager.audioManager.PlayUiSoundEffect(UiSoundsList.CharSelectLeave);
         //characterStatus.text = "Pressione A/X";
         characterStatus.color = new Color32(52,73,94,255);
         hasConfirmed = false;

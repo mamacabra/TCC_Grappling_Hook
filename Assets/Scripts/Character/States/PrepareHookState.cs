@@ -16,6 +16,7 @@ namespace Character.States
         {
             CharacterEntity.Hook.ResetHookForce();
             CharacterEntity.CharacterMesh.animator?.SetBool("isHook", true);
+            AudioManager.audioManager.HookCharge();
         }
 
         public override void Update()
