@@ -17,10 +17,11 @@ namespace VFX
             else Instance = this;
         }
 
-        public void PlayHookDispatchVFX(Vector3 position)
+        public void PlayHookDispatchVFX(Vector3 position, Vector3 direction)
         {
             if (hookDispatchVfx is null) return;
             var vfx = Instantiate(hookDispatchVfx, position, Quaternion.identity);
+            vfx.transform.LookAt(position + direction * 2);
             ScheduleDestroy(vfx);
         }
 
