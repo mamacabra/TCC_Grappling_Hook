@@ -8,6 +8,7 @@ namespace Character.States
 
         public override void Enter() {
             CharacterEntity.CharacterVFX.PlaySpawnVFXWithDelay(1.4f);
+            CharacterEntity.GrapplingHookRope.SetActive(false);
         }
 
         public override void FixedUpdate()

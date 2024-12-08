@@ -7,6 +7,7 @@ public class GamepadVibrate : MonoBehaviour
 {
     [HideInInspector]public PlayerInput playerInput;
     [HideInInspector]public Gamepad pad;
+    
     public bool rumble = true;
     private void Awake() 
     {
@@ -20,7 +21,7 @@ public class GamepadVibrate : MonoBehaviour
         //pad = Gamepad.current;
 
         if (pad == null) return;
-
+        
         pad.SetMotorSpeeds(lowFrequency,highFrequency);
       
         StartCoroutine(StopRumble());
