@@ -46,6 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf8f519ef00a55428483e826c660c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnPlayerKilled:
+    m_PersistentCalls:
+      m_Calls: []
+  playerKilled: 0
   fallSpeed: 180
 --- !u!65 &-3706887323321040178
 BoxCollider:
@@ -67,7 +71,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 3.4795249, y: 5.8921175, z: 2.849984}
-  m_Center: {x: 0.00000011920929, y: -9.38941, z: 0.90637934}
+  m_Center: {x: 0, y: -9.38941, z: 0.6}
 --- !u!1001 &3952365359179064159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -148,11 +152,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3451118302482216456, guid: 1c417ed701129c34c806560ff9fc5998,
         type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3451118302482216456, guid: 1c417ed701129c34c806560ff9fc5998,
+        type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3451118302482216456, guid: 1c417ed701129c34c806560ff9fc5998, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

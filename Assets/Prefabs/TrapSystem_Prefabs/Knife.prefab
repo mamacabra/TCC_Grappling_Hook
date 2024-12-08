@@ -46,6 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf8f519ef00a55428483e826c660c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnPlayerKilled:
+    m_PersistentCalls:
+      m_Calls: []
+  playerKilled: 0
   fallSpeed: 180
 --- !u!65 &-3706887323321040178
 BoxCollider:
@@ -145,6 +149,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cuttlery-ButterKnife
+      objectReference: {fileID: 0}
+    - target: {fileID: 3451118302482216456, guid: 02a006cd11c6e0a40ae232ec25e07643,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
