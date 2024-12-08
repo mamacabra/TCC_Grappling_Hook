@@ -64,7 +64,7 @@ public class CameraManager : MonoBehaviour
                 StartCoroutine(WaitToBoolTrue());
                 IEnumerator WaitToBoolTrue()
                 {
-                    yield return new WaitForSeconds(1.5f);
+                    yield return new WaitForSeconds(.25f);
                     Time.timeScale = 1;
                     
                     CallWinnerDance?.Invoke();
