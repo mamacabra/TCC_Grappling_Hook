@@ -62,7 +62,11 @@ namespace Character.GrapplingHook
             }
 
             if (hasHit == false)
-                CharacterEntity.CharacterState.SetHookedToWallState(other.transform.position);
+            {
+                var position = other.transform.position;
+                position.y = CharacterEntity.Character.transform.position.y;
+                CharacterEntity.CharacterState.SetHookedToWallState(position);
+            }
         }
 
         public void IncreaseHookForce()
