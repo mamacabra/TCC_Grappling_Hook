@@ -70,7 +70,7 @@ public class CameraManager : MonoBehaviour
                     CallWinnerDance?.Invoke();
                     
                     //muda a variavel de baixo para deixar a dancinha por mais tempo
-                    yield return new WaitForSeconds(1.5f);
+                    yield return new WaitForSeconds(3f);
                     OnEndFeedback = true;
                 }
                
