@@ -89,6 +89,7 @@ public class HudController : MonoBehaviour
          if (players[i].TryGetComponent(out Character.Character _character)) {
             yield return new WaitForSecondsRealtime(timeToSpawnCharacter);
             _character.PlaySpawnAnims();
+            _character.CharacterEntity.CharacterVFX.PlaySpawnVFXWithDelay();
          }
       }
    }
