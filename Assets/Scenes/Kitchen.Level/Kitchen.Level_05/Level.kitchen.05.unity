@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 25718305}
   m_Layer: 0
   m_Name: PlayerSpawner_5
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -694,6 +694,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a733097678198ff43aa51186b4f69945,
         type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a733097678198ff43aa51186b4f69945,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -905,6 +910,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Brunch-Bread
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 625675b4cf5232040bfb640224387606,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 625675b4cf5232040bfb640224387606,
         type: 3}
@@ -2366,6 +2376,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: eb2ef7af8a478fd428558e8de4aa9176,
         type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: eb2ef7af8a478fd428558e8de4aa9176,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -2644,6 +2659,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a733097678198ff43aa51186b4f69945,
         type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a733097678198ff43aa51186b4f69945,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -2732,6 +2752,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Brunch_Bread_Slice
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f749fa2e95a0f7e4589342dfe6f1fd49,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f749fa2e95a0f7e4589342dfe6f1fd49,
         type: 3}
@@ -4170,6 +4195,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 51a1d2893351eea499de34178db51745,
         type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 51a1d2893351eea499de34178db51745,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -4343,6 +4373,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e75c41e3dfc9d594bb73bd47b060b845,
         type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e75c41e3dfc9d594bb73bd47b060b845,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -4431,6 +4466,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Plate_Blue_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4b51df16e9352114fbc5e9ec7899d6a5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4b51df16e9352114fbc5e9ec7899d6a5,
         type: 3}
@@ -5724,6 +5764,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4e4a8632ca8ec534f8f694a5fd7fcf99,
         type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4e4a8632ca8ec534f8f694a5fd7fcf99,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -5911,6 +5956,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 64e9ea7c0d4cdd646837523fc15fae1b,
         type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 64e9ea7c0d4cdd646837523fc15fae1b,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -6066,6 +6116,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Brunch-Butter-Wood
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 087c30ac76f645a45966772224048b9e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 087c30ac76f645a45966772224048b9e,
         type: 3}
@@ -6420,6 +6475,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Plate_Blue_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4b51df16e9352114fbc5e9ec7899d6a5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4b51df16e9352114fbc5e9ec7899d6a5,
         type: 3}
@@ -7334,6 +7394,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f4b90d24aae5ed14dbccdaaa12d3e24a,
         type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f4b90d24aae5ed14dbccdaaa12d3e24a,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -7824,6 +7889,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f4b90d24aae5ed14dbccdaaa12d3e24a,
         type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f4b90d24aae5ed14dbccdaaa12d3e24a,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -8035,6 +8105,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 625675b4cf5232040bfb640224387606,
         type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 625675b4cf5232040bfb640224387606,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -8138,6 +8213,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cuttlery-Spoon_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e75c41e3dfc9d594bb73bd47b060b845,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e75c41e3dfc9d594bb73bd47b060b845,
         type: 3}
@@ -8644,6 +8724,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f4b90d24aae5ed14dbccdaaa12d3e24a,
         type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f4b90d24aae5ed14dbccdaaa12d3e24a,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -8914,6 +8999,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 07f45924603f0f04e8d3e90270dcf015,
         type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 07f45924603f0f04e8d3e90270dcf015,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -9033,6 +9123,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Plate_Blue_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4b51df16e9352114fbc5e9ec7899d6a5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4b51df16e9352114fbc5e9ec7899d6a5,
         type: 3}
@@ -9566,6 +9661,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e75c41e3dfc9d594bb73bd47b060b845,
         type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e75c41e3dfc9d594bb73bd47b060b845,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -9959,6 +10059,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4b51df16e9352114fbc5e9ec7899d6a5,
         type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4b51df16e9352114fbc5e9ec7899d6a5,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -10047,6 +10152,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Brunch-Butter-Paper
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 15f5305d6be859a48bb2f90f07ade412,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 15f5305d6be859a48bb2f90f07ade412,
         type: 3}
@@ -10205,6 +10315,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cuttlery-Plate_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 74d3a1d199132eb49a489123cbc67553,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 74d3a1d199132eb49a489123cbc67553,
         type: 3}
@@ -10719,6 +10834,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6ac9851f7b206de4fa56c0f8259cf143,
         type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6ac9851f7b206de4fa56c0f8259cf143,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -10825,6 +10945,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e75c41e3dfc9d594bb73bd47b060b845,
         type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e75c41e3dfc9d594bb73bd47b060b845,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -10913,6 +11038,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Biscuit_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: eb2ef7af8a478fd428558e8de4aa9176,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: eb2ef7af8a478fd428558e8de4aa9176,
         type: 3}
@@ -11007,6 +11137,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3f381d31937283942b8a07c793f69ac6,
         type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3f381d31937283942b8a07c793f69ac6,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -11098,6 +11233,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f749fa2e95a0f7e4589342dfe6f1fd49,
         type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f749fa2e95a0f7e4589342dfe6f1fd49,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -11186,6 +11326,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Plate_Blue_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9fb4c33f79caee749878f42bbd07a6c6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9fb4c33f79caee749878f42bbd07a6c6,
         type: 3}
@@ -11443,6 +11588,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Plate_Blue_02_Cup_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f4b90d24aae5ed14dbccdaaa12d3e24a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f4b90d24aae5ed14dbccdaaa12d3e24a,
         type: 3}
