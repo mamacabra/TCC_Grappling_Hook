@@ -13,6 +13,8 @@ namespace LocalMultiplayer.Data {
         public int characterIndexCharacterChoice;
         public void ChangeScore(int s) {
             score += s;
+            var maxScore = PlayersManager.Instance.ScoreToWinGame;
+            if (score > maxScore) score = maxScore;
         }
     }
 }

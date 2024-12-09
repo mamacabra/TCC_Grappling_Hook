@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using LocalMultiplayer;
 using LocalMultiplayer.Data;
+using Unity.Mathematics;
 
 public class PlayerScore : MonoBehaviour
 {
@@ -79,6 +80,7 @@ public class PlayerScore : MonoBehaviour
        }
 
         scoreValue = data.score;
+        scoreValue = math.min(scoreValue, PlayersManager.Instance.ScoreToWinGame);
 
         ChangeModelImage(data.id);
     }
