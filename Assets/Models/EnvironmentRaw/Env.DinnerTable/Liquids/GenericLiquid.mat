@@ -80,7 +80,9 @@ Material:
     - _FresnelPower: 1
     - _Glossiness: 0
     - _HighFrequency: 0
+    - _MaxY: 1
     - _Metallic: 0
+    - _MinY: 0
     - _NormalStrenght: 0
     - _Opacity: 1
     - _QueueControl: 0
@@ -92,6 +94,7 @@ Material:
     - _Smoothness: 0
     - _SrcBlend: 1
     - _Surface: 0
+    - _SurfaceAlpha: 0.5
     - _WaveAmplitude: 0
     - _WaveSpeed: 0
     - _WorkflowMode: 0
