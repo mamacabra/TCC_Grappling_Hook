@@ -21,8 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Liquid_Goiaba
-  m_Shader: {fileID: -6465566751694194690, guid: bcfa34c9a230cad45b8c503463dda6dc,
-    type: 3}
+  m_Shader: {fileID: 4800000, guid: 665f847e40e36f4428fc517798cd0a81, type: 3}
   m_Parent: {fileID: 2100000, guid: fec93fe3a94e31e4391c23951103430b, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -36,11 +35,28 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 2800000, guid: 37e46a449197dc243b4ff5f132737b42, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 5c42d6d458acd9b42b9e76f143f2e42b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _BumpScale: 1
+    - _DepthIntensity: 0.86
     - _FresnelPower: 2
+    - _Glossiness: 1
+    - _MaxY: 500
+    - _Metallic: 0
+    - _MinY: -100
+    - _Opacity: 0.7
+    - _SurfaceAlpha: 0
     m_Colors:
-    - _Color_Deep: {r: 0.7, g: 0.2806452, b: 0.2806452, a: 1}
+    - _Color: {r: 2, g: 0, b: 0, a: 1}
+    - _Color_Deep: {r: 0.7, g: 0.28064516, b: 0.28064516, a: 1}
     - _Color_Shalow: {r: 0, g: 0.21319066, b: 0.4, a: 1}
   m_BuildTextureStacks: []

@@ -21,8 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Liquid_Coffe
-  m_Shader: {fileID: -6465566751694194690, guid: bcfa34c9a230cad45b8c503463dda6dc,
-    type: 3}
+  m_Shader: {fileID: 4800000, guid: 665f847e40e36f4428fc517798cd0a81, type: 3}
   m_Parent: {fileID: 2100000, guid: fec93fe3a94e31e4391c23951103430b, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -39,8 +38,14 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
+    - _BumpScale: 1
+    - _DepthIntensity: 10
     - _FresnelPower: 1
+    - _Glossiness: 1
+    - _Metallic: 0.171
+    - _Opacity: 0.9
     m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color_Deep: {r: 0.1, g: 0.048888892, b: 0.048888892, a: 1}
     - _Color_Shalow: {r: 0, g: 0.18898201, b: 0.22745098, a: 1}
   m_BuildTextureStacks: []
