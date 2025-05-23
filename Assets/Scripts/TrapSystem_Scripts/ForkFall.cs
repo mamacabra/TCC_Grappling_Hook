@@ -15,14 +15,19 @@ namespace TrapSystem_Scripts
         public bool playerKilled = false;
         public float fallSpeed = 20f;
         private bool canDestroyFork = false;
+        
+        public Vector3 colliderSize = new Vector3(5f, 6f, 5f);
+        private BoxCollider boxCollider;
+        
         private void Start()
         {
+            boxCollider = GetComponent<BoxCollider>();
             if (OnPlayerKilled == null)
             {
                 OnPlayerKilled = new UnityEvent<GameObject>();
                 
             }
-            Debug.Log("set tag wall");
+            //Debug.Log("set tag wall");
             AudioManager.audioManager.PlayLevelSoundEffect(LevelSoundsList.LevelForkTrap);
         }
         
@@ -50,11 +55,8 @@ namespace TrapSystem_Scripts
             {
                 StartCoroutine( WaitToDestroyFork());
             }
-                
             
         }
-
-
 
         private void OnTriggerEnter(Collider other)
         {
@@ -82,6 +84,7 @@ namespace TrapSystem_Scripts
         private void SetTag()
         {
             gameObject.tag = "Wall";
+            boxCollider.size = colliderSize;
         }
 
         public void DestroyFork()

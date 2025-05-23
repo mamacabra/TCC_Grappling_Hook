@@ -51,6 +51,7 @@ MonoBehaviour:
       m_Calls: []
   playerKilled: 0
   fallSpeed: 800
+  colliderSize: {x: 5, y: 6, z: 5}
 --- !u!65 &-3706887323321040178
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -70,8 +71,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.2, y: 5.8921165, z: 4.3}
-  m_Center: {x: -0.11383152, y: -9.38941, z: 0.8304918}
+  m_Size: {x: 10, y: 6, z: 10}
+  m_Center: {x: -0.007889509, y: -9.38941, z: 1.0146685}
 --- !u!1001 &3952365359179064159
 PrefabInstance:
   m_ObjectHideFlags: 0
